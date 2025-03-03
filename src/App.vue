@@ -7,20 +7,19 @@ const { cursorStyle } = useCursor();
 </script>
 
 <template>
-
+  <div :style="cursorStyle" class="glowing-cursor"/>
   <div>
     <Base />
     <Home/>
   </div>
-  <div :style="cursorStyle" class="glowing-cursor"/>
 </template>
 
 <style scoped>
 /* Curseur personnalisé */
 .glowing-cursor {
   position: absolute;
-  width: 25px; /* Augmenter la taille du curseur */
-  height: 25px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 20%, rgba(255, 255, 255, 0.2) 70%); /* Dégradé plus doux */
   box-shadow:
@@ -32,7 +31,7 @@ const { cursorStyle } = useCursor();
   pointer-events: none; /* Ne pas interférer avec les éléments sous le curseur */
   transform-origin: center;
   transition: all 0.1s ease-out; /* Transition douce pour un effet fluide */
-  animation: rotateEffect 6s linear infinite, pulseEffect 1.5s ease-in-out infinite; /* Rotation et pulsation */
+  animation: pulseEffect 1.5s ease-in-out infinite; /* Rotation et pulsation */
   mix-blend-mode: lighten; /* Utiliser l'effet de lumière pour mieux s'intégrer aux éléments lumineux */
 }
 
@@ -75,15 +74,6 @@ const { cursorStyle } = useCursor();
         0 0 100px rgba(255, 255, 255, 0.3),
         0 0 0 12px rgba(255, 255, 255, 0.1);
   }
-}
-
-/* Amélioration du suivi du curseur avec une animation fluide */
-body {
-  cursor: none; /* Supprimer le curseur par défaut */
-}
-
-html {
-  cursor: none;
 }
 
 /* Ajuster le curseur lors du survol sur certains éléments */
