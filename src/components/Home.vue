@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
-import { inject } from 'vue';
 
 onMounted(() => {
   const title = document.querySelector(".glow-text") as HTMLElement;
