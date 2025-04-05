@@ -54,7 +54,7 @@ onBeforeUnmount(() => {
     <h1 class="glow-text">Wissem.</h1>
 
     <!-- Bouton d'entrée -->
-    <button class="enter-button">Enter</button>
+    <button class="enter-button" onclick="window.location.href='https://github.com/WissemBad'">Enter</button>
   </div>
 </template>
 
