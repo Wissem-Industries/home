@@ -1,5 +1,6 @@
 export const langFr = {
-    greeting: "Bonjour, je m'appelle Wissem.",
-    enter: "Entrer",
-    selectLanguage: "Choisir la langue",
+    welcome: "Bienvenue chez",
+    name: "Wissem.",
+    construction: "Site en construction",
+    button: "Voir mon Github",
 };
