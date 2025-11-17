@@ -3,11 +3,11 @@ import { useLanguageSwitcher } from '../misc/useLanguageSwitcher';
 const { displayedWelcome, displayedConstruction } = useLanguageSwitcher();
 
 const goToGithub = () => {
-  window.location.href = 'https://github.com/WissemBad';
+  window.open('https://github.com/WissemBad', '_blank', 'noopener,noreferrer');
 };
 
 const goToLinkedin = () => {
-  window.location.href = 'https://www.linkedin.com/in/WissemBadraoui/';
+  window.open('https://www.linkedin.com/in/WissemBadraoui/', '_blank', 'noopener,noreferrer');
 }
 </script>
 
