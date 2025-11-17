@@ -2,20 +2,21 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { langFr } from '../languages/fr_FR';
 import { langEn } from '../languages/en_US';
 import { langEs } from '../languages/es_ES';
+import { langDe } from '../languages/de_DE';
+import { langIt } from '../languages/it_IT';
+import { langPt } from '../languages/pt_PT';
 
 export interface Language {
     welcome: string;
     name: string;
     construction: string;
-    button: string;
 }
 
 export function useLanguageSwitcher() {
-    const languages: Language[] = [langFr, langEn, langEs];
+    const languages: Language[] = [langFr, langEn, langEs, langDe, langIt, langPt];
     const currentLangIndex = ref(0);
     const displayedWelcome = ref('');
     const displayedConstruction = ref('');
-    const displayedButton = ref('');
     const isTyping = ref(false);
 
     let switchInterval: number | null = null;
@@ -49,7 +50,6 @@ export function useLanguageSwitcher() {
         await Promise.all([
             eraseText(displayedWelcome, 30),
             eraseText(displayedConstruction, 30),
-            eraseText(displayedButton, 30),
         ]);
 
         // Attendre un peu
@@ -63,7 +63,6 @@ export function useLanguageSwitcher() {
         await Promise.all([
             typeWriter(currentLang.welcome, displayedWelcome, 60),
             typeWriter(currentLang.construction, displayedConstruction, 60),
-            typeWriter(currentLang.button, displayedButton, 60),
         ]);
 
         isTyping.value = false;
@@ -75,7 +74,6 @@ export function useLanguageSwitcher() {
         Promise.all([
             typeWriter(initialLang.welcome, displayedWelcome, 60),
             typeWriter(initialLang.construction, displayedConstruction, 60),
-            typeWriter(initialLang.button, displayedButton, 60),
         ]).then(() => {
             // Commencer l'alternance automatique après 10 secondes
             switchInterval = window.setInterval(switchLanguage, 10000);
@@ -90,8 +88,6 @@ export function useLanguageSwitcher() {
     return {
         displayedWelcome,
         displayedConstruction,
-        displayedButton,
-        currentLanguage: () => languages[currentLangIndex.value],
     };
 }
 

@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import { useLanguageSwitcher } from '../misc/useLanguageSwitcher';
-
-const { displayedWelcome, displayedConstruction, displayedButton } = useLanguageSwitcher();
+const { displayedWelcome, displayedConstruction } = useLanguageSwitcher();
 
 const goToGithub = () => {
   window.location.href = 'https://github.com/WissemBad';
 };
+
+const goToLinkedin = () => {
+  window.location.href = 'https://www.linkedin.com/in/WissemBadraoui/';
+}
 </script>
 
 <template>
   <div class="title-container">
-    <!-- Logo avec effet -->
     <div class="logo-container">
       <svg viewBox="0 0 79 49" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path class="logo"
@@ -19,22 +21,30 @@ const goToGithub = () => {
       </svg>
     </div>
 
-    <!-- Textes avec effet typewriter -->
     <div class="text-content">
       <h2 class="typewriter welcome-text">{{ displayedWelcome }}</h2>
       <h1 class="name-text">Wissem.</h1>
       <p class="typewriter construction-text">{{ displayedConstruction }}</p>
     </div>
 
-    <!-- Bouton vers Github -->
     <div class="button-container">
-      <button class="enter-button" @click="goToGithub">{{ displayedButton }}</button>
+      <button class="social-button github-button" @click="goToGithub" aria-label="Voir mon profil Github">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+        <span>GitHub</span>
+      </button>
+      <button class="social-button linkedin-button" @click="goToLinkedin" aria-label="Voir mon profil LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+        </svg>
+        <span>LinkedIn</span>
+      </button>
     </div>
   </div>
 </template>
 
 <style scoped>
-/* Conteneur principal avec flexbox */
 .title-container {
   position: absolute;
   top: 50%;
@@ -50,7 +60,6 @@ const goToGithub = () => {
   z-index: 10;
 }
 
-/* Conteneur du logo */
 .logo-container {
   width: 120px;
   height: auto;
@@ -64,7 +73,6 @@ const goToGithub = () => {
   display: block;
 }
 
-/* Conteneur des textes avec hauteur fixe */
 .text-content {
   display: flex;
   flex-direction: column;
@@ -74,7 +82,6 @@ const goToGithub = () => {
   width: 100%;
 }
 
-/* Effet typewriter avec curseur clignotant */
 .typewriter {
   position: relative;
   display: inline-block;
@@ -96,7 +103,6 @@ const goToGithub = () => {
   }
 }
 
-/* Texte de bienvenue */
 .welcome-text {
   font-family: 'Orbitron', sans-serif;
   font-size: 2.5rem;
@@ -111,7 +117,6 @@ const goToGithub = () => {
       0 0 15px rgba(255, 255, 255, 0.3);
 }
 
-/* Nom principal */
 .name-text {
   font-family: 'Orbitron', sans-serif;
   font-size: 4rem;
@@ -128,7 +133,6 @@ const goToGithub = () => {
   animation: glowEffect 2s infinite;
 }
 
-/* Texte de construction */
 .construction-text {
   font-family: 'Orbitron', sans-serif;
   font-size: 1.5rem;
@@ -144,65 +148,82 @@ const goToGithub = () => {
   animation: pulseGlow 3s infinite;
 }
 
-/* Conteneur du bouton avec hauteur fixe */
 .button-container {
-  margin-top: 30px;
   min-height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 20px;
   flex-shrink: 0;
 }
 
-/* Bouton */
-.enter-button {
-  display: inline-block;
-  padding: 15px 40px;
-  font-size: 1.1rem;
-  font-family: 'Orbitron', sans-serif;
-  color: #ffffff;
+.social-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
   border: 2px solid #ffffff;
   border-radius: 30px;
   transition: all 0.3s ease-in-out;
   background-color: transparent;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
   cursor: pointer;
-  min-width: 16rem;
-  min-height: 3.5rem;
-  text-align: center;
-  white-space: nowrap;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
 }
 
-.enter-button:hover {
+.social-button svg {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.social-button span {
+  transition: color 0.3s ease-in-out;
+}
+
+.social-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+}
+
+.github-button:hover {
   background-color: #ffffff;
-  color: #000;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.7);
-  transform: scale(1.05);
+  color: #000000;
+  border-color: #ffffff;
 }
 
-/* Animation de glow */
+.linkedin-button:hover {
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
 @keyframes glowEffect {
   0% {
     text-shadow:
-      0 0 12px rgba(255, 255, 255, 0.6),
-      0 0 20px rgba(255, 255, 255, 0.45),
-      0 0 30px rgba(255, 255, 255, 0.35);
+        0 0 12px rgba(255, 255, 255, 0.6),
+        0 0 20px rgba(255, 255, 255, 0.45),
+        0 0 30px rgba(255, 255, 255, 0.35);
   }
   50% {
     text-shadow:
-      0 0 15px rgba(255, 255, 255, 0.7),
-      0 0 25px rgba(255, 255, 255, 0.55),
-      0 0 35px rgba(255, 255, 255, 0.45);
+        0 0 15px rgba(255, 255, 255, 0.7),
+        0 0 25px rgba(255, 255, 255, 0.55),
+        0 0 35px rgba(255, 255, 255, 0.45);
   }
   100% {
     text-shadow:
-      0 0 12px rgba(255, 255, 255, 0.6),
-      0 0 20px rgba(255, 255, 255, 0.45),
-      0 0 30px rgba(255, 255, 255, 0.35);
+        0 0 12px rgba(255, 255, 255, 0.6),
+        0 0 20px rgba(255, 255, 255, 0.45),
+        0 0 30px rgba(255, 255, 255, 0.35);
   }
 }
 
-/* Animation de pulsation subtile */
 @keyframes pulseGlow {
   0%, 100% {
     opacity: 0.8;
@@ -218,7 +239,6 @@ const goToGithub = () => {
   }
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
   .logo-container {
     width: 90px;
@@ -244,13 +264,18 @@ const goToGithub = () => {
   }
 
   .button-container {
-    margin-top: 20px;
+    margin-top: 15px;
+    gap: 15px;
   }
 
-  .enter-button {
-    font-size: 1rem;
-    padding: 12px 35px;
-    min-width: 160px;
+  .social-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .social-button svg {
+    width: 20px;
+    height: 20px;
   }
 }
 
@@ -290,13 +315,18 @@ const goToGithub = () => {
   .button-container {
     margin-top: 10px;
     min-height: 50px;
+    gap: 12px;
+    flex-direction: column;
   }
 
-  .enter-button {
+  .social-button {
+    padding: 8px 16px;
     font-size: 0.85rem;
-    padding: 10px 25px;
-    min-width: 160px;
-    min-height: 42px;
+  }
+
+  .social-button svg {
+    width: 18px;
+    height: 18px;
   }
 }
 </style>

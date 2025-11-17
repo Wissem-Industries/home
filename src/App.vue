@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import Base from "./components/Base.vue";
+import Layout from "./components/Layout.vue";
 import Home from "./components/Home.vue";
 </script>
 
 <template>
   <div>
-    <Base />
+    <Layout />
     <Home/>
   </div>
 </template>
