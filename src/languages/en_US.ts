@@ -1,6 +1,5 @@
 export const langEn = {
-    welcome: "Welcome to",
+    welcome: "Hello, I'm",
     name: "Wissem.",
     construction: "Under construction",
-    button: "See my Github",
 };

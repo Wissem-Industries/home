@@ -1,6 +1,5 @@
 export const langEs = {
-    welcome: "Bienvenido a",
+    welcome: "Hola, soy",
     name: "Wissem.",
     construction: "Sitio en construcción",
-    button: "Ver mi Github",
 };
