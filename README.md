@@ -1,117 +1,60 @@
-<div align="center">
-  <img src="./public/wissem.svg" alt="Logo" width="120" height="120">
-  <h1>HomePage</h1>
-  <p>Page d'accueil moderne multilingue avec effets typewriter</p>
+# Nuxt Starter Template
 
-  ![Vue.js](https://img.shields.io/badge/Vue.js-3.5-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)
-  ![TypeScript](https://img.shields.io/badge/TypeScript-5.7-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-  ![Vite](https://img.shields.io/badge/Vite-6.2-646CFF?style=for-the-badge&logo=vite&logoColor=white)
-</div>
+[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
 
-## 📋 Table des matières
+Use this template to get started with [Nuxt UI](https://ui.nuxt.com) quickly.
 
-- [À propos](#-à-propos)
-- [Stack technique](#-stack-technique)
-- [Fonctionnalités](#-fonctionnalités)
-- [Installation](#-installation)
-- [Scripts disponibles](#-scripts-disponibles)
-- [Structure du projet](#-structure-du-projet)
-- [Internationalisation](#-internationalisation)
+- [Live demo](https://starter-template.nuxt.dev/)
+- [Documentation](https://ui.nuxt.com/docs/getting-started/installation/nuxt)
 
-## 🎯 À propos
+<a href="https://starter-template.nuxt.dev/" target="_blank">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png">
+    <img alt="Nuxt Starter Template" src="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png">
+  </picture>
+</a>
 
-Application Vue 3 moderne servant de page d'accueil interactive avec support multilingue (FR/EN/ES) et effets d'animation typewriter. Construite avec les dernières technologies front-end et prête pour l'intégration d'animations WebGL avancées.
+> The starter template for Vue is on https://github.com/nuxt-ui-templates/starter-vue.
 
-## 🛠 Stack technique
+## Quick Start
 
-| Technologie | Usage |
-|-------------|-------|
-| **Vue 3** | Framework UI avec Composition API |
-| **TypeScript** | Typage statique et meilleure DX |
-| **Vite** | Build tool ultra-rapide avec HMR |
-| **SCSS** | Préprocesseur CSS |
+```bash [Terminal]
+npm create nuxt@latest -- -t github:nuxt-ui-templates/starter
+```
 
-## ✨ Fonctionnalités
+## Deploy your own
 
-- 🌍 **Multilingue** : Support FR / EN / ES avec switch automatique
-- ⌨️ **Effet typewriter** : Animation d'écriture/effacement fluide
-- 🎨 **Design moderne** : Interface stylée avec Tailwind CSS
-- 🚀 **Performance** : Build optimisé et tree-shaking automatique
-- 📱 **Responsive** : Adaptation mobile/desktop
-- ♿ **Accessible** : Structure sémantique et navigation au clavier
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=starter&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fstarter&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fstarter-dark.png&demo-url=https%3A%2F%2Fstarter-template.nuxt.dev%2F&demo-title=Nuxt%20Starter%20Template&demo-description=A%20minimal%20template%20to%20get%20started%20with%20Nuxt%20UI.)
 
-## 📦 Installation
+## Setup
+
+Make sure to install the dependencies:
 
 ```bash
-# Cloner le dépôt
-git clone <repository-url>
-
-# Installer les dépendances
-npm install
+pnpm install
 ```
 
-**Prérequis :**
-- Node.js 18+ (20 LTS recommandé)
-- npm 9+
+## Development Server
 
-## 🚀 Scripts disponibles
+Start the development server on `http://localhost:3000`:
 
 ```bash
-# Lancer le serveur de développement
-npm run dev
-
-# Build de production
-npm run build
-
-# Prévisualiser le build
-npm run preview
+pnpm dev
 ```
 
-## 📁 Structure du projet
+## Production
 
-```
-src/
-├── components/
-│   ├── Base.vue              # Layout de base
-│   ├── Home.vue              # Composant page d'accueil
-│   └── Buttons.vue           # Composants boutons
-├── languages/
-│   ├── fr_FR.ts              # Traductions françaises
-│   ├── en_US.ts              # Traductions anglaises
-│   └── es_ES.ts              # Traductions espagnoles
-├── misc/
-│   └── useLanguageSwitcher.ts # Hook de gestion i18n
-├── App.vue                   # Composant racine
-├── main.ts                   # Point d'entrée
-└── style.scss                # Styles globaux
+Build the application for production:
+
+```bash
+pnpm build
 ```
 
-## 🌐 Internationalisation
+Locally preview production build:
 
-Le système i18n est géré via un composable custom `useLanguageSwitcher` qui offre :
-
-- **Alternance automatique** : Changement de langue toutes les 10 secondes
-- **Effet typewriter synchronisé** : Animation d'écriture lettre par lettre
-- **Gestion mémoire propre** : Cleanup automatique des timers
-
-### Ajouter une nouvelle langue
-
-1. Créer un fichier `xx_XX.ts` dans `src/languages/` :
-
-```typescript
-export const langXX: Language = {
-  welcome: "...",
-  name: "...",
-  construction: "...",
-  button: "..."
-};
+```bash
+pnpm preview
 ```
 
-2. L'importer et l'ajouter au tableau dans `useLanguageSwitcher.ts`
-
-
----
-
-<div align="center">
-  Made with 💖 by <a href="https://www.wissem.pro/">Wissem.</a>
-</div>
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
