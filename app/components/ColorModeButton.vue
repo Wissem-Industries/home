@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const colorMode = useColorMode()
-
 const nextTheme = computed(() => (colorMode.value === 'dark' ? 'light' : 'dark'))
 
 const switchTheme = () => {
