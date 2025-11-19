@@ -1,17 +1,17 @@
 export default defineAppConfig({
   global: {
     picture: {
-      dark: '/Logo_White.svg',
-      light: '/Logo_Dark.svg',
-      alt: 'Logo'
+      dark: 'https://images.unsplash.com/photo-1701615004837-40d8573b6652?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      light: 'https://images.unsplash.com/photo-1701615004837-40d8573b6652?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      alt: 'My profile picture'
     },
     meetingLink: 'https://cal.com/',
-    email: 'contact@wissem.pro',
+    email: 'ui-pro@nuxt.com',
     available: true
   },
   ui: {
     colors: {
-      primary: 'white',
+      primary: 'blue',
       neutral: 'neutral'
     },
     pageHero: {
@@ -23,29 +23,23 @@ export default defineAppConfig({
     }
   },
   footer: {
-    credits: `© ${new Date().getFullYear()} Wissem. ・ All rights reserved.`,
+    credits: `Built with Nuxt UI • © ${new Date().getFullYear()}`,
     colorMode: false,
     links: [{
-      'icon': 'i-simple-icons-maildotru',
-      'to': 'mailto:contact@wissem.pro',
-      'target': '_blank',
-      'aria-label': 'Mail'
-
-    }, {
       'icon': 'i-simple-icons-discord',
-      'to': 'https://discord.com/users/897468104643326014',
+      'to': 'https://go.nuxt.com/discord',
       'target': '_blank',
-      'aria-label': 'Discord'
+      'aria-label': 'Nuxt on Discord'
+    }, {
+      'icon': 'i-simple-icons-x',
+      'to': 'https://go.nuxt.com/x',
+      'target': '_blank',
+      'aria-label': 'Nuxt on X'
     }, {
       'icon': 'i-simple-icons-github',
-      'to': 'https://github.com/WissemBad',
+      'to': 'https://github.com/nuxt/ui',
       'target': '_blank',
-      'aria-label': 'GitHub'
-    }, {
-      'icon': 'i-simple-icons-linkedin',
-      'to': 'https://www.linkedin.com/in/WissemBadraoui/',
-      'target': '_blank',
-      'aria-label': 'LinkedIn'
+      'aria-label': 'Nuxt UI on GitHub'
     }]
   }
 })
