@@ -1,8 +1,8 @@
 export default defineAppConfig({
   global: {
     picture: {
-      dark: '/Logo_White.svg',
-      light: '/Logo_Black.svg',
+      dark: 'images/Logo_White.svg',
+      light: 'images/Logo_Black.svg',
       alt: 'Photo de profil'
     },
     email: 'contact@wissem.pro',
