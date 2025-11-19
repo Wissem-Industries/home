@@ -18,46 +18,26 @@ defineProps<{
   >
     <template #headline>
       <Motion
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: 0.1
-        }"
+        :initial="{ scale: 1.2, opacity: 0, filter: 'blur(20px)' }"
+        :animate="{ scale: 1, opacity: 1, filter: 'blur(0px)' }"
+        :transition="{ duration: 0.6, delay: 0.1 }"
       >
-        <UColorModeAvatar
-          class="size-18 ring ring-default ring-offset-3 ring-offset-(--ui-bg)"
-          :light="global.picture?.light!"
-          :dark="global.picture?.dark!"
-          :alt="global.picture?.alt!"
-        />
+        <picture>
+          <source media="(prefers-color-scheme: dark)" :srcset="global.picture?.dark!" />
+          <NuxtImg
+            class="size-24 object-cover"
+            :src="global.picture?.light!"
+            :alt="global.picture?.alt!"
+          />
+        </picture>
       </Motion>
     </template>
 
     <template #title>
       <Motion
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: 0.1
-        }"
+        :initial="{ scale: 1.2, opacity: 0, filter: 'blur(20px)' }"
+        :animate="{ scale: 1, opacity: 1, filter: 'blur(0px)' }"
+        :transition="{ duration: 0.6, delay: 0.1 }"
       >
         {{ page.title }}
       </Motion>
@@ -65,20 +45,9 @@ defineProps<{
 
     <template #description>
       <Motion
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: 0.3
-        }"
+        :initial="{ scale: 1.2, opacity: 0, filter: 'blur(20px)' }"
+        :animate="{ scale: 1, opacity: 1, filter: 'blur(0px)' }"
+        :transition="{ duration: 0.6, delay: 0.3 }"
       >
         {{ page.description }}
       </Motion>
@@ -86,42 +55,34 @@ defineProps<{
 
     <template #links>
       <Motion
-        :initial="{
-          scale: 1.1,
-          opacity: 0,
-          filter: 'blur(20px)'
-        }"
-        :animate="{
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)'
-        }"
-        :transition="{
-          duration: 0.6,
-          delay: 0.5
-        }"
+        :initial="{ scale: 1.2, opacity: 0, filter: 'blur(20px)' }"
+        :animate="{ scale: 1, opacity: 1, filter: 'blur(0px)' }"
+        :transition="{ duration: 0.6, delay: 0.5 }"
       >
         <div
           v-if="page.hero.links"
           class="flex items-center gap-2"
         >
-          <UButton v-bind="page.hero.links[0]" />
           <UButton
-            :color="global.available ? 'success' : 'error'"
+            v-bind="page.hero.links[0]"
+            :variant="page.hero.links[0]?.variant || 'solid'"
+          />
+          <UButton
+            :color="global.status ? 'success' : 'error'"
             variant="ghost"
             class="gap-2"
-            :to="global.available ? global.meetingLink : ''"
-            :label="global.available ? 'Available for new projects' : 'Not available at the moment'"
+            :label="global.status ? 'Ouvert aux opportunités' : 'Indisponible pour le moment'"
+            :to="global.status ? `mailto:${global.email}` : undefined"
           >
             <template #leading>
               <span class="relative flex size-2">
                 <span
                   class="absolute inline-flex size-full rounded-full opacity-75"
-                  :class="global.available ? 'bg-success animate-ping' : 'bg-error'"
+                  :class="global.status ? 'bg-success animate-ping' : 'bg-error'"
                 />
                 <span
                   class="relative inline-flex size-2 scale-90 rounded-full"
-                  :class="global.available ? 'bg-success' : 'bg-error'"
+                  :class="global.status ? 'bg-success' : 'bg-error'"
                 />
               </span>
             </template>
@@ -134,37 +95,24 @@ defineProps<{
           v-for="(link, index) of footer?.links"
           :key="index"
 
-          :initial="{
-            scale: 1.1,
-            opacity: 0,
-            filter: 'blur(20px)'
-          }"
-          :animate="{
-            scale: 1,
-            opacity: 1,
-            filter: 'blur(0px)'
-          }"
-          :transition="{
-            duration: 0.6,
-            delay: 0.5 + index * 0.1
-          }"
+          :initial="{ scale: 1.2, opacity: 0, filter: 'blur(20px)' }"
+          :animate="{ scale: 1, opacity: 1, filter: 'blur(0px)' }"
+          :transition="{ duration: 0.6, delay: 0.5 + index * 0.1 }"
         >
-          <UButton
-            v-bind="{ size: 'md', color: 'neutral', variant: 'ghost', ...link }"
-          />
+          <UButton v-bind="{ size: 'xl', color: 'neutral', variant: 'ghost', ...link }" />
         </Motion>
       </div>
     </template>
 
+    <!-- Unused
     <UMarquee
-      pause-on-hover
       class="py-2 -mx-8 sm:-mx-12 lg:-mx-16 [--duration:40s]"
     >
       <Motion
         v-for="(img, index) in page.hero.images"
         :key="index"
         :initial="{
-          scale: 1.1,
+          scale: 1.2,
           opacity: 0,
           filter: 'blur(20px)'
         }"
@@ -187,5 +135,6 @@ defineProps<{
         />
       </Motion>
     </UMarquee>
+    -->
   </UPageHero>
 </template>

@@ -16,7 +16,7 @@ const { footer } = useAppConfig()
         <UButton
           v-for="(link, index) of footer?.links"
           :key="index"
-          v-bind="{ size: 'xs', color: 'neutral', variant: 'ghost', ...link }"
+          v-bind="{ size: 'sm', color: 'neutral', variant: 'ghost', ...link }"
         />
       </template>
     </template>
