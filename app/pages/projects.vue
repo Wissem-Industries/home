@@ -83,6 +83,18 @@ useSeoMeta({
           </template>
 
           <template #footer>
+            <div class="flex flex-wrap items-center mb-2">
+              <UBadge
+                v-for="tag in project.tags"
+                :key="tag"
+                :label="tag"
+                class="mr-2"
+                color="neutral"
+                variant="soft"
+                size="sm"
+              />
+            </div>
+
             <div class="flex flex-wrap items-center gap-3 mt-2">
               <UButton
                 v-if="project.url"
@@ -106,7 +118,10 @@ useSeoMeta({
 
               <UButton
                 v-if="!project.url && !project.repo"
-                label="Accès privé"
+                variant="soft"
+                color="error"
+                size="sm"
+                label="Non disponible"
                 icon="i-lucide-lock"
                 disabled
               />
