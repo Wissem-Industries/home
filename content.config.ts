@@ -80,7 +80,8 @@ export default defineContentConfig({
         title: z.string().nonempty(),
         description: z.string().nonempty(),
         image: z.string().nonempty().editor({ input: 'media' }),
-        url: z.string().nonempty(),
+        url: z.string().optional(),
+        repo: z.string().optional(),
         tags: z.array(z.string()),
         date: z.date()
       })
