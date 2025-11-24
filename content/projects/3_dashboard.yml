@@ -1,0 +1,6 @@
+title: 'Panel d’administration interne',
+description: 'Dashboard web pour la gestion interne d’une plateforme en ligne : authentification, rôles et permissions, gestion des utilisateurs et des entités, avec interface dédiée pour l’équipe.',
+image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1470&q=80',
+tags: ['Vue', 'TypeScript', 'Express', 'PostgreSQL', 'Dashboard'],
+date: '2025-01-01',
+

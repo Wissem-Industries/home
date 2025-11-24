@@ -1,8 +1,8 @@
-seo:
-  title: "Wissem."
-  description: "Welcome to my portfolio! I'm Emma Thompson, a UX/UI designer and front-end developer based in Boston. I specialize in creating user-centered digital experiences that are both beautiful and functional."
 title: "Wissem."
 description: "Élève-ingénieur à IMT Nord Europe, passionné par les projets qui ont du sens. J’aime explorer, créer, apprendre et m’investir pleinement dans ce que j’entreprends."
+seo:
+  title: "Portfolio"
+  description: "Portfolio de Wissem Badraoui, élève-ingénieur à IMT Nord Europe, passionné par les projets qui ont du sens."
 hero:
   links:
     - label: "Télécharger mon CV"
