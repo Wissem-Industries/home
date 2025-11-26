@@ -1,0 +1,25 @@
+# Dependency directories
+node_modules
+
+# Local builds and caches
+.nuxt
+.output
+.data
+
+# Logs and environment files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.env
+.env.*
+
+# VCS and editor junk
+.git
+.gitignore
+.DS_Store
+.idea
+.vscode
+
+# Test and coverage output
+coverage
