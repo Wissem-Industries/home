@@ -1,52 +1,31 @@
-# Multi-stage Dockerfile optimized for Nuxt 4 on Dokploy with Bun
-# Stage 1: Build stage
-FROM oven/bun:1-alpine AS builder
-
-# Install build dependencies for native modules (better-sqlite3)
-RUN apk add --no-cache python3 make g++ gcc libc-dev
-
+# ---------- Build ----------
+FROM oven/bun:1-alpine AS build
 WORKDIR /app
 
-# Copy package files for dependency installation
-COPY package.json bun.lock ./
+# Copie des fichiers de dépendances
+COPY package.json bun.lock* ./
 
-# Install dependencies with frozen lockfile for reproducible builds
-RUN bun install --frozen-lockfile
+# Install deps
+RUN bun install
 
-# Copy application source code
+# Copie du reste du projet
 COPY . .
 
-# Build the Nuxt application
-RUN bun run build
+# Build Nuxt (Nitro)
+RUN bun --bun run build
 
-# Stage 2: Production runtime
-FROM oven/bun:1-alpine AS runner
-
-# Install runtime dependencies for better-sqlite3
-RUN apk add --no-cache libc6-compat
-
-# Create non-root user for security
-RUN addgroup --system --gid 1001 bunjs && \
-    adduser --system --uid 1001 nuxt
-
+# ---------- Runtime ----------
+FROM oven/bun:1-alpine AS production
 WORKDIR /app
 
-# Copy built application and dependencies from builder
-COPY --from=builder --chown=nuxt:bunjs /app/.output /app/.output
-COPY --from=builder --chown=nuxt:bunjs /app/node_modules /app/node_modules
-COPY --from=builder --chown=nuxt:bunjs /app/package.json /app/package.json
+# On ne garde que le build Nitro
+COPY --from=build /app/.output ./.output
 
-# Switch to non-root user
-USER nuxt
-
-# Expose port 3000 (Dokploy default)
-EXPOSE 3000
-
-# Set environment variables for production
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
 ENV PORT=3000
 
-# Start the Nuxt server
-CMD ["node", ".output/server/index.mjs"]
+EXPOSE 3000
 
+# Lancer le serveur Nitro avec Bun
+CMD ["bun", "--bun", ".output/server/index.mjs"]
