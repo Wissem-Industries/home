@@ -1,16 +1,16 @@
 # syntax=docker/dockerfile:1.7
 
-# ---------- Build ----------
+# ---------- Build base ----------
 FROM --platform=$BUILDPLATFORM oven/bun:1-alpine AS base
 WORKDIR /app
 
-# ---------- Install deps ----------
+# ---------- Deps ----------
 FROM base AS deps
 
 COPY package.json bun.lock* ./
 
 RUN --mount=type=cache,target=/root/.bun \
-        bun install --frozen-lockfile --ignore-scripts
+    bun install --ignore-scripts
 
 # ---------- Build ----------
 FROM base AS build
