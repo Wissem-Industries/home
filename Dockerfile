@@ -1,30 +1,28 @@
 # syntax=docker/dockerfile:1.7
 
 # ---------- Build base ----------
-FROM --platform=$BUILDPLATFORM oven/bun:1-alpine AS base
-WORKDIR /app
+FROM oven/bun:latest AS base
+WORKDIR /application
 
 # ---------- Deps ----------
 FROM base AS deps
 
 COPY package.json bun.lock* ./
-
-RUN --mount=type=cache,target=/root/.bun \
-    bun install --ignore-scripts
+RUN bun install --frozen-lockfile
 
 # ---------- Build ----------
 FROM base AS build
 
-COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /application/node_modules ./node_modules
 COPY . .
 
 RUN bun run build
 
 # ---------- Runtime ----------
 FROM oven/bun:1-alpine AS production
-WORKDIR /app
+WORKDIR /application
 
-COPY --from=build /app/.output ./.output
+COPY --from=build /application/.output ./.output
 
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
@@ -32,4 +30,4 @@ ENV PORT=3000
 
 EXPOSE 3000
 
-CMD ["bun", "--bun", ".output/server/index.mjs"]
+CMD ["bun", "run", ".output/server/index.mjs"]
