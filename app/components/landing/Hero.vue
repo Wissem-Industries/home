@@ -25,13 +25,13 @@ defineProps<{
 				<picture>
 					<source
 						media="(prefers-color-scheme: dark)"
-						:srcset="global.picture?.dark!"
+						:srcset="global.picture?.dark"
 					>
-					<NuxtImg
+					<img
 						class="size-24 object-cover"
-						:src="global.picture?.light!"
-						:alt="global.picture?.alt!"
-					/>
+						:src="global.picture?.light"
+						:alt="global.picture?.alt"
+					>
 				</picture>
 			</Motion>
 		</template>
