@@ -14,6 +14,10 @@ export default defineNuxtConfig({
 
 	css: ['~/assets/css/main.css'],
 
+	content: {
+		experimental: { sqliteConnector: 'native' }
+	},
+
 	runtimeConfig: {
 		smtpHost: process.env.SMTP_HOST,
 		smtpPort: process.env.SMTP_PORT,
