@@ -23,9 +23,7 @@ useSeoMeta({
 	<UPage v-if="page">
 		<LandingHero :page />
 		<UPageSection
-			:ui="{
-				container: '!pt-0 lg:grid lg:grid-cols-2 lg:gap-8'
-			}"
+			:ui="{ container: '!pt-0 lg:grid lg:grid-cols-2 lg:gap-8' }"
 		>
 			<LandingAbout :page />
 			<LandingWorkExperience :page />

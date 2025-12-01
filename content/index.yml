@@ -3,13 +3,6 @@ description: "Élève-ingénieur à IMT Nord Europe, passionné par les projets 
 seo:
   title: "Portfolio"
   description: "Portfolio de Wissem Badraoui, élève-ingénieur à IMT Nord Europe, passionné par les projets qui ont du sens."
-hero:
-  links:
-    - label: "Télécharger mon CV"
-      to: "/files/CV_Wissem_Badraoui.pdf"
-      target: "_blank"
-      color: "neutral"
-      icon: "i-carbon-download"
 about:
   title: "À propos de moi"
   description: |
