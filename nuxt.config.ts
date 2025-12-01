@@ -9,9 +9,8 @@ export default defineNuxtConfig({
 		'@nuxtjs/plausible'
 	],
 
-	devtools: {
-		enabled: false
-	},
+	compatibilityDate: '2025-07-15',
+	devtools: { enabled: false },
 
 	css: ['~/assets/css/main.css'],
 
@@ -20,9 +19,7 @@ export default defineNuxtConfig({
 	},
 
 	plausible: {
-		// Prevent tracking on localhost
-		ignoredHostnames: ['localhost'],
-		proxy: true
+		apiHost: 'https://analytics.wissem.pro'
 	},
 
 	runtimeConfig: {
@@ -33,23 +30,11 @@ export default defineNuxtConfig({
 		smtpPass: process.env.SMTP_PASS
 	},
 
-	build: {
-		analyze: false
-	},
-
-	compatibilityDate: '2024-11-01',
-
 	nitro: {
 		preset: 'bun',
 		prerender: {
-			routes: ['/', '/projects', '/contact'],
-			crawlLinks: false
-		}
-	},
-
-	vite: {
-		build: {
-			sourcemap: false
+			routes: ['/'],
+			crawlLinks: true
 		}
 	},
 
