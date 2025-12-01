@@ -11,16 +11,11 @@ export default defineNuxtConfig({
 
 	compatibilityDate: '2025-07-15',
 	devtools: { enabled: false },
+	plausible: { proxy: true },
 
 	css: ['~/assets/css/main.css'],
 
-	content: {
-		experimental: { sqliteConnector: 'native' }
-	},
-
-	plausible: {
-		apiHost: 'https://analytics.wissem.pro'
-	},
+	content: { experimental: { sqliteConnector: 'native' } },
 
 	runtimeConfig: {
 		smtpHost: process.env.SMTP_HOST,
@@ -35,6 +30,11 @@ export default defineNuxtConfig({
 		prerender: {
 			routes: ['/'],
 			crawlLinks: true
+		},
+		routeRules: {
+			'/_plausible/**': {
+				proxy: { to: 'https://analytics.wissem.pro/**' }
+			}
 		}
 	},
 
