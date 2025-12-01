@@ -19,7 +19,7 @@ COPY . .
 RUN bun run build
 
 # ---------- Runtime ----------
-FROM oven/bun:1-alpine AS production
+FROM oven/bun:latest AS production
 WORKDIR /application
 
 COPY --from=build /application/.output ./.output
@@ -30,4 +30,4 @@ ENV PORT=3000
 
 EXPOSE 3000
 
-CMD ["bun", "run", ".output/server/index.mjs"]
+CMD ["bun", ".output/server/index.mjs"]
