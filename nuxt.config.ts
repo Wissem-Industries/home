@@ -35,6 +35,13 @@ export default defineNuxtConfig({
 		prerender: {
 			routes: ['/'],
 			crawlLinks: true
+		},
+		routeRules: {
+			'/_plausible/**': {
+				proxy: {
+					to: 'https://analytics.wissem.pro/**'
+				}
+			}
 		}
 	},
 
