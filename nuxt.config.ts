@@ -5,7 +5,8 @@ export default defineNuxtConfig({
 		'@nuxt/ui',
 		'@nuxt/content',
 		'@vueuse/nuxt',
-		'motion-v/nuxt'
+		'motion-v/nuxt',
+		'@nuxtjs/plausible'
 	],
 
 	devtools: {
@@ -16,6 +17,12 @@ export default defineNuxtConfig({
 
 	content: {
 		experimental: { sqliteConnector: 'native' }
+	},
+
+	plausible: {
+		// Prevent tracking on localhost
+		ignoredHostnames: ['localhost'],
+		proxy: true
 	},
 
 	runtimeConfig: {
