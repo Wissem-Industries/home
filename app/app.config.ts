@@ -1,12 +1,27 @@
 export default defineAppConfig({
-	global: {
+	navigation: [{
+		label: 'Accueil',
+		icon: 'i-lucide-home',
+		to: '/'
+	}, {
+		label: 'Projets',
+		icon: 'i-lucide-folder',
+		to: '/projects'
+	}, {
+		label: 'Contact',
+		icon: 'i-lucide-message-square',
+		to: '/contact'
+	}],
+	profile: {
 		picture: {
 			dark: 'images/Logo_White.svg',
 			light: 'images/Logo_Black.svg',
-			alt: 'Photo de profil'
+			alt: 'Signature visuelle de Wissem Badraoui'
 		},
-		email: 'contact@wissem.pro',
-		status: true
+		cv: {
+			href: '/files/74b87337454200d4d33f80c4663dc5e5.pdf',
+			filename: 'CV_Wissem_BADRAOUI.pdf'
+		}
 	},
 	ui: {
 		colors: {
@@ -22,28 +37,6 @@ export default defineAppConfig({
 		}
 	},
 	footer: {
-		credits: `© ${new Date().getFullYear()} Wissem. • Tous droits réservés.`,
-		colorMode: true,
-		links: [{
-			'icon': 'i-simple-icons-maildotru',
-			'to': `mailto:contact@wissem.pro`,
-			'target': '_blank',
-			'aria-label': 'Wissem on Mail'
-		}, {
-			'icon': 'i-simple-icons-linkedin',
-			'to': 'https://www.linkedin.com/in/wissem-badraoui/',
-			'target': '_blank',
-			'aria-label': 'Wissem on LinkedIn'
-		}, {
-			'icon': 'i-simple-icons-github',
-			'to': 'https://github.com/WissemBad',
-			'target': '_blank',
-			'aria-label': 'Wissem on GitHub'
-		}, {
-			'icon': 'i-simple-icons-discord',
-			'to': 'https://discord.com/users/897468104643326014',
-			'target': '_blank',
-			'aria-label': 'Wissem on Discord'
-		}]
+		credits: `© ${new Date().getFullYear()} Wissem. • Tous droits réservés.`
 	}
 })

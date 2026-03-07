@@ -1,12 +1,22 @@
 <script setup lang="ts">
-import * as z from 'zod'
-import type { FormSubmitEvent } from '@nuxt/ui'
+import type { FormError, FormSubmitEvent } from '@nuxt/ui'
+import { createEmptyContactForm, getContactFormErrors, type ContactFormData } from '../../utils/contact'
+
+type ContactItem = {
+	icon: string
+	label: string
+	value: string
+	to?: string
+	target?: string
+}
 
 const { data: page } = await useAsyncData('contact-page', () => {
-	return queryCollection('pages').path('/contact').first()
+	return queryCollection('pageMeta').path('/contact').first()
 })
 
-if (!page.value) {
+const { data: cv } = await useCvContent()
+
+if (!page.value || !cv.value) {
 	throw createError({
 		statusCode: 404,
 		statusMessage: 'Page not found',
@@ -21,26 +31,36 @@ useSeoMeta({
 	ogDescription: page.value?.seo?.description || page.value?.description
 })
 
-const schema = z.object({
-	name: z.string().min(2, 'Le nom est trop court'),
-	email: z.email('L\'email n\'est pas valide'),
-	subject: z.string().min(3, 'Le sujet est trop court'),
-	message: z.string().min(10, 'Le message est trop court')
-})
-
-type Schema = z.output<typeof schema>
-
-const state = reactive<Partial<Schema>>({
-	name: '',
-	email: '',
-	subject: '',
-	message: ''
-})
-
+const state = reactive<ContactFormData>(createEmptyContactForm())
 const toast = useToast()
 const loading = ref(false)
 
-async function onSubmit(event: FormSubmitEvent<Schema>) {
+const contactItems = computed<ContactItem[]>(() => {
+	const locationItem: ContactItem = {
+		icon: 'i-lucide-map-pin',
+		label: 'Localisation',
+		value: cv.value?.contact.location || ''
+	}
+
+	const publicLinks = (cv.value?.contact.links || []).map(link => ({
+		icon: link.icon,
+		label: link.label,
+		value: link.value,
+		to: link.to,
+		target: link.to.startsWith('http') ? '_blank' : undefined
+	}))
+
+	return [locationItem, ...publicLinks]
+})
+
+function validateContactForm(value: Partial<ContactFormData>): FormError[] {
+	return getContactFormErrors(value).map(error => ({
+		name: error.name,
+		message: error.message
+	}))
+}
+
+async function onSubmit(event: FormSubmitEvent<ContactFormData>) {
 	try {
 		loading.value = true
 		await $fetch('/api/contact', { method: 'POST', body: event.data })
@@ -51,13 +71,10 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 			color: 'success'
 		})
 
-		state.name = ''
-		state.email = ''
-		state.subject = ''
-		state.message = ''
+		Object.assign(state, createEmptyContactForm())
 	} catch {
 		toast.add({
-			title: 'Erreur inconnnue',
+			title: 'Erreur inconnue',
 			description: 'Une erreur est survenue lors de l\'envoi du message. Merci de réessayer plus tard.',
 			color: 'error'
 		})
@@ -68,7 +85,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 </script>
 
 <template>
-	<UPage v-if="page">
+	<UPage v-if="page && cv">
 		<UPageHero
 			:title="page.title"
 			:description="page.description"
@@ -89,93 +106,59 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 			>
 				<div class="max-w-5xl mx-auto space-y-8">
 					<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-						<!-- Carte infos -->
 						<UCard
 							class="lg:col-span-1"
 							:ui="{ root: 'h-full', body: 'p-6 sm:p-7 space-y-6' }"
 						>
 							<div class="space-y-2">
 								<p class="text-xs uppercase tracking-wide text-muted">
-									Informations & Liens
+									{{ cv.contact.title }}
 								</p>
 
 								<p class="text-sm text-muted">
-									Vous pouvez me contacter pour un stage, un projet ou toute autre opportunité liée à mon profil.
+									{{ cv.contact.description }}
 								</p>
 							</div>
 
 							<div class="space-y-6 text-sm">
-								<div class="flex items-center gap-3">
+								<div
+									v-for="item in contactItems"
+									:key="`${item.label}-${item.value}`"
+									class="flex items-center gap-3"
+								>
 									<div class="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10">
 										<UIcon
-											name="i-lucide-mail"
+											:name="item.icon"
 											class="size-4 text-primary"
 										/>
 									</div>
 									<div class="flex flex-col">
-										<span class="text-xs uppercase tracking-wide text-muted">Email</span>
-										<span class="font-medium">contact@wissem.pro</span>
-									</div>
-								</div>
-
-								<div class="flex items-center gap-3">
-									<div class="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10">
-										<UIcon
-											name="i-lucide-map-pin"
-											class="size-4 text-primary"
-										/>
-									</div>
-									<div class="flex flex-col">
-										<span class="text-xs uppercase tracking-wide text-muted">Localisation</span>
-										<span class="font-medium">Île-de-France · Lille</span>
-									</div>
-								</div>
-
-								<div class="flex items-center gap-3">
-									<div class="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10">
-										<UIcon
-											name="i-simple-icons-linkedin"
-											class="size-4 text-primary"
-										/>
-									</div>
-									<div class="flex flex-col">
-										<span class="text-xs uppercase tracking-wide text-muted">LinkedIn</span>
+										<span class="text-xs uppercase tracking-wide text-muted">{{ item.label }}</span>
 										<ULink
-											to="https://www.linkedin.com/in/wissem-badraoui"
+											v-if="item.to"
+											:to="item.to"
+											:target="item.target"
 											class="text-sm text-primary hover:underline"
 										>
-											Voir mon profil
+											{{ item.value }}
 										</ULink>
-									</div>
-								</div>
-
-								<div class="flex items-center gap-3">
-									<div class="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10">
-										<UIcon
-											name="i-simple-icons-github"
-											class="size-4 text-primary"
-										/>
-									</div>
-									<div class="flex flex-col">
-										<span class="text-xs uppercase tracking-wide text-muted">GitHub</span>
-										<ULink
-											to="https://github.com/WissemBad"
-											class="text-sm text-primary hover:underline"
+										<span
+											v-else
+											class="font-medium"
 										>
-											github.com/WissemBad
-										</ULink>
+											{{ item.value }}
+										</span>
 									</div>
 								</div>
 							</div>
 						</UCard>
 
-						<!-- Carte formulaire -->
 						<UCard
 							class="lg:col-span-2"
 							:ui="{ root: 'h-full' }"
 						>
 							<UForm
-								:schema="schema"
+								:validate="validateContactForm"
 								:state="state"
 								class="space-y-4 w-full"
 								@submit="onSubmit"

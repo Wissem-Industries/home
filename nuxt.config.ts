@@ -4,14 +4,11 @@ export default defineNuxtConfig({
 		'@nuxt/eslint',
 		'@nuxt/ui',
 		'@nuxt/content',
-		'@vueuse/nuxt',
 		'motion-v/nuxt',
 		'@nuxtjs/plausible'
 	],
 
-	compatibilityDate: '2025-07-15',
 	devtools: { enabled: false },
-	plausible: { proxy: true },
 
 	css: ['~/assets/css/main.css'],
 
@@ -24,6 +21,7 @@ export default defineNuxtConfig({
 		smtpUser: process.env.SMTP_USER,
 		smtpPass: process.env.SMTP_PASS
 	},
+	compatibilityDate: '2025-07-15',
 
 	nitro: {
 		preset: 'bun',
@@ -46,5 +44,6 @@ export default defineNuxtConfig({
 				indent: 'tab'
 			}
 		}
-	}
+	},
+	plausible: { proxy: true }
 })

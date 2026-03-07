@@ -1,11 +1,23 @@
 <script setup lang="ts">
-import type { IndexCollectionItem } from '@nuxt/content'
 import { downloadFile } from '~/utils/download'
 
-const { footer, global } = useAppConfig()
+type ContactLink = {
+	label: string
+	value: string
+	to: string
+	icon: string
+}
+
+const { profile } = useAppConfig()
 
 defineProps<{
-	page: IndexCollectionItem
+	name: string
+	status: string
+	objective: string
+	description: string
+	secondaryCtaLabel: string
+	secondaryCtaTo: string
+	links: ContactLink[]
 }>()
 </script>
 
@@ -26,12 +38,12 @@ defineProps<{
 				<picture>
 					<source
 						media="(prefers-color-scheme: dark)"
-						:srcset="global.picture?.dark"
+						:srcset="profile.picture.dark"
 					>
 					<img
 						class="size-24 object-cover"
-						:src="global.picture?.light"
-						:alt="global.picture?.alt"
+						:src="profile.picture.light"
+						:alt="profile.picture.alt"
 					>
 				</picture>
 			</Motion>
@@ -43,7 +55,7 @@ defineProps<{
 				:animate="{ scale: 1, opacity: 1, filter: 'blur(0px)' }"
 				:transition="{ duration: 0.6, delay: 0.1 }"
 			>
-				{{ page.title }}
+				{{ name }}
 			</Motion>
 		</template>
 
@@ -53,7 +65,17 @@ defineProps<{
 				:animate="{ scale: 1, opacity: 1, filter: 'blur(0px)' }"
 				:transition="{ duration: 0.6, delay: 0.3 }"
 			>
-				{{ page.description }}
+				<div class="mx-auto max-w-2xl space-y-2">
+					<p class="text-sm sm:text-base font-medium text-highlighted">
+						{{ status }}
+					</p>
+					<p class="text-sm sm:text-base text-toned">
+						{{ objective }}
+					</p>
+					<p class="text-sm sm:text-base text-muted">
+						{{ description }}
+					</p>
+				</div>
 			</Motion>
 		</template>
 
@@ -63,48 +85,43 @@ defineProps<{
 				:animate="{ scale: 1, opacity: 1, filter: 'blur(0px)' }"
 				:transition="{ duration: 0.6, delay: 0.5 }"
 			>
-				<div class="flex items-center gap-2">
+				<div class="flex flex-wrap items-center justify-center gap-2">
 					<UButton
 						class="cursor-pointer"
-						label="Télécharger mon CV"
+						label="Télécharger le CV (PDF)"
 						color="neutral"
 						icon="i-carbon-download"
 						variant="subtle"
-						@click="downloadFile('/files/74b87337454200d4d33f80c4663dc5e5.pdf', 'CV_Wissem_BADRAOUI.pdf')"
+						@click="downloadFile(profile.cv.href, profile.cv.filename)"
 					/>
 
 					<UButton
-						:color="global.status ? 'success' : 'error'"
-						variant="ghost"
-						class="gap-2"
-						:label="global.status ? 'Ouvert aux opportunités' : 'Indisponible pour le moment'"
-					>
-						<template #leading>
-							<span class="relative flex size-2">
-								<span
-									class="absolute inline-flex size-full rounded-full opacity-75"
-									:class="global.status ? 'bg-success animate-ping' : 'bg-error'"
-								/>
-								<span
-									class="relative inline-flex size-2 scale-90 rounded-full"
-									:class="global.status ? 'bg-success' : 'bg-error'"
-								/>
-							</span>
-						</template>
-					</UButton>
+						:label="secondaryCtaLabel"
+						color="neutral"
+						variant="outline"
+						trailing-icon="i-lucide-arrow-right"
+						:to="secondaryCtaTo"
+					/>
 				</div>
 			</Motion>
 
 			<div class="gap-x-4 inline-flex mt-4">
 				<Motion
-					v-for="(link, index) of footer?.links"
-					:key="index"
-
+					v-for="(link, index) of links"
+					:key="link.to"
 					:initial="{ scale: 1.2, opacity: 0, filter: 'blur(20px)' }"
 					:animate="{ scale: 1, opacity: 1, filter: 'blur(0px)' }"
 					:transition="{ duration: 0.6, delay: 0.5 + index * 0.1 }"
 				>
-					<UButton v-bind="{ size: 'xl', color: 'neutral', variant: 'ghost', ...link }" />
+					<UButton
+						size="xl"
+						color="neutral"
+						variant="ghost"
+						:icon="link.icon"
+						:to="link.to"
+						:target="link.to.startsWith('http') ? '_blank' : undefined"
+						:aria-label="link.label"
+					/>
 				</Motion>
 			</div>
 		</template>

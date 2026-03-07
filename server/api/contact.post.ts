@@ -1,20 +1,23 @@
 import nodemailer from 'nodemailer'
+import { getContactFormErrors, normalizeContactForm, type ContactFormData } from '../../utils/contact'
 
 export default defineEventHandler(async (event) => {
-	const body = await readBody<{
-		name: string
-		email: string
-		subject?: string
-		message: string
-	}>(event)
+	const body = normalizeContactForm(await readBody<Partial<ContactFormData>>(event))
 
-	if (!body.name || !body.email || !body.message)
+	if (getContactFormErrors(body).length > 0) {
 		throw createError({ statusCode: 400, statusMessage: 'Invalid data' })
+	}
 
 	const config = useRuntimeConfig()
+	const smtpPort = Number(config.smtpPort)
+
+	if (!config.smtpHost || !config.smtpUser || !config.smtpPass || !Number.isFinite(smtpPort)) {
+		throw createError({ statusCode: 503, statusMessage: 'Contact service unavailable' })
+	}
+
 	const transporter = nodemailer.createTransport({
 		host: config.smtpHost,
-		port: Number(config.smtpPort),
+		port: smtpPort,
 		secure: config.smtpSecure === 'TRUE',
 		auth: { user: config.smtpUser, pass: config.smtpPass }
 	})

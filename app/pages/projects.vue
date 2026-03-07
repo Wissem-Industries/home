@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { data: page } = await useAsyncData('projects-page', () => {
-	return queryCollection('pages').path('/projects').first()
+	return queryCollection('pageMeta').path('/projects').first()
 })
 
 if (!page.value) {
@@ -85,6 +85,7 @@ useSeoMeta({
 								size="sm"
 								label="Accéder au code"
 								icon="i-lucide-folder-git-2"
+								target="_blank"
 								:to="project.repo"
 							/>
 
