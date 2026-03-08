@@ -1,49 +1,56 @@
+import type { NuxtConfig } from 'nuxt/schema'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
-	modules: [
-		'@nuxt/eslint',
-		'@nuxt/ui',
-		'@nuxt/content',
-		'motion-v/nuxt',
-		'@nuxtjs/plausible'
-	],
+export default (): NuxtConfig => {
+	const isBun = Boolean(process.versions.bun)
 
-	devtools: { enabled: false },
+	return {
+		modules: [
+			'@nuxt/eslint',
+			'@nuxt/ui',
+			'@nuxt/content',
+			'motion-v/nuxt',
+			'@nuxtjs/plausible'
+		],
 
-	css: ['~/assets/css/main.css'],
+		devtools: { enabled: false },
 
-	content: { experimental: { sqliteConnector: 'native' } },
+		css: ['~/assets/css/main.css'],
 
-	runtimeConfig: {
-		smtpHost: process.env.SMTP_HOST,
-		smtpPort: process.env.SMTP_PORT,
-		smtpSecure: process.env.SMTP_SECURE,
-		smtpUser: process.env.SMTP_USER,
-		smtpPass: process.env.SMTP_PASS
-	},
-	compatibilityDate: '2025-07-15',
+		// Nuxt Content's `native` connector targets Node's `node:sqlite`.
+		content: isBun ? {} : { experimental: { sqliteConnector: 'native' } },
 
-	nitro: {
-		preset: 'bun',
-		prerender: {
-			routes: ['/'],
-			crawlLinks: true
+		runtimeConfig: {
+			smtpHost: process.env.SMTP_HOST,
+			smtpPort: process.env.SMTP_PORT,
+			smtpSecure: process.env.SMTP_SECURE,
+			smtpUser: process.env.SMTP_USER,
+			smtpPass: process.env.SMTP_PASS
 		},
-		routeRules: {
-			'/_plausible/**': {
-				proxy: { to: 'https://analytics.wissem.pro/**' }
-			}
-		}
-	},
+		compatibilityDate: '2025-07-15',
 
-	eslint: {
-		config: {
-			stylistic: {
-				commaDangle: 'never',
-				braceStyle: '1tbs',
-				indent: 'tab'
+		nitro: {
+			...(isBun ? { preset: 'bun' } : {}),
+			prerender: {
+				routes: ['/'],
+				crawlLinks: true
+			},
+			routeRules: {
+				'/_plausible/**': {
+					proxy: { to: 'https://analytics.wissem.pro/**' }
+				}
 			}
-		}
-	},
-	plausible: { proxy: true }
-})
+		},
+
+		eslint: {
+			config: {
+				stylistic: {
+					commaDangle: 'never',
+					braceStyle: '1tbs',
+					indent: 'tab'
+				}
+			}
+		},
+		plausible: { proxy: true }
+	}
+}
