@@ -1,0 +1,6 @@
+id: "satt-tool"
+title: "Outil interne de traitement de données (SATT)"
+description: "Amélioration d’un outil interne du bureau d’études chez Nidec Leroy-Somer : optimisation du traitement de données et ajout de fonctionnalités pour améliorer la fiabilité et l’usage de l’outil."
+image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=960&q=70"
+tags: ["Excel", "VBA", "Data Processing", "Internal Tooling"]
+date: "2025-06-01"

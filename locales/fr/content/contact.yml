@@ -6,7 +6,7 @@ page:
     description: "Coordonnées et formulaire de contact de Wissem Badraoui."
   sidebar:
     title: "Coordonnées"
-    description: "Les moyens les plus utiles pour me joindre et consulter mes profils publics."
+    description: "Les moyens pour me joindre et consulter mes profils publics."
   form:
     name:
       label: "Nom"
@@ -31,3 +31,6 @@ page:
       successDescription: "Merci pour votre message, je reviendrai vers vous dès que possible."
       errorTitle: "Envoi impossible"
       errorDescription: "Une erreur est survenue lors de l’envoi du message. Merci de réessayer plus tard."
+    responseHint: "Réponse dans les plus brefs délais."
+    privacyHint: "Les informations transmises servent uniquement à traiter votre demande de contact. Elles ne sont ni stockées, ni publiées ou partagées avec des tiers."
+    privacyAriaLabel: "Informations sur le traitement des données"

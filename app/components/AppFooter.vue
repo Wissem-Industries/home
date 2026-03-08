@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getLinkTarget, isExternalLink } from '~/utils/links'
+import { getLinkTarget, isExternalLink } from '#shared/utils/links'
 
 const content = useSiteContent()
 const { footerLinks } = useContactLinks()

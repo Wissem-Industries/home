@@ -202,6 +202,9 @@ export type ContactFormContent = {
 	submitLabel: string
 	validation: ContactFormValidationContent
 	messages: ContactFormMessagesContent
+	responseHint: string
+	privacyHint: string
+	privacyAriaLabel: string
 }
 
 export type ContactPageContent = PageContent & {

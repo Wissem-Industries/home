@@ -30,7 +30,7 @@ defineProps<{
 					:ui="{
 						root: 'h-full rounded-2xl flex flex-col',
 						header: 'p-5 sm:p-6 pb-2 sm:pb-3',
-						body: 'px-5 sm:px-6 pb-5 sm:pb-6 pt-0 flex-1'
+						body: 'px-5 sm:px-6 pb-5 sm:pb-6 pt-0 flex-1 flex items-center justify-center'
 					}"
 				>
 					<template #header>
@@ -45,7 +45,7 @@ defineProps<{
 						</div>
 					</template>
 
-					<div class="flex flex-wrap gap-2">
+					<div class="flex flex-wrap gap-2 justify-center">
 						<UBadge
 							v-for="item in group.items"
 							:key="`${group.title}-${item}`"

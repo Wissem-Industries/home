@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { FormError, FormSubmitEvent } from '@nuxt/ui'
-import { createEmptyContactForm, getContactFormErrors, type ContactFormData } from '#shared/utils/contact'
+import type { FormSubmitEvent } from '@nuxt/ui'
+import { createEmptyContactForm, hasContactFormErrors, type ContactFormData } from '#shared/utils/contact'
 
 const content = useSiteContent()
 const page = computed(() => content.value.pages.contact)
@@ -12,21 +12,38 @@ usePageSeo(computed(() => ({
 	description: page.value.seo?.description || page.value.description
 })))
 
-const state = reactive<ContactFormData>(createEmptyContactForm())
 const toast = useToast()
 const loading = ref(false)
+const state = reactive<ContactFormData>(createEmptyContactForm())
+const isFormInvalid = computed(() => hasContactFormErrors(state))
 
-function validateContactForm(value: Partial<ContactFormData>): FormError[] {
-	return getContactFormErrors(value, page.value.form.validation).map(error => ({
-		name: error.name,
-		message: error.message
-	}))
+const baseCardUi = {
+	root: 'rounded-2xl',
+	header: 'p-5 sm:p-6 pb-4'
+}
+
+const sidebarCardUi = {
+	...baseCardUi,
+	body: 'px-5 sm:px-6 pb-5 sm:pb-6 pt-0'
+}
+
+const formCardUi = {
+	...baseCardUi,
+	root: `${baseCardUi.root} flex h-full flex-col`,
+	header: 'min-h-[116px] p-5 sm:p-6 pb-4',
+	body: 'px-5 sm:px-6 pb-5 sm:pb-6 pt-0 flex-1'
 }
 
 async function onSubmit(event: FormSubmitEvent<ContactFormData>) {
+	if (isFormInvalid.value) return
+
 	try {
 		loading.value = true
-		await $fetch('/api/contact', { method: 'POST', body: event.data })
+
+		await $fetch('/api/contact', {
+			method: 'POST',
+			body: event.data
+		})
 
 		toast.add({
 			title: page.value.form.messages.successTitle,
@@ -54,8 +71,8 @@ async function onSubmit(event: FormSubmitEvent<ContactFormData>) {
 			:description="page.description"
 			:ui="{
 				title: '!mx-0 text-left',
-				description: '!mx-0 text-left',
-				container: 'pb-10 sm:pb-12'
+				description: '!mx-0 text-left max-w-2xl',
+				container: 'pb-8 sm:pb-10'
 			}"
 		/>
 
@@ -67,21 +84,22 @@ async function onSubmit(event: FormSubmitEvent<ContactFormData>) {
 				:transition="revealTransition()"
 				:in-view-options="inViewOptions"
 			>
-				<div class="mx-auto max-w-5xl space-y-8">
-					<div class="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
+				<div class="mx-auto w-full max-w-5xl">
+					<div class="grid grid-cols-1 gap-5 lg:grid-cols-[320px_minmax(0,1fr)] lg:items-start lg:gap-6">
 						<UCard
-							class="lg:col-span-1"
-							:ui="{ root: 'h-full rounded-2xl', body: 'p-5 sm:p-6 space-y-6' }"
+							:ui="sidebarCardUi"
 						>
-							<div class="space-y-2">
-								<p class="text-xs uppercase tracking-[0.18em] text-muted">
-									{{ page.sidebar.title }}
-								</p>
+							<template #header>
+								<div class="space-y-2">
+									<h2 class="text-base font-medium text-highlighted">
+										{{ page.sidebar.title }}
+									</h2>
 
-								<p class="text-sm leading-6 text-muted">
-									{{ page.sidebar.description }}
-								</p>
-							</div>
+									<p class="text-sm leading-6 text-muted">
+										{{ page.sidebar.description }}
+									</p>
+								</div>
+							</template>
 
 							<ContactDetailsList
 								:location-label="contact.locationLabel"
@@ -91,20 +109,33 @@ async function onSubmit(event: FormSubmitEvent<ContactFormData>) {
 						</UCard>
 
 						<UCard
-							class="lg:col-span-2"
-							:ui="{ root: 'h-full rounded-2xl', body: 'p-5 sm:p-6' }"
+							class="h-full"
+							:ui="formCardUi"
 						>
+							<template #header>
+								<div class="space-y-2">
+									<h2 class="text-base font-medium text-highlighted">
+										{{ page.title }}
+									</h2>
+
+									<p class="text-sm leading-6 text-muted">
+										{{ page.description }}
+									</p>
+								</div>
+							</template>
+
 							<UForm
-								:validate="validateContactForm"
 								:state="state"
-								class="w-full space-y-4"
+								novalidate
+								class="flex h-full flex-col gap-6"
 								@submit="onSubmit"
 							>
-								<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+								<div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
 									<UFormField
-										:label="page.form.name.label"
 										name="name"
+										:label="page.form.name.label"
 										required
+										:ui="{ error: 'hidden' }"
 									>
 										<UInput
 											v-model="state.name"
@@ -115,9 +146,10 @@ async function onSubmit(event: FormSubmitEvent<ContactFormData>) {
 									</UFormField>
 
 									<UFormField
-										:label="page.form.email.label"
 										name="email"
+										:label="page.form.email.label"
 										required
+										:ui="{ error: 'hidden' }"
 									>
 										<UInput
 											v-model="state.email"
@@ -130,9 +162,10 @@ async function onSubmit(event: FormSubmitEvent<ContactFormData>) {
 								</div>
 
 								<UFormField
-									:label="page.form.subject.label"
 									name="subject"
+									:label="page.form.subject.label"
 									required
+									:ui="{ error: 'hidden' }"
 								>
 									<UInput
 										v-model="state.subject"
@@ -142,27 +175,44 @@ async function onSubmit(event: FormSubmitEvent<ContactFormData>) {
 								</UFormField>
 
 								<UFormField
-									:label="page.form.message.label"
 									name="message"
+									:label="page.form.message.label"
 									required
+									:ui="{ error: 'hidden' }"
 								>
 									<UTextarea
 										v-model="state.message"
-										:rows="6"
+										:rows="7"
 										:placeholder="page.form.message.placeholder"
 										class="w-full"
 									/>
 								</UFormField>
 
-								<div class="flex justify-end pt-2">
+								<div class="mt-auto flex flex-col gap-3 border-t border-default/50 pt-5 sm:flex-row sm:items-end sm:justify-between">
+									<div class="flex items-start gap-1 text-xs italic leading-6 text-muted sm:max-w-[320px]">
+										<UTooltip :text="page.form.privacyHint">
+											<UButton
+												icon="i-lucide-info"
+												color="neutral"
+												variant="ghost"
+												size="sm"
+												class="-mt-0.5 shrink-0"
+												:aria-label="page.form.privacyAriaLabel"
+											/>
+										</UTooltip>
+
+										<span>{{ page.form.responseHint }}</span>
+									</div>
+
 									<UButton
 										type="submit"
 										color="primary"
 										size="md"
 										variant="subtle"
 										:loading="loading"
+										:disabled="loading || isFormInvalid"
 										trailing-icon="i-lucide-send"
-										class="min-w-[210px] justify-center"
+										class="w-full justify-center sm:w-auto sm:min-w-[220px]"
 									>
 										{{ page.form.submitLabel }}
 									</UButton>

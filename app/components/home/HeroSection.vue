@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getLinkTarget, isExternalLink } from '~/utils/links'
+import { getLinkTarget, isExternalLink } from '#shared/utils/links'
 
 type ContactLink = {
 	id: string
@@ -104,7 +104,7 @@ function onDownloadResume() {
 				:animate="heroVisible"
 				:transition="heroTransition(0.24)"
 			>
-				<div class="flex flex-wrap items-center justify-center gap-3">
+				<div class="flex items-center gap-2">
 					<UButton
 						class="cursor-pointer"
 						:label="resumeLabel"
@@ -115,12 +115,25 @@ function onDownloadResume() {
 					/>
 
 					<UButton
-						:label="secondaryCtaLabel"
-						color="neutral"
-						variant="outline"
-						trailing-icon="i-lucide-arrow-right"
+						:color="'success'"
+						variant="ghost"
+						class="gap-2"
 						:to="secondaryCtaTo"
-					/>
+						:label="secondaryCtaLabel"
+					>
+						<template #leading>
+							<span class="relative flex size-2">
+								<span
+									class="absolute inline-flex size-full rounded-full opacity-75"
+									:class="'bg-success animate-ping'"
+								/>
+								<span
+									class="relative inline-flex size-2 scale-90 rounded-full"
+									:class="'bg-success'"
+								/>
+							</span>
+						</template>
+					</UButton>
 				</div>
 			</Motion>
 

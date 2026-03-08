@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getLinkTarget, isExternalLink } from '~/utils/links'
+import { getLinkTarget, isExternalLink } from '#shared/utils/links'
 
 type TimelineItem = {
 	eyebrow: string
@@ -13,11 +13,7 @@ type TimelineItem = {
 
 const { revealInitial, revealTransition, revealVisible, inViewOptions } = useMotionPresets()
 
-function getThumbnailSrc(thumbnail?: string) {
-	if (!thumbnail) {
-		return null
-	}
-
+function getThumbnailSrc(thumbnail: string) {
 	return thumbnail.startsWith('/') ? thumbnail : `/${thumbnail}`
 }
 
@@ -54,6 +50,7 @@ defineProps<{
 							>
 								{{ item.eyebrow }}
 							</ULink>
+
 							<p
 								v-else
 								class="text-xs font-medium uppercase tracking-[0.18em] text-muted"
@@ -72,24 +69,24 @@ defineProps<{
 								:key="bullet"
 								class="flex gap-2"
 							>
-								<span class="mt-1 size-1.5 rounded-full bg-primary/60 shrink-0" />
+								<span class="mt-1 size-1.5 shrink-0 rounded-full bg-primary/60" />
 								<span>{{ bullet }}</span>
 							</li>
 						</ul>
 					</div>
 
-					<div class="shrink-0 lg:pl-6">
-						<div class="flex items-start gap-3 lg:justify-end">
+					<div class="shrink-0 lg:pl-6 -translate-y-4 ">
+						<div class="flex flex-col gap-3 lg:items-end">
 							<img
-								v-if="getThumbnailSrc(item.thumbnail)"
-								:src="getThumbnailSrc(item.thumbnail) || undefined"
+								v-if="item.thumbnail"
+								:src="getThumbnailSrc(item.thumbnail)"
 								:alt="`Logo ${item.eyebrow}`"
 								loading="lazy"
 								decoding="async"
-								class="size-11 rounded-xl border border-default bg-default/30 object-contain p-1.5"
+								class="h-full w-28 rounded-sm bg-default/30"
 							>
 
-							<div class="space-y-1 text-sm text-muted">
+							<div class="space-y-1 text-sm text-muted lg:text-right">
 								<p class="flex items-center gap-2 lg:justify-end">
 									<UIcon
 										name="i-lucide-calendar-range"

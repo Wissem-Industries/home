@@ -20,7 +20,12 @@ defineProps<{
 			v-slot="{ item: project }"
 			:items="projects"
 			:loop="projects.length > 1"
-			:autoplay="reduceMotion ? false : { delay: 4500, stopOnInteraction: true, stopOnMouseEnter: true }"
+			:autoplay="reduceMotion ? false : {
+				delay: 4500,
+				playOnInit: true,
+				stopOnInteraction: false,
+				stopOnMouseEnter: true
+			}"
 			:ui="{
 				item: 'basis-full',
 				container: 'items-stretch'

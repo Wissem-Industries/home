@@ -3,14 +3,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "start": "bun .output/server/index.mjs",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
+    "build": "bun scripts/run-runtime.mjs nuxi build",
+    "dev": "bun scripts/run-runtime.mjs nuxi dev",
+    "start": "bun scripts/run-runtime.mjs server",
+    "preview": "bun scripts/run-runtime.mjs nuxi preview",
+    "postinstall": "bun scripts/run-runtime.mjs nuxi prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "typecheck": "nuxt typecheck"
+    "typecheck": "bun scripts/run-runtime.mjs nuxi typecheck"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.96",
@@ -26,6 +26,7 @@
   "devDependencies": {
     "@nuxt/eslint": "^1.15.2",
     "@types/nodemailer": "^7.0.11",
+    "baseline-browser-mapping": "^2.10.0",
     "eslint": "^10.0.3",
     "typescript": "^5.9.3",
     "vue-tsc": "^3.2.5"

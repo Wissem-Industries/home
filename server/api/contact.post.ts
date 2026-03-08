@@ -4,6 +4,7 @@ import { hasContactFormErrors, normalizeContactForm, type ContactFormData } from
 
 const CONTACT_RATE_LIMIT_WINDOW_MS = 5 * 60 * 1000
 const CONTACT_RATE_LIMIT_MAX = 5
+const contactRateLimitBuckets = new Map<string, { count: number, startedAt: number }>()
 
 function parseBoolean(value: unknown) {
 	return ['1', 'true', 'yes', 'on'].includes(String(value).trim().toLowerCase())
@@ -13,15 +14,24 @@ function sanitizeMailHeader(value: string) {
 	return value.replace(/[\r\n]+/g, ' ').trim()
 }
 
-async function enforceContactRateLimit(event: H3Event) {
+function pruneExpiredRateLimits(now: number) {
+	for (const [key, bucket] of contactRateLimitBuckets) {
+		if (now - bucket.startedAt > CONTACT_RATE_LIMIT_WINDOW_MS) {
+			contactRateLimitBuckets.delete(key)
+		}
+	}
+}
+
+function enforceContactRateLimit(event: H3Event) {
 	const ip = getRequestIP(event, { xForwardedFor: true }) || 'unknown'
-	const storage = useStorage('cache')
-	const key = `contact-rate-limit:${ip}`
 	const now = Date.now()
-	const current = await storage.getItem<{ count: number, startedAt: number }>(key)
+
+	if (contactRateLimitBuckets.size > 256) pruneExpiredRateLimits(now)
+
+	const current = contactRateLimitBuckets.get(ip)
 
 	if (!current || now - current.startedAt > CONTACT_RATE_LIMIT_WINDOW_MS) {
-		await storage.setItem(key, { count: 1, startedAt: now })
+		contactRateLimitBuckets.set(ip, { count: 1, startedAt: now })
 		return
 	}
 
@@ -29,11 +39,11 @@ async function enforceContactRateLimit(event: H3Event) {
 		throw createError({ statusCode: 429, statusMessage: 'Too many requests' })
 	}
 
-	await storage.setItem(key, { count: current.count + 1, startedAt: current.startedAt })
+	contactRateLimitBuckets.set(ip, { count: current.count + 1, startedAt: current.startedAt })
 }
 
 export default defineEventHandler(async (event) => {
-	await enforceContactRateLimit(event)
+	enforceContactRateLimit(event)
 
 	const body = normalizeContactForm(await readBody<Partial<ContactFormData>>(event))
 	if (hasContactFormErrors(body)) {

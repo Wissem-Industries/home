@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { getLinkTarget, isExternalLink } from '~/utils/links'
+import { getLinkTarget, isExternalLink } from '#shared/utils/links'
 import type { ProjectActionLabelsContent, ProjectContent } from '~~/shared/content'
 
 const props = withDefaults(defineProps<{
@@ -91,9 +91,7 @@ const projectYear = computed(() => props.project.date.split('-')[0] || props.pro
 			:fetchpriority="eagerImage ? 'high' : 'auto'"
 			decoding="async"
 			referrerpolicy="no-referrer"
-			width="720"
-			height="450"
-			class="h-48 w-full rounded-xl object-cover sm:h-full sm:min-h-[220px] sm:max-w-[320px]"
+			class="h-56 w-full rounded-xl object-cover "
 		>
 	</UPageCard>
 </template>

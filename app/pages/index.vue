@@ -11,7 +11,7 @@ const infoCardUi = {
 	root: 'h-full rounded-2xl flex flex-col',
 	header: 'p-5 sm:p-6 pb-3',
 	body: 'px-5 sm:px-6 pb-5 sm:pb-6 pt-0',
-	footer: 'px-5 sm:px-6 pb-5 sm:pb-6 pt-4 mt-auto'
+	footer: 'my-auto flex justify-center'
 }
 
 const featuredProjects = computed(() => {
@@ -102,7 +102,13 @@ function onDownloadResume() {
 										</span>
 
 										<span class="text-xs text-muted">
-											{{ language.level }}
+											<UBadge
+												variant="soft"
+												size="sm"
+												class="rounded-full"
+											>
+												{{ language.level }}
+											</UBadge>
 										</span>
 									</div>
 
@@ -128,13 +134,12 @@ function onDownloadResume() {
 								</h2>
 							</template>
 
-							<div class="flex flex-wrap gap-2">
+							<div class="flex flex-wrap items-center justify-center content-center gap-2">
 								<UBadge
 									v-for="interest in cv.interests.items"
 									:key="interest"
 									:label="interest"
-									color="neutral"
-									variant="soft"
+									variant="subtle"
 									size="sm"
 									class="rounded-md"
 								/>
@@ -191,8 +196,7 @@ function onDownloadResume() {
 
 								<UButton
 									:label="cv.resume.label"
-									color="neutral"
-									variant="subtle"
+									variant="outline"
 									icon="i-carbon-download"
 									class="w-full justify-center"
 									@click="onDownloadResume"

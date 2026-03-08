@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getLinkTarget, isExternalLink } from '~/utils/links'
+import { getLinkTarget, isExternalLink } from '#shared/utils/links'
 
 type ContactItem = {
 	id: string
@@ -26,12 +26,12 @@ defineProps<{
 				/>
 			</div>
 
-			<div class="min-w-0">
+			<div class="min-w-0 flex-1">
 				<p class="text-[11px] uppercase tracking-[0.18em] text-muted">
 					{{ locationLabel }}
 				</p>
 
-				<p class="mt-1 text-sm font-medium text-default">
+				<p class="mt-1 text-sm font-medium leading-6 text-default">
 					{{ location }}
 				</p>
 			</div>
@@ -49,7 +49,7 @@ defineProps<{
 				/>
 			</div>
 
-			<div class="min-w-0">
+			<div class="min-w-0 flex-1">
 				<p class="text-[11px] uppercase tracking-[0.18em] text-muted">
 					{{ link.label }}
 				</p>
@@ -59,14 +59,15 @@ defineProps<{
 					:to="link.to"
 					:external="isExternalLink(link.to)"
 					:target="getLinkTarget(link.to)"
-					class="mt-1 block break-all text-sm font-medium text-primary hover:underline"
+					class="mt-1 block break-all text-sm font-medium leading-6 text-primary hover:underline"
+					:title="link.value"
 				>
 					{{ link.value }}
 				</ULink>
 
 				<p
 					v-else
-					class="mt-1 text-sm font-medium text-default"
+					class="mt-1 break-words text-sm font-medium leading-6 text-default"
 				>
 					{{ link.value }}
 				</p>

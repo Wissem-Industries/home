@@ -22,5 +22,5 @@ export function useFileDownload() {
 		toast.add({ title: message, color: 'success', icon: 'i-lucide-download' })
 	}
 
-	return { downloadFile}
+	return { downloadFile }
 }

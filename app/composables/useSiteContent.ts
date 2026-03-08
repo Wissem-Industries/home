@@ -1,16 +1,33 @@
-import { availableSiteLocales, defaultSiteLocale, siteContent, type LocaleContent, type SiteLocale } from '~~/shared/content'
+import type { LocaleContent, SiteLocale } from '~~/shared/content'
 
-const fallbackSiteContent: LocaleContent = (() => {
-	const content = siteContent[defaultSiteLocale] || siteContent[availableSiteLocales[0] as SiteLocale]
-	if (!content) throw new Error('No localized site content is available.')
-	return content
-})()
+type SiteContentConfig = {
+	defaultSiteLocale: SiteLocale
+	availableSiteLocales: SiteLocale[]
+	siteContent: Record<SiteLocale, LocaleContent>
+}
+
+function useSiteContentConfig() {
+	return useAppConfig() as unknown as SiteContentConfig
+}
 
 export function useSiteLocale() {
-	return useState<SiteLocale>('site-locale', () => defaultSiteLocale)
+	const { defaultSiteLocale } = useSiteContentConfig()
+
+	return useState<SiteLocale>('site-locale', () => defaultSiteLocale || 'fr')
 }
 
 export function useSiteContent() {
+	const { siteContent, defaultSiteLocale, availableSiteLocales } = useSiteContentConfig()
 	const locale = useSiteLocale()
-	return computed<LocaleContent>(() => siteContent[locale.value] || fallbackSiteContent)
+
+	const fallbackSiteContent = computed<LocaleContent>(() => {
+		const fallbackLocale = defaultSiteLocale || availableSiteLocales[0] || 'fr'
+		const fallbackContent = siteContent[fallbackLocale]
+
+		if (!fallbackContent) throw new Error('No localized site content is available.')
+
+		return fallbackContent
+	})
+
+	return computed<LocaleContent>(() => siteContent[locale.value] || fallbackSiteContent.value)
 }
