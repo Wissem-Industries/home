@@ -9,9 +9,9 @@ defineProps<{
 	<UPageSection
 		:title="title"
 		:ui="{
-			container: '!pt-0',
+			container: '!pt-0 !pb-16 !gap-6',
 			title: 'text-left text-xl sm:text-xl lg:text-2xl font-medium',
-			description: 'text-left mt-3 text-sm sm:text-md lg:text-sm text-muted'
+			description: 'text-left text-sm sm:text-base text-muted'
 		}"
 	>
 		<template #description>

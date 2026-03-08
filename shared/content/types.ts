@@ -33,11 +33,14 @@ export type EducationContent = {
 	title: string
 	period: string
 	location?: string
+	thumbnail?: string
+	url?: string
 	details: string[]
 }
 
 export type SkillsGroupContent = {
 	title: string
+	description: string
 	items: string[]
 }
 
@@ -76,7 +79,6 @@ export type SkillsSectionContent = {
 
 export type ProjectsPreviewContent = {
 	title: string
-	description: string
 	featured: string[]
 }
 

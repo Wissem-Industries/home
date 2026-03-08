@@ -28,7 +28,7 @@ cv:
   experience:
     title: "Expériences"
     items:
-      - title: "Stage technique"
+      - title: "Stage technique · Découverte de l'entreprise"
         organization: "Nidec Leroy-Somer"
         period: "2025 · 6 semaines"
         location: "Angoulême"
@@ -51,69 +51,70 @@ cv:
     title: "Formation"
     items:
       - institution: "IMT Nord Europe"
-        title: "Cycle préparatoire intégré, 2e année (BAC+2)"
-        period: "2024 – présent"
+        title: "Diplôme d'Ingénieur"
+        period: "2024 – Présent"
         location: "Lille"
         details:
+          - "Cycle préparatoire intégré, 2e année (BAC+2)."
           - "Formation générale en mathématiques, physique et informatique."
           - "Travaux de groupe et projets collaboratifs."
           - "Premières bases en gestion de projet."
       - institution: "Lycée Saint-Paul"
-        title: "Baccalauréat général, mention Très Bien"
+        title: "Baccalauréat Général"
         period: "2021 – 2024"
         location: "Angoulême"
         details:
+          - "Mention Très Bien."
           - "Spécialités Mathématiques et Physique-Chimie."
   skills:
-    title: "Compétences"
-    groups:
-      - title: "Programmation"
-        items: ["Python", "JavaScript", "VBA", "Lua", "C"]
-      - title: "Développement web"
-        items: ["Node.js", "TypeScript", "Vue.js", "Express.js"]
-      - title: "Bases de données"
-        items: ["MySQL", "PostgreSQL", "Prisma", "MongoDB"]
-      - title: "DevOps & infrastructure"
-        items: ["Linux", "Docker", "VPS", "Dokploy CI/CD"]
-      - title: "Outils & plateformes"
-        items: ["JetBrains IDEs", "Git", "Postman", "Office 365"]
-      - title: "Collaboration"
-        items: ["Trello", "Milanote", "Jira", "GitHub", "GitLab"]
+      title: "Compétences"
+      groups:
+          - title: "Langages"
+            description: "Langages utilisés pour le développement applicatif."
+            items: [ "C", "Python", "TypeScript", "JavaScript", "VBA", "SQL" ]
+          - title: "Web"
+            description: "Développement d’applications web avec l’écosystème JavaScript."
+            items: [ "Nuxt", "Vue.js", "Node.js", "Express" ]
+          - title: "Données"
+            description: "Stockage, requêtes et traitement de données applicatives."
+            items: [ "PostgreSQL", "MySQL", "MongoDB", "Prisma" ]
+          - title: "Infrastructure"
+            description: "Serveurs, conteneurisation et déploiement d’applications."
+            items: [ "Linux", "Docker", "VPS", "Dokploy", "CI/CD" ]
+          - title: "Automatisation"
+            description: "Scripts pour automatiser des traitements et tâches techniques."
+            items: [ "Python", "Excel VBA", "Parsing", "CLI" ]
+          - title: "Outils"
+            description: "Outils utilisés pour développer, tester et collaborer sur les projets."
+            items: [ "Git", "Postman", "JetBrains", "Jira" ]
   projects:
     title: "Quelques projets"
-    description: "Une sélection courte de projets personnels et techniques présentables publiquement."
     featured: ["parcourtime", "password-manager"]
   languages:
-    title: "Langues"
-    items:
-      - name: "Français"
-        level: "Langue maternelle"
-      - name: "Anglais"
-        level: "B2"
-      - name: "Espagnol"
-        level: "A2"
+      title: "Langues"
+      items:
+          -   name: "Français"
+              level: "Langue maternelle"
+              value: 100
+          -   name: "Anglais"
+              level: "B2"
+              value: 70
+          -   name: "Espagnol"
+              level: "A2"
+              value: 35
+
   interests:
-    title: "Centres d’intérêt"
-    items: ["Cinéma", "Informatique", "Jeux vidéo", "Natation"]
+      title: "Centres d’intérêt"
+      items: [ "Cinéma", "Jeux vidéo", "Natation", "Voyages", "Technologie" ]
   contact:
-    title: "Contact"
-    description: "Pour une candidature de stage, un échange ou l’envoi d’informations complémentaires."
-    email: "contact@wissem.pro"
-    location: "Île-de-France / métropole lilloise"
-    links:
-      - label: "Email"
-        value: "contact@wissem.pro"
-        to: "mailto:contact@wissem.pro"
-        icon: "i-lucide-mail"
-      - label: "LinkedIn"
-        value: "linkedin.com/in/WissemBadraoui"
-        to: "https://linkedin.com/in/WissemBadraoui"
-        icon: "i-simple-icons-linkedin"
-      - label: "GitHub"
-        value: "github.com/WissemBad"
-        to: "https://github.com/WissemBad"
-        icon: "i-simple-icons-github"
-      - label: "Site web"
-        value: "www.wissem.pro"
-        to: "https://www.wissem.pro"
-        icon: "i-lucide-globe"
+      title: "Contact"
+      description: "Pour une candidature de stage, un échange ou l’envoi d’informations complémentaires."
+      email: "contact@wissem.pro"
+      linkedin: "https://linkedin.com/in/WissemBadraoui"
+      github: "https://github.com/WissemBad"
+      location: "Île-de-France · Métropole lilloise"
+      links:
+          -   label: "Email"
+              value: "contact@wissem.pro"
+              to: "mailto:contact@wissem.pro"
+              icon: "i-lucide-mail"
