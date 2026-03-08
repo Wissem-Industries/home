@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { downloadFile } from '~/utils/download'
+import { getLinkTarget, isExternalLink } from '~/utils/links'
 
 type ContactLink = {
+	id: string
 	label: string
 	value: string
 	to: string
@@ -9,16 +10,27 @@ type ContactLink = {
 }
 
 const { profile } = useAppConfig()
+const { downloadFile } = useFileDownload()
+const { heroInitial, heroTransition, heroVisible } = useMotionPresets()
 
-defineProps<{
+const props = defineProps<{
 	name: string
 	status: string
 	objective: string
 	description: string
+	avatarAlt: string
+	resumeLabel: string
+	resumeHref: string
+	resumeFilename: string
+	resumeMessage: string
 	secondaryCtaLabel: string
 	secondaryCtaTo: string
 	links: ContactLink[]
 }>()
+
+function onDownloadResume() {
+	downloadFile(props.resumeHref, props.resumeFilename, props.resumeMessage)
+}
 </script>
 
 <template>
@@ -26,14 +38,14 @@ defineProps<{
 		:ui="{
 			headline: 'flex items-center justify-center',
 			title: 'text-shadow-md max-w-lg mx-auto',
-			links: 'mt-4 flex-col justify-center items-center'
+			links: 'mt-6 flex-col items-center gap-4'
 		}"
 	>
 		<template #headline>
 			<Motion
-				:initial="{ scale: 1.2, opacity: 0, filter: 'blur(20px)' }"
-				:animate="{ scale: 1, opacity: 1, filter: 'blur(0px)' }"
-				:transition="{ duration: 0.6, delay: 0.1 }"
+				:initial="heroInitial"
+				:animate="heroVisible"
+				:transition="heroTransition(0.05)"
 			>
 				<picture>
 					<source
@@ -43,7 +55,12 @@ defineProps<{
 					<img
 						class="size-24 object-cover"
 						:src="profile.picture.light"
-						:alt="profile.picture.alt"
+						:alt="avatarAlt"
+						width="96"
+						height="96"
+						loading="eager"
+						fetchpriority="high"
+						decoding="async"
 					>
 				</picture>
 			</Motion>
@@ -51,9 +68,9 @@ defineProps<{
 
 		<template #title>
 			<Motion
-				:initial="{ scale: 1.2, opacity: 0, filter: 'blur(20px)' }"
-				:animate="{ scale: 1, opacity: 1, filter: 'blur(0px)' }"
-				:transition="{ duration: 0.6, delay: 0.1 }"
+				:initial="heroInitial"
+				:animate="heroVisible"
+				:transition="heroTransition(0.1)"
 			>
 				{{ name }}
 			</Motion>
@@ -61,18 +78,20 @@ defineProps<{
 
 		<template #description>
 			<Motion
-				:initial="{ scale: 1.2, opacity: 0, filter: 'blur(20px)' }"
-				:animate="{ scale: 1, opacity: 1, filter: 'blur(0px)' }"
-				:transition="{ duration: 0.6, delay: 0.3 }"
+				:initial="heroInitial"
+				:animate="heroVisible"
+				:transition="heroTransition(0.16)"
 			>
 				<div class="mx-auto max-w-2xl space-y-2">
-					<p class="text-sm sm:text-base font-medium text-highlighted">
+					<p class="text-sm font-medium text-highlighted sm:text-base">
 						{{ status }}
 					</p>
-					<p class="text-sm sm:text-base text-toned">
+
+					<p class="text-sm text-toned sm:text-base">
 						{{ objective }}
 					</p>
-					<p class="text-sm sm:text-base text-muted">
+
+					<p class="text-sm text-muted sm:text-base">
 						{{ description }}
 					</p>
 				</div>
@@ -81,18 +100,18 @@ defineProps<{
 
 		<template #links>
 			<Motion
-				:initial="{ scale: 1.2, opacity: 0, filter: 'blur(20px)' }"
-				:animate="{ scale: 1, opacity: 1, filter: 'blur(0px)' }"
-				:transition="{ duration: 0.6, delay: 0.5 }"
+				:initial="heroInitial"
+				:animate="heroVisible"
+				:transition="heroTransition(0.24)"
 			>
-				<div class="flex flex-wrap items-center justify-center gap-2">
+				<div class="flex flex-wrap items-center justify-center gap-3">
 					<UButton
 						class="cursor-pointer"
-						label="Télécharger le CV (PDF)"
+						:label="resumeLabel"
 						color="neutral"
 						icon="i-carbon-download"
 						variant="subtle"
-						@click="downloadFile(profile.cv.href, profile.cv.filename)"
+						@click="onDownloadResume"
 					/>
 
 					<UButton
@@ -105,13 +124,13 @@ defineProps<{
 				</div>
 			</Motion>
 
-			<div class="gap-x-4 inline-flex mt-4">
+			<div class="mt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
 				<Motion
 					v-for="(link, index) of links"
-					:key="link.to"
-					:initial="{ scale: 1.2, opacity: 0, filter: 'blur(20px)' }"
-					:animate="{ scale: 1, opacity: 1, filter: 'blur(0px)' }"
-					:transition="{ duration: 0.6, delay: 0.5 + index * 0.1 }"
+					:key="link.id"
+					:initial="heroInitial"
+					:animate="heroVisible"
+					:transition="heroTransition(0.3 + index * 0.06)"
 				>
 					<UButton
 						size="xl"
@@ -119,7 +138,8 @@ defineProps<{
 						variant="ghost"
 						:icon="link.icon"
 						:to="link.to"
-						:target="link.to.startsWith('http') ? '_blank' : undefined"
+						:external="isExternalLink(link.to)"
+						:target="getLinkTarget(link.to)"
 						:aria-label="link.label"
 					/>
 				</Motion>

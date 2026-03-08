@@ -1,13 +1,22 @@
 <script setup lang="ts">
+import { usePreferredReducedMotion } from '@vueuse/core'
+
 const colorMode = useColorMode()
+const content = useSiteContent()
+const preferredReducedMotion = usePreferredReducedMotion()
 const nextTheme = computed(() => (colorMode.value === 'dark' ? 'light' : 'dark'))
+const ariaLabel = computed(() => (
+	colorMode.value === 'dark'
+		? content.value.ui.colorMode.switchToLight
+		: content.value.ui.colorMode.switchToDark
+))
 
 const switchTheme = () => {
 	colorMode.preference = nextTheme.value
 }
 
 const startViewTransition = () => {
-	if (!document.startViewTransition) {
+	if (preferredReducedMotion.value === 'reduce' || !document.startViewTransition) {
 		switchTheme()
 		return
 	}
@@ -33,7 +42,7 @@ const startViewTransition = () => {
 <template>
 	<ClientOnly>
 		<UButton
-			:aria-label="`Switch to ${nextTheme} mode`"
+			:aria-label="ariaLabel"
 			:icon="`i-lucide-${nextTheme === 'dark' ? 'sun' : 'moon'}`"
 			color="neutral"
 			variant="ghost"
@@ -50,16 +59,17 @@ const startViewTransition = () => {
 <style>
 ::view-transition-old(root),
 ::view-transition-new(root) {
-    animation: none;
-    mix-blend-mode: normal;
+	animation: none;
+	mix-blend-mode: normal;
 }
 
 ::view-transition-new(root) {
-  z-index: 9999;
-  opacity: 0;
+	z-index: 9999;
+	opacity: 0;
 }
+
 ::view-transition-old(root) {
-  z-index: 1;
-  opacity: 1;
+	z-index: 1;
+	opacity: 1;
 }
 </style>

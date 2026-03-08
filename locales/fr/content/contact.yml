@@ -4,22 +4,30 @@ page:
   seo:
     title: "Contact"
     description: "Coordonnées et formulaire de contact de Wissem Badraoui."
-  email: "contact@wissem.pro"
-  location: "Île-de-France / métropole lilloise"
-  links:
-      -   label: "Email"
-          value: "contact@wissem.pro"
-          to: "mailto:contact@wissem.pro"
-          icon: "i-lucide-mail"
-      -   label: "LinkedIn"
-          value: "linkedin.com/in/WissemBadraoui"
-          to: "https://linkedin.com/in/WissemBadraoui"
-          icon: "i-simple-icons-linkedin"
-      -   label: "GitHub"
-          value: "github.com/WissemBad"
-          to: "https://github.com/WissemBad"
-          icon: "i-simple-icons-github"
-      -   label: "Site web"
-          value: "www.wissem.pro"
-          to: "https://www.wissem.pro"
-          icon: "i-lucide-globe"
+  sidebar:
+    title: "Coordonnées"
+    description: "Les moyens les plus utiles pour me joindre et consulter mes profils publics."
+  form:
+    name:
+      label: "Nom"
+      placeholder: "Votre nom"
+    email:
+      label: "Email"
+      placeholder: "vous@example.com"
+    subject:
+      label: "Sujet"
+      placeholder: "Sujet du message"
+    message:
+      label: "Message"
+      placeholder: "Votre message"
+    submitLabel: "Envoyer le message"
+    validation:
+      nameTooShort: "Le nom est trop court."
+      emailInvalid: "L’adresse email n’est pas valide."
+      subjectTooShort: "Le sujet est trop court."
+      messageTooShort: "Le message est trop court."
+    messages:
+      successTitle: "Message envoyé"
+      successDescription: "Merci pour votre message, je reviendrai vers vous dès que possible."
+      errorTitle: "Envoi impossible"
+      errorDescription: "Une erreur est survenue lors de l’envoi du message. Merci de réessayer plus tard."

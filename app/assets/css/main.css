@@ -21,3 +21,19 @@
     background-color: #474747;
   }
 }
+
+html {
+  scroll-padding-top: 5rem;
+}
+
+@media (min-width: 640px) {
+  html {
+    scroll-padding-top: 6rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

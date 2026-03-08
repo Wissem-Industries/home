@@ -11,11 +11,46 @@ export type PageContent = {
 	seo?: SeoContent
 }
 
+export type NavigationContent = {
+	home: string
+	projects: string
+	contact: string
+}
+
+export type FooterContent = {
+	creditsSuffix: string
+}
+
+export type ColorModeContent = {
+	switchToDark: string
+	switchToLight: string
+}
+
+export type ErrorContent = {
+	title: string
+	description: string
+}
+
+export type UiContent = {
+	navigation: NavigationContent
+	footer: FooterContent
+	colorMode: ColorModeContent
+	error: ErrorContent
+}
+
 export type ContactLinkContent = {
+	id: string
 	label: string
 	value: string
 	to: string
 	icon: string
+}
+
+export type DownloadAssetContent = {
+	label: string
+	href: string
+	filename: string
+	downloadStartedMessage: string
 }
 
 export type ExperienceContent = {
@@ -47,9 +82,11 @@ export type SkillsGroupContent = {
 export type LanguageContent = {
 	name: string
 	level: string
+	value: number
 }
 
 export type HeroContent = {
+	avatarAlt: string
 	status: string
 	objective: string
 	description: string
@@ -77,9 +114,17 @@ export type SkillsSectionContent = {
 	groups: SkillsGroupContent[]
 }
 
+export type ProjectActionLabelsContent = {
+	view: string
+	repo: string
+	private: string
+}
+
 export type ProjectsPreviewContent = {
 	title: string
+	description: string
 	featured: string[]
+	actions: ProjectActionLabelsContent
 }
 
 export type LanguagesSectionContent = {
@@ -95,14 +140,19 @@ export type InterestsSectionContent = {
 export type ContactSectionContent = {
 	title: string
 	description: string
-	email: string
+	locationLabel: string
 	location: string
+	directLinkIds: string[]
+	heroLinkIds: string[]
+	primaryLinkIds: string[]
+	footerLinkIds: string[]
 	links: ContactLinkContent[]
 }
 
 export type CvContent = {
 	name: string
 	hero: HeroContent
+	resume: DownloadAssetContent
 	about: AboutContent
 	experience: ExperienceSectionContent
 	education: EducationSectionContent
@@ -125,11 +175,49 @@ export type ProjectContent = {
 	featured?: boolean
 }
 
+export type ContactFormFieldContent = {
+	label: string
+	placeholder: string
+}
+
+export type ContactFormValidationContent = {
+	nameTooShort: string
+	emailInvalid: string
+	subjectTooShort: string
+	messageTooShort: string
+}
+
+export type ContactFormMessagesContent = {
+	successTitle: string
+	successDescription: string
+	errorTitle: string
+	errorDescription: string
+}
+
+export type ContactFormContent = {
+	name: ContactFormFieldContent
+	email: ContactFormFieldContent
+	subject: ContactFormFieldContent
+	message: ContactFormFieldContent
+	submitLabel: string
+	validation: ContactFormValidationContent
+	messages: ContactFormMessagesContent
+}
+
+export type ContactPageContent = PageContent & {
+	sidebar: {
+		title: string
+		description: string
+	}
+	form: ContactFormContent
+}
+
 export type LocaleContent = {
+	ui: UiContent
 	pages: {
 		home: PageContent
 		projects: PageContent
-		contact: PageContent
+		contact: ContactPageContent
 	}
 	cv: CvContent
 	projects: ProjectContent[]

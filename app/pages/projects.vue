@@ -2,13 +2,13 @@
 const content = useSiteContent()
 const page = computed(() => content.value.pages.projects)
 const projects = computed(() => content.value.projects)
+const projectActionLabels = computed(() => content.value.cv.projects.actions)
+const { inViewOptions, revealInitial, revealTransition, revealVisible } = useMotionPresets()
 
-useSeoMeta({
+usePageSeo(computed(() => ({
 	title: page.value.seo?.title || page.value.title,
-	ogTitle: page.value.seo?.title || page.value.title,
-	description: page.value.seo?.description || page.value.description,
-	ogDescription: page.value.seo?.description || page.value.description
-})
+	description: page.value.seo?.description || page.value.description
+})))
 </script>
 
 <template>
@@ -16,85 +16,28 @@ useSeoMeta({
 		<UPageHero
 			:title="page.title"
 			:description="page.description"
-			:ui="{ title: '!mx-0 text-left', description: '!mx-0 text-left' }"
+			:ui="{
+				title: '!mx-0 text-left',
+				description: '!mx-0 text-left',
+				container: 'pb-10 sm:pb-12'
+			}"
 		/>
-		<UPageSection :ui="{ container: '!pt-0' }">
+
+		<UPageSection>
 			<Motion
 				v-for="(project, index) in projects"
-				:key="project.title"
-				:initial="{ opacity: 0, transform: 'translateY(10px)' }"
-				:while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
-				:transition="{ delay: 0.2 * index }"
-				:in-view-options="{ once: true }"
+				:key="project.id"
+				:initial="revealInitial"
+				:while-in-view="revealVisible"
+				:transition="revealTransition(index)"
+				:in-view-options="inViewOptions"
 			>
-				<UPageCard
-					:title="project.title"
-					:description="project.description"
-					orientation="horizontal"
-					variant="naked"
+				<ProjectShowcaseCard
+					:project="project"
+					:actions="projectActionLabels"
 					:reverse="index % 2 === 1"
-					:ui="{ wrapper: 'max-sm:order-last' }"
-				>
-					<template #leading>
-						<span class="text-sm text-muted">
-							{{ new Date(project.date).getFullYear() }}
-						</span>
-					</template>
-
-					<template #footer>
-						<!-- TAGS -->
-						<div class="flex flex-wrap items-center gap-2">
-							<UBadge
-								v-for="tag in project.tags"
-								:key="tag"
-								:label="tag"
-								color="neutral"
-								variant="soft"
-								size="sm"
-							/>
-						</div>
-
-						<!-- ACTIONS -->
-						<div class="flex flex-wrap items-center gap-3 mt-2">
-							<UButton
-								v-if="project.url"
-								variant="outline"
-								size="sm"
-								label="Voir le projet"
-								trailing-icon="i-lucide-external-link"
-								target="_blank"
-								:to="project.url"
-							/>
-
-							<UButton
-								v-if="project.repo"
-								variant="outline"
-								color="neutral"
-								size="sm"
-								label="Accéder au code"
-								icon="i-lucide-folder-git-2"
-								target="_blank"
-								:to="project.repo"
-							/>
-
-							<UButton
-								v-if="!project.url && !project.repo"
-								variant="soft"
-								color="neutral"
-								size="sm"
-								label="Accès privé"
-								icon="i-lucide-lock"
-								disabled
-							/>
-						</div>
-					</template>
-
-					<img
-						:src="project.image"
-						:alt="project.title"
-						class="object-cover w-full h-48 rounded-lg"
-					>
-				</UPageCard>
+					:eager-image="index === 0"
+				/>
 			</Motion>
 		</UPageSection>
 	</UPage>

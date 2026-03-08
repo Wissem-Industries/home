@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<UContainer class="sm:border-x border-default pt-10">
+		<UContainer class="border-default pt-16 sm:border-x sm:pt-20">
 			<AppHeader />
 			<slot />
 			<AppFooter />

@@ -13,10 +13,6 @@ export default (): NuxtConfig => {
 		],
 
 		devtools: { enabled: false },
-		devServer: {
-			host: '127.0.0.1'
-		},
-
 		css: ['~/assets/css/main.css'],
 
 		runtimeConfig: {
@@ -24,7 +20,8 @@ export default (): NuxtConfig => {
 			smtpPort: process.env.SMTP_PORT,
 			smtpSecure: process.env.SMTP_SECURE,
 			smtpUser: process.env.SMTP_USER,
-			smtpPass: process.env.SMTP_PASS
+			smtpPass: process.env.SMTP_PASS,
+			public: { siteUrl: process.env.SITE_URL },
 		},
 		compatibilityDate: '2025-07-15',
 

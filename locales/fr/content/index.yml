@@ -12,14 +12,34 @@ pages:
       title: "Projets"
       description: "Projets personnels et techniques de Wissem Badraoui."
 
+ui:
+  navigation:
+    home: "Accueil"
+    projects: "Projets"
+    contact: "Contact"
+  footer:
+    creditsSuffix: "Wissem. • Tous droits réservés."
+  colorMode:
+    switchToDark: "Activer le mode sombre"
+    switchToLight: "Activer le mode clair"
+  error:
+    title: "Page introuvable"
+    description: "La page demandée n’existe pas ou n’est plus disponible."
+
 cv:
   name: "Wissem Badraoui"
   hero:
+    avatarAlt: "Signature visuelle de Wissem Badraoui"
     status: "Étudiant à IMT Nord Europe, en deuxième année du cycle préparatoire intégré (BAC+2)"
     objective: "Recherche un stage technique de 8 à 12 semaines à partir de début juin 2026"
     description: "Je m’intéresse à l’informatique, aux systèmes logiciels, au traitement de données et aux outils utiles aux équipes techniques."
     secondaryCtaLabel: "Me contacter"
     secondaryCtaTo: "/contact"
+  resume:
+    label: "Télécharger le CV (PDF)"
+    href: "/files/74b87337454200d4d33f80c4663dc5e5.pdf"
+    filename: "CV_Wissem_BADRAOUI.pdf"
+    downloadStartedMessage: "Le téléchargement du CV a démarré."
   about:
     title: "Profil"
     paragraphs:
@@ -67,54 +87,77 @@ cv:
           - "Mention Très Bien."
           - "Spécialités Mathématiques et Physique-Chimie."
   skills:
-      title: "Compétences"
-      groups:
-          - title: "Langages"
-            description: "Langages utilisés pour le développement applicatif."
-            items: [ "C", "Python", "TypeScript", "JavaScript", "VBA", "SQL" ]
-          - title: "Web"
-            description: "Développement d’applications web avec l’écosystème JavaScript."
-            items: [ "Nuxt", "Vue.js", "Node.js", "Express" ]
-          - title: "Données"
-            description: "Stockage, requêtes et traitement de données applicatives."
-            items: [ "PostgreSQL", "MySQL", "MongoDB", "Prisma" ]
-          - title: "Infrastructure"
-            description: "Serveurs, conteneurisation et déploiement d’applications."
-            items: [ "Linux", "Docker", "VPS", "Dokploy", "CI/CD" ]
-          - title: "Automatisation"
-            description: "Scripts pour automatiser des traitements et tâches techniques."
-            items: [ "Python", "Excel VBA", "Parsing", "CLI" ]
-          - title: "Outils"
-            description: "Outils utilisés pour développer, tester et collaborer sur les projets."
-            items: [ "Git", "Postman", "JetBrains", "Jira" ]
+    title: "Compétences"
+    groups:
+      - title: "Langages"
+        description: "Langages utilisés pour le développement applicatif."
+        items: [ "C", "Python", "TypeScript", "JavaScript", "VBA", "SQL" ]
+      - title: "Web"
+        description: "Développement d’applications web avec l’écosystème JavaScript."
+        items: [ "Nuxt", "Vue.js", "Node.js", "Express" ]
+      - title: "Données"
+        description: "Stockage, requêtes et traitement de données applicatives."
+        items: [ "PostgreSQL", "MySQL", "MongoDB", "Prisma" ]
+      - title: "Infrastructure"
+        description: "Serveurs, conteneurisation et déploiement d’applications."
+        items: [ "Linux", "Docker", "VPS", "Dokploy", "CI/CD" ]
+      - title: "Automatisation"
+        description: "Scripts pour automatiser des traitements et tâches techniques."
+        items: [ "Python", "Excel VBA", "Parsing", "CLI" ]
+      - title: "Outils"
+        description: "Outils utilisés pour développer, tester et collaborer sur les projets."
+        items: [ "Git", "Postman", "JetBrains", "Jira" ]
   projects:
     title: "Quelques projets"
+    description: "Une sélection de projets personnels et techniques réalisés en parallèle de mon parcours."
     featured: ["parcourtime", "password-manager"]
+    actions:
+      view: "Voir le projet"
+      repo: "Accéder au code"
+      private: "Accès privé"
   languages:
-      title: "Langues"
-      items:
-          -   name: "Français"
-              level: "Langue maternelle"
-              value: 100
-          -   name: "Anglais"
-              level: "B2"
-              value: 70
-          -   name: "Espagnol"
-              level: "A2"
-              value: 35
+    title: "Langues"
+    items:
+      - name: "Français"
+        level: "Langue maternelle"
+        value: 100
+      - name: "Anglais"
+        level: "B2"
+        value: 70
+      - name: "Espagnol"
+        level: "A2"
+        value: 35
 
   interests:
-      title: "Centres d’intérêt"
-      items: [ "Cinéma", "Jeux vidéo", "Natation", "Voyages", "Technologie" ]
+    title: "Centres d’intérêt"
+    items: [ "Cinéma", "Jeux vidéo", "Natation", "Voyages", "Technologie" ]
   contact:
-      title: "Contact"
-      description: "Pour une candidature de stage, un échange ou l’envoi d’informations complémentaires."
-      email: "contact@wissem.pro"
-      linkedin: "https://linkedin.com/in/WissemBadraoui"
-      github: "https://github.com/WissemBad"
-      location: "Île-de-France · Métropole lilloise"
-      links:
-          -   label: "Email"
-              value: "contact@wissem.pro"
-              to: "mailto:contact@wissem.pro"
-              icon: "i-lucide-mail"
+    title: "Contact"
+    description: "Pour une candidature de stage, un échange ou l’envoi d’informations complémentaires."
+    locationLabel: "Localisation"
+    location: "Île-de-France · Métropole lilloise"
+    directLinkIds: ["email"]
+    heroLinkIds: ["linkedin", "github", "website"]
+    primaryLinkIds: ["linkedin", "github"]
+    footerLinkIds: ["email", "linkedin", "github", "website"]
+    links:
+      - id: "email"
+        label: "Email"
+        value: "contact@wissem.pro"
+        to: "mailto:contact@wissem.pro"
+        icon: "i-lucide-mail"
+      - id: "linkedin"
+        label: "LinkedIn"
+        value: "linkedin.com/WissemBadraoui"
+        to: "https://linkedin.com/in/WissemBadraoui"
+        icon: "i-simple-icons-linkedin"
+      - id: "github"
+        label: "GitHub"
+        value: "github.com/WissemBad"
+        to: "https://github.com/WissemBad"
+        icon: "i-simple-icons-github"
+      - id: "website"
+        label: "Site web"
+        value: "www.wissem.pro"
+        to: "https://www.wissem.pro"
+        icon: "i-lucide-globe"

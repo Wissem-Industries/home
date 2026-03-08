@@ -1,8 +1,10 @@
 <script setup lang="ts">
-const { footer } = useAppConfig()
-const content = useSiteContent()
+import { getLinkTarget, isExternalLink } from '~/utils/links'
 
-const footerLinks = computed(() => content.value.cv.contact.links)
+const content = useSiteContent()
+const { footerLinks } = useContactLinks()
+
+const footerCredits = computed(() => `© ${new Date().getFullYear()} ${content.value.ui.footer.creditsSuffix}`)
 </script>
 
 <template>
@@ -11,19 +13,20 @@ const footerLinks = computed(() => content.value.cv.contact.links)
 		:ui="{ left: 'text-muted text-xs' }"
 	>
 		<template #left>
-			{{ footer.credits }}
+			{{ footerCredits }}
 		</template>
 
 		<template #right>
 			<UButton
 				v-for="link in footerLinks"
-				:key="link.to"
+				:key="link.id"
 				size="sm"
 				color="neutral"
 				variant="ghost"
 				:icon="link.icon"
 				:to="link.to"
-				:target="link.to.startsWith('http') ? '_blank' : undefined"
+				:external="isExternalLink(link.to)"
+				:target="getLinkTarget(link.to)"
 				:aria-label="link.label"
 			/>
 		</template>

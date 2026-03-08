@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const colorMode = useColorMode()
 const locale = useSiteLocale()
+const content = useSiteContent()
 
 const color = computed(() => colorMode.value === 'dark' ? '#020618' : 'white')
 
@@ -20,9 +21,12 @@ useHead({
 
 useSeoMeta({
 	titleTemplate: '%s • Wissem.',
-	ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/portfolio-light.png',
-	twitterImage: 'https://ui.nuxt.com/assets/templates/nuxt/portfolio-light.png',
-	twitterCard: 'summary_large_image'
+	applicationName: 'Wissem.',
+	ogSiteName: 'Wissem.',
+	ogLocale: () => locale.value === 'fr' ? 'fr_FR' : undefined,
+	description: () => content.value.pages.home.seo?.description || content.value.pages.home.description,
+	ogDescription: () => content.value.pages.home.seo?.description || content.value.pages.home.description,
+	twitterCard: 'summary'
 })
 </script>
 

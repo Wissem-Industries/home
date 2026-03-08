@@ -8,16 +8,19 @@ defineProps({
 	}
 })
 
+const content = useSiteContent()
+const errorContent = computed(() => content.value.ui.error)
+
 useHead({
 	htmlAttrs: {
 		lang: 'fr'
 	}
 })
 
-useSeoMeta({
-	title: 'Page Not Found - 404',
-	description: 'We are sorry but this page could not be found.'
-})
+usePageSeo(computed(() => ({
+	title: errorContent.value.title,
+	description: errorContent.value.description
+})))
 </script>
 
 <template>

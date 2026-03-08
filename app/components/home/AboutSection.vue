@@ -6,14 +6,7 @@ defineProps<{
 </script>
 
 <template>
-	<UPageSection
-		:title="title"
-		:ui="{
-			container: '!pt-0 !pb-16 !gap-6',
-			title: 'text-left text-xl sm:text-xl lg:text-2xl font-medium',
-			description: 'text-left text-sm sm:text-base text-muted'
-		}"
-	>
+	<UPageSection :title="title">
 		<template #description>
 			<div class="space-y-4">
 				<p

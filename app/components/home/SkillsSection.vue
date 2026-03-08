@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { revealInitial, revealTransition, revealVisible, inViewOptions } = useMotionPresets()
+
 type SkillsGroup = {
 	title: string
 	description: string
@@ -12,37 +14,38 @@ defineProps<{
 </script>
 
 <template>
-	<UPageSection
-		:title="title"
-		:ui="{
-			container: '!pt-0 !pb-16 !gap-6',
-			title: 'text-left text-xl sm:text-xl lg:text-2xl font-medium'
-		}"
-	>
-		<UPageGrid class="lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5">
+	<UPageSection :title="title">
+		<UPageGrid class="gap-4 sm:gap-5 lg:grid-cols-2 xl:grid-cols-3">
 			<Motion
 				v-for="(group, index) in groups"
 				:key="group.title"
-				:initial="{ opacity: 0, transform: 'translateY(20px)' }"
-				:while-in-view="{ opacity: 1, transform: 'translateY(0)' }"
-				:transition="{ delay: 0.05 * index }"
-				:in-view-options="{ once: true }"
+				:initial="revealInitial"
+				:while-in-view="revealVisible"
+				:transition="revealTransition(index)"
+				:in-view-options="inViewOptions"
 				class="h-full"
 			>
 				<UCard
 					class="h-full"
 					:ui="{
 						root: 'h-full rounded-2xl flex flex-col',
-						header: 'p-5 sm:p-6 pb-2 sm:pb-3 flex flex-col items-center justify-center text-center',
-						body: 'px-5 sm:px-6 pb-5 sm:pb-6 flex-1 flex items-center justify-center'
+						header: 'p-5 sm:p-6 pb-2 sm:pb-3',
+						body: 'px-5 sm:px-6 pb-5 sm:pb-6 pt-0 flex-1'
 					}"
 				>
 					<template #header>
-						<h3 class="text-base font-medium text-highlighted text-center">{{ group.title }}</h3>
-						<p class="text-sm leading-6 text-muted text-center">{{ group.description }}</p>
+						<div class="space-y-2">
+							<h3 class="text-base font-medium text-highlighted">
+								{{ group.title }}
+							</h3>
+
+							<p class="text-sm leading-6 text-muted">
+								{{ group.description }}
+							</p>
+						</div>
 					</template>
 
-					<div class="flex flex-wrap items-center justify-center gap-2">
+					<div class="flex flex-wrap gap-2">
 						<UBadge
 							v-for="item in group.items"
 							:key="`${group.title}-${item}`"
