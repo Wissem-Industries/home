@@ -1,8 +1,5 @@
 # syntax=docker/dockerfile:1.7
-
-ARG BUN_VERSION=1.3.11
-
-FROM oven/bun:${BUN_VERSION} AS base
+FROM oven/bun:alpine AS base
 WORKDIR /app
 
 FROM base AS deps
@@ -14,7 +11,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN bun run build
 
-FROM oven/bun:${BUN_VERSION} AS runtime
+FROM oven/bun:alpine AS runtime
 WORKDIR /app
 
 ENV NODE_ENV=production
@@ -28,5 +25,4 @@ COPY --from=build --chown=bun:bun /app/.output ./.output
 USER bun
 
 EXPOSE 3000
-
 CMD ["bun", ".output/server/index.mjs"]
