@@ -2,37 +2,23 @@
 import { downloadFile } from '~/utils/download'
 
 const { profile } = useAppConfig()
-
-const { data: page } = await useAsyncData('home', () => {
-	return queryCollection('home').first()
-})
-
-const { data: cv } = await useCvContent()
-
-const { data: projects } = await useAsyncData('projects', () => {
-	return queryCollection('projects').all()
-})
-
-if (!page.value || !cv.value) {
-	throw createError({
-		statusCode: 404,
-		statusMessage: 'Page not found',
-		fatal: true
-	})
-}
+const content = useSiteContent()
+const page = computed(() => content.value.pages.home)
+const cv = computed(() => content.value.cv)
+const projects = computed(() => content.value.projects)
 
 const featuredProjects = computed(() => {
-	const featuredIds = new Set(cv.value?.projects.featured || [])
-	return (projects.value || []).filter(project => featuredIds.has(project.id))
+	const featuredIds = new Set(cv.value.projects.featured)
+	return projects.value.filter(project => featuredIds.has(project.id))
 })
 
-const publicLinks = computed(() => cv.value?.contact.links || [])
+const publicLinks = computed(() => cv.value.contact.links)
 
 useSeoMeta({
-	title: page.value?.seo.title || page.value?.title,
-	ogTitle: page.value?.seo.title || page.value?.title,
-	description: page.value?.seo.description || page.value?.description,
-	ogDescription: page.value?.seo.description || page.value?.description
+	title: page.value.seo?.title || page.value.title,
+	ogTitle: page.value.seo?.title || page.value.title,
+	description: page.value.seo?.description || page.value.description,
+	ogDescription: page.value.seo?.description || page.value.description
 })
 </script>
 

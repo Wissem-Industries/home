@@ -2,11 +2,19 @@
 type ExperienceItem = {
 	title: string
 	organization: string
-	type: string
 	period: string
 	location?: string
+	thumbnail?: string
 	url?: string
 	bullets: string[]
+}
+
+function getThumbnailSrc(thumbnail?: string) {
+	if (!thumbnail) {
+		return null
+	}
+
+	return thumbnail.startsWith('/') ? thumbnail : `/${thumbnail}`
 }
 
 defineProps<{
@@ -19,7 +27,7 @@ defineProps<{
 	<UPageSection
 		:title="title"
 		:ui="{
-			container: '!pt-0',
+			container: '!pb-16 !gap-8 pt-0',
 			title: 'text-left text-xl sm:text-xl lg:text-2xl font-medium'
 		}"
 	>
@@ -39,26 +47,23 @@ defineProps<{
 				<div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
 					<div class="max-w-3xl space-y-3">
 						<div class="space-y-1">
-							<p class="text-xs uppercase tracking-wide text-muted">
-								{{ experience.type }}
-							</p>
-							<h3 class="text-base font-medium text-highlighted">
-								{{ experience.title }}
-							</h3>
 							<ULink
 								v-if="experience.url"
 								:to="experience.url"
 								target="_blank"
-								class="text-sm text-primary hover:underline"
+								class="text-xs font-medium uppercase tracking-[0.18em] text-muted transition-colors hover:text-highlighted"
 							>
 								{{ experience.organization }}
 							</ULink>
 							<p
 								v-else
-								class="text-sm font-medium"
+								class="text-xs font-medium uppercase tracking-[0.18em] text-muted"
 							>
 								{{ experience.organization }}
 							</p>
+							<h3 class="text-base font-medium text-highlighted">
+								{{ experience.title }}
+							</h3>
 						</div>
 
 						<ul class="space-y-2 text-sm text-muted">
@@ -73,11 +78,38 @@ defineProps<{
 						</ul>
 					</div>
 
-					<div class="shrink-0 space-y-1 text-sm text-muted lg:text-right">
-						<p>{{ experience.period }}</p>
-						<p v-if="experience.location">
-							{{ experience.location }}
-						</p>
+					<div class="shrink-0 lg:pl-6">
+						<div class="flex items-start gap-3 lg:justify-end">
+							<img
+								v-if="experience.thumbnail"
+								:src="getThumbnailSrc(experience.thumbnail) || undefined"
+								:alt="`Logo ${experience.organization}`"
+								loading="lazy"
+								decoding="async"
+								class="size-11 rounded-xl border border-default bg-default/30 object-contain p-1.5"
+							>
+
+							<div class="space-y-1 text-sm text-muted">
+								<p class="flex items-center gap-2 lg:justify-end">
+									<UIcon
+										name="i-lucide-calendar-range"
+										class="size-4 shrink-0 text-primary/80"
+									/>
+									<span>{{ experience.period }}</span>
+								</p>
+
+								<p
+									v-if="experience.location"
+									class="flex items-center gap-2 lg:justify-end"
+								>
+									<UIcon
+										name="i-lucide-map-pin"
+										class="size-4 shrink-0 text-primary/80"
+									/>
+									<span>{{ experience.location }}</span>
+								</p>
+							</div>
+						</div>
 					</div>
 				</div>
 			</Motion>

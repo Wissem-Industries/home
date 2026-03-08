@@ -9,26 +9,15 @@ type ContactItem = {
 	to?: string
 	target?: string
 }
-
-const { data: page } = await useAsyncData('contact-page', () => {
-	return queryCollection('pageMeta').path('/contact').first()
-})
-
-const { data: cv } = await useCvContent()
-
-if (!page.value || !cv.value) {
-	throw createError({
-		statusCode: 404,
-		statusMessage: 'Page not found',
-		fatal: true
-	})
-}
+const content = useSiteContent()
+const page = computed(() => content.value.pages.contact)
+const cv = computed(() => content.value.cv)
 
 useSeoMeta({
-	title: page.value?.seo?.title || page.value?.title,
-	ogTitle: page.value?.seo?.title || page.value?.title,
-	description: page.value?.seo?.description || page.value?.description,
-	ogDescription: page.value?.seo?.description || page.value?.description
+	title: page.value.seo?.title || page.value.title,
+	ogTitle: page.value.seo?.title || page.value.title,
+	description: page.value.seo?.description || page.value.description,
+	ogDescription: page.value.seo?.description || page.value.description
 })
 
 const state = reactive<ContactFormData>(createEmptyContactForm())
@@ -39,10 +28,10 @@ const contactItems = computed<ContactItem[]>(() => {
 	const locationItem: ContactItem = {
 		icon: 'i-lucide-map-pin',
 		label: 'Localisation',
-		value: cv.value?.contact.location || ''
+		value: cv.value.contact.location
 	}
 
-	const publicLinks = (cv.value?.contact.links || []).map(link => ({
+	const publicLinks = cv.value.contact.links.map(link => ({
 		icon: link.icon,
 		label: link.label,
 		value: link.value,

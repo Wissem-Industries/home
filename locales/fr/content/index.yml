@@ -1,0 +1,119 @@
+pages:
+  home:
+    title: "Portfolio"
+    description: "Portfolio de Wissem Badraoui, étudiant à IMT Nord Europe en deuxième année du cycle préparatoire intégré (BAC+2), à la recherche d’un stage technique pour l’été 2026."
+    seo:
+      title: "Portfolio"
+      description: "CV et portfolio en ligne de Wissem Badraoui, étudiant à IMT Nord Europe en deuxième année du cycle préparatoire intégré (BAC+2)."
+  projects:
+    title: "Projets"
+    description: "Une sélection de projets personnels et techniques réalisés en parallèle de mon parcours, avec un accent sur les outils utiles, les interfaces web et les environnements concrets."
+    seo:
+      title: "Projets"
+      description: "Projets personnels et techniques de Wissem Badraoui."
+
+cv:
+  name: "Wissem Badraoui"
+  hero:
+    status: "Étudiant à IMT Nord Europe, en deuxième année du cycle préparatoire intégré (BAC+2)"
+    objective: "Recherche un stage technique de 8 à 12 semaines à partir de début juin 2026"
+    description: "Je m’intéresse à l’informatique, aux systèmes logiciels, au traitement de données et aux outils utiles aux équipes techniques."
+    secondaryCtaLabel: "Me contacter"
+    secondaryCtaTo: "/contact"
+  about:
+    title: "Profil"
+    paragraphs:
+      - "Je m’intéresse aux projets où l’on part d’un besoin concret pour améliorer un outil existant, fiabiliser un traitement ou rendre un usage plus simple pour une équipe."
+      - "Je recherche un stage technique pour apprendre au contact d’un environnement de travail réel, contribuer à des développements utiles et consolider mes bases en informatique, en traitement de données et en implémentation."
+  experience:
+    title: "Expériences"
+    items:
+      - title: "Stage technique"
+        organization: "Nidec Leroy-Somer"
+        period: "2025 · 6 semaines"
+        location: "Angoulême"
+        thumbnail: "/images/leroy-somer-logo.png"
+        bullets:
+          - "Analysé les besoins liés à un outil interne utilisé par des techniciens et des ingénieurs."
+          - "Amélioré les traitements de données et les méthodes de calcul pour rendre l’outil plus fiable."
+          - "Redessiné l’interface Excel afin d’en améliorer la lisibilité et l’usage au quotidien."
+          - "Développé de nouvelles fonctionnalités en VBA puis validé les résultats à partir de données réelles."
+      - title: "Contribution technique bénévole"
+        organization: "Rubik’s Network"
+        period: "2020 – présent"
+        location: "À distance"
+        bullets:
+          - "Préparé des mises à jour et coordonné l’avancement de sujets liés à la plateforme."
+          - "Rédigé des spécifications et échangé avec développeurs, designers et contributeurs."
+          - "Contribué au développement de fonctionnalités ou de systèmes liés à la plateforme."
+          - "Assuré un support utilisateur et participé au traitement ainsi qu’à la priorisation des problèmes signalés."
+  education:
+    title: "Formation"
+    items:
+      - institution: "IMT Nord Europe"
+        title: "Cycle préparatoire intégré, 2e année (BAC+2)"
+        period: "2024 – présent"
+        location: "Lille"
+        details:
+          - "Formation générale en mathématiques, physique et informatique."
+          - "Travaux de groupe et projets collaboratifs."
+          - "Premières bases en gestion de projet."
+      - institution: "Lycée Saint-Paul"
+        title: "Baccalauréat général, mention Très Bien"
+        period: "2021 – 2024"
+        location: "Angoulême"
+        details:
+          - "Spécialités Mathématiques et Physique-Chimie."
+  skills:
+    title: "Compétences"
+    groups:
+      - title: "Programmation"
+        items: ["Python", "JavaScript", "VBA", "Lua", "C"]
+      - title: "Développement web"
+        items: ["Node.js", "TypeScript", "Vue.js", "Express.js"]
+      - title: "Bases de données"
+        items: ["MySQL", "PostgreSQL", "Prisma", "MongoDB"]
+      - title: "DevOps & infrastructure"
+        items: ["Linux", "Docker", "VPS", "Dokploy CI/CD"]
+      - title: "Outils & plateformes"
+        items: ["JetBrains IDEs", "Git", "Postman", "Office 365"]
+      - title: "Collaboration"
+        items: ["Trello", "Milanote", "Jira", "GitHub", "GitLab"]
+  projects:
+    title: "Quelques projets"
+    description: "Une sélection courte de projets personnels et techniques présentables publiquement."
+    featured: ["parcourtime", "password-manager"]
+  languages:
+    title: "Langues"
+    items:
+      - name: "Français"
+        level: "Langue maternelle"
+      - name: "Anglais"
+        level: "B2"
+      - name: "Espagnol"
+        level: "A2"
+  interests:
+    title: "Centres d’intérêt"
+    items: ["Cinéma", "Informatique", "Jeux vidéo", "Natation"]
+  contact:
+    title: "Contact"
+    description: "Pour une candidature de stage, un échange ou l’envoi d’informations complémentaires."
+    email: "contact@wissem.pro"
+    location: "Île-de-France / métropole lilloise"
+    links:
+      - label: "Email"
+        value: "contact@wissem.pro"
+        to: "mailto:contact@wissem.pro"
+        icon: "i-lucide-mail"
+      - label: "LinkedIn"
+        value: "linkedin.com/in/WissemBadraoui"
+        to: "https://linkedin.com/in/WissemBadraoui"
+        icon: "i-simple-icons-linkedin"
+      - label: "GitHub"
+        value: "github.com/WissemBad"
+        to: "https://github.com/WissemBad"
+        icon: "i-simple-icons-github"
+      - label: "Site web"
+        value: "www.wissem.pro"
+        to: "https://www.wissem.pro"
+        icon: "i-lucide-globe"

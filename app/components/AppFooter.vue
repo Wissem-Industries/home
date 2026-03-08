@@ -1,8 +1,8 @@
 <script setup lang="ts">
 const { footer } = useAppConfig()
-const { data: cv } = await useCvContent()
+const content = useSiteContent()
 
-const footerLinks = computed(() => cv.value?.contact.links || [])
+const footerLinks = computed(() => content.value.cv.contact.links)
 </script>
 
 <template>

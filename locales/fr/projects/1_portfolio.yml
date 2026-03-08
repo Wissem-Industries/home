@@ -1,0 +1,7 @@
+id: "personal-portfolio"
+title: "Portfolio personnel"
+description: "Site personnel développé avec Nuxt et Nuxt UI pour présenter mon parcours, mes projets et mon CV en ligne."
+image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1470&q=80"
+url: "https://www.wissem.pro"
+tags: ["Nuxt", "Vue", "Nuxt UI", "Portfolio"]
+date: "2025-01-01"

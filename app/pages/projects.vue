@@ -1,25 +1,13 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData('projects-page', () => {
-	return queryCollection('pageMeta').path('/projects').first()
-})
-
-if (!page.value) {
-	throw createError({
-		statusCode: 404,
-		statusMessage: 'Page not found',
-		fatal: true
-	})
-}
-
-const { data: projects } = await useAsyncData('projects', () => {
-	return queryCollection('projects').all()
-})
+const content = useSiteContent()
+const page = computed(() => content.value.pages.projects)
+const projects = computed(() => content.value.projects)
 
 useSeoMeta({
-	title: page.value?.seo?.title || page.value?.title,
-	ogTitle: page.value?.seo?.title || page.value?.title,
-	description: page.value?.seo?.description || page.value?.description,
-	ogDescription: page.value?.seo?.description || page.value?.description
+	title: page.value.seo?.title || page.value.title,
+	ogTitle: page.value.seo?.title || page.value.title,
+	description: page.value.seo?.description || page.value.description,
+	ogDescription: page.value.seo?.description || page.value.description
 })
 </script>
 

@@ -8,17 +8,16 @@ export default (): NuxtConfig => {
 		modules: [
 			'@nuxt/eslint',
 			'@nuxt/ui',
-			'@nuxt/content',
 			'motion-v/nuxt',
 			'@nuxtjs/plausible'
 		],
 
 		devtools: { enabled: false },
+		devServer: {
+			host: '127.0.0.1'
+		},
 
 		css: ['~/assets/css/main.css'],
-
-		// Nuxt Content's `native` connector targets Node's `node:sqlite`.
-		content: isBun ? {} : { experimental: { sqliteConnector: 'native' } },
 
 		runtimeConfig: {
 			smtpHost: process.env.SMTP_HOST,

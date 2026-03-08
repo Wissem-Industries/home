@@ -14,8 +14,8 @@ export default defineAppConfig({
 	}],
 	profile: {
 		picture: {
-			dark: 'images/Logo_White.svg',
-			light: 'images/Logo_Black.svg',
+			dark: '/images/Logo_White.svg',
+			light: '/images/Logo_Black.svg',
 			alt: 'Signature visuelle de Wissem Badraoui'
 		},
 		cv: {
