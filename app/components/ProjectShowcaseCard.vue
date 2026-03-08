@@ -25,7 +25,7 @@ const projectYear = computed(() => props.project.date.split('-')[0] || props.pro
 		:reverse="reverse"
 		:ui="{
 			root: 'h-full rounded-2xl',
-			container: 'h-full items-stretch gap-5 sm:gap-6',
+			container: 'h-full items-stretch gap-4 sm:gap-6',
 			wrapper: 'max-sm:order-last',
 			footer: 'pt-4'
 		}"
@@ -48,7 +48,7 @@ const projectYear = computed(() => props.project.date.split('-')[0] || props.pro
 				/>
 			</div>
 
-			<div class="mt-3 flex flex-wrap items-center gap-3">
+			<div class="mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
 				<UButton
 					v-if="project.url"
 					variant="outline"
@@ -58,6 +58,7 @@ const projectYear = computed(() => props.project.date.split('-')[0] || props.pro
 					:to="project.url"
 					:external="isExternalLink(project.url)"
 					:target="getLinkTarget(project.url)"
+					class="w-full justify-center sm:w-auto"
 				/>
 
 				<UButton
@@ -70,6 +71,7 @@ const projectYear = computed(() => props.project.date.split('-')[0] || props.pro
 					:to="project.repo"
 					:external="isExternalLink(project.repo)"
 					:target="getLinkTarget(project.repo)"
+					class="w-full justify-center sm:w-auto"
 				/>
 
 				<UButton
@@ -79,6 +81,7 @@ const projectYear = computed(() => props.project.date.split('-')[0] || props.pro
 					size="sm"
 					:label="actions.private"
 					icon="i-lucide-lock"
+					class="w-full justify-center sm:w-auto"
 					disabled
 				/>
 			</div>
@@ -91,7 +94,7 @@ const projectYear = computed(() => props.project.date.split('-')[0] || props.pro
 			:fetchpriority="eagerImage ? 'high' : 'auto'"
 			decoding="async"
 			referrerpolicy="no-referrer"
-			class="h-56 w-full rounded-xl object-cover "
+			class="h-44 w-full rounded-xl object-cover sm:h-56"
 		>
 	</UPageCard>
 </template>

@@ -21,16 +21,23 @@ const navigationItems = computed(() => {
 </script>
 
 <template>
-	<div class="fixed inset-x-0 top-3 z-20 flex justify-center px-4 sm:top-4">
+	<div class="fixed inset-x-0 top-2 z-20 flex justify-center px-3 sm:top-4 sm:px-4">
 		<UNavigationMenu
 			:items="navigationItems"
 			variant="link"
 			color="neutral"
-			class="max-w-max rounded-full border border-muted/50 bg-muted/40 px-2 shadow-lg shadow-neutral-950/5 backdrop-blur-sm sm:px-4"
-			:ui="{ link: 'px-3 py-1', linkLeadingIcon: 'hidden' }"
+			class="max-w-full rounded-full border border-muted/50 bg-muted/40 px-1.5 shadow-lg shadow-neutral-950/5 backdrop-blur-sm sm:px-4"
+			:ui="{
+				list: 'gap-0.5 sm:gap-1',
+				link: 'px-2.5 py-1.5 text-xs sm:px-3 sm:py-1 sm:text-sm',
+				linkLeadingIcon: 'size-4 shrink-0 sm:hidden',
+				linkLabel: 'hidden sm:inline'
+			}"
 		>
 			<template #list-trailing>
-				<ColorModeButton />
+				<div class="pl-0.5 sm:pl-1">
+					<ColorModeButton />
+				</div>
 			</template>
 		</UNavigationMenu>
 	</div>

@@ -12,14 +12,14 @@ export default defineAppConfig({
 		},
 		pageHero: {
 			slots: {
-				container: '!pt-18 !sm:pt-24 !pb-12 !gap-4',
+				container: '!pt-16 !pb-10 !gap-4 !sm:pt-24 !sm:pb-12',
 				title: 'mx-auto max-w-xl text-pretty text-3xl sm:text-4xl lg:text-5xl',
 				description: 'mt-2 text-md mx-auto max-w-2xl text-pretty sm:text-md text-muted'
 			}
 		},
 		pageSection: {
 			slots: {
-				container: '!pt-0 !pb-16 !gap-6',
+				container: '!pt-0 !pb-14 !gap-5 !sm:pb-16 !sm:gap-6',
 				title: 'text-left text-xl sm:text-xl lg:text-2xl font-medium',
 				description: 'text-left text-sm sm:text-base leading-7 text-muted',
 				links: 'justify-start'

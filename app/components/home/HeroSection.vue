@@ -34,131 +34,131 @@ function onDownloadResume() {
 </script>
 
 <template>
-	<div class="py-24 sm:py-40">
-	<UPageHero
-		:ui="{
-			headline: 'flex items-center justify-center',
-			title: 'text-shadow-md max-w-lg mx-auto',
-			links: 'mt-6 flex-col items-center gap-4'
-		}"
-	>
-		<template #headline>
-			<Motion
-				:initial="heroInitial"
-				:animate="heroVisible"
-				:transition="heroTransition(0.05)"
-			>
-				<picture>
-					<source
-						media="(prefers-color-scheme: dark)"
-						:srcset="profile.picture.dark"
-					>
-					<img
-						class="size-24 object-cover"
-						:src="profile.picture.light"
-						:alt="avatarAlt"
-						width="96"
-						height="96"
-						loading="eager"
-						fetchpriority="high"
-						decoding="async"
-					>
-				</picture>
-			</Motion>
-		</template>
-
-		<template #title>
-			<Motion
-				:initial="heroInitial"
-				:animate="heroVisible"
-				:transition="heroTransition(0.1)"
-			>
-				{{ name }}
-			</Motion>
-		</template>
-
-		<template #description>
-			<Motion
-				:initial="heroInitial"
-				:animate="heroVisible"
-				:transition="heroTransition(0.16)"
-			>
-				<div class="mx-auto max-w-2xl space-y-2">
-					<p class="text-sm font-medium text-highlighted sm:text-base">
-						{{ status }}
-					</p>
-
-					<p class="text-sm text-toned sm:text-base">
-						{{ objective }}
-					</p>
-
-					<p class="text-sm text-muted sm:text-base">
-						{{ description }}
-					</p>
-				</div>
-			</Motion>
-		</template>
-
-		<template #links>
-			<Motion
-				:initial="heroInitial"
-				:animate="heroVisible"
-				:transition="heroTransition(0.24)"
-			>
-				<div class="flex items-center gap-2">
-					<UButton
-						class="cursor-pointer"
-						:label="resumeLabel"
-						color="neutral"
-						icon="i-carbon-download"
-						variant="subtle"
-						@click="onDownloadResume"
-					/>
-
-					<UButton
-						:color="'success'"
-						variant="ghost"
-						class="gap-2"
-						:to="secondaryCtaTo"
-						:label="secondaryCtaLabel"
-					>
-						<template #leading>
-							<span class="relative flex size-2">
-								<span
-									class="absolute inline-flex size-full rounded-full opacity-75"
-									:class="'bg-success animate-ping'"
-								/>
-								<span
-									class="relative inline-flex size-2 scale-90 rounded-full"
-									:class="'bg-success'"
-								/>
-							</span>
-						</template>
-					</UButton>
-				</div>
-			</Motion>
-
-			<div class="mt-2 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+	<div class="py-18 sm:py-40">
+		<UPageHero
+			:ui="{
+				headline: 'flex items-center justify-center',
+				title: 'text-shadow-md max-w-lg mx-auto',
+				links: 'mt-6 flex-col items-stretch gap-4 sm:items-center'
+			}"
+		>
+			<template #headline>
 				<Motion
-					v-for="(link, index) of links"
-					:key="link.id"
 					:initial="heroInitial"
 					:animate="heroVisible"
-					:transition="heroTransition(0.3 + index * 0.06)"
+					:transition="heroTransition(0.05)"
 				>
-					<UButton
-						size="xl"
-						color="neutral"
-						variant="ghost"
-						:icon="link.icon"
-						:to="link.to"
-						:external="isExternalLink(link.to)"
-						:target="getLinkTarget(link.to)"
-						:aria-label="link.label"
-					/>
+					<picture>
+						<source
+							media="(prefers-color-scheme: dark)"
+							:srcset="profile.picture.dark"
+						>
+						<img
+							class="size-24 object-cover"
+							:src="profile.picture.light"
+							:alt="avatarAlt"
+							width="96"
+							height="96"
+							loading="eager"
+							fetchpriority="high"
+							decoding="async"
+						>
+					</picture>
 				</Motion>
-			</div>
-		</template>
-	</UPageHero>
+			</template>
+
+			<template #title>
+				<Motion
+					:initial="heroInitial"
+					:animate="heroVisible"
+					:transition="heroTransition(0.1)"
+				>
+					{{ name }}
+				</Motion>
+			</template>
+
+			<template #description>
+				<Motion
+					:initial="heroInitial"
+					:animate="heroVisible"
+					:transition="heroTransition(0.16)"
+				>
+					<div class="mx-auto max-w-2xl space-y-2">
+						<p class="text-sm font-medium text-highlighted sm:text-base">
+							{{ status }}
+						</p>
+
+						<p class="text-sm text-toned sm:text-base">
+							{{ objective }}
+						</p>
+
+						<p class="text-sm text-muted sm:text-base">
+							{{ description }}
+						</p>
+					</div>
+				</Motion>
+			</template>
+
+			<template #links>
+				<Motion
+					:initial="heroInitial"
+					:animate="heroVisible"
+					:transition="heroTransition(0.24)"
+				>
+					<div class="flex w-full flex-col items-stretch gap-2 sm:w-auto sm:flex-row sm:items-center sm:justify-center">
+						<UButton
+							class="w-full cursor-pointer justify-center sm:w-auto"
+							:label="resumeLabel"
+							color="neutral"
+							icon="i-carbon-download"
+							variant="subtle"
+							@click="onDownloadResume"
+						/>
+
+						<UButton
+							:color="'success'"
+							variant="ghost"
+							class="w-full justify-center gap-2 sm:w-auto"
+							:to="secondaryCtaTo"
+							:label="secondaryCtaLabel"
+						>
+							<template #leading>
+								<span class="relative flex size-2">
+									<span
+										class="absolute inline-flex size-full rounded-full opacity-75"
+										:class="'bg-success animate-ping'"
+									/>
+									<span
+										class="relative inline-flex size-2 scale-90 rounded-full"
+										:class="'bg-success'"
+									/>
+								</span>
+							</template>
+						</UButton>
+					</div>
+				</Motion>
+
+				<div class="mt-3 flex flex-wrap items-center justify-center gap-2.5 sm:mt-2 sm:gap-4">
+					<Motion
+						v-for="(link, index) of links"
+						:key="link.id"
+						:initial="heroInitial"
+						:animate="heroVisible"
+						:transition="heroTransition(0.3 + index * 0.06)"
+					>
+						<UButton
+							size="xl"
+							color="neutral"
+							variant="ghost"
+							:icon="link.icon"
+							:to="link.to"
+							:external="isExternalLink(link.to)"
+							:target="getLinkTarget(link.to)"
+							:aria-label="link.label"
+						/>
+					</Motion>
+				</div>
+			</template>
+		</UPageHero>
 	</div>
 </template>

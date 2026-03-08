@@ -36,7 +36,7 @@ defineProps<{
 				:while-in-view="revealVisible"
 				:transition="revealTransition(index)"
 				:in-view-options="inViewOptions"
-				class="py-6 first:pt-0 last:pb-0"
+				class="py-5 first:pt-0 last:pb-0 sm:py-6"
 			>
 				<div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
 					<div class="max-w-3xl space-y-3">
@@ -67,7 +67,7 @@ defineProps<{
 							<li
 								v-for="bullet in item.bullets"
 								:key="bullet"
-								class="flex gap-2"
+								class="flex gap-2.5"
 							>
 								<span class="mt-1 size-1.5 shrink-0 rounded-full bg-primary/60" />
 								<span>{{ bullet }}</span>
@@ -75,15 +75,15 @@ defineProps<{
 						</ul>
 					</div>
 
-					<div class="shrink-0 lg:pl-6 -translate-y-4 ">
-						<div class="flex flex-col gap-3 lg:items-end">
+					<div class="shrink-0 lg:-translate-y-4 lg:pl-6">
+						<div class="flex items-start gap-3 sm:gap-4 lg:flex-col lg:items-end">
 							<img
 								v-if="item.thumbnail"
 								:src="getThumbnailSrc(item.thumbnail)"
 								:alt="`Logo ${item.eyebrow}`"
 								loading="lazy"
 								decoding="async"
-								class="h-full w-28 rounded-sm bg-default/30"
+								class="h-12 w-auto max-w-[6rem] rounded-md bg-default/30 object-contain sm:h-14 sm:max-w-[7rem] lg:h-auto lg:w-28 lg:max-w-none lg:rounded-sm"
 							>
 
 							<div class="space-y-1 text-sm text-muted lg:text-right">
@@ -92,7 +92,7 @@ defineProps<{
 										name="i-lucide-calendar-range"
 										class="size-4 shrink-0 text-primary/80"
 									/>
-									<span>{{ item.period }}</span>
+									<span class="min-w-0 break-words">{{ item.period }}</span>
 								</p>
 
 								<p
@@ -103,7 +103,7 @@ defineProps<{
 										name="i-lucide-map-pin"
 										class="size-4 shrink-0 text-primary/80"
 									/>
-									<span>{{ item.location }}</span>
+									<span class="min-w-0 break-words">{{ item.location }}</span>
 								</p>
 							</div>
 						</div>

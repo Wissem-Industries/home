@@ -187,7 +187,7 @@ function onDownloadResume() {
 										color="neutral"
 										variant="outline"
 										:icon="link.icon"
-										class="min-w-[140px] flex-1 justify-center sm:flex-none"
+										class="w-full justify-center sm:w-auto sm:min-w-[140px] sm:flex-none"
 										:to="link.to"
 										external
 										target="_blank"
