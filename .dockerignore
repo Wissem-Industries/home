@@ -1,0 +1,17 @@
+.git
+.gitignore
+.idea
+.codex-temp
+.data
+.nuxt
+.output
+.nitro
+.cache
+node_modules
+dist
+logs
+*.log
+.env
+.env.*
+!.env.example
+
