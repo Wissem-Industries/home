@@ -3,14 +3,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "bun scripts/run-runtime.mjs nuxi build",
-    "dev": "bun scripts/run-runtime.mjs nuxi dev",
-    "start": "bun scripts/run-runtime.mjs server",
-    "preview": "bun scripts/run-runtime.mjs nuxi preview",
-    "postinstall": "bun scripts/run-runtime.mjs nuxi prepare",
+    "build": "bun --bun nuxt build",
+    "dev": "bun --bun nuxt dev",
+    "start": "bun .output/server/index.mjs",
+    "preview": "bun --bun nuxt preview",
+    "postinstall": "bun --bun nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "typecheck": "bun scripts/run-runtime.mjs nuxi typecheck"
+    "typecheck": "bun --bun nuxt typecheck"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.96",

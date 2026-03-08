@@ -34,9 +34,9 @@ function onDownloadResume() {
 </script>
 
 <template>
+	<div class="py-24 sm:py-40">
 	<UPageHero
 		:ui="{
-			container: 'py-18 sm:py-24',
 			headline: 'flex items-center justify-center',
 			title: 'text-shadow-md max-w-lg mx-auto',
 			links: 'mt-6 flex-col items-center gap-4'
@@ -160,4 +160,5 @@ function onDownloadResume() {
 			</div>
 		</template>
 	</UPageHero>
+	</div>
 </template>
