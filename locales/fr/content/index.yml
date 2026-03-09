@@ -3,7 +3,7 @@ pages:
         title: "Portfolio"
         description: "Portfolio de Wissem, étudiant à IMT Nord Europe en deuxième année du cycle préparatoire intégré, à la recherche d’un stage technique pour l’été 2026."
         seo:
-            title: "Portfolio · Wissem."
+            title: "Portfolio"
             description: "Mon parcours, mes projets et mon CV en ligne, avec un intérêt pour le développement logiciel, le traitement de données et les outils utiles aux équipes techniques."
 
     projects:

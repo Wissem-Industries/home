@@ -21,8 +21,8 @@ useHead({
 
 useSeoMeta({
 	titleTemplate: '%s • Wissem.',
-	applicationName: 'Wissem.',
-	ogSiteName: 'Wissem.',
+	applicationName: 'Portfolio · Wissem.',
+	ogSiteName: 'Portfolio · Wissem.',
 	ogLocale: () => locale.value === 'fr' ? 'fr_FR' : undefined,
 	description: () => content.value.pages.home.seo?.description || content.value.pages.home.description,
 	ogDescription: () => content.value.pages.home.seo?.description || content.value.pages.home.description,
