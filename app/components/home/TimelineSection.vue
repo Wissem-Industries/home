@@ -75,7 +75,7 @@ defineProps<{
 						</ul>
 					</div>
 
-					<div class="shrink-0 lg:-translate-y-4 lg:pl-6">
+					<div class="shrink-0 lg:-translate-y-3 lg:pl-6">
 						<div class="flex w-full items-start justify-between gap-3 sm:gap-4 lg:flex-col lg:items-end">
 							<img
 								v-if="item.thumbnail"
@@ -86,7 +86,7 @@ defineProps<{
 								class="h-12 w-auto max-w-[6rem] rounded-md bg-default/30 object-contain sm:h-14 sm:max-w-[7rem] lg:h-auto lg:w-28 lg:max-w-none lg:rounded-sm"
 							>
 
-							<div class="ml-auto space-y-1 text-right text-sm text-muted lg:ml-0 lg:text-right">
+							<div class="ml-auto space-y-1 text-right text-sm text-muted lg:ml-0 lg:text-right lg:-translate-y-1">
 								<p class="flex items-center justify-end gap-2">
 									<UIcon
 										name="i-lucide-calendar-range"
