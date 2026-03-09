@@ -10,7 +10,7 @@ const projects = computed(() => content.value.projects)
 const infoCardUi = {
 	root: 'h-full rounded-2xl flex flex-col',
 	header: 'p-5 sm:p-6 pb-3',
-	body: 'px-5 sm:px-6 pb-5 sm:pb-6 pt-0',
+	body: 'px-5 sm:px-6 pb-5 sm:pb-6 pt-3 sm:pt-4',
 	footer: 'my-auto flex justify-center'
 }
 

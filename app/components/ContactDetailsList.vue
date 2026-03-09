@@ -17,7 +17,7 @@ defineProps<{
 </script>
 
 <template>
-	<div class="space-y-3">
+	<div class="space-y-3 pt-1 sm:pt-2">
 		<div class="flex items-start gap-3 rounded-xl border border-default/50 p-3">
 			<div class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
 				<UIcon

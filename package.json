@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "bun --bun nuxt build",
+    "build": "BASELINE_BROWSER_MAPPING_IGNORE_OLD_DATA=true BROWSERSLIST_IGNORE_OLD_DATA=true bun --bun nuxt build",
     "dev": "bun --bun nuxt dev",
     "start": "bun .output/server/index.mjs",
     "preview": "bun --bun nuxt preview",
@@ -16,7 +16,7 @@
     "@iconify-json/lucide": "^1.2.96",
     "@iconify-json/simple-icons": "^1.2.72",
     "@nuxt/ui": "^4.5.1",
-    "@nuxtjs/plausible": "3.0.2",
+    "@nuxtjs/plausible": "^3.0.2",
     "@vueuse/core": "^14.2.1",
     "motion-v": "^2.0.0",
     "nodemailer": "^8.0.1",
@@ -27,7 +27,6 @@
     "@iconify-json/carbon": "^1.2.19",
     "@nuxt/eslint": "^1.15.2",
     "@types/nodemailer": "^7.0.11",
-    "baseline-browser-mapping": "^2.10.0",
     "eslint": "^10.0.3",
     "typescript": "^5.9.3",
     "vue-tsc": "^3.2.5"

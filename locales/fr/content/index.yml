@@ -1,17 +1,17 @@
 pages:
     home:
-        title: "Wissem. · Portfolio"
-        description: "Portfolio de Wissem., étudiant à IMT Nord Europe en deuxième année du cycle préparatoire intégré, à la recherche d’un stage technique pour l’été 2026."
+        title: "Portfolio"
+        description: "Portfolio de Wissem, étudiant à IMT Nord Europe en deuxième année du cycle préparatoire intégré, à la recherche d’un stage technique pour l’été 2026."
         seo:
-            title: "Wissem. · Portfolio et CV"
-            description: "CV et portfolio en ligne de Wissem., étudiant à IMT Nord Europe en deuxième année du cycle préparatoire intégré."
+            title: "Portfolio · Wissem."
+            description: "Mon parcours, mes projets et mon CV en ligne, avec un intérêt pour le développement logiciel, le traitement de données et les outils utiles aux équipes techniques."
 
     projects:
         title: "Projets"
         description: "Une sélection de projets personnels et techniques réalisés en parallèle de mon parcours, avec un intérêt pour les outils utiles, les interfaces web et les environnements concrets."
         seo:
-            title: "Projets · Wissem."
-            description: "Projets personnels et techniques de Wissem."
+            title: "Projets"
+            description: "Mes projets personnels et techniques réalisés en parallèle de mon parcours, avec un intérêt pour les outils utiles, les interfaces web et les environnements concrets."
 
 ui:
     navigation:

@@ -10,7 +10,7 @@ const footerCredits = computed(() => `© ${new Date().getFullYear()} ${content.v
 <template>
 	<UFooter
 		class="z-10 bg-default"
-		:ui="{ left: 'text-muted text-xs' }"
+		:ui="{ root: 'py-4 sm:py-6', left: 'text-muted text-xs' }"
 	>
 		<template #left>
 			<span class="block text-center sm:text-left">

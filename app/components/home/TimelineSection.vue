@@ -76,7 +76,7 @@ defineProps<{
 					</div>
 
 					<div class="shrink-0 lg:-translate-y-4 lg:pl-6">
-						<div class="flex items-start gap-3 sm:gap-4 lg:flex-col lg:items-end">
+						<div class="flex w-full items-start justify-between gap-3 sm:gap-4 lg:flex-col lg:items-end">
 							<img
 								v-if="item.thumbnail"
 								:src="getThumbnailSrc(item.thumbnail)"
@@ -86,8 +86,8 @@ defineProps<{
 								class="h-12 w-auto max-w-[6rem] rounded-md bg-default/30 object-contain sm:h-14 sm:max-w-[7rem] lg:h-auto lg:w-28 lg:max-w-none lg:rounded-sm"
 							>
 
-							<div class="space-y-1 text-sm text-muted lg:text-right">
-								<p class="flex items-center gap-2 lg:justify-end">
+							<div class="ml-auto space-y-1 text-right text-sm text-muted lg:ml-0 lg:text-right">
+								<p class="flex items-center justify-end gap-2">
 									<UIcon
 										name="i-lucide-calendar-range"
 										class="size-4 shrink-0 text-primary/80"
@@ -97,7 +97,7 @@ defineProps<{
 
 								<p
 									v-if="item.location"
-									class="flex items-center gap-2 lg:justify-end"
+									class="flex items-center justify-end gap-2"
 								>
 									<UIcon
 										name="i-lucide-map-pin"

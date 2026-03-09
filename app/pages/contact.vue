@@ -24,14 +24,15 @@ const baseCardUi = {
 
 const sidebarCardUi = {
 	...baseCardUi,
-	body: 'px-5 sm:px-6 pb-5 sm:pb-6 pt-0'
+	root: `${baseCardUi.root} h-full`,
+	body: 'px-5 sm:px-6 pb-5 sm:pb-6 pt-3 sm:pt-4'
 }
 
 const formCardUi = {
 	...baseCardUi,
 	root: `${baseCardUi.root} flex h-full flex-col`,
-	header: 'min-h-[116px] p-5 sm:p-6 pb-4',
-	body: 'px-5 sm:px-6 pb-5 sm:pb-6 pt-0 flex-1'
+	header: 'p-5 sm:p-6 pb-4 sm:min-h-[116px]',
+	body: 'px-5 sm:px-6 pb-5 sm:pb-6 pt-3 sm:pt-4 flex-1'
 }
 
 async function onSubmit(event: FormSubmitEvent<ContactFormData>) {
@@ -85,8 +86,9 @@ async function onSubmit(event: FormSubmitEvent<ContactFormData>) {
 				:in-view-options="inViewOptions"
 			>
 				<div class="mx-auto w-full max-w-5xl">
-					<div class="grid grid-cols-1 gap-5 lg:grid-cols-[320px_minmax(0,1fr)] lg:items-start lg:gap-6">
+					<div class="grid grid-cols-1 gap-5 lg:grid-cols-[340px_minmax(0,1fr)] lg:items-stretch lg:gap-6">
 						<UCard
+							class="h-full"
 							:ui="sidebarCardUi"
 						>
 							<template #header>
