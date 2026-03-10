@@ -66,6 +66,20 @@ function loadSiteContent() {
 	return Object.fromEntries(entries) as Record<SiteLocale, LocaleContent>
 }
 
+function resolvePlausibleDomain() {
+	const explicitDomain = process.env.NUXT_PUBLIC_PLAUSIBLE_DOMAIN?.trim()
+	if (explicitDomain) return explicitDomain
+
+	const siteUrl = process.env.SITE_URL?.trim()
+	if (!siteUrl) return undefined
+
+	try {
+		return new URL(siteUrl).hostname
+	} catch {
+		return undefined
+	}
+}
+
 const siteContent = loadSiteContent()
 const availableSiteLocales = Object.keys(siteContent).sort()
 
@@ -92,11 +106,8 @@ export default (): NuxtConfig => {
 		},
 
 		runtimeConfig: {
-			smtpHost: process.env.SMTP_HOST,
-			smtpPort: process.env.SMTP_PORT,
-			smtpSecure: process.env.SMTP_SECURE,
-			smtpUser: process.env.SMTP_USER,
-			smtpPass: process.env.SMTP_PASS,
+			telegramBotToken: process.env.TELEGRAM_BOT_TOKEN,
+			telegramChatId: process.env.TELEGRAM_CHAT_ID,
 			public: { siteUrl: process.env.SITE_URL }
 		},
 		appConfig: {
@@ -111,11 +122,6 @@ export default (): NuxtConfig => {
 			prerender: {
 				routes: ['/'],
 				crawlLinks: true
-			},
-			routeRules: {
-				'/_plausible/**': {
-					proxy: { to: 'https://analytics.wissem.pro/**' }
-				}
 			}
 		},
 
@@ -130,9 +136,10 @@ export default (): NuxtConfig => {
 		},
 		plausible: {
 			proxy: true,
-			ignoredHostnames: [],
-			autoOutboundTracking: true,
+			domain: resolvePlausibleDomain(),
+			apiHost: process.env.NUXT_PUBLIC_PLAUSIBLE_API_HOST,
 			fileDownloads: { fileExtensions: ['pdf'] },
+			autoOutboundTracking: true,
 			formSubmissions: true
 		}
 	}

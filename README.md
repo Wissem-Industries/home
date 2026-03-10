@@ -1,62 +1,112 @@
-# Nuxt Portfolio Template
+# Portfolio Wissem
 
-[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
+Portfolio personnel construit avec `Nuxt 4`, `Nuxt UI` et runtime `Bun`.
 
-Use this template to create your own portfolio with [Nuxt UI](https://ui.nuxt.com).
+## Stack technique
 
-- [Live demo](https://portfolio-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/getting-started/installation)
+- `Nuxt 4` + `Nitro` (`preset: bun`)
+- `Bun` pour le dev, build et run
+- `Nuxt UI` pour les composants
+- `motion-v` pour les animations
+- `@nuxtjs/plausible` pour l’analytics
+- Contenu piloté en YAML (`locales/`)
 
-<a href="https://portfolio-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/portfolio-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/portfolio-light.png">
-    <img alt="Nuxt Portfolio Template" src="https://ui.nuxt.com/assets/templates/nuxt/portfolio-dark.png">
-  </picture>
-</a>
+## Fonctionnalités
 
-## Quick Start
+- Pages: `/`, `/projects`, `/contact`
+- SEO avec canonical, Open Graph, sitemap et robots
+- Formulaire de contact avec validation + rate limiting + notification Telegram
+- Contenu entièrement centralisé dans l’i18n YAML (pas de texte métier en dur dans le code)
 
-```bash [Terminal]
-npm create nuxt@latest -- -t github:nuxt-ui-templates/portfolio
+## Structure du contenu (i18n)
+
+```text
+locales/
+  fr/
+    content/
+      index.yml      # UI globale + home + projects + CV
+      contact.yml    # Page contact + labels formulaire + messages API
+    projects/
+      *.yml          # Fiches projets
 ```
 
-## Deploy your own
+Le chargement du contenu est fait au runtime via `nuxt.config.ts` et injecté dans `appConfig.siteContent`.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=portfolio&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fportfolio&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fportfolio-dark.png&demo-url=https%3A%2F%2Fportfolio-template.nuxt.dev%2F&demo-title=Nuxt%20Portfolio%20Template&demo-description=A%20sleek%20portfolio%20template%20to%20showcase%20your%20work%2C%20skills%20and%20blog%20powered%20by%20Nuxt%20Content.)
+## Prérequis
 
-## Setup
+- `Bun` installé (version récente)
+- Optionnel: Docker / Docker Compose
 
-Make sure to install the dependencies:
+## Installation
 
 ```bash
-pnpm install
+bun install
+cp .env.example .env
 ```
 
-## Development Server
+## Variables d’environnement
 
-Start the development server on `http://localhost:3000`:
+Configuration minimale dans `.env`:
+
+```env
+# URL publique du site (canonical, sitemap, robots)
+SITE_URL=https://example.com
+
+# Port exposé en docker-compose
+APP_PORT=3000
+
+# Telegram (contact API)
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_CHAT_ID=
+
+# Plausible (optionnel)
+NUXT_PUBLIC_PLAUSIBLE_DOMAIN=
+NUXT_PUBLIC_PLAUSIBLE_API_HOST=
+```
+
+## Commandes (Bun only)
 
 ```bash
-pnpm dev
+# Développement
+bun run dev
+
+# Qualité
+bun run lint
+bun run lint:fix
+bun run typecheck
+
+# Production
+bun run build
+bun run preview
+bun run start
 ```
 
-## Production
+## Développement local
 
-Build the application for production:
+Lancer en local:
 
 ```bash
-pnpm build
+bun run dev
 ```
 
-Locally preview production build:
+Application disponible sur `http://localhost:3000`.
+
+## Déploiement Docker
 
 ```bash
-pnpm preview
+docker compose up -d --build
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Le conteneur utilise `oven/bun` en multi-stage et exécute `.output/server/index.mjs` avec Bun.
 
-## Renovate integration
+## Checklist avant production
 
-Install [Renovate GitHub app](https://github.com/apps/renovate/installations/select_target) on your repository and you are good to go.
+- `bun run lint` passe sans erreur
+- `bun run typecheck` passe sans erreur
+- `bun run build` passe sur l’environnement cible
+- Variables `.env` renseignées (`SITE_URL`, Telegram, Plausible si utilisé)
+- Vérifier le contenu i18n (`locales/fr/...`) avant release
+
+---
+
+Si tu ajoutes une nouvelle langue, duplique `locales/fr` puis adapte les champs YAML à l’identique.
