@@ -1,0 +1,6 @@
+id: "internal-dashboard"
+title: "Internal admin dashboard"
+description: "An administration interface for internal platform operations, with authentication, roles, permissions, and user management."
+image: "https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=960&q=70"
+tags: ["Vue", "TypeScript", "Express", "PostgreSQL", "Dashboard"]
+date: "2025-01-01"

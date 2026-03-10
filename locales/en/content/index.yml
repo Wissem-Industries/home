@@ -1,0 +1,205 @@
+pages:
+    home:
+        title: "Portfolio"
+        description: "Wissem's portfolio, a student at IMT Nord Europe in the second year of the integrated preparatory cycle, currently looking for a technical internship for summer 2026."
+        seo:
+            title: "Portfolio"
+            description: "My background, projects, and online resume, with a strong interest in software development, data processing, and practical tools for technical teams."
+
+    projects:
+        title: "Projects"
+        description: "A selection of personal and technical projects developed alongside my studies, with a focus on useful tools, web interfaces, and real-world environments."
+        seo:
+            title: "Projects"
+            description: "Personal and technical projects built alongside my studies, with a focus on useful tools, web interfaces, and real-world environments."
+
+ui:
+    navigation:
+        home: "Home"
+        projects: "Projects"
+        contact: "Contact"
+
+    footer:
+        creditsSuffix: "Wissem. • All rights reserved."
+
+    colorMode:
+        switchToDark: "Switch to dark mode"
+        switchToLight: "Switch to light mode"
+
+    error:
+        title: "Page not found"
+        description: "The requested page does not exist or is no longer available."
+
+    meta:
+        titleTemplate: "%s • Wissem."
+        applicationName: "Portfolio · Wissem."
+        ogSiteName: "Portfolio · Wissem."
+
+    timeline:
+        logoAltPrefix: "Logo"
+
+    localeSwitcher:
+        switchToEnglish: "Switch to English"
+        switchToFrench: "Switch to French"
+
+cv:
+    name: "Wissem."
+
+    hero:
+        avatarAlt: "Wissem's visual signature."
+        status: "Student at IMT Nord Europe, in the second year of the integrated preparatory cycle"
+        objective: "Looking for a technical internship lasting 8 to 12 weeks starting June 8, 2026"
+        description: "I am interested in software development, data processing, systems security, and building useful tools for technical teams."
+        secondaryCtaLabel: "Get in touch"
+        secondaryCtaTo: "/contact"
+
+    resume:
+        label: "Download resume"
+        href: "/files/74b87337454200d4d33f80c4663dc5e5.pdf"
+        filename: "CV_Wissem_BADRAOUI.pdf"
+        downloadStartedMessage: "The resume download has started."
+
+    about:
+        title: "About"
+        paragraphs:
+            - "I enjoy practical projects where the goal is to start from a real need and improve an existing tool, make a workflow more reliable, or simplify the way a solution is used by a team."
+            - "I am particularly interested in software development, data processing, and security topics, with strong attention to reliability, clarity, and usefulness."
+
+    experience:
+        title: "Experience"
+        items:
+            - title: "Technical internship · Company discovery"
+              organization: "Nidec Leroy-Somer"
+              period: "2025 · 6 weeks"
+              location: "Angouleme"
+              thumbnail: "/images/leroy-somer-logo.png"
+              bullets:
+                  - "Analyzed needs around an internal tool used by technicians and engineers."
+                  - "Improved data processing and calculation methods to make the tool more reliable."
+                  - "Reworked the Excel interface to improve readability and day-to-day usability."
+                  - "Developed new VBA features and validated the results using real operational data."
+
+            - title: "Volunteer technical contribution"
+              organization: "Rubik's Network"
+              period: "2020 – Present"
+              location: "Remote"
+              thumbnail: "/images/rubiks.png"
+              bullets:
+                  - "Prepared updates and coordinated the progress of platform-related work."
+                  - "Wrote specifications and collaborated with developers, designers, and contributors."
+                  - "Contributed to platform features and technical systems."
+                  - "Provided user support and helped process and prioritize reported issues."
+
+    education:
+        title: "Education"
+        items:
+            - institution: "IMT Nord Europe"
+              title: "Integrated preparatory cycle · Engineering degree"
+              period: "2024 – Present"
+              location: "Lille"
+              thumbnail: "/images/imt-logo.png"
+              details:
+                  - "Second-year student (undergraduate level +2)."
+                  - "General academic background in mathematics, physics, and computer science."
+                  - "Collaborative group work and project-based learning."
+                  - "First foundations in project management."
+
+            - institution: "Saint-Paul High School"
+              title: "French general baccalaureate"
+              period: "2021 – 2024"
+              location: "Angouleme"
+              thumbnail: "/images/saintpaul-logo.png"
+              details:
+                  - "Graduated with highest honors."
+                  - "Majors in mathematics and physics-chemistry."
+
+    skills:
+        title: "Skills"
+        groups:
+            - title: "Languages"
+              description: "Programming languages used for application development."
+              items: ["C", "Python", "TypeScript", "JavaScript", "VBA", "SQL"]
+
+            - title: "Web"
+              description: "Web application development with the JavaScript ecosystem."
+              items: ["Nuxt", "Vue.js", "Node.js", "Express"]
+
+            - title: "Data"
+              description: "Application data storage, querying, and processing."
+              items: ["PostgreSQL", "MySQL", "MongoDB", "Prisma"]
+
+            - title: "Infrastructure"
+              description: "Servers, containerization, and application deployment."
+              items: ["Linux", "Docker", "VPS", "Dokploy", "CI/CD"]
+
+            - title: "Automation"
+              description: "Scripts used to automate processing and technical tasks."
+              items: ["Python", "Excel VBA", "Parsing", "CLI"]
+
+            - title: "Tools"
+              description: "Tools used to build, test, and collaborate on projects."
+              items: ["Git", "Postman", "JetBrains", "Jira"]
+
+    projects:
+        title: "Selected projects"
+        description: "A selection of personal and technical projects built alongside my studies."
+        featured: ["satt-tool", "zeldanes", "password-manager"]
+
+        actions:
+            view: "View project"
+            repo: "View code"
+            private: "Private access"
+
+    languages:
+        title: "Languages"
+        items:
+            - name: "French"
+              level: "Native language"
+              value: 100
+            - name: "English"
+              level: "B2"
+              value: 70
+            - name: "Spanish"
+              level: "A2"
+              value: 35
+
+    interests:
+        title: "Interests"
+        items: ["Cinema", "Video games", "Swimming", "Travel", "Technology"]
+
+    contact:
+        title: "Contact"
+        description: "For internship opportunities, technical discussions, or additional information."
+
+        locationLabel: "Location"
+        location: "Ile-de-France · Lille metropolitan area"
+
+        directLinkIds: ["email"]
+        heroLinkIds: ["email", "linkedin", "github", "website"]
+        primaryLinkIds: ["linkedin", "github"]
+        footerLinkIds: ["email", "linkedin", "github", "website"]
+
+        links:
+            - id: "email"
+              label: "Email"
+              value: "contact@wissem.pro"
+              to: "mailto:contact@wissem.pro"
+              icon: "i-lucide-mail"
+
+            - id: "linkedin"
+              label: "LinkedIn"
+              value: "@WissemBadraoui"
+              to: "https://linkedin.com/in/WissemBadraoui"
+              icon: "i-lucide-linkedin"
+
+            - id: "github"
+              label: "GitHub"
+              value: "@WissemBad"
+              to: "https://github.com/WissemBad"
+              icon: "i-lucide-github"
+
+            - id: "website"
+              label: "Website"
+              value: "www.wissem.pro"
+              to: "https://www.wissem.pro"
+              icon: "i-lucide-globe"

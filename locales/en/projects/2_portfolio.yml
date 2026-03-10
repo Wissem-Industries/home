@@ -1,0 +1,7 @@
+id: "personal-portfolio"
+title: "Personal portfolio"
+description: "A personal website built with Nuxt and Nuxt UI to present my background, projects, and online resume."
+image: "/images/portfolio.png"
+url: "https://www.wissem.pro"
+tags: ["Nuxt", "Vue", "Nuxt UI", "Portfolio"]
+date: "2025-01-01"

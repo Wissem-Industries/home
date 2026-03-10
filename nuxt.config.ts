@@ -4,7 +4,7 @@ import type { NuxtConfig } from 'nuxt/schema'
 import { parse } from 'yaml'
 import type { ContactPageContent, LocaleContent, PageContent, ProjectContent, SiteLocale, UiContent } from './shared/content/types'
 
-const defaultSiteLocale: SiteLocale = 'fr'
+const defaultSiteLocale: SiteLocale = 'en'
 
 type IndexFileContent = {
 	ui: UiContent
@@ -118,11 +118,7 @@ export default (): NuxtConfig => {
 		compatibilityDate: '2025-07-15',
 
 		nitro: {
-			preset: 'bun',
-			prerender: {
-				routes: ['/'],
-				crawlLinks: true
-			}
+			preset: 'bun'
 		},
 
 		eslint: {

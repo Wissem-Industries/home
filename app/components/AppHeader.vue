@@ -35,7 +35,8 @@ const navigationItems = computed(() => {
 			}"
 		>
 			<template #list-trailing>
-				<div class="pl-0.5 sm:pl-1">
+				<div class="flex items-center gap-0.5 pl-0.5 sm:gap-1 sm:pl-1">
+					<LocaleSwitchButton />
 					<ColorModeButton />
 				</div>
 			</template>

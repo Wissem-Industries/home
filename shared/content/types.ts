@@ -41,6 +41,11 @@ export type TimelineContent = {
 	logoAltPrefix: string
 }
 
+export type LocaleSwitcherContent = {
+	switchToEnglish: string
+	switchToFrench: string
+}
+
 export type UiContent = {
 	navigation: NavigationContent
 	footer: FooterContent
@@ -48,6 +53,7 @@ export type UiContent = {
 	error: ErrorContent
 	meta: SiteMetaContent
 	timeline: TimelineContent
+	localeSwitcher: LocaleSwitcherContent
 }
 
 export type ContactLinkContent = {

@@ -1,6 +1,7 @@
 import type { H3Event } from 'h3'
 import type { LocaleContent, SiteLocale } from '#shared/content'
 import { hasContactFormErrors, normalizeContactForm, type ContactFormData } from '#shared/utils/contact'
+import { parseAcceptLanguage, resolvePreferredSiteLocale, SITE_LOCALE_COOKIE_NAME } from '#shared/utils/siteLocale'
 
 const CONTACT_RATE_LIMIT_WINDOW_MS = 5 * 60 * 1000
 const CONTACT_RATE_LIMIT_MAX = 5
@@ -29,13 +30,19 @@ function pruneExpiredRateLimits(now: number) {
 
 type SiteContentConfig = {
 	defaultSiteLocale: SiteLocale
+	availableSiteLocales: SiteLocale[]
 	siteContent: Record<SiteLocale, LocaleContent>
 }
 
-function getContactApiMessages() {
-	const { defaultSiteLocale, siteContent } = useAppConfig() as unknown as SiteContentConfig
-	const fallbackLocale = defaultSiteLocale || Object.keys(siteContent)[0]
-	const localeContent = fallbackLocale ? siteContent[fallbackLocale] : undefined
+function getContactApiMessages(event: H3Event) {
+	const { defaultSiteLocale, availableSiteLocales, siteContent } = useAppConfig() as unknown as SiteContentConfig
+	const locale = resolvePreferredSiteLocale({
+		availableLocales: availableSiteLocales,
+		fallbackLocale: defaultSiteLocale || 'en',
+		cookieLocale: getCookie(event, SITE_LOCALE_COOKIE_NAME),
+		candidates: parseAcceptLanguage(getHeader(event, 'accept-language'))
+	})
+	const localeContent = siteContent[locale]
 	const contactApi = localeContent?.pages?.contact?.api
 
 	if (!contactApi) throw createError({ statusCode: 500 })
@@ -58,7 +65,7 @@ function enforceContactRateLimit(event: H3Event, tooManyRequestsMessage: string)
 }
 
 export default defineEventHandler(async (event) => {
-	const contactApi = getContactApiMessages()
+	const contactApi = getContactApiMessages(event)
 	enforceContactRateLimit(event, contactApi.tooManyRequests)
 
 	const body = normalizeContactForm(await readBody<Partial<ContactFormData>>(event))

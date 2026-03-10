@@ -38,6 +38,10 @@ ui:
     timeline:
         logoAltPrefix: "Logo"
 
+    localeSwitcher:
+        switchToEnglish: "Basculer en anglais"
+        switchToFrench: "Basculer en français"
+
 cv:
     name: "Wissem."
 

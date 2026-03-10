@@ -1,0 +1,8 @@
+id: "parcourtime"
+title: "ParcourTime"
+description: "A countdown web app for Parcoursup, displaying key dates through a simple and accessible interface."
+image: "/images/parcourtime.png"
+url: "https://parcourtime.wissem.pro"
+repo: "https://github.com/WissemBad/ParcourTime"
+tags: ["Nuxt", "Vue", "Countdown", "Parcoursup"]
+date: "2025-01-01"

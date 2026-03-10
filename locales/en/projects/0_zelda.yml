@@ -1,0 +1,7 @@
+id: "zeldanes"
+title: "ZeldaNES"
+description: "A Zelda-inspired project developed in C with SDL2 to build a game inspired by The Legend of Zelda during my studies."
+image: "/images/zelda.png"
+repo: "https://github.com/WissemBad/ZeldaNES"
+tags: ["C", "SDL2", "Game", "Zelda"]
+date: "2026-01-01"

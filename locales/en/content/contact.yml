@@ -1,0 +1,48 @@
+page:
+  title: "Contact"
+  description: "You can contact me for internship opportunities, technical discussions, or additional information."
+  seo:
+    title: "Contact"
+    description: "Contact details and contact form for Wissem Badraoui."
+  sidebar:
+    title: "Details"
+    description: "Ways to reach me and view my public profiles."
+  form:
+    name:
+      label: "Name"
+      placeholder: "Your name"
+    email:
+      label: "Email"
+      placeholder: "you@example.com"
+    subject:
+      label: "Subject"
+      placeholder: "Message subject"
+    message:
+      label: "Message"
+      placeholder: "Your message"
+    submitLabel: "Send message"
+    validation:
+      nameTooShort: "The name is too short."
+      emailInvalid: "The email address is invalid."
+      subjectTooShort: "The subject is too short."
+      messageTooShort: "The message is too short."
+    messages:
+      successTitle: "Message sent"
+      successDescription: "Thank you for your message. I will get back to you as soon as possible."
+      errorTitle: "Unable to send"
+      errorDescription: "An error occurred while sending the message. Please try again later."
+    responseHint: "Reply as soon as possible."
+    privacyHint: "The information provided is used only to process your contact request. It is neither stored, published, nor shared with third parties."
+    privacyAriaLabel: "Information about data processing"
+  api:
+    tooManyRequests: "Too many attempts. Please try again in a few minutes."
+    invalidForm: "The form data is invalid."
+    serviceUnavailable: "The contact service is unavailable."
+    telegramSubjectFallback: "New portfolio message"
+    telegramHeader: "New message received"
+    telegramNameLabel: "Name"
+    telegramEmailLabel: "Email"
+    telegramSubjectLabel: "Subject"
+    telegramMessageLabel: "Message"
+    telegramSendFailure: "Unable to send the notification. Please try again later."
+    successMessage: "Your message was sent successfully. Thank you for reaching out."
