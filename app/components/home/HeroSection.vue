@@ -10,8 +10,10 @@ type ContactLink = {
 }
 
 const { profile } = useAppConfig()
+const colorMode = useColorMode()
 const { downloadFile } = useFileDownload()
 const { heroInitial, heroTransition, heroVisible } = useMotionPresets()
+const logoSrc = computed(() => colorMode.value === 'dark' ? profile.picture.dark : profile.picture.light)
 
 const props = defineProps<{
 	name: string
@@ -48,22 +50,16 @@ function onDownloadResume() {
 					:animate="heroVisible"
 					:transition="heroTransition(0.05)"
 				>
-					<picture>
-						<source
-							media="(prefers-color-scheme: dark)"
-							:srcset="profile.picture.dark"
-						>
-						<img
-							class="size-24 object-cover"
-							:src="profile.picture.light"
-							:alt="avatarAlt"
-							width="96"
-							height="96"
-							loading="eager"
-							fetchpriority="high"
-							decoding="async"
-						>
-					</picture>
+					<img
+						class="size-24 object-cover"
+						:src="logoSrc"
+						:alt="avatarAlt"
+						width="96"
+						height="96"
+						loading="eager"
+						fetchpriority="high"
+						decoding="async"
+					>
 				</Motion>
 			</template>
 
