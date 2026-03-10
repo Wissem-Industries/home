@@ -110,7 +110,7 @@ function onDownloadResume() {
 							class="w-full cursor-pointer justify-center sm:w-auto"
 							:label="resumeLabel"
 							color="neutral"
-							icon="i-carbon-download"
+							icon="i-lucide-download"
 							variant="subtle"
 							@click="onDownloadResume"
 						/>

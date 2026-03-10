@@ -86,7 +86,7 @@ export default defineEventHandler(async (event) => {
 	const res = await fetch(`https://api.telegram.org/bot${config.telegramBotToken}/sendMessage`, {
 		method: 'POST',
 		headers: { 'content-type': 'application/json' },
-		body: JSON.stringify({ chat_id: config.telegramChatId, text: html, parse_mode: 'HTML', disable_web_page_preview: true})
+		body: JSON.stringify({ chat_id: config.telegramChatId, text: html, parse_mode: 'HTML', disable_web_page_preview: true })
 	})
 
 	const data = await res.json().catch(() => null)

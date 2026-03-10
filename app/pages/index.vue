@@ -197,7 +197,7 @@ function onDownloadResume() {
 								<UButton
 									:label="cv.resume.label"
 									variant="outline"
-									icon="i-carbon-download"
+									icon="i-lucide-download"
 									class="w-full justify-center"
 									@click="onDownloadResume"
 								/>

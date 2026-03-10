@@ -186,13 +186,13 @@ cv:
               label: "LinkedIn"
               value: "@WissemBadraoui"
               to: "https://linkedin.com/in/WissemBadraoui"
-              icon: "i-simple-icons-linkedin"
+              icon: "i-lucide-linkedin"
 
             - id: "github"
               label: "GitHub"
               value: "@WissemBad"
               to: "https://github.com/WissemBad"
-              icon: "i-simple-icons-github"
+              icon: "i-lucide-github"
 
             - id: "website"
               label: "Site web"
