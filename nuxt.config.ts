@@ -1,5 +1,6 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+import type { NuxtConfig } from 'nuxt/schema'
 import { parse } from 'yaml'
 import type { ContactPageContent, LocaleContent, PageContent, ProjectContent, SiteLocale, UiContent } from './shared/content/types'
 
@@ -68,67 +69,71 @@ function loadSiteContent() {
 const siteContent = loadSiteContent()
 const availableSiteLocales = Object.keys(siteContent).sort()
 
-export default defineNuxtConfig({
-	modules: [
-		'@nuxt/eslint',
-		'@nuxt/ui',
-		'motion-v/nuxt',
-		'@nuxtjs/plausible'
-	],
+// https://nuxt.com/docs/api/configuration/nuxt-config
+export default (): NuxtConfig => {
+	return {
+		modules: [
+			'@nuxt/eslint',
+			'@nuxt/ui',
+			'motion-v/nuxt',
+			'@nuxtjs/plausible'
+		],
 
-	devtools: { enabled: false },
-	css: ['~/assets/css/main.css'],
-	sourcemap: {
-		server: false,
-		client: false
-	},
-	vite: {
-		build: {
-			chunkSizeWarningLimit: 600
-		}
-	},
-
-	runtimeConfig: {
-		smtpHost: process.env.NUXT_SMTP_HOST ?? process.env.SMTP_HOST ?? '',
-		smtpPort: process.env.NUXT_SMTP_PORT ?? process.env.SMTP_PORT ?? '',
-		smtpSecure: process.env.NUXT_SMTP_SECURE ?? process.env.SMTP_SECURE ?? '',
-		smtpUser: process.env.NUXT_SMTP_USER ?? process.env.SMTP_USER ?? '',
-		smtpPass: process.env.NUXT_SMTP_PASS ?? process.env.SMTP_PASS ?? '',
-		public: {
-			siteUrl: process.env.NUXT_PUBLIC_SITE_URL ?? process.env.SITE_URL ?? ''
-		}
-	},
-	appConfig: {
-		defaultSiteLocale,
-		availableSiteLocales,
-		siteContent
-	},
-	compatibilityDate: '2025-07-15',
-
-	nitro: {
-		preset: 'bun',
-		prerender: {
-			routes: ['/'],
-			crawlLinks: true
-		}
-	},
-
-	eslint: {
-		config: {
-			stylistic: {
-				commaDangle: 'never',
-				braceStyle: '1tbs',
-				indent: 'tab'
+		devtools: { enabled: false },
+		css: ['~/assets/css/main.css'],
+		sourcemap: {
+			server: false,
+			client: false
+		},
+		vite: {
+			build: {
+				chunkSizeWarningLimit: 600
 			}
-		}
-	},
+		},
 
-	plausible: {
-		proxy: true,
-		domain: process.env.NUXT_PUBLIC_PLAUSIBLE_DOMAIN,
-		apiHost: process.env.NUXT_PUBLIC_PLAUSIBLE_API_HOST,
-		autoOutboundTracking: true,
-		fileDownloads: { fileExtensions: ['pdf'] },
-		formSubmissions: true
+		runtimeConfig: {
+			smtpHost: process.env.SMTP_HOST,
+			smtpPort: process.env.SMTP_PORT,
+			smtpSecure: process.env.SMTP_SECURE,
+			smtpUser: process.env.SMTP_USER,
+			smtpPass: process.env.SMTP_PASS,
+			public: { siteUrl: process.env.SITE_URL }
+		},
+		appConfig: {
+			defaultSiteLocale,
+			availableSiteLocales,
+			siteContent
+		},
+		compatibilityDate: '2025-07-15',
+
+		nitro: {
+			preset: 'bun',
+			prerender: {
+				routes: ['/'],
+				crawlLinks: true
+			},
+			routeRules: {
+				'/_plausible/**': {
+					proxy: { to: 'https://analytics.wissem.pro/**' }
+				}
+			}
+		},
+
+		eslint: {
+			config: {
+				stylistic: {
+					commaDangle: 'never',
+					braceStyle: '1tbs',
+					indent: 'tab'
+				}
+			}
+		},
+		plausible: {
+			proxy: true,
+			ignoredHostnames: [],
+			autoOutboundTracking: true,
+			fileDownloads: { fileExtensions: ['pdf'] },
+			formSubmissions: true
+		}
 	}
-})
+}
