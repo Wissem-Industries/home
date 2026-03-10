@@ -36,7 +36,7 @@ function onDownloadResume() {
 </script>
 
 <template>
-	<div class="pt-10 sm:pt-16 pb-8 sm:pb-20">
+	<div class="pt-8 sm:pt-16 pb-8 sm:pb-20">
 		<UPageHero
 			:ui="{
 				headline: 'flex items-center justify-center',
