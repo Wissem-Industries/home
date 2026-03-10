@@ -64,7 +64,7 @@ export default defineEventHandler(async (event) => {
 	const body = normalizeContactForm(await readBody<Partial<ContactFormData>>(event))
 	if (hasContactFormErrors(body)) throw createError({ statusCode: 400, statusMessage: contactApi.invalidForm })
 
-	const config = useRuntimeConfig()
+	const config = useRuntimeConfig(event)
 	if (!config.telegramBotToken || !config.telegramChatId) throw createError({ statusCode: 503, statusMessage: contactApi.serviceUnavailable })
 
 	const senderName = sanitizeInline(body.name)
