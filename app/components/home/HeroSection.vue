@@ -50,16 +50,21 @@ function onDownloadResume() {
 					:animate="heroVisible"
 					:transition="heroTransition(0.05)"
 				>
-					<img
-						class="size-24 object-cover"
-						:src="logoSrc"
-						:alt="avatarAlt"
-						width="96"
-						height="96"
-						loading="eager"
-						fetchpriority="high"
-						decoding="async"
-					>
+					<ClientOnly>
+						<img
+							class="size-24 object-cover"
+							:src="logoSrc"
+							:alt="avatarAlt"
+							width="96"
+							height="96"
+							loading="eager"
+							fetchpriority="high"
+							decoding="async"
+						>
+						<template #fallback>
+							<div class="size-24" />
+						</template>
+					</ClientOnly>
 				</Motion>
 			</template>
 

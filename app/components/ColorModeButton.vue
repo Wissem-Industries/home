@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { usePreferredReducedMotion } from '@vueuse/core'
-
 const colorMode = useColorMode()
 const content = useSiteContent()
-const preferredReducedMotion = usePreferredReducedMotion()
 const nextTheme = computed(() => (colorMode.value === 'dark' ? 'light' : 'dark'))
 const ariaLabel = computed(() => (
 	colorMode.value === 'dark'
@@ -12,30 +9,36 @@ const ariaLabel = computed(() => (
 ))
 
 const switchTheme = () => {
-	colorMode.preference = nextTheme.value
-}
-
-const startViewTransition = () => {
-	if (preferredReducedMotion.value === 'reduce' || !document.startViewTransition) {
-		switchTheme()
+	if (!import.meta.client) {
+		colorMode.preference = nextTheme.value
 		return
 	}
 
-	const transition = document.startViewTransition(() => {
-		switchTheme()
+	const overlay = document.createElement('div')
+	const bodyStyles = getComputedStyle(document.body)
+	const htmlStyles = getComputedStyle(document.documentElement)
+	const background = bodyStyles.backgroundColor && bodyStyles.backgroundColor !== 'rgba(0, 0, 0, 0)'
+		? bodyStyles.backgroundColor
+		: htmlStyles.backgroundColor
+
+	overlay.style.position = 'fixed'
+	overlay.style.inset = '0'
+	overlay.style.pointerEvents = 'none'
+	overlay.style.zIndex = '9999'
+	overlay.style.background = background
+	overlay.style.opacity = '1'
+	overlay.style.transition = 'opacity 180ms ease'
+	document.body.appendChild(overlay)
+
+	colorMode.preference = nextTheme.value
+
+	requestAnimationFrame(() => {
+		overlay.style.opacity = '0'
 	})
 
-	transition.ready.then(() => {
-		const duration = 250
-		document.documentElement.animate(
-			[{ opacity: 0 }, { opacity: 1 }],
-			{ duration, easing: 'ease', pseudoElement: '::view-transition-new(root)' }
-		)
-		document.documentElement.animate(
-			[{ opacity: 1 }, { opacity: 0 }],
-			{ duration, easing: 'ease', pseudoElement: '::view-transition-old(root)' }
-		)
-	})
+	window.setTimeout(() => {
+		overlay.remove()
+	}, 220)
 }
 </script>
 
@@ -48,28 +51,10 @@ const startViewTransition = () => {
 			variant="ghost"
 			size="sm"
 			class="rounded-full"
-			@click="startViewTransition"
+			@click="switchTheme"
 		/>
 		<template #fallback>
 			<div class="size-4" />
 		</template>
 	</ClientOnly>
 </template>
-
-<style>
-::view-transition-old(root),
-::view-transition-new(root) {
-	animation: none;
-	mix-blend-mode: normal;
-}
-
-::view-transition-new(root) {
-	z-index: 9999;
-	opacity: 0;
-}
-
-::view-transition-old(root) {
-	z-index: 1;
-	opacity: 1;
-}
-</style>

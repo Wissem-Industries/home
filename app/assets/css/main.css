@@ -37,3 +37,22 @@ html {
     scroll-behavior: smooth;
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  html,
+  body {
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+
+  .bg-default,
+  .bg-elevated,
+  .bg-muted,
+  .text-default,
+  .text-highlighted,
+  .text-muted,
+  .text-toned,
+  .border-default,
+  .border-muted {
+    transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+  }
+}
