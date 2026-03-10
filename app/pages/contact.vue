@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { FormSubmitEvent } from '@nuxt/ui'
-import { createEmptyContactForm, hasContactFormErrors, type ContactFormData } from '#shared/utils/contact'
+import { createEmptyContactForm, getContactFormErrors, type ContactFormData } from '#shared/utils/contact'
 
 const content = useSiteContent()
 const page = computed(() => content.value.pages.contact)
@@ -14,8 +14,11 @@ usePageSeo(computed(() => ({
 
 const toast = useToast()
 const loading = ref(false)
+const submitAttempted = ref(false)
 const state = reactive<ContactFormData>(createEmptyContactForm())
-const isFormInvalid = computed(() => hasContactFormErrors(state))
+const validationErrors = computed(() => getContactFormErrors(state, page.value.form.validation))
+const invalidFields = computed(() => new Set(validationErrors.value.map(error => error.name)))
+const shouldDisableSubmit = computed(() => loading.value || (submitAttempted.value && validationErrors.value.length > 0))
 
 const baseCardUi = {
 	root: 'rounded-2xl',
@@ -36,7 +39,8 @@ const formCardUi = {
 }
 
 async function onSubmit(event: FormSubmitEvent<ContactFormData>) {
-	if (isFormInvalid.value) return
+	submitAttempted.value = true
+	if (validationErrors.value.length) return
 
 	try {
 		loading.value = true
@@ -53,6 +57,7 @@ async function onSubmit(event: FormSubmitEvent<ContactFormData>) {
 		})
 
 		Object.assign(state, createEmptyContactForm())
+		submitAttempted.value = false
 	} catch {
 		toast.add({
 			title: page.value.form.messages.errorTitle,
@@ -62,6 +67,10 @@ async function onSubmit(event: FormSubmitEvent<ContactFormData>) {
 	} finally {
 		loading.value = false
 	}
+}
+
+function isFieldInvalid(name: keyof ContactFormData) {
+	return submitAttempted.value && invalidFields.value.has(name)
 }
 </script>
 
@@ -137,6 +146,7 @@ async function onSubmit(event: FormSubmitEvent<ContactFormData>) {
 										name="name"
 										:label="page.form.name.label"
 										required
+										:error="isFieldInvalid('name') ? ' ' : undefined"
 										:ui="{ error: 'hidden' }"
 									>
 										<UInput
@@ -151,6 +161,7 @@ async function onSubmit(event: FormSubmitEvent<ContactFormData>) {
 										name="email"
 										:label="page.form.email.label"
 										required
+										:error="isFieldInvalid('email') ? ' ' : undefined"
 										:ui="{ error: 'hidden' }"
 									>
 										<UInput
@@ -167,6 +178,7 @@ async function onSubmit(event: FormSubmitEvent<ContactFormData>) {
 									name="subject"
 									:label="page.form.subject.label"
 									required
+									:error="isFieldInvalid('subject') ? ' ' : undefined"
 									:ui="{ error: 'hidden' }"
 								>
 									<UInput
@@ -180,6 +192,7 @@ async function onSubmit(event: FormSubmitEvent<ContactFormData>) {
 									name="message"
 									:label="page.form.message.label"
 									required
+									:error="isFieldInvalid('message') ? ' ' : undefined"
 									:ui="{ error: 'hidden' }"
 								>
 									<UTextarea
@@ -212,7 +225,7 @@ async function onSubmit(event: FormSubmitEvent<ContactFormData>) {
 										size="md"
 										variant="subtle"
 										:loading="loading"
-										:disabled="loading || isFormInvalid"
+										:disabled="shouldDisableSubmit"
 										trailing-icon="i-lucide-send"
 										class="w-full justify-center sm:w-auto sm:min-w-[220px]"
 									>
