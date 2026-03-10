@@ -12,6 +12,8 @@ type TimelineItem = {
 }
 
 const { revealInitial, revealTransition, revealVisible, inViewOptions } = useMotionPresets()
+const content = useSiteContent()
+const timelineContent = computed(() => content.value.ui.timeline)
 
 function getThumbnailSrc(thumbnail: string) {
 	return thumbnail.startsWith('/') ? thumbnail : `/${thumbnail}`
@@ -80,7 +82,7 @@ defineProps<{
 							<img
 								v-if="item.thumbnail"
 								:src="getThumbnailSrc(item.thumbnail)"
-								:alt="`Logo ${item.eyebrow}`"
+								:alt="`${timelineContent.logoAltPrefix} ${item.eyebrow}`"
 								loading="lazy"
 								decoding="async"
 								class="h-12 w-auto max-w-[6rem] rounded-md bg-default/30 object-contain sm:h-14 sm:max-w-[7rem] lg:h-auto lg:w-28 lg:max-w-none lg:rounded-sm"

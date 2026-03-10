@@ -24,7 +24,7 @@ export function useSiteContent() {
 		const fallbackLocale = defaultSiteLocale || availableSiteLocales[0] || 'fr'
 		const fallbackContent = siteContent[fallbackLocale]
 
-		if (!fallbackContent) throw new Error('No localized site content is available.')
+		if (!fallbackContent) throw new Error()
 
 		return fallbackContent
 	})

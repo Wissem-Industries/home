@@ -9,11 +9,12 @@ defineProps({
 })
 
 const content = useSiteContent()
+const locale = useSiteLocale()
 const errorContent = computed(() => content.value.ui.error)
 
 useHead({
 	htmlAttrs: {
-		lang: 'fr'
+		lang: locale.value
 	}
 })
 

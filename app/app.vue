@@ -2,6 +2,7 @@
 const colorMode = useColorMode()
 const locale = useSiteLocale()
 const content = useSiteContent()
+const siteMeta = computed(() => content.value.ui.meta)
 
 const color = computed(() => colorMode.value === 'dark' ? '#020618' : 'white')
 
@@ -20,9 +21,9 @@ useHead({
 })
 
 useSeoMeta({
-	titleTemplate: '%s • Wissem.',
-	applicationName: 'Portfolio · Wissem.',
-	ogSiteName: 'Portfolio · Wissem.',
+	titleTemplate: () => siteMeta.value.titleTemplate,
+	applicationName: () => siteMeta.value.applicationName,
+	ogSiteName: () => siteMeta.value.ogSiteName,
 	ogLocale: () => locale.value === 'fr' ? 'fr_FR' : undefined,
 	description: () => content.value.pages.home.seo?.description || content.value.pages.home.description,
 	ogDescription: () => content.value.pages.home.seo?.description || content.value.pages.home.description,

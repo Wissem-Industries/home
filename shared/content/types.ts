@@ -31,11 +31,23 @@ export type ErrorContent = {
 	description: string
 }
 
+export type SiteMetaContent = {
+	titleTemplate: string
+	applicationName: string
+	ogSiteName: string
+}
+
+export type TimelineContent = {
+	logoAltPrefix: string
+}
+
 export type UiContent = {
 	navigation: NavigationContent
 	footer: FooterContent
 	colorMode: ColorModeContent
 	error: ErrorContent
+	meta: SiteMetaContent
+	timeline: TimelineContent
 }
 
 export type ContactLinkContent = {
@@ -207,12 +219,27 @@ export type ContactFormContent = {
 	privacyAriaLabel: string
 }
 
+export type ContactApiContent = {
+	tooManyRequests: string
+	invalidForm: string
+	serviceUnavailable: string
+	telegramSubjectFallback: string
+	telegramHeader: string
+	telegramNameLabel: string
+	telegramEmailLabel: string
+	telegramSubjectLabel: string
+	telegramMessageLabel: string
+	telegramSendFailure: string
+	successMessage: string
+}
+
 export type ContactPageContent = PageContent & {
 	sidebar: {
 		title: string
 		description: string
 	}
 	form: ContactFormContent
+	api: ContactApiContent
 }
 
 export type LocaleContent = {

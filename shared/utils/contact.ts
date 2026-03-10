@@ -19,13 +19,6 @@ export interface ContactFormError {
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-export const defaultContactFormValidationMessages: ContactFormValidationMessages = {
-	nameTooShort: 'Le nom est trop court.',
-	emailInvalid: 'L’adresse email n’est pas valide.',
-	subjectTooShort: 'Le sujet est trop court.',
-	messageTooShort: 'Le message est trop court.'
-}
-
 function trimValue(value?: string) {
 	return value?.trim() || ''
 }
@@ -61,7 +54,7 @@ export function hasContactFormErrors(input: Partial<ContactFormData>) {
 
 export function getContactFormErrors(
 	input: Partial<ContactFormData>,
-	messages: ContactFormValidationMessages = defaultContactFormValidationMessages
+	messages: ContactFormValidationMessages
 ): ContactFormError[] {
 	const value = normalizeContactForm(input)
 	const errors: ContactFormError[] = []

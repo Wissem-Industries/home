@@ -30,6 +30,14 @@ ui:
         title: "Page introuvable"
         description: "La page demandée n’existe pas ou n’est plus disponible."
 
+    meta:
+        titleTemplate: "%s • Wissem."
+        applicationName: "Portfolio · Wissem."
+        ogSiteName: "Portfolio · Wissem."
+
+    timeline:
+        logoAltPrefix: "Logo"
+
 cv:
     name: "Wissem."
 
