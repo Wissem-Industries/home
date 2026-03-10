@@ -1,30 +1,9 @@
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
-import type { NuxtConfig } from 'nuxt/schema'
 import { parse } from 'yaml'
 import type { ContactPageContent, LocaleContent, PageContent, ProjectContent, SiteLocale, UiContent } from './shared/content/types'
 
 const defaultSiteLocale: SiteLocale = 'fr'
-const isBuildCommand = process.argv.includes('build') || process.argv.includes('generate')
-const trailingSlashExportWarning = 'Use of deprecated trailing slash pattern mapping'
-const ignoredNitroWarningPatterns = ['cache-driver.js', 'Circular dependency:']
-
-if (isBuildCommand) {
-	const emitWarning = process.emitWarning.bind(process) as (...args: any[]) => void
-
-	process.emitWarning = ((warning: string | Error, ...args: any[]) => {
-		const message = typeof warning === 'string' ? warning : warning?.message || ''
-
-		if (message.includes(trailingSlashExportWarning)) return
-
-		emitWarning(warning, ...args)
-	}) as typeof process.emitWarning
-
-	process.env.NODE_NO_WARNINGS ??= '1'
-	process.env.NO_DEPRECATION ??= '1'
-	process.env.BASELINE_BROWSER_MAPPING_IGNORE_OLD_DATA ??= 'true'
-	process.env.BROWSERSLIST_IGNORE_OLD_DATA ??= 'true'
-}
 
 type IndexFileContent = {
 	ui: UiContent
@@ -89,73 +68,66 @@ function loadSiteContent() {
 const siteContent = loadSiteContent()
 const availableSiteLocales = Object.keys(siteContent).sort()
 
-// https://nuxt.com/docs/api/configuration/nuxt-config
-export default (): NuxtConfig => {
-	return {
-		modules: [
-			'@nuxt/eslint',
-			'@nuxt/ui',
-			'motion-v/nuxt',
-			'@nuxtjs/plausible'
-		],
+export default defineNuxtConfig({
+	modules: [
+		'@nuxt/eslint',
+		'@nuxt/ui',
+		'motion-v/nuxt',
+		'@nuxtjs/plausible'
+	],
 
-		devtools: { enabled: false },
-		css: ['~/assets/css/main.css'],
-		sourcemap: {
-			server: false,
-			client: false
-		},
-		vite: {
-			build: {
-				chunkSizeWarningLimit: 600
+	devtools: { enabled: false },
+	css: ['~/assets/css/main.css'],
+	sourcemap: {
+		server: false,
+		client: false
+	},
+	vite: {
+		build: {
+			chunkSizeWarningLimit: 600
+		}
+	},
+
+	runtimeConfig: {
+		smtpHost: process.env.NUXT_SMTP_HOST ?? process.env.SMTP_HOST ?? '',
+		smtpPort: process.env.NUXT_SMTP_PORT ?? process.env.SMTP_PORT ?? '',
+		smtpSecure: process.env.NUXT_SMTP_SECURE ?? process.env.SMTP_SECURE ?? '',
+		smtpUser: process.env.NUXT_SMTP_USER ?? process.env.SMTP_USER ?? '',
+		smtpPass: process.env.NUXT_SMTP_PASS ?? process.env.SMTP_PASS ?? '',
+		public: {
+			siteUrl: process.env.NUXT_PUBLIC_SITE_URL ?? process.env.SITE_URL ?? ''
+		}
+	},
+	appConfig: {
+		defaultSiteLocale,
+		availableSiteLocales,
+		siteContent
+	},
+	compatibilityDate: '2025-07-15',
+
+	nitro: {
+		prerender: {
+			routes: ['/'],
+			crawlLinks: true
+		}
+	},
+
+	eslint: {
+		config: {
+			stylistic: {
+				commaDangle: 'never',
+				braceStyle: '1tbs',
+				indent: 'tab'
 			}
-		},
+		}
+	},
 
-		runtimeConfig: {
-			smtpHost: process.env.SMTP_HOST,
-			smtpPort: process.env.SMTP_PORT,
-			smtpSecure: process.env.SMTP_SECURE,
-			smtpUser: process.env.SMTP_USER,
-			smtpPass: process.env.SMTP_PASS,
-			public: { siteUrl: process.env.SITE_URL }
-		},
-		appConfig: {
-			defaultSiteLocale,
-			availableSiteLocales,
-			siteContent
-		},
-		compatibilityDate: '2025-07-15',
-
-		nitro: {
-			rollupConfig: {
-				onwarn(warning, warn) {
-					const message = String(warning.message)
-
-					if (ignoredNitroWarningPatterns.some(pattern => message.includes(pattern))) return
-
-					warn(warning)
-				}
-			},
-			prerender: {
-				routes: ['/'],
-				crawlLinks: true
-			},
-			routeRules: {
-				'/_plausible/**': {
-					proxy: { to: 'https://analytics.wissem.pro/**' }
-				}
-			}
-		},
-
-		eslint: {
-			config: {
-				stylistic: {
-					commaDangle: 'never',
-					braceStyle: '1tbs',
-					indent: 'tab'
-				}
-			}
-		},
-		plausible: { proxy: true }
+	plausible: {
+		proxy: true,
+		domain: process.env.NUXT_PUBLIC_PLAUSIBLE_DOMAIN,
+		apiHost: process.env.NUXT_PUBLIC_PLAUSIBLE_API_HOST,
+		autoOutboundTracking: true,
+		fileDownloads: { fileExtensions: ['pdf'] },
+		formSubmissions: true
 	}
-}
+})
