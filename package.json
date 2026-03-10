@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "BASELINE_BROWSER_MAPPING_IGNORE_OLD_DATA=true BROWSERSLIST_IGNORE_OLD_DATA=true bun --bun nuxt build",
+    "build": "bun --bun nuxt build",
     "dev": "bun --bun nuxt dev",
     "start": "bun .output/server/index.mjs",
     "preview": "bun --bun nuxt preview",

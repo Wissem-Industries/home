@@ -106,9 +106,9 @@ export default (): NuxtConfig => {
 		},
 
 		runtimeConfig: {
-			telegramBotToken: process.env.TELEGRAM_BOT_TOKEN,
-			telegramChatId: process.env.TELEGRAM_CHAT_ID,
-			public: { siteUrl: process.env.SITE_URL }
+			telegramBotToken: '',
+			telegramChatId: '',
+			public: { siteUrl: '' }
 		},
 		appConfig: {
 			defaultSiteLocale,
