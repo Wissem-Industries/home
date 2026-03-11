@@ -1,17 +1,9 @@
 <script setup lang="ts">
-type EducationItem = {
-	institution: string
-	title: string
-	period: string
-	location?: string
-	thumbnail?: string
-	url?: string
-	details: string[]
-}
+import type { EducationContent } from '~~/shared/content'
 
 const props = defineProps<{
 	title: string
-	items: EducationItem[]
+	items: EducationContent[]
 }>()
 
 const timelineItems = computed(() => props.items.map(item => ({

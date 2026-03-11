@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { siteRoutes } from '#shared/utils/routes'
+
 const content = useSiteContent()
 
 const navigationItems = computed(() => {
@@ -7,15 +9,15 @@ const navigationItems = computed(() => {
 	return [{
 		label: navigation.home,
 		icon: 'i-lucide-home',
-		to: '/'
+		to: siteRoutes.home
 	}, {
 		label: navigation.projects,
 		icon: 'i-lucide-folder',
-		to: '/projects'
+		to: siteRoutes.projects
 	}, {
 		label: navigation.contact,
 		icon: 'i-lucide-message-square',
-		to: '/contact'
+		to: siteRoutes.contact
 	}]
 })
 </script>

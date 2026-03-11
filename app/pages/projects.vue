@@ -1,13 +1,31 @@
 <script setup lang="ts">
+import { siteRoutes } from '#shared/utils/routes'
+
 const content = useSiteContent()
+const { buildBreadcrumbSchema, buildPageSchema } = useSiteSeo()
 const page = computed(() => content.value.pages.projects)
 const projects = computed(() => content.value.projects)
 const projectActionLabels = computed(() => content.value.cv.projects.actions)
 const { inViewOptions, revealInitial, revealTransition, revealVisible } = useMotionPresets()
+const seoTitle = computed(() => page.value.seo?.title || page.value.title)
+const seoDescription = computed(() => page.value.seo?.description || page.value.description)
+
+useJsonLd(() => [
+	buildPageSchema({
+		type: 'CollectionPage',
+		path: siteRoutes.projects,
+		name: page.value.title,
+		description: seoDescription.value
+	}),
+	buildBreadcrumbSchema([
+		{ name: content.value.ui.navigation.home, path: siteRoutes.home },
+		{ name: page.value.title, path: siteRoutes.projects }
+	])
+].filter(Boolean))
 
 usePageSeo(computed(() => ({
-	title: page.value.seo?.title || page.value.title,
-	description: page.value.seo?.description || page.value.description
+	title: seoTitle.value,
+	description: seoDescription.value
 })))
 </script>
 

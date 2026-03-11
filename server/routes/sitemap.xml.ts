@@ -1,10 +1,11 @@
-const staticRoutes = ['/', '/projects', '/contact']
+import { resolveSiteUrl } from '#shared/utils/seo'
+import { staticSiteRoutes } from '#shared/utils/routes'
 
 export default defineEventHandler((event) => {
 	const config = useRuntimeConfig(event)
-	const siteUrl = config.public.siteUrl || 'https://wissem.pro'
+	const siteUrl = resolveSiteUrl(config.public.siteUrl)
 	const lastModified = new Date().toISOString()
-	const urls = staticRoutes.map(route => `
+	const urls = staticSiteRoutes.map(route => `
   <url>
     <loc>${new URL(route, siteUrl).toString()}</loc>
     <lastmod>${lastModified}</lastmod>

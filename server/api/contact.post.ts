@@ -1,5 +1,5 @@
 import type { H3Event } from 'h3'
-import type { LocaleContent, SiteLocale } from '#shared/content'
+import type { SiteContentConfig } from '#shared/content'
 import { hasContactFormErrors, normalizeContactForm, type ContactFormData } from '#shared/utils/contact'
 import { parseAcceptLanguage, resolvePreferredSiteLocale, SITE_LOCALE_COOKIE_NAME } from '#shared/utils/siteLocale'
 
@@ -28,14 +28,8 @@ function pruneExpiredRateLimits(now: number) {
 	}
 }
 
-type SiteContentConfig = {
-	defaultSiteLocale: SiteLocale
-	availableSiteLocales: SiteLocale[]
-	siteContent: Record<SiteLocale, LocaleContent>
-}
-
 function getContactApiMessages(event: H3Event) {
-	const { defaultSiteLocale, availableSiteLocales, siteContent } = useAppConfig() as unknown as SiteContentConfig
+	const { defaultSiteLocale, availableSiteLocales, siteContent } = useAppConfig() as SiteContentConfig
 	const locale = resolvePreferredSiteLocale({
 		availableLocales: availableSiteLocales,
 		fallbackLocale: defaultSiteLocale || 'en',

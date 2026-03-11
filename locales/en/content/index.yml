@@ -1,17 +1,28 @@
+seo:
+    defaultTitle: "Portfolio, software projects and resume"
+    defaultDescription: "Portfolio of Wissem Badraoui, IMT Nord Europe student. Software projects, resume, background and contact details for technical internship opportunities."
+    defaultImage: "/images/portfolio.png"
+    defaultImageAlt: "Preview of Wissem Badraoui's portfolio"
+    person:
+        name: "Wissem Badraoui"
+        alternateName: "Wissem"
+        description: "IMT Nord Europe student interested in software development, data processing, systems security, and practical tools for technical teams."
+        alumniOf: "IMT Nord Europe"
+
 pages:
     home:
         title: "Portfolio"
         description: "Wissem's portfolio, a student at IMT Nord Europe in the second year of the integrated preparatory cycle, currently looking for a technical internship for summer 2026."
         seo:
-            title: "Portfolio"
-            description: "My background, projects, and online resume, with a strong interest in software development, data processing, and practical tools for technical teams."
+            title: "Portfolio, software projects and resume"
+            description: "Explore Wissem Badraoui's portfolio: background, technical projects, resume, and contact details for software engineering internship opportunities."
 
     projects:
         title: "Projects"
         description: "A selection of personal and technical projects developed alongside my studies, with a focus on useful tools, web interfaces, and real-world environments."
         seo:
-            title: "Projects"
-            description: "Personal and technical projects built alongside my studies, with a focus on useful tools, web interfaces, and real-world environments."
+            title: "Technical projects and portfolio"
+            description: "Technical projects by Wissem Badraoui across software development, data workflows, web interfaces, and practical tools built during his studies at IMT Nord Europe."
 
 ui:
     navigation:
@@ -31,9 +42,9 @@ ui:
         description: "The requested page does not exist or is no longer available."
 
     meta:
-        titleTemplate: "%s • Wissem."
-        applicationName: "Portfolio · Wissem."
-        ogSiteName: "Portfolio · Wissem."
+        titleTemplate: "%s · Wissem Badraoui"
+        applicationName: "Wissem Badraoui Portfolio"
+        ogSiteName: "Wissem Badraoui Portfolio"
 
     timeline:
         logoAltPrefix: "Logo"
@@ -46,7 +57,7 @@ cv:
     name: "Wissem."
 
     hero:
-        avatarAlt: "Wissem's visual signature."
+        avatarAlt: "Wissem Badraoui's visual signature."
         status: "Student at IMT Nord Europe, in the second year of the integrated preparatory cycle"
         objective: "Looking for a technical internship lasting 8 to 12 weeks starting June 8, 2026"
         description: "I am interested in software development, data processing, systems security, and building useful tools for technical teams."
@@ -143,6 +154,7 @@ cv:
     projects:
         title: "Selected projects"
         description: "A selection of personal and technical projects built alongside my studies."
+        linkLabel: "View all projects"
         featured: ["satt-tool", "zeldanes", "password-manager"]
 
         actions:

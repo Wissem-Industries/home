@@ -20,7 +20,8 @@ useHead({
 
 usePageSeo(computed(() => ({
 	title: errorContent.value.title,
-	description: errorContent.value.description
+	description: errorContent.value.description,
+	robots: 'noindex,follow'
 })))
 </script>
 

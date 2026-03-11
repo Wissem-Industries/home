@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import type { ProjectActionLabelsContent, ProjectContent } from '~~/shared/content'
+import { siteRoutes } from '#shared/utils/routes'
 
 const { inViewOptions, reduceMotion, revealInitial, revealTransition, revealVisible } = useMotionPresets()
 
 defineProps<{
 	title: string
 	description: string
+	linkLabel: string
 	actions: ProjectActionLabelsContent
 	projects: ProjectContent[]
 }>()
@@ -31,6 +33,7 @@ defineProps<{
 				container: 'items-stretch'
 			}"
 			class="w-full"
+			dots
 		>
 			<Motion
 				:initial="revealInitial"
@@ -46,5 +49,16 @@ defineProps<{
 				/>
 			</Motion>
 		</UCarousel>
+
+		<div class="mt-0 flex justify-start">
+			<UButton
+				:to="siteRoutes.projects"
+				variant="ghost"
+				color="neutral"
+				trailing-icon="i-lucide-arrow-right"
+			>
+				{{ linkLabel }}
+			</UButton>
+		</div>
 	</UPageSection>
 </template>

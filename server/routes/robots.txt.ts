@@ -1,6 +1,8 @@
+import { resolveSiteUrl } from '#shared/utils/seo'
+
 export default defineEventHandler((event) => {
 	const config = useRuntimeConfig(event)
-	const siteUrl = config.public.siteUrl || 'https://wissem.pro'
+	const siteUrl = resolveSiteUrl(config.public.siteUrl)
 
 	setHeader(event, 'content-type', 'text/plain; charset=utf-8')
 

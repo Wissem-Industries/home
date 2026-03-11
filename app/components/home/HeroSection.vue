@@ -1,13 +1,6 @@
 <script setup lang="ts">
+import type { ContactLinkContent } from '~~/shared/content'
 import { getLinkTarget, isExternalLink } from '#shared/utils/links'
-
-type ContactLink = {
-	id: string
-	label: string
-	value: string
-	to: string
-	icon: string
-}
 
 const { profile } = useAppConfig()
 const colorMode = useColorMode()
@@ -27,7 +20,7 @@ const props = defineProps<{
 	resumeMessage: string
 	secondaryCtaLabel: string
 	secondaryCtaTo: string
-	links: ContactLink[]
+	links: ContactLinkContent[]
 }>()
 
 function onDownloadResume() {

@@ -14,6 +14,7 @@ const props = withDefaults(defineProps<{
 })
 
 const projectYear = computed(() => props.project.date.split('-')[0] || props.project.date)
+const projectImageAlt = computed(() => `${props.project.title} preview`)
 </script>
 
 <template>
@@ -89,7 +90,7 @@ const projectYear = computed(() => props.project.date.split('-')[0] || props.pro
 
 		<img
 			:src="project.image"
-			:alt="project.title"
+			:alt="projectImageAlt"
 			:loading="eagerImage ? 'eager' : 'lazy'"
 			:fetchpriority="eagerImage ? 'high' : 'auto'"
 			decoding="async"

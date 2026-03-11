@@ -1,17 +1,9 @@
 <script setup lang="ts">
-type ExperienceItem = {
-	title: string
-	organization: string
-	period: string
-	location?: string
-	thumbnail?: string
-	url?: string
-	bullets: string[]
-}
+import type { ExperienceContent } from '~~/shared/content'
 
 const props = defineProps<{
 	title: string
-	items: ExperienceItem[]
+	items: ExperienceContent[]
 }>()
 
 const timelineItems = computed(() => props.items.map(item => ({

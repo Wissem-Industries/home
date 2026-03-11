@@ -15,6 +15,7 @@ Portfolio personnel construit avec `Nuxt 4`, `Nuxt UI` et runtime `Bun`.
 
 - Pages: `/`, `/projects`, `/contact`
 - SEO avec canonical, Open Graph, sitemap et robots
+- JSON-LD centralisé pour le site, la personne et les pages stratégiques
 - Formulaire de contact avec validation + rate limiting + notification Telegram
 - Contenu entièrement centralisé dans l’i18n YAML (pas de texte métier en dur dans le code)
 
@@ -31,6 +32,15 @@ locales/
 ```
 
 Le chargement du contenu est fait au runtime via `nuxt.config.ts` et injecté dans `appConfig.siteContent`.
+
+## i18n actuelle
+
+- Locales actives déduites du repo: `fr`, `en`
+- Locale par défaut: `fr`
+- Les routes ne sont pas préfixées par langue
+- La langue active est résolue via cookie + header `Accept-Language`
+
+Si tu veux un jour des URLs localisées (`/en/...`), il faudra faire évoluer l’architecture de routing, pas seulement ajouter du contenu YAML.
 
 ## Prérequis
 
@@ -50,14 +60,14 @@ Configuration minimale dans `.env`:
 
 ```env
 # URL publique du site (canonical, sitemap, robots)
-SITE_URL=https://example.com
+NUXT_PUBLIC_SITE_URL=https://www.wissem.pro
 
 # Port exposé en docker-compose
 APP_PORT=3000
 
 # Telegram (contact API)
-TELEGRAM_BOT_TOKEN=
-TELEGRAM_CHAT_ID=
+NUXT_TELEGRAM_BOT_TOKEN=
+NUXT_TELEGRAM_CHAT_ID=
 
 # Plausible (optionnel)
 NUXT_PUBLIC_PLAUSIBLE_DOMAIN=
@@ -104,8 +114,9 @@ Le conteneur utilise `oven/bun` en multi-stage et exécute `.output/server/index
 - `bun run lint` passe sans erreur
 - `bun run typecheck` passe sans erreur
 - `bun run build` passe sur l’environnement cible
-- Variables `.env` renseignées (`SITE_URL`, Telegram, Plausible si utilisé)
+- Variables `.env` renseignées (`NUXT_PUBLIC_SITE_URL`, Telegram, Plausible si utilisé)
 - Vérifier le contenu i18n (`locales/fr/...`) avant release
+- Vérifier les redirections infra vers `https://www.wissem.pro`
 
 ---
 

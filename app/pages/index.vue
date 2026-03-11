@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { siteRoutes } from '#shared/utils/routes'
+
 const content = useSiteContent()
+const { buildPageSchema, siteMeta } = useSiteSeo()
 const { contact, directLinks, heroLinks, primaryLinks } = useContactLinks()
 const { downloadFile } = useFileDownload()
 const { inViewOptions, revealInitial, revealTransition, revealVisible } = useMotionPresets()
@@ -7,6 +10,8 @@ const { inViewOptions, revealInitial, revealTransition, revealVisible } = useMot
 const page = computed(() => content.value.pages.home)
 const cv = computed(() => content.value.cv)
 const projects = computed(() => content.value.projects)
+const seoTitle = computed(() => page.value.seo?.title || page.value.title)
+const seoDescription = computed(() => page.value.seo?.description || page.value.description)
 const infoCardUi = {
 	root: 'h-full rounded-2xl flex flex-col',
 	header: 'p-5 sm:p-6 pb-3',
@@ -19,9 +24,16 @@ const featuredProjects = computed(() => {
 	return projects.value.filter(project => featuredIds.has(project.id))
 })
 
+useJsonLd(() => buildPageSchema({
+	type: 'ProfilePage',
+	path: siteRoutes.home,
+	name: siteMeta.value.ogSiteName,
+	description: seoDescription.value
+}))
+
 usePageSeo(computed(() => ({
-	title: page.value.seo?.title || page.value.title,
-	description: page.value.seo?.description || page.value.description
+	title: seoTitle.value,
+	description: seoDescription.value
 })))
 
 function onDownloadResume() {
@@ -70,6 +82,7 @@ function onDownloadResume() {
 			v-if="featuredProjects.length"
 			:title="cv.projects.title"
 			:description="cv.projects.description"
+			:link-label="cv.projects.linkLabel"
 			:actions="cv.projects.actions"
 			:projects="featuredProjects"
 		/>

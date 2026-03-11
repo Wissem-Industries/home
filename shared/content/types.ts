@@ -37,6 +37,21 @@ export type SiteMetaContent = {
 	ogSiteName: string
 }
 
+export type SeoPersonContent = {
+	name: string
+	alternateName: string
+	description: string
+	alumniOf?: string
+}
+
+export type SiteSeoContent = {
+	defaultTitle: string
+	defaultDescription: string
+	defaultImage: string
+	defaultImageAlt: string
+	person: SeoPersonContent
+}
+
 export type TimelineContent = {
 	logoAltPrefix: string
 }
@@ -141,6 +156,7 @@ export type ProjectActionLabelsContent = {
 export type ProjectsPreviewContent = {
 	title: string
 	description: string
+	linkLabel: string
 	featured: string[]
 	actions: ProjectActionLabelsContent
 }
@@ -190,7 +206,6 @@ export type ProjectContent = {
 	repo?: string
 	tags: string[]
 	date: string
-	featured?: boolean
 }
 
 export type ContactFormFieldContent = {
@@ -250,6 +265,7 @@ export type ContactPageContent = PageContent & {
 
 export type LocaleContent = {
 	ui: UiContent
+	seo: SiteSeoContent
 	pages: {
 		home: PageContent
 		projects: PageContent
@@ -257,4 +273,10 @@ export type LocaleContent = {
 	}
 	cv: CvContent
 	projects: ProjectContent[]
+}
+
+export type SiteContentConfig = {
+	defaultSiteLocale: SiteLocale
+	availableSiteLocales: SiteLocale[]
+	siteContent: Record<SiteLocale, LocaleContent>
 }

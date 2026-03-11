@@ -1,18 +1,11 @@
 <script setup lang="ts">
+import type { ContactLinkContent } from '~~/shared/content'
 import { getLinkTarget, isExternalLink } from '#shared/utils/links'
-
-type ContactItem = {
-	id: string
-	icon: string
-	label: string
-	value: string
-	to?: string
-}
 
 defineProps<{
 	locationLabel: string
 	location: string
-	links: ContactItem[]
+	links: Array<Pick<ContactLinkContent, 'id' | 'icon' | 'label' | 'value' | 'to'>>
 }>()
 </script>
 

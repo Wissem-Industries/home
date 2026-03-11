@@ -1,17 +1,28 @@
+seo:
+    defaultTitle: "Portfolio développeur, projets et CV"
+    defaultDescription: "Portfolio de Wissem Badraoui, étudiant à IMT Nord Europe. Projets logiciels, CV, parcours et contact pour un stage technique."
+    defaultImage: "/images/portfolio.png"
+    defaultImageAlt: "Aperçu du portfolio de Wissem Badraoui"
+    person:
+        name: "Wissem Badraoui"
+        alternateName: "Wissem"
+        description: "Étudiant à IMT Nord Europe, intéressé par le développement logiciel, le traitement de données, la sécurité des systèmes et les outils utiles aux équipes techniques."
+        alumniOf: "IMT Nord Europe"
+
 pages:
     home:
         title: "Portfolio"
         description: "Portfolio de Wissem, étudiant à IMT Nord Europe en deuxième année du cycle préparatoire intégré, à la recherche d’un stage technique pour l’été 2026."
         seo:
-            title: "Portfolio"
-            description: "Mon parcours, mes projets et mon CV en ligne, avec un intérêt pour le développement logiciel, le traitement de données et les outils utiles aux équipes techniques."
+            title: "Portfolio développeur, projets et CV"
+            description: "Découvrez le portfolio de Wissem Badraoui : parcours, projets techniques, CV et contact pour un stage en ingénierie logicielle."
 
     projects:
         title: "Projets"
         description: "Une sélection de projets personnels et techniques réalisés en parallèle de mon parcours, avec un intérêt pour les outils utiles, les interfaces web et les environnements concrets."
         seo:
-            title: "Projets"
-            description: "Mes projets personnels et techniques réalisés en parallèle de mon parcours, avec un intérêt pour les outils utiles, les interfaces web et les environnements concrets."
+            title: "Projets techniques et portfolio"
+            description: "Projets techniques de Wissem Badraoui : développement logiciel, data, interfaces web et outils conçus pendant son parcours à IMT Nord Europe."
 
 ui:
     navigation:
@@ -31,9 +42,9 @@ ui:
         description: "La page demandée n’existe pas ou n’est plus disponible."
 
     meta:
-        titleTemplate: "%s • Wissem."
-        applicationName: "Portfolio · Wissem."
-        ogSiteName: "Portfolio · Wissem."
+        titleTemplate: "%s · Wissem Badraoui"
+        applicationName: "Portfolio de Wissem Badraoui"
+        ogSiteName: "Portfolio de Wissem Badraoui"
 
     timeline:
         logoAltPrefix: "Logo"
@@ -46,7 +57,7 @@ cv:
     name: "Wissem."
 
     hero:
-        avatarAlt: "Signature visuelle de Wissem."
+        avatarAlt: "Signature visuelle de Wissem Badraoui."
         status: "Étudiant à IMT Nord Europe, en deuxième année du cycle préparatoire intégré"
         objective: "Recherche un stage technique de 8 à 12 semaines à partir du 8 juin 2026"
         description: "Je m’intéresse au développement logiciel, au traitement de données, à la sécurité des systèmes et aux outils utiles aux équipes techniques."
@@ -143,6 +154,7 @@ cv:
     projects:
         title: "Quelques projets"
         description: "Une sélection de projets personnels et techniques réalisés en parallèle de mon parcours."
+        linkLabel: "Voir tous les projets"
         featured: ["satt-tool", "zeldanes", "password-manager"]
 
         actions:

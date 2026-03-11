@@ -3,14 +3,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "bun --bun nuxt build",
-    "dev": "bun --bun nuxt dev",
-    "start": "bun .output/server/index.mjs",
-    "preview": "bun --bun nuxt preview",
-    "postinstall": "bun --bun nuxt prepare",
+	"start": "bun run .output/server/index.mjs",
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "typecheck": "bun --bun nuxt typecheck"
+    "typecheck": "nuxt typecheck"
   },
   "dependencies": {
     "@iconify-json/circle-flags": "^1.2.10",

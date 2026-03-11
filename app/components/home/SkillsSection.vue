@@ -1,15 +1,11 @@
 <script setup lang="ts">
-const { revealInitial, revealTransition, revealVisible, inViewOptions } = useMotionPresets()
+import type { SkillsGroupContent } from '~~/shared/content'
 
-type SkillsGroup = {
-	title: string
-	description: string
-	items: string[]
-}
+const { revealInitial, revealTransition, revealVisible, inViewOptions } = useMotionPresets()
 
 defineProps<{
 	title: string
-	groups: SkillsGroup[]
+	groups: SkillsGroupContent[]
 }>()
 </script>
 

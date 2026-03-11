@@ -1,15 +1,32 @@
 <script setup lang="ts">
 import type { FormSubmitEvent } from '@nuxt/ui'
 import { createEmptyContactForm, getContactFormErrors, type ContactFormData } from '#shared/utils/contact'
+import { siteRoutes } from '#shared/utils/routes'
 
 const content = useSiteContent()
+const { buildBreadcrumbSchema, buildPageSchema } = useSiteSeo()
 const page = computed(() => content.value.pages.contact)
 const { allLinks, contact } = useContactLinks()
 const { inViewOptions, revealInitial, revealTransition, revealVisible } = useMotionPresets()
+const seoTitle = computed(() => page.value.seo?.title || page.value.title)
+const seoDescription = computed(() => page.value.seo?.description || page.value.description)
+
+useJsonLd(() => [
+	buildPageSchema({
+		type: 'ContactPage',
+		path: siteRoutes.contact,
+		name: page.value.title,
+		description: seoDescription.value
+	}),
+	buildBreadcrumbSchema([
+		{ name: content.value.ui.navigation.home, path: siteRoutes.home },
+		{ name: page.value.title, path: siteRoutes.contact }
+	])
+].filter(Boolean))
 
 usePageSeo(computed(() => ({
-	title: page.value.seo?.title || page.value.title,
-	description: page.value.seo?.description || page.value.description
+	title: seoTitle.value,
+	description: seoDescription.value
 })))
 
 const toast = useToast()
