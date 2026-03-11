@@ -66,20 +66,6 @@ function loadSiteContent() {
 	return Object.fromEntries(entries) as Record<SiteLocale, LocaleContent>
 }
 
-function resolvePlausibleDomain() {
-	const explicitDomain = process.env.NUXT_PUBLIC_PLAUSIBLE_DOMAIN?.trim()
-	if (explicitDomain) return explicitDomain
-
-	const siteUrl = process.env.SITE_URL?.trim()
-	if (!siteUrl) return undefined
-
-	try {
-		return new URL(siteUrl).hostname
-	} catch {
-		return undefined
-	}
-}
-
 const siteContent = loadSiteContent()
 const availableSiteLocales = Object.keys(siteContent).sort()
 
@@ -131,8 +117,8 @@ export default (): NuxtConfig => {
 			}
 		},
 		plausible: {
-			proxy: true,
-			domain: resolvePlausibleDomain(),
+			proxy: false,
+			domain: process.env.NUXT_PUBLIC_PLAUSIBLE_DOMAIN,
 			apiHost: process.env.NUXT_PUBLIC_PLAUSIBLE_API_HOST,
 			fileDownloads: { fileExtensions: ['pdf'] },
 			autoOutboundTracking: true,
