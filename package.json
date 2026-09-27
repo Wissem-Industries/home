@@ -1,7 +1,7 @@
 {
   "name": "@wissem-industries/home",
   "description": "Personal portfolio and contact site for Wissem at wissem.pro.",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": true,
   "type": "module",
   "packageManager": "bun@1.4.2",
