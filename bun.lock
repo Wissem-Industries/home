@@ -7,7 +7,7 @@
       "dependencies": {
         "@nuxtjs/i18n": "^10.6.0",
         "@nuxtjs/plausible": "^4.0.0",
-        "@wissem-industries/ui": "0.5.0",
+        "@wissem-industries/ui": "0.5.3",
         "nuxt": "^4.5.2",
       },
       "devDependencies": {
@@ -732,7 +732,7 @@
 
     "@vueuse/shared": ["@vueuse/shared@14.4.0", "", { "peerDependencies": { "vue": "^3.5.0" } }, "sha512-JRgY90Sz8DDtPMsaDflvPMp9xYk69JZAmbuDvAquUVXKr2gEjqtzGNTTthLfckH0BzBqvnu31gb4a8TGLRe79g=="],
 
-    "@wissem-industries/ui": ["@wissem-industries/ui@0.5.0", "https://npm.pkg.github.com/download/@wissem-industries/ui/0.5.0/21e44f2cdf789c670f15a125783e079ac711ac8f", { "dependencies": { "@fontsource-variable/geist": "^5.3.0", "@fontsource-variable/geist-mono": "^5.3.0", "@iconify-json/circle-flags": "^1.2.11", "@iconify-json/lucide": "^1.2.134", "@iconify-json/ri": "^1.2.10", "@nuxt/ui": "^4.11.1", "tailwindcss": "^4.3.3" } }, "sha512-t3NDrpXux4FpIqFlJZ+WAoXxA2F2MdYIiOv6vm5YOUdI2rDG/YgPKusbu7xf/mzXu6Me8/LBKsp6G6h3mwlJKg=="],
+    "@wissem-industries/ui": ["@wissem-industries/ui@0.5.3", "https://npm.pkg.github.com/download/@wissem-industries/ui/0.5.3/99a66cfdd7a06ad102e8337f9a76d234371b0166", { "dependencies": { "@fontsource-variable/geist": "^5.3.0", "@fontsource-variable/geist-mono": "^5.3.0", "@iconify-json/circle-flags": "^1.2.11", "@iconify-json/lucide": "^1.2.134", "@iconify-json/ri": "^1.2.10", "@nuxt/ui": "^4.11.1", "tailwindcss": "^4.3.3" } }, "sha512-QwuyGEZoiXjkMbhV55tHq7WhKssTOPJvTICMMFAAy4Gn6R/IYrH22M8tumKUUVQEDaWKt5kVf+6eML429x9tVg=="],
 
     "abbrev": ["abbrev@3.0.1", "", {}, "sha512-AO2ac6pjRB3SJmGJo+v5/aK6Omggp6fsLrs6wN9bd35ulu4cCwaAU9+7ZhXjeqHVkaHThLuzH0nZr0YpCDhygg=="],
 
