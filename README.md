@@ -21,7 +21,7 @@
 
 Wissem Home is the portfolio and contact site of Wissem’s Industries, built
 with Nuxt 4 and the shared `@wissem-industries/ui` design system. `V3` identifies
-the third product generation; SemVer tags such as `v0.1.5` identify releases.
+the third product generation; SemVer tags identify software releases.
 
 ## Features
 
