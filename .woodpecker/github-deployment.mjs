@@ -62,7 +62,7 @@ if (process.argv[2] === 'start') {
   }
   await request(`/repos/${owner}/${repository}/releases`, {
     tag_name: tag,
-    name: `Wissem Home ${tag}`,
+    name: tag,
     generate_release_notes: true,
     draft: false,
     prerelease: tag.includes('-'),
