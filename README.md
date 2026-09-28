@@ -9,7 +9,7 @@
   <a href="https://ci.wissem.pro/repos/3"><img alt="Woodpecker CI" src="https://ci.wissem.pro/api/badges/3/status.svg" /></a>
   <a href="https://github.com/Wissem-Industries/Wissem-Home/releases"><img alt="Latest version" src="https://img.shields.io/github/v/tag/Wissem-Industries/Wissem-Home?sort=semver&label=version" /></a>
   <a href="https://ghcr.io/wissem-industries/home"><img alt="Production image on GHCR" src="https://img.shields.io/badge/GHCR-production-2496ED?logo=docker&logoColor=white" /></a>
-  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/github/license/Wissem-Industries/Wissem-Home" /></a>
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-green.svg" /></a>
 </p>
 
 <p align="center">
