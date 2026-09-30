@@ -27,9 +27,7 @@ steps:
       - printf '//npm.pkg.github.com/:_authToken=%s\n' "$${GITHUB_PACKAGES_TOKEN}" > /root/.npmrc
       - bun install --frozen-lockfile
       - rm -f /root/.npmrc
-      - VERSION="$${CI_COMMIT_TAG#v}"
-      - PACKAGE_VERSION=$(sed -n 's/.*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' package.json | head -n 1)
-      - test "$${VERSION}" = "$${PACKAGE_VERSION}"
+      - test "v$(bun -p 'require("./package.json").version')" = "$${CI_COMMIT_TAG}"
       - bun run check
       - bun run build
       - mkdir -p .ci-image-context
@@ -61,6 +59,14 @@ steps:
       - >-
         bun -e 'let error; for (let attempt = 0; attempt < 4; attempt++) { try { const response = await fetch(process.env.DOKPLOY_WEBHOOK_URL, { method: "POST", signal: AbortSignal.timeout(30000) }); if (response.ok) process.exit(0); error = new Error("Dokploy returned " + response.status) } catch (caught) { error = caught } await Bun.sleep(1000 * (attempt + 1)) } throw error'
 
+  - name: verify-production
+    image: oven/bun:alpine
+    environment:
+      PRODUCTION_URL: https://www.wissem.pro
+    commands:
+      - >-
+        bun -e 'let error; for (let attempt = 0; attempt < 30; attempt++) { try { const response = await fetch(process.env.PRODUCTION_URL, { signal: AbortSignal.timeout(15000) }); if (response.ok) process.exit(0); error = new Error("Production returned " + response.status) } catch (caught) { error = caught } await Bun.sleep(10000) } throw error'
+
   - name: create-release
     image: oven/bun:alpine
     environment:
@@ -74,7 +80,7 @@ steps:
     environment:
       GITHUB_PACKAGES_TOKEN:
         from_secret: github_packages_token
-      DEPLOYMENT_STATUS_DESCRIPTION: Mise à jour Dokploy déclenchée et release publiée
+      DEPLOYMENT_STATUS_DESCRIPTION: Déploiement Dokploy vérifié et release publiée
       DEPLOYMENT_URL: https://www.wissem.pro
     commands:
       - bun .woodpecker/github-deployment.mjs success
