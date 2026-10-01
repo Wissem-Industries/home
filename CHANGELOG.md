@@ -2,6 +2,12 @@
 
 All notable changes to Wissem Home are documented in this file.
 
+## [0.2.3] - 2026-10-01
+
+### Changed
+
+- Wissem UI 0.8.1: softer dark glass, and the page no longer shifts when the language menu opens.
+
 ## [0.2.2] - 2026-10-01
 
 ### Changed
