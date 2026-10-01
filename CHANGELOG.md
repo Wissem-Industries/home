@@ -2,6 +2,12 @@
 
 All notable changes to Wissem Home are documented in this file.
 
+## [0.2.1] - 2026-10-01
+
+### Changed
+
+- Portfolio cover refreshed from the deployed site.
+
 ## [0.2.0] - 2026-10-01
 
 ### Added

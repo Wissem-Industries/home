@@ -19,5 +19,5 @@ Wissem Home est le portfolio public de Wissem’s Industries, actuellement en g�
 - Nuxt 4, Vue 3, TypeScript, Bun 1.4.x, Biome 2 et `@wissem-industries/ui`. Installer avec `bun install --frozen-lockfile`; utiliser `bun run check` avant une livraison pertinente.
 - Le contact utilise les variables `NUXT_TELEGRAM_BOT_TOKEN` et `NUXT_TELEGRAM_CHAT_ID`; Plausible utilise ses variables publiques documentées dans `.env.example`. Ne jamais copier de valeurs réelles dans Git ou les logs.
 - Woodpecker vérifie push/PR. Les tags `v*` alignés sur `package.json.version` publient l’image GHCR et déclenchent le webhook Dokploy.
-- Garder les images Alpine et les étapes CI Bun selon les consignes communes de [`../Wissem's Industries/AGENTS.md`](../Wissem's%20Industries/AGENTS.md).
+- Garder les images Alpine et les étapes CI Bun selon les consignes communes de Wissem's Industries.
 - Mettre à jour ce fichier automatiquement pour chaque nouvelle règle durable de Wissem Home; reporter les règles transverses au dépôt central.
