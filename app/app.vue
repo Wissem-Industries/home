@@ -25,20 +25,9 @@ useHead(() => ({
     { name: 'color-scheme', content: 'light dark' },
   ],
   link: [
-    {
-      rel: 'icon',
-      type: 'image/svg+xml',
-      href: '/images/Logo_Black.svg',
-      media: '(prefers-color-scheme: light)',
-    },
-    {
-      rel: 'icon',
-      type: 'image/svg+xml',
-      href: '/images/Logo_White.svg',
-      media: '(prefers-color-scheme: dark)',
-    },
-    { rel: 'shortcut icon', href: '/favicon.ico' },
-    { rel: 'apple-touch-icon', href: '/favicon.ico' },
+    { rel: 'icon', href: '/favicon.ico', sizes: '48x48' },
+    { rel: 'icon', type: 'image/svg+xml', href: '/images/Logo_Violet.svg' },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
     { rel: 'manifest', href: '/site.webmanifest' },
     ...sameAs.value.map((href) => ({ rel: 'me' as const, href })),
   ],
