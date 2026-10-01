@@ -104,7 +104,7 @@ export const en = {
       {
         title: 'Technical internship · Modernizing an internal audit support tool',
         organization: 'French Public Finances Directorate (DGFiP)',
-        period: '2026 · 11 weeks',
+        period: '2026',
         location: 'Paris',
         thumbnail: '/images/dgfip-logo.png',
         bullets: [
@@ -118,7 +118,7 @@ export const en = {
       {
         title: 'Technical internship · Company discovery',
         organization: 'Nidec Leroy-Somer',
-        period: '2025 · 6 weeks',
+        period: '2025',
         location: 'Angouleme',
         thumbnail: '/images/leroy-somer-logo.png',
         bullets: [
@@ -275,11 +275,6 @@ export const en = {
       title: 'Modernization of an audit support tool (DGFiP)',
       description:
         'Internship in Paris: modernization and restructuring of a Python audit support application, optimization of high-volume data processing with SQLite and DuckDB, and stronger traceability.',
-    },
-    'wissem-sso': {
-      title: 'Wissem SSO',
-      description:
-        'Identity provider for Wissem’s Industries applications, with passkey sign-in and OpenID Connect. Designed, deployed and maintained on self-hosted infrastructure.',
     },
     'wissem-move': {
       title: 'Wissem Move',

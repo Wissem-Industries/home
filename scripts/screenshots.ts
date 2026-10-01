@@ -25,7 +25,6 @@ interface Target {
 }
 
 const targets: Target[] = [
-  { id: 'wissem-sso', url: 'https://sso.wissem.pro', settle: 1200 },
   {
     id: 'wissem-move',
     url: 'https://move.wissem.pro',

@@ -73,16 +73,6 @@ export const projectRecords = [
     featured: true,
   },
   {
-    id: 'wissem-sso',
-    category: 'product',
-    status: 'live',
-    period: { start: '2026-09' },
-    stack: ['Nuxt', 'TypeScript', 'Better Auth', 'PostgreSQL'],
-    links: { site: 'https://sso.wissem.pro' },
-    image: '/images/projects/wissem-sso.webp',
-    featured: true,
-  },
-  {
     id: 'wissem-move',
     category: 'product',
     status: 'live',
@@ -113,7 +103,7 @@ export const projectRecords = [
       code: 'https://github.com/Wissem-Industries/Wissem-UI',
     },
     image: '/images/projects/portfolio.webp',
-    featured: false,
+    featured: true,
   },
   {
     id: 'parcourtime',
@@ -160,7 +150,7 @@ export const projectRecords = [
   },
   {
     id: 'password-manager',
-    category: 'personal',
+    category: 'studies',
     status: 'finished',
     period: { start: '2024' },
     stack: ['Python'],

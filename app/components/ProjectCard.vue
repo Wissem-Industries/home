@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Project } from '#shared/content'
 import { getLinkTarget, isExternalLink } from '#shared/utils/links'
-import { formatProjectPeriod } from '#shared/utils/project-period'
+import { formatProjectYear } from '#shared/utils/project-period'
 
 const STATUS_DOTS = {
   live: 'bg-green-500',
@@ -18,7 +18,7 @@ defineProps<{
   eager?: boolean
 }>()
 
-const { content, locale } = usePortfolioContent()
+const { content } = usePortfolioContent()
 </script>
 
 <template>
@@ -50,7 +50,7 @@ const { content, locale } = usePortfolioContent()
         <span
           class="absolute left-3 top-3 rounded-full border border-white/15 bg-neutral-950/70 px-2.5 py-1 font-mono text-xs text-white backdrop-blur"
         >
-          {{ formatProjectPeriod(project.period, project.status, locale) }}
+          {{ formatProjectYear(project.period) }}
         </span>
       </div>
 

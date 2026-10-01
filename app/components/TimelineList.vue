@@ -30,6 +30,7 @@ defineProps<{ items: TimelineEntry[] }>()
             width="176"
             height="88"
             format="webp"
+            fit="inside"
             loading="lazy"
             class="max-h-full max-w-full object-contain"
           />

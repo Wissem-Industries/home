@@ -11,6 +11,8 @@ const items = computed(() =>
     label: content.value.navigation[route.key],
     icon: route.icon,
     to: localePath(route.path),
+    // The English home is `/en`, a prefix of every other English page.
+    exact: route.path === '/',
   })),
 )
 

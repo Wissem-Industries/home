@@ -2,6 +2,21 @@
 
 All notable changes to Wissem Home are documented in this file.
 
+## [0.2.2] - 2026-10-01
+
+### Changed
+
+- The active link of the header follows the page on the English site.
+- Experience logos are no longer cropped.
+- The interests orbit is animated, and stops with reduced motion.
+- The password manager is listed under Studies.
+- Project cards and internships show only the year, without "since" or durations.
+- Wissem UI 0.8.0: deeper Liquid Glass.
+
+### Removed
+
+- Wissem SSO from the projects list.
+
 ## [0.2.1] - 2026-10-01
 
 ### Changed

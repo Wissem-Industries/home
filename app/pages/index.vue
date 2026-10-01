@@ -310,8 +310,10 @@ useJsonLd(
           <div class="space-y-6">
             <h2 class="text-lg font-medium text-highlighted">{{ content.profile.interestsTitle }}</h2>
             <div class="interest-orbit" aria-hidden="true">
+              <span class="interest-orbit__spin interest-orbit__spin--outer"><i /></span>
+              <span class="interest-orbit__spin interest-orbit__spin--inner"><i /></span>
               <div class="interest-orbit__center">
-                <UIcon name="i-ri-compass-3-line" class="size-6 text-primary" />
+                <UIcon name="i-ri-compass-3-line" class="interest-orbit__needle size-6 text-primary" />
               </div>
             </div>
             <ul class="interest-orbit__items">

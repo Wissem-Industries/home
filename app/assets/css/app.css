@@ -13,7 +13,7 @@ html {
 .interest-orbit::after {
   position: absolute;
   inset: 2.75rem;
-  border: 1px solid color-mix(in srgb, var(--ui-primary) 24%, var(--ui-border));
+  border: 1px dashed color-mix(in srgb, var(--ui-primary) 24%, var(--ui-border));
   border-radius: 9999px;
   content: "";
 }
@@ -140,5 +140,85 @@ html {
 
   .group:hover .project-media {
     transform: none;
+  }
+}
+
+/* Orbiting dots ride on the rings; they share the ring box and turn with it. */
+.interest-orbit__spin {
+  position: absolute;
+  inset: 2.75rem;
+  border-radius: 9999px;
+}
+
+.interest-orbit__spin--inner {
+  inset: 4.5rem;
+}
+
+.interest-orbit__spin > i {
+  position: absolute;
+  top: -0.1875rem;
+  left: 50%;
+  width: 0.375rem;
+  height: 0.375rem;
+  margin-left: -0.1875rem;
+  border-radius: 9999px;
+  background: var(--ui-primary);
+  box-shadow: 0 0 0.75rem var(--ui-primary);
+}
+
+@keyframes interest-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes interest-float {
+  50% {
+    translate: 0 -0.25rem;
+  }
+}
+
+@keyframes interest-sway {
+  0%,
+  100% {
+    rotate: -18deg;
+  }
+
+  50% {
+    rotate: 24deg;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .interest-orbit__spin--outer {
+    animation: interest-spin 24s linear infinite;
+  }
+
+  .interest-orbit__spin--inner {
+    animation: interest-spin 16s linear infinite reverse;
+  }
+
+  .interest-orbit__needle {
+    animation: interest-sway 6s ease-in-out infinite;
+  }
+
+  .interest-orbit__icon {
+    animation: interest-float 5s ease-in-out infinite;
+  }
+
+  .interest-orbit__item:nth-child(2) .interest-orbit__icon {
+    animation-delay: -1s;
+  }
+
+  .interest-orbit__item:nth-child(3) .interest-orbit__icon {
+    animation-delay: -2s;
+  }
+
+  .interest-orbit__item:nth-child(4) .interest-orbit__icon {
+    animation-delay: -3s;
+  }
+
+  .interest-orbit__item:nth-child(5) .interest-orbit__icon {
+    animation-delay: -4s;
   }
 }

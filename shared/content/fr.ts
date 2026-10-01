@@ -104,7 +104,7 @@ export const fr = {
       {
         title: 'Stage technique · Modernisation d’un outil d’assistance à l’audit',
         organization: 'Direction générale des Finances publiques (DGFiP)',
-        period: '2026 · 11 semaines',
+        period: '2026',
         location: 'Paris',
         thumbnail: '/images/dgfip-logo.png',
         bullets: [
@@ -118,7 +118,7 @@ export const fr = {
       {
         title: 'Stage technique · Découverte de l’entreprise',
         organization: 'Nidec Leroy-Somer',
-        period: '2025 · 6 semaines',
+        period: '2025',
         location: 'Angoulême',
         thumbnail: '/images/leroy-somer-logo.png',
         bullets: [
@@ -272,11 +272,6 @@ export const fr = {
       title: 'Modernisation d’un outil d’aide à l’audit (DGFiP)',
       description:
         'Stage à Paris : modernisation et restructuration d’une application Python d’assistance à l’audit, optimisation du traitement de gros volumes de données avec SQLite et DuckDB, et renforcement de la traçabilité.',
-    },
-    'wissem-sso': {
-      title: 'Wissem SSO',
-      description:
-        'Fournisseur d’identité des applications de Wissem’s Industries, avec connexion par passkeys et OpenID Connect. Conçu, déployé et maintenu en auto-hébergement.',
     },
     'wissem-move': {
       title: 'Wissem Move',
