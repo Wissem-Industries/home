@@ -78,6 +78,15 @@ bun run build
 bun run check
 ```
 
+End-to-end and accessibility tests run against the production build, so build
+first. They need Chromium: Woodpecker runs them in the Playwright image, and
+locally `CHROMIUM_PATH` can point at an existing browser.
+
+```sh
+bun run build
+bun run test:e2e
+```
+
 ## Production
 
 Woodpecker checks pushes and pull requests. A `v*` tag matching

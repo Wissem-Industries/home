@@ -2,43 +2,6 @@ html {
   overflow-x: clip;
 }
 
-.site-grid {
-  background-image:
-    linear-gradient(
-      to right,
-      color-mix(in srgb, var(--ui-border) 35%, transparent) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      to bottom,
-      color-mix(in srgb, var(--ui-border) 30%, transparent) 1px,
-      transparent 1px
-    );
-  background-size: 3rem 3rem;
-  mask-image: linear-gradient(to bottom, black, transparent 82%);
-  -webkit-mask-image: linear-gradient(to bottom, black, transparent 82%);
-}
-
-.portfolio-navbar {
-  border: 1px solid color-mix(in srgb, var(--ui-border) 48%, transparent);
-  background: color-mix(in srgb, var(--ui-bg-elevated) 66%, transparent);
-  box-shadow:
-    inset 0 1px 0 color-mix(in srgb, white 8%, transparent),
-    0 8px 24px color-mix(in srgb, black 8%, transparent);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-  transition:
-    background-color 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease;
-}
-
-.portfolio-navbar a[aria-current="page"] {
-  background: transparent;
-  box-shadow: none;
-  text-shadow: 0 0 14px color-mix(in srgb, white 24%, transparent);
-}
-
 .interest-orbit {
   position: relative;
   width: min(100%, 17rem);
@@ -137,68 +100,32 @@ html {
 }
 
 .motion-card {
+  /* Repeats the v-reveal transitions, which this rule would otherwise replace. */
   transition:
-    background-color 180ms ease,
-    transform 180ms ease;
+    opacity var(--wi-duration-slower) var(--wi-ease-out) var(--wi-reveal-delay, 0ms),
+    filter var(--wi-duration-slower) var(--wi-ease-out) var(--wi-reveal-delay, 0ms),
+    transform var(--wi-duration-slower) var(--wi-ease-out) var(--wi-reveal-delay, 0ms),
+    translate var(--wi-duration-base) var(--wi-ease-out),
+    background-color var(--wi-duration-base) var(--wi-ease-standard),
+    box-shadow var(--wi-duration-base) var(--wi-ease-standard);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .motion-card:hover {
-    background-color: color-mix(in srgb, var(--ui-primary) 2%, var(--ui-bg-elevated));
-    transform: translateY(-1px);
+    background-color: color-mix(in oklab, var(--ui-primary) 3%, var(--ui-bg-elevated));
+    box-shadow: 0 10px 28px color-mix(in oklab, black 8%, transparent);
+    translate: 0 -2px;
   }
 }
 
-.theme-switch--light {
-  display: none;
+.project-media {
+  transition: transform var(--wi-duration-slower) var(--wi-ease-out);
 }
 
-html.dark .theme-switch--dark {
-  display: none;
-}
-
-html.dark .theme-switch--light {
-  display: inline-flex;
-}
-
-html.light .theme-switch--dark {
-  display: inline-flex;
-}
-
-html.light .theme-switch--light {
-  display: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html:not(.light, .dark) .theme-switch--dark {
-    display: none;
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .project-media {
+    transform: scale(1.03);
   }
-
-  html:not(.light, .dark) .theme-switch--light {
-    display: inline-flex;
-  }
-}
-
-.reveal-enabled .reveal {
-  opacity: 0;
-  filter: blur(3px);
-  transform: translateY(0.75rem);
-  transition:
-    opacity 480ms cubic-bezier(0.22, 1, 0.36, 1),
-    filter 480ms cubic-bezier(0.22, 1, 0.36, 1),
-    transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: var(--reveal-delay, 0ms);
-}
-
-.reveal-enabled .reveal[data-visible="true"] {
-  opacity: 1;
-  filter: blur(0);
-  transform: translateY(0);
-}
-
-.reveal-enabled .reveal--hero {
-  transform: translateY(0.5rem);
-  transition-duration: 560ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -207,24 +134,8 @@ html.light .theme-switch--light {
     opacity: 0;
   }
 
-  .reveal-enabled .reveal {
-    opacity: 1;
-    filter: none;
-    transform: none;
-    transition: none;
-  }
-
-  .motion-card,
-  .portfolio-navbar {
-    transition: none;
-  }
-
   .motion-card:hover {
-    transform: none;
-  }
-
-  .project-media {
-    transition: none;
+    translate: none;
   }
 
   .group:hover .project-media {

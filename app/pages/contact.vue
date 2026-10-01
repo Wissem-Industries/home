@@ -1,21 +1,19 @@
 <script setup lang="ts">
-import type { ContactErrorCode, ContactField, ContactPayload } from '#shared/utils/contact'
-import { createEmptyContactPayload, getContactFieldErrors } from '#shared/utils/contact'
+import type { FormSubmitEvent } from '@nuxt/ui'
+import type { ContactErrorCode } from '#shared/utils/contact'
+import {
+  CONTACT_HONEYPOT_FIELD,
+  CONTACT_LIMITS,
+  createContactSchema,
+  createEmptyContactPayload,
+} from '#shared/utils/contact'
 
 const { content } = usePortfolioContent()
 const { canonicalUrl, siteUrl } = useSiteSeo()
 const toast = useToast()
-const { revealStyle } = useMotionPresets()
 const loading = ref(false)
-const submitted = ref(false)
-const state = reactive<ContactPayload>(createEmptyContactPayload())
-const errors = computed(() => new Set(getContactFieldErrors(state).map((error) => error.name)))
-
-function fieldError(field: ContactField) {
-  return submitted.value && errors.value.has(field)
-    ? content.value.contact.validation[field]
-    : undefined
-}
+const state = reactive(createEmptyContactPayload())
+const schema = computed(() => createContactSchema(content.value.contact.validation))
 
 function getErrorMessage(code?: ContactErrorCode) {
   if (code === 'RATE_LIMITED') return content.value.contact.messages.rateLimited
@@ -24,12 +22,12 @@ function getErrorMessage(code?: ContactErrorCode) {
   return content.value.contact.messages.errorDescription
 }
 
-async function onSubmit() {
-  submitted.value = true
-  if (errors.value.size > 0 || loading.value) return
+async function onSubmit(_event: FormSubmitEvent<unknown>) {
+  if (loading.value) return
 
   loading.value = true
   try {
+    // The whole state is sent, hidden field included: the API uses it to spot bots.
     await $fetch('/api/contact', { method: 'POST', body: state })
     toast.add({
       title: content.value.contact.messages.successTitle,
@@ -37,7 +35,6 @@ async function onSubmit() {
       color: 'success',
     })
     Object.assign(state, createEmptyContactPayload())
-    submitted.value = false
   } catch (error) {
     const code = (error as { data?: { data?: { code?: ContactErrorCode } } }).data?.data?.code
     toast.add({
@@ -68,8 +65,7 @@ useBreadcrumbJsonLd(
 <template>
   <UContainer>
     <header
-      class="reveal reveal--hero max-w-3xl space-y-5 pb-14 pt-8 sm:pb-20 sm:pt-14"
-      :style="revealStyle()"
+      class="wi-enter max-w-3xl space-y-5 pb-14 pt-8 sm:pb-20 sm:pt-14"
     >
       <p class="font-mono text-xs uppercase tracking-[0.2em] text-primary">
         {{ content.pages.contact.eyebrow }}
@@ -83,7 +79,7 @@ useBreadcrumbJsonLd(
     </header>
 
     <section class="grid items-stretch gap-5 border-t border-default py-12 lg:grid-cols-[22rem_minmax(0,1fr)] lg:py-16">
-      <UCard class="motion-card reveal h-full" :style="revealStyle(0)">
+      <UCard class="motion-card h-full" v-reveal="0">
         <div class="space-y-6">
           <div class="space-y-2">
             <h2 class="text-lg font-medium text-highlighted">{{ content.contact.sidebarTitle }}</h2>
@@ -97,26 +93,25 @@ useBreadcrumbJsonLd(
         </div>
       </UCard>
 
-      <UCard class="motion-card reveal h-full" :style="revealStyle(1)">
-        <UForm :state="state" class="space-y-6" @submit="onSubmit">
+      <UCard class="motion-card h-full" v-reveal="1">
+        <UForm :schema="schema" :state="state" class="space-y-6" @submit="onSubmit">
           <div class="grid gap-5 sm:grid-cols-2">
             <UFormField
               name="name"
               :label="content.contact.fields.name.label"
-              :error="fieldError('name')"
               required
             >
               <UInput
                 v-model="state.name"
                 :placeholder="content.contact.fields.name.placeholder"
                 autocomplete="name"
+                :maxlength="CONTACT_LIMITS.name.max"
                 class="w-full"
               />
             </UFormField>
             <UFormField
               name="email"
               :label="content.contact.fields.email.label"
-              :error="fieldError('email')"
               required
             >
               <UInput
@@ -124,6 +119,7 @@ useBreadcrumbJsonLd(
                 type="email"
                 :placeholder="content.contact.fields.email.placeholder"
                 autocomplete="email"
+                :maxlength="CONTACT_LIMITS.email.max"
                 class="w-full"
               />
             </UFormField>
@@ -132,11 +128,11 @@ useBreadcrumbJsonLd(
           <UFormField
             name="subject"
             :label="content.contact.fields.subject.label"
-            :error="fieldError('subject')"
             required
           >
             <UInput
               v-model="state.subject"
+              :maxlength="CONTACT_LIMITS.subject.max"
               :placeholder="content.contact.fields.subject.placeholder"
               class="w-full"
             />
@@ -145,16 +141,30 @@ useBreadcrumbJsonLd(
           <UFormField
             name="message"
             :label="content.contact.fields.message.label"
-            :error="fieldError('message')"
             required
           >
             <UTextarea
               v-model="state.message"
+              :maxlength="CONTACT_LIMITS.message.max"
               :placeholder="content.contact.fields.message.placeholder"
               :rows="9"
               class="w-full"
             />
           </UFormField>
+
+          <!-- Honeypot: invisible to people, filled in by bots. -->
+          <div class="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+            <label>
+              {{ content.contact.honeypotLabel }}
+              <input
+                v-model="state[CONTACT_HONEYPOT_FIELD]"
+                type="text"
+                :name="CONTACT_HONEYPOT_FIELD"
+                tabindex="-1"
+                autocomplete="off"
+              >
+            </label>
+          </div>
 
           <div class="flex flex-col gap-4 border-t border-default pt-6 sm:flex-row sm:items-center sm:justify-between">
             <UTooltip :text="content.contact.privacyHint">
@@ -168,7 +178,6 @@ useBreadcrumbJsonLd(
               type="submit"
               :label="content.contact.submit"
               :loading="loading"
-              :disabled="loading || (submitted && errors.size > 0)"
               trailing-icon="i-ri-send-plane-line"
               size="lg"
               class="min-h-11 justify-center sm:min-h-0 sm:min-w-52"

@@ -1,38 +1,41 @@
 <script setup lang="ts">
+import type { LocaleCode } from '#shared/content'
 import { SITE_ROUTES } from '#shared/utils/site'
 
-const { content } = usePortfolioContent()
+const { content, locale } = usePortfolioContent()
+const { setLocale } = useI18n()
+const localePath = useLocalePath()
+
 const items = computed(() =>
   SITE_ROUTES.map((route) => ({
     label: content.value.navigation[route.key],
     icon: route.icon,
-    to: route.path,
+    to: localePath(route.path),
   })),
 )
+
+const locales = [
+  { code: 'fr', icon: 'i-circle-flags-fr', label: 'Français' },
+  { code: 'en', icon: 'i-circle-flags-gb', label: 'English' },
+] satisfies Array<{ code: LocaleCode; icon: string; label: string }>
+
+// setLocale also stores the language cookie: a plain link back to `/` would be
+// redirected to the language chosen before.
+function select(code: string) {
+  setLocale(code as LocaleCode)
+}
 </script>
 
 <template>
-  <header class="fixed inset-x-0 top-3 z-50 px-3 sm:top-4 sm:px-4">
-    <nav
-      :aria-label="content.navigation.label"
-      class="portfolio-navbar mx-auto flex w-fit max-w-full items-center gap-0.5 rounded-full p-1"
-    >
-      <UNavigationMenu
-        :items="items"
-        class="max-w-full"
-        :ui="{
-          list: 'gap-0.5',
-          item: 'py-0',
-          link: 'size-11 rounded-full p-0 text-xs sm:h-9 sm:w-20 sm:justify-center sm:px-3 sm:text-sm',
-          linkLeadingIcon: 'size-4 shrink-0 sm:hidden',
-          linkLabel: 'hidden sm:inline',
-        }"
+  <WNavbar :items="items" :label="content.navigation.label">
+    <template #trailing>
+      <WLocaleSelect
+        :locales="locales"
+        :current="locale"
+        :label="content.localeSwitchLabel"
+        @select="select"
       />
-
-      <div class="ml-0.5 flex items-center gap-0.5 border-l border-default pl-1">
-        <LocaleSwitchButton />
-        <ColorModeButton />
-      </div>
-    </nav>
-  </header>
+      <WColorModeButton :label="content.theme.toggle" />
+    </template>
+  </WNavbar>
 </template>

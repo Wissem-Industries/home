@@ -1,3 +1,5 @@
+import type { ProjectCategory, ProjectId, ProjectStatus, ProjectTexts } from './projects'
+
 export const LOCALES = ['fr', 'en'] as const
 
 export type LocaleCode = (typeof LOCALES)[number]
@@ -18,17 +20,6 @@ export interface ContactLink {
   value: string
   to: string
   icon: string
-}
-
-export interface Project {
-  id: string
-  title: string
-  description: string
-  image: string
-  date: string
-  tags: string[]
-  url?: string
-  repo?: string
 }
 
 export interface Experience {
@@ -74,6 +65,7 @@ export interface ContactFormCopy {
   privacyHint: string
   privacyAriaLabel: string
   validation: Record<'name' | 'email' | 'subject' | 'message', string>
+  honeypotLabel: string
   messages: {
     successTitle: string
     successDescription: string
@@ -95,13 +87,14 @@ export interface PortfolioContent {
   }
   localeSwitchLabel: string
   theme: {
-    dark: string
-    light: string
+    toggle: string
   }
   footer: string
   error: {
     title: string
     description: string
+    serverTitle: string
+    serverDescription: string
     home: string
   }
   meta: {
@@ -124,7 +117,6 @@ export interface PortfolioContent {
     objective: string
     description: string
     availability: string
-    seekingInternship: boolean
     internship: ProfileHighlight
     focus: ProfileHighlight
     contactCta: string
@@ -138,7 +130,6 @@ export interface PortfolioContent {
     skills: SkillGroup[]
     projectsTitle: string
     projectsDescription: string
-    featuredProjectIds: string[]
     allProjects: string
     languagesTitle: string
     languages: Array<{ name: string; level: string; value: number }>
@@ -161,6 +152,9 @@ export interface PortfolioContent {
     repo: string
     private: string
   }
-  projects: Project[]
+  projectCategories: Record<ProjectCategory, string>
+  projectStatuses: Record<ProjectStatus, string>
+  projectFilters: { label: string; all: string }
+  projectTexts: Record<ProjectId, ProjectTexts>
   contact: ContactFormCopy
 }

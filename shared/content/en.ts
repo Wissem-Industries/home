@@ -9,11 +9,13 @@ export const en = {
     contact: 'Contact',
   },
   localeSwitchLabel: 'Switch to French',
-  theme: { dark: 'Switch to dark mode', light: 'Switch to light mode' },
+  theme: { toggle: 'Toggle color mode' },
   footer: 'Wissem. • All rights reserved.',
   error: {
     title: 'Page not found',
     description: 'The requested page does not exist or is no longer available.',
+    serverTitle: 'Something went wrong',
+    serverDescription: 'The server ran into a problem. Please try again in a moment.',
     home: 'Back to home',
   },
   meta: {
@@ -22,7 +24,7 @@ export const en = {
     defaultTitle: 'Wissem Badraoui | Portfolio',
     defaultDescription:
       'Professional portfolio of Wissem Badraoui, an engineering student at IMT Nord Europe, with projects, experience, resume, and contact information.',
-    socialImageAlt: "Preview of Wissem's portfolio",
+    socialImageAlt: 'Wissem Badraoui, engineering student at IMT Nord Europe',
     personDescription:
       'Engineering student at IMT Nord Europe, interested in software development, data processing, systems security, and useful tools for technical teams.',
   },
@@ -57,13 +59,12 @@ export const en = {
     description:
       'Strong interest in software development, data processing, systems security, and useful tools for technical teams.',
     availability: 'Open to conversations',
-    seekingInternship: false,
     internship: {
       eyebrow: 'Opportunity sought',
       title: 'Introductory technical internship in data engineering',
       details: [
-        { icon: 'i-ri-time-line', label: 'Duration', value: '8 to 12 weeks' },
-        { icon: 'i-ri-calendar-line', label: 'Start date', value: 'From June 8, 2026' },
+        { icon: 'i-ri-time-line', label: 'Duration', value: '12 to 16 weeks' },
+        { icon: 'i-ri-calendar-line', label: 'Start date', value: 'From June 2027' },
         {
           icon: 'i-ri-map-pin-line',
           label: 'Mobility',
@@ -205,7 +206,6 @@ export const en = {
     projectsTitle: 'Selected projects',
     projectsDescription:
       'A selection of personal and technical projects built alongside academic studies.',
-    featuredProjectIds: ['satt-tool', 'zeldanes', 'password-manager'],
     allProjects: 'View all projects',
     languagesTitle: 'Languages',
     languages: [
@@ -222,8 +222,8 @@ export const en = {
   },
   resume: {
     label: 'Download resume',
-    href: '/files/74b87337454200d4d33f80c4663dc5e5.pdf',
-    filename: 'CV_Wissem_BADRAOUI.pdf',
+    href: '/files/CV_Wissem_BADRAOUI_EN.pdf',
+    filename: 'CV_Wissem_BADRAOUI_EN.pdf',
     started: 'The resume download has started.',
   },
   links: [
@@ -232,95 +232,96 @@ export const en = {
       label: 'Email',
       value: 'contact@wissem.pro',
       to: 'mailto:contact@wissem.pro',
-      icon: 'i-lucide-mail',
+      icon: 'i-ri-mail-line',
     },
     {
       id: 'linkedin',
       label: 'LinkedIn',
       value: '@WissemBadraoui',
       to: 'https://linkedin.com/in/WissemBadraoui',
-      icon: 'i-lucide-linkedin',
+      icon: 'i-ri-linkedin-box-line',
     },
     {
       id: 'github',
       label: 'GitHub',
       value: '@WissemBad',
       to: 'https://github.com/WissemBad',
-      icon: 'i-lucide-github',
+      icon: 'i-ri-github-line',
     },
     {
       id: 'website',
       label: 'Website',
       value: 'www.wissem.pro',
       to: 'https://www.wissem.pro',
-      icon: 'i-lucide-globe',
+      icon: 'i-ri-global-line',
     },
   ],
   projectActions: { view: 'View project', repo: 'View code', private: 'Private access' },
-  projects: [
-    {
-      id: 'zeldanes',
+  projectCategories: {
+    product: 'Product',
+    internship: 'Internship',
+    studies: 'Studies',
+    personal: 'Personal',
+  },
+  projectStatuses: {
+    live: 'Live',
+    ongoing: 'Ongoing',
+    finished: 'Completed',
+    archived: 'Archived',
+  },
+  projectFilters: { label: 'Filter projects', all: 'All' },
+  projectTexts: {
+    'dgfip-audit-tool': {
+      title: 'Modernization of an audit support tool (DGFiP)',
+      description:
+        'Internship in Paris: modernization and restructuring of a Python audit support application, optimization of high-volume data processing with SQLite and DuckDB, and stronger traceability.',
+    },
+    'wissem-sso': {
+      title: 'Wissem SSO',
+      description:
+        'Identity provider for Wissem’s Industries applications, with passkey sign-in and OpenID Connect. Designed, deployed and maintained on self-hosted infrastructure.',
+    },
+    'wissem-move': {
+      title: 'Wissem Move',
+      description:
+        'Web app that brings Évéole buses and TER Hauts-de-France journeys together, with favorites synced through Wissem SSO and widgets for iPhone and Mac.',
+    },
+    infrastructure: {
+      title: 'Self-hosted infrastructure',
+      description:
+        'Woodpecker continuous integration, Docker images published to GHCR and automated deployment on Dokploy for all the products.',
+    },
+    'wissem-ui': {
+      title: 'Wissem UI and portfolio',
+      description:
+        'Personal website and shared design system built with Nuxt, Nuxt UI and Tailwind CSS, used across Wissem’s Industries applications.',
+    },
+    parcourtime: {
+      title: 'ParcourTime',
+      description:
+        'A countdown web app for Parcoursup, displaying key dates through a simple and accessible interface based on the French State design system.',
+    },
+    zeldanes: {
       title: 'ZeldaNES',
       description:
         'Development in C with SDL2 of a game inspired by The Legend of Zelda as part of academic studies.',
-      image: '/images/zelda.png',
-      repo: 'https://github.com/WissemBad/ZeldaNES',
-      tags: ['C', 'SDL2', 'Game', 'Zelda'],
-      date: '2026-01-01',
     },
-    {
-      id: 'satt-tool',
+    'satt-tool': {
       title: 'Internal data processing tool (SATT)',
       description:
         'Improvements made to an internal engineering office tool at Nidec Leroy-Somer, including data processing optimizations and new features to improve reliability and daily usability.',
-      image:
-        'https://images.unsplash.com/photo-1759884247381-d7222dd72dec?auto=format&fit=crop&w=1200&q=82',
-      tags: ['Excel', 'VBA', 'Data Processing', 'Internal Tooling'],
-      date: '2025-06-01',
     },
-    {
-      id: 'personal-portfolio',
-      title: 'Personal portfolio',
-      description:
-        'Development of a personal website with Nuxt and Nuxt UI to present background, projects, and an online resume.',
-      image: '/images/portfolio.png',
-      url: 'https://www.wissem.pro',
-      tags: ['Nuxt', 'Vue', 'Nuxt UI', 'Portfolio'],
-      date: '2025-01-01',
-    },
-    {
-      id: 'parcourtime',
-      title: 'ParcourTime',
-      description:
-        'A countdown web app for Parcoursup, displaying key dates through a simple and accessible interface.',
-      image: '/images/parcourtime.png',
-      url: 'https://parcourtime.wissem.pro',
-      repo: 'https://github.com/WissemBad/ParcourTime',
-      tags: ['Nuxt', 'Vue', 'Countdown', 'Parcoursup'],
-      date: '2025-01-01',
-    },
-    {
-      id: 'internal-dashboard',
+    'internal-dashboard': {
       title: 'Internal admin dashboard',
       description:
         'An administration interface for internal platform operations, with authentication, roles, permissions, and user management.',
-      image:
-        'https://images.unsplash.com/photo-1754039984985-ef607d80113a?auto=format&fit=crop&w=1200&q=82',
-      tags: ['Vue', 'TypeScript', 'Express', 'PostgreSQL', 'Dashboard'],
-      date: '2025-01-01',
     },
-    {
-      id: 'password-manager',
+    'password-manager': {
       title: 'Password manager',
       description:
         'A command-line password manager built in Python, with encrypted storage and a CLI interface.',
-      image:
-        'https://images.unsplash.com/photo-1743090661056-e51700546169?auto=format&fit=crop&w=1200&q=82',
-      repo: 'https://github.com/WissemBad/Password-Manager',
-      tags: ['Python', 'CLI', 'Cryptography', 'Security'],
-      date: '2024-01-01',
     },
-  ],
+  },
   contact: {
     title: 'Contact',
     description: 'Contact for technical discussions, collaborations, or any other enquiry.',
@@ -338,11 +339,12 @@ export const en = {
       'The information provided is used only to process your contact request. It is neither stored, published, nor shared with third parties.',
     privacyAriaLabel: 'Information about data processing',
     validation: {
-      name: 'The name is too short.',
+      name: 'The name must be between 2 and 100 characters.',
       email: 'The email address is invalid.',
-      subject: 'The subject is too short.',
-      message: 'The message is too short.',
+      subject: 'The subject must be between 3 and 150 characters.',
+      message: 'The message must be between 10 and 3,000 characters.',
     },
+    honeypotLabel: 'Leave this field empty',
     messages: {
       successTitle: 'Message sent',
       successDescription:

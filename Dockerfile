@@ -11,13 +11,13 @@ RUN --mount=type=secret,id=github_packages_token,required=true \
     rm -f /root/.npmrc
 
 FROM base AS build
-ARG IMAGE_VERSION=0.1.5
+ARG IMAGE_VERSION=dev
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN bun run build
 
 FROM oven/bun:1.4.2-alpine AS runtime
-ARG IMAGE_VERSION=0.1.5
+ARG IMAGE_VERSION=dev
 WORKDIR /app
 
 ENV NODE_ENV=production

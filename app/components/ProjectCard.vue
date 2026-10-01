@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import type { Project } from '#shared/content'
 import { getLinkTarget, isExternalLink } from '#shared/utils/links'
+import { formatProjectPeriod } from '#shared/utils/project-period'
+
+const STATUS_DOTS = {
+  live: 'bg-green-500',
+  ongoing: 'bg-primary',
+  finished: 'bg-neutral-400',
+  archived: 'bg-neutral-300 dark:bg-neutral-600',
+} as const
 
 defineProps<{
   project: Project
@@ -9,14 +17,14 @@ defineProps<{
   compact?: boolean
   eager?: boolean
 }>()
+
+const { content, locale } = usePortfolioContent()
 </script>
 
 <template>
   <UCard
     class="motion-card group h-full overflow-hidden"
-    :ui="{
-      body: compact ? 'p-0 sm:p-0' : 'p-0 sm:p-0',
-    }"
+    :ui="{ body: 'p-0 sm:p-0' }"
   >
     <article
       class="grid h-full"
@@ -26,26 +34,32 @@ defineProps<{
         class="relative min-h-48 overflow-hidden bg-muted"
         :class="!compact && reverse ? 'lg:order-2' : undefined"
       >
-        <img
+        <NuxtPicture
           :src="project.image"
           :alt="project.title"
+          :sizes="compact ? 'sm:100vw lg:384px' : 'sm:100vw lg:560px'"
           :loading="eager ? 'eager' : 'lazy'"
           :fetchpriority="eager ? 'high' : 'auto'"
           width="960"
-          height="540"
-          decoding="async"
-          referrerpolicy="no-referrer"
-          class="project-media size-full object-cover transition-transform duration-500 group-hover:scale-[1.025]"
-        >
+          height="600"
+          :img-attrs="{
+            class:
+              'project-media size-full object-cover',
+          }"
+        />
         <span
           class="absolute left-3 top-3 rounded-full border border-white/15 bg-neutral-950/70 px-2.5 py-1 font-mono text-xs text-white backdrop-blur"
         >
-          {{ project.date.slice(0, 4) }}
+          {{ formatProjectPeriod(project.period, project.status, locale) }}
         </span>
       </div>
 
       <div class="flex min-w-0 flex-col p-5 sm:p-6 lg:p-8">
         <div class="space-y-3">
+          <p class="flex items-center gap-2 font-mono text-xs text-muted">
+            <span class="size-1.5 rounded-full" :class="STATUS_DOTS[project.status]" />
+            {{ content.projectStatuses[project.status] }}
+          </p>
           <h3 class="text-xl font-semibold tracking-tight text-highlighted">
             {{ project.title }}
           </h3>
@@ -67,21 +81,21 @@ defineProps<{
 
         <div class="mt-auto flex flex-wrap gap-2 pt-6">
           <UButton
-            v-if="project.url"
+            v-if="project.links.site"
             :label="actions.view"
-            :to="project.url"
-            :external="isExternalLink(project.url)"
-            :target="getLinkTarget(project.url)"
+            :to="project.links.site"
+            :external="isExternalLink(project.links.site)"
+            :target="getLinkTarget(project.links.site)"
             trailing-icon="i-ri-external-link-line"
             size="sm"
             class="min-h-11 sm:min-h-0"
           />
           <UButton
-            v-if="project.repo"
+            v-if="project.links.code"
             :label="actions.repo"
-            :to="project.repo"
-            :external="isExternalLink(project.repo)"
-            :target="getLinkTarget(project.repo)"
+            :to="project.links.code"
+            :external="isExternalLink(project.links.code)"
+            :target="getLinkTarget(project.links.code)"
             icon="i-ri-github-line"
             color="neutral"
             variant="outline"
@@ -89,7 +103,7 @@ defineProps<{
             class="min-h-11 sm:min-h-0"
           />
           <UButton
-            v-if="!project.url && !project.repo"
+            v-if="!project.links.site && !project.links.code"
             :label="actions.private"
             icon="i-ri-lock-line"
             color="neutral"

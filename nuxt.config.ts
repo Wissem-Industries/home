@@ -5,7 +5,12 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-09-19',
   devtools: { enabled: false },
   css: ['~/assets/css/app.css'],
-  modules: ['@nuxtjs/i18n', '@nuxtjs/plausible'],
+  modules: ['@nuxt/image', '@nuxtjs/i18n', '@nuxtjs/plausible'],
+  image: {
+    format: ['avif', 'webp'],
+    quality: 80,
+    screens: { sm: 640, md: 768, lg: 1024, xl: 1280 },
+  },
   colorMode: {
     storage: 'cookie',
     storageKey: 'site_theme',
@@ -18,8 +23,9 @@ export default defineNuxtConfig({
     },
   },
   i18n: {
-    strategy: 'no_prefix',
+    strategy: 'prefix_except_default',
     defaultLocale: 'fr',
+    baseUrl: siteUrl,
     langDir: 'locales',
     locales: [
       { code: 'fr', language: 'fr-FR', name: 'Français', file: 'fr.json' },
@@ -41,6 +47,8 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: 'bun',
+    // IPX loads the Node adapter of srvx at runtime, which Nitro cannot see.
+    externals: { traceInclude: ['node_modules/srvx/dist/adapters/node.mjs'] },
   },
   sourcemap: {
     client: false,

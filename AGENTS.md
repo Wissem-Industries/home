@@ -7,6 +7,9 @@ Wissem Home est le portfolio public de Wissem’s Industries, actuellement en g�
 - Le site présente le profil, les projets, l’expérience, la formation et le contact, en français et en anglais sur les routes canoniques partagées.
 - Utiliser `@wissem-industries/ui` comme Nuxt Layer et conserver les pages et la logique métier du produit dans ce dépôt.
 - Le formulaire transmet les demandes à Telegram seulement lorsque les variables serveur sont configurées. Sans ces variables, l’API indique l’indisponibilité et ne stocke pas les messages.
+- Les images de projets sont locales (aucune image distante) et servies par `@nuxt/image`. Les produits en ligne sont capturés par `bun run images:screenshots` (à lancer en local, les sites ne sont pas joignables depuis le cloud) ; les projets confidentiels ou sans interface publique utilisent les couvertures de `bun run images:covers`, sans contenu interne.
+- Les images de partage 1200×630 (`public/images/og-fr.png`, `og-en.png`) sont générées par `bun run images:og` à partir du contenu du site ; les relancer quand le statut ou l'intitulé change.
+- L'en-tête, le bouton de thème, le sélecteur de langue, les apparitions (`v-reveal`) et les fonds viennent de Wissem UI : ne pas les recréer ici. Le français est à la racine, l'anglais sous `/en` ; l'affichage de la carte « stage recherché » dépend du seul booléen `SEEKING_INTERNSHIP` (`shared/content/index.ts`).
 - Plausible est optionnel et configurable. Ne pas ajouter de suivi tiers non demandé.
 - `V3` désigne la génération du produit; les tags `v0.x.y` restent les versions SemVer. Ne pas créer un tag `v3.0.0` uniquement pour numéroter la refonte.
 - Les branches `archive/v1` et `archive/v2` préservent l’ancien historique. Ne pas réécrire, déplacer ou supprimer leurs refs.

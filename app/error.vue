@@ -1,12 +1,21 @@
 <script setup lang="ts">
 import type { NuxtError } from '#app'
 
-defineProps<{ error: NuxtError }>()
+const props = defineProps<{ error: NuxtError }>()
 const { content } = usePortfolioContent()
+const localePath = useLocalePath()
+
+const isNotFound = computed(() => props.error.statusCode === 404)
+const title = computed(() =>
+  isNotFound.value ? content.value.error.title : content.value.error.serverTitle,
+)
+const description = computed(() =>
+  isNotFound.value ? content.value.error.description : content.value.error.serverDescription,
+)
 
 useSeoMeta({
-  title: () => content.value.error.title,
-  description: () => content.value.error.description,
+  title,
+  description,
   robots: 'noindex, nofollow',
 })
 </script>
@@ -15,14 +24,14 @@ useSeoMeta({
   <UApp>
     <div class="flex min-h-screen items-center justify-center bg-default px-6">
       <div class="max-w-lg space-y-6 text-center">
-        <p class="font-mono text-sm text-primary">404</p>
+        <p class="font-mono text-sm text-primary">{{ error.statusCode }}</p>
         <h1 class="text-4xl font-semibold tracking-tight text-highlighted">
-          {{ content.error.title }}
+          {{ title }}
         </h1>
-        <p class="leading-7 text-muted">{{ content.error.description }}</p>
+        <p class="leading-7 text-muted">{{ description }}</p>
         <UButton
           :label="content.error.home"
-          to="/"
+          :to="localePath('/')"
           icon="i-ri-arrow-left-line"
           size="lg"
         />

@@ -18,17 +18,25 @@
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "typecheck": "bun --bun nuxt typecheck",
-    "test": "bun test",
+    "test": "bun test shared server",
+    "test:e2e": "playwright test",
+    "images:covers": "bun scripts/covers.ts",
+    "images:screenshots": "bun scripts/screenshots.ts",
+    "images:og": "bun scripts/og.ts",
     "check": "bun run lint && bun run test && bun run typecheck && bun run build"
   },
   "dependencies": {
+    "@nuxt/image": "^2.1.0",
     "@nuxtjs/i18n": "^10.6.0",
     "@nuxtjs/plausible": "^4.0.0",
-    "@wissem-industries/ui": "0.5.3",
-    "nuxt": "^4.5.2"
+    "@wissem-industries/ui": "0.7.0",
+    "nuxt": "^4.5.2",
+    "valibot": "^1.5.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@biomejs/biome": "^2.5.14",
+    "@playwright/test": "^1.63.0",
     "@types/bun": "^1.4.2",
     "@types/node": "^24.13.4",
     "typescript": "^6.0.3",

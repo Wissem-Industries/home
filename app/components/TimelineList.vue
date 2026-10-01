@@ -9,8 +9,6 @@ interface TimelineEntry {
 }
 
 defineProps<{ items: TimelineEntry[] }>()
-
-const { revealStyle } = useMotionPresets()
 </script>
 
 <template>
@@ -18,23 +16,23 @@ const { revealStyle } = useMotionPresets()
     <article
       v-for="(item, index) in items"
       :key="index"
-      class="reveal grid gap-6 py-9 lg:grid-cols-[11rem_minmax(0,1fr)_12rem] lg:items-start lg:gap-8"
-      :style="revealStyle(index)"
+      class="grid gap-6 py-9 lg:grid-cols-[11rem_minmax(0,1fr)_12rem] lg:items-start lg:gap-8"
+      v-reveal="index"
     >
       <div class="flex items-start justify-between gap-4 lg:block">
         <div
           v-if="item.thumbnail"
           class="flex h-20 w-32 shrink-0 items-center justify-center p-2 lg:h-24 lg:w-44 lg:p-3"
         >
-          <img
+          <NuxtImg
             :src="item.thumbnail"
             :alt="item.eyebrow"
-            width="144"
-            height="72"
+            width="176"
+            height="88"
+            format="webp"
             loading="lazy"
-            decoding="async"
             class="max-h-full max-w-full object-contain"
-          >
+          />
         </div>
 
         <div class="space-y-2 text-right text-xs text-muted lg:hidden">

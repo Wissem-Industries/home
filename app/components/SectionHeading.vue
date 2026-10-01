@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="reveal max-w-2xl space-y-3">
+  <div v-reveal class="max-w-2xl space-y-3">
     <p v-if="eyebrow" class="font-mono text-xs uppercase tracking-[0.2em] text-primary">
       {{ eyebrow }}
     </p>

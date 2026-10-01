@@ -1,8 +1,8 @@
-import type { ContactErrorCode, ContactPayload } from '#shared/utils/contact'
-import { isContactPayloadValid, normalizeContactPayload } from '#shared/utils/contact'
+import type { ContactErrorCode } from '#shared/utils/contact'
+import { parseContactBody } from '#shared/utils/contact'
 import { allowContactRequest } from '../utils/contact-rate-limit'
 
-function fail(statusCode: number, code: ContactErrorCode) {
+function fail(statusCode: number, code: ContactErrorCode): never {
   throw createError({ statusCode, statusMessage: code, data: { code } })
 }
 
@@ -23,8 +23,10 @@ export default defineEventHandler(async (event) => {
   const ip = getRequestIP(event, { xForwardedFor: true }) || 'unknown'
   if (!allowContactRequest(ip)) fail(429, 'RATE_LIMITED')
 
-  const payload = normalizeContactPayload(await readBody<Partial<ContactPayload>>(event))
-  if (!isContactPayloadValid(payload)) fail(400, 'INVALID_PAYLOAD')
+  const { payload, isBot } = parseContactBody(await readBody(event))
+  // Bots get the same answer as a delivered message, so they learn nothing.
+  if (isBot) return { ok: true as const }
+  if (!payload) fail(400, 'INVALID_PAYLOAD')
 
   const config = useRuntimeConfig(event)
   if (!config.telegramBotToken || !config.telegramChatId) {

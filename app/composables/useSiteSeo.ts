@@ -6,7 +6,9 @@ export function useSiteSeo() {
   const { content, locale } = usePortfolioContent()
   const siteUrl = computed(() => normalizePublicSiteUrl(config.public.siteUrl))
   const canonicalUrl = computed(() => toAbsoluteSiteUrl(route.path || '/', siteUrl.value))
-  const socialImageUrl = computed(() => toAbsoluteSiteUrl('/images/portfolio.png', siteUrl.value))
+  const socialImageUrl = computed(() =>
+    toAbsoluteSiteUrl(`/images/og-${locale.value}.png`, siteUrl.value),
+  )
 
   return { content, locale, siteUrl, canonicalUrl, socialImageUrl }
 }

@@ -19,6 +19,14 @@ steps:
     depends_on:
       - install
 
+  - name: e2e
+    image: mcr.microsoft.com/playwright:v1.63.0-noble
+    commands:
+      - npm install --global bun@1.4.2
+      - bun run test:e2e
+    depends_on:
+      - check
+
   - name: prepare-image-context
     image: oven/bun:alpine
     commands:

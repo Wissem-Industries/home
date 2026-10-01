@@ -9,11 +9,13 @@ export const fr = {
     contact: 'Contact',
   },
   localeSwitchLabel: 'Basculer en anglais',
-  theme: { dark: 'Activer le mode sombre', light: 'Activer le mode clair' },
+  theme: { toggle: 'Changer de thème' },
   footer: 'Wissem. • Tous droits réservés.',
   error: {
     title: 'Page introuvable',
     description: 'La page demandée n’existe pas ou n’est plus disponible.',
+    serverTitle: 'Une erreur est survenue',
+    serverDescription: 'Le serveur a rencontré un problème. Réessayez dans quelques instants.',
     home: 'Revenir à l’accueil',
   },
   meta: {
@@ -22,7 +24,7 @@ export const fr = {
     defaultTitle: 'Portfolio de Wissem Badraoui',
     defaultDescription:
       'Portfolio professionnel de Wissem Badraoui, élève ingénieur à IMT Nord Europe : projets, expériences, CV et contact.',
-    socialImageAlt: 'Aperçu du portfolio de Wissem',
+    socialImageAlt: 'Wissem Badraoui, élève ingénieur à IMT Nord Europe',
     personDescription:
       'Élève ingénieur à IMT Nord Europe, intéressé par le développement logiciel, le traitement de données, la sécurité des systèmes et les outils utiles aux équipes techniques.',
   },
@@ -57,13 +59,12 @@ export const fr = {
     description:
       'Intérêt marqué pour le développement logiciel, le traitement de données, la sécurité des systèmes et les outils utiles aux équipes techniques.',
     availability: 'Ouvert aux échanges',
-    seekingInternship: false,
     internship: {
       eyebrow: 'Opportunité recherchée',
       title: 'Stage d’initiation technique en ingénierie des données',
       details: [
-        { icon: 'i-ri-time-line', label: 'Durée', value: '8 à 12 semaines' },
-        { icon: 'i-ri-calendar-line', label: 'Début', value: 'À partir du 8 juin 2026' },
+        { icon: 'i-ri-time-line', label: 'Durée', value: '12 à 16 semaines' },
+        { icon: 'i-ri-calendar-line', label: 'Début', value: 'À partir de juin 2027' },
         {
           icon: 'i-ri-map-pin-line',
           label: 'Mobilité',
@@ -202,7 +203,6 @@ export const fr = {
     projectsTitle: 'Quelques projets',
     projectsDescription:
       'Sélection de projets personnels et techniques réalisés en parallèle du parcours académique.',
-    featuredProjectIds: ['satt-tool', 'zeldanes', 'password-manager'],
     allProjects: 'Voir tous les projets',
     languagesTitle: 'Langues',
     languages: [
@@ -219,7 +219,7 @@ export const fr = {
   },
   resume: {
     label: 'Télécharger le CV',
-    href: '/files/74b87337454200d4d33f80c4663dc5e5.pdf',
+    href: '/files/CV_Wissem_BADRAOUI.pdf',
     filename: 'CV_Wissem_BADRAOUI.pdf',
     started: 'Le téléchargement du CV a démarré.',
   },
@@ -229,95 +229,96 @@ export const fr = {
       label: 'Email',
       value: 'contact@wissem.pro',
       to: 'mailto:contact@wissem.pro',
-      icon: 'i-lucide-mail',
+      icon: 'i-ri-mail-line',
     },
     {
       id: 'linkedin',
       label: 'LinkedIn',
       value: '@WissemBadraoui',
       to: 'https://linkedin.com/in/WissemBadraoui',
-      icon: 'i-lucide-linkedin',
+      icon: 'i-ri-linkedin-box-line',
     },
     {
       id: 'github',
       label: 'GitHub',
       value: '@WissemBad',
       to: 'https://github.com/WissemBad',
-      icon: 'i-lucide-github',
+      icon: 'i-ri-github-line',
     },
     {
       id: 'website',
       label: 'Site web',
       value: 'www.wissem.pro',
       to: 'https://www.wissem.pro',
-      icon: 'i-lucide-globe',
+      icon: 'i-ri-global-line',
     },
   ],
   projectActions: { view: 'Voir le projet', repo: 'Accéder au code', private: 'Accès privé' },
-  projects: [
-    {
-      id: 'zeldanes',
+  projectCategories: {
+    product: 'Produit',
+    internship: 'Stage',
+    studies: 'Études',
+    personal: 'Personnel',
+  },
+  projectStatuses: {
+    live: 'En ligne',
+    ongoing: 'En cours',
+    finished: 'Terminé',
+    archived: 'Archivé',
+  },
+  projectFilters: { label: 'Filtrer les projets', all: 'Tous' },
+  projectTexts: {
+    'dgfip-audit-tool': {
+      title: 'Modernisation d’un outil d’aide à l’audit (DGFiP)',
+      description:
+        'Stage à Paris : modernisation et restructuration d’une application Python d’assistance à l’audit, optimisation du traitement de gros volumes de données avec SQLite et DuckDB, et renforcement de la traçabilité.',
+    },
+    'wissem-sso': {
+      title: 'Wissem SSO',
+      description:
+        'Fournisseur d’identité des applications de Wissem’s Industries, avec connexion par passkeys et OpenID Connect. Conçu, déployé et maintenu en auto-hébergement.',
+    },
+    'wissem-move': {
+      title: 'Wissem Move',
+      description:
+        'Application web qui réunit les bus Évéole et les TER Hauts-de-France, avec favoris synchronisés grâce à Wissem SSO et widgets pour iPhone et Mac.',
+    },
+    infrastructure: {
+      title: 'Infrastructure auto-hébergée',
+      description:
+        'Intégration continue Woodpecker, images Docker publiées sur GHCR et déploiement automatisé sur Dokploy pour l’ensemble des produits.',
+    },
+    'wissem-ui': {
+      title: 'Wissem UI et portfolio',
+      description:
+        'Site personnel et système de design partagé, construits avec Nuxt, Nuxt UI et Tailwind CSS, utilisés par les applications de Wissem’s Industries.',
+    },
+    parcourtime: {
+      title: 'ParcourTime',
+      description:
+        'Application web de compte à rebours pour Parcoursup, avec affichage des dates clés dans une interface simple et accessible, fondée sur le Système de design de l’État.',
+    },
+    zeldanes: {
       title: 'ZeldaNES',
       description:
         'Développement en C avec la bibliothèque SDL2 d’un jeu inspiré de The Legend of Zelda dans le cadre des études.',
-      image: '/images/zelda.png',
-      repo: 'https://github.com/WissemBad/ZeldaNES',
-      tags: ['C', 'SDL2', 'Game', 'Zelda'],
-      date: '2026-01-01',
     },
-    {
-      id: 'satt-tool',
+    'satt-tool': {
       title: 'Outil interne de traitement de données (SATT)',
       description:
         'Amélioration d’un outil interne du bureau d’études chez Nidec Leroy-Somer : optimisation du traitement de données et ajout de fonctionnalités pour améliorer la fiabilité et l’usage de l’outil.',
-      image:
-        'https://images.unsplash.com/photo-1759884247381-d7222dd72dec?auto=format&fit=crop&w=1200&q=82',
-      tags: ['Excel', 'VBA', 'Data Processing', 'Internal Tooling'],
-      date: '2025-06-01',
     },
-    {
-      id: 'personal-portfolio',
-      title: 'Portfolio personnel',
-      description:
-        'Développement d’un site personnel avec Nuxt et Nuxt UI pour présenter parcours, projets et CV en ligne.',
-      image: '/images/portfolio.png',
-      url: 'https://www.wissem.pro',
-      tags: ['Nuxt', 'Vue', 'Nuxt UI', 'Portfolio'],
-      date: '2025-01-01',
-    },
-    {
-      id: 'parcourtime',
-      title: 'ParcourTime',
-      description:
-        'Application web de compte à rebours pour Parcoursup, avec affichage des dates clés et interface simple à utiliser.',
-      image: '/images/parcourtime.png',
-      url: 'https://parcourtime.wissem.pro',
-      repo: 'https://github.com/WissemBad/ParcourTime',
-      tags: ['Nuxt', 'Vue', 'Countdown', 'Parcoursup'],
-      date: '2025-01-01',
-    },
-    {
-      id: 'internal-dashboard',
+    'internal-dashboard': {
       title: 'Panel d’administration interne',
       description:
         'Interface d’administration pour la gestion interne d’une plateforme, avec authentification, rôles, permissions et gestion des utilisateurs.',
-      image:
-        'https://images.unsplash.com/photo-1754039984985-ef607d80113a?auto=format&fit=crop&w=1200&q=82',
-      tags: ['Vue', 'TypeScript', 'Express', 'PostgreSQL', 'Dashboard'],
-      date: '2025-01-01',
     },
-    {
-      id: 'password-manager',
+    'password-manager': {
       title: 'Gestionnaire de mots de passe',
       description:
         'Gestionnaire de mots de passe en ligne de commande développé en Python, avec stockage chiffré et interface CLI.',
-      image:
-        'https://images.unsplash.com/photo-1743090661056-e51700546169?auto=format&fit=crop&w=1200&q=82',
-      repo: 'https://github.com/WissemBad/Password-Manager',
-      tags: ['Python', 'CLI', 'Cryptographie', 'Sécurité'],
-      date: '2024-01-01',
     },
-  ],
+  },
   contact: {
     title: 'Contact',
     description:
@@ -336,11 +337,12 @@ export const fr = {
       'Les informations transmises servent uniquement à traiter votre demande de contact. Elles ne sont ni stockées, ni publiées ou partagées avec des tiers.',
     privacyAriaLabel: 'Informations sur le traitement des données',
     validation: {
-      name: 'Le nom est trop court.',
+      name: 'Le nom doit comporter entre 2 et 100 caractères.',
       email: 'L’adresse email n’est pas valide.',
-      subject: 'Le sujet est trop court.',
-      message: 'Le message est trop court.',
+      subject: 'Le sujet doit comporter entre 3 et 150 caractères.',
+      message: 'Le message doit comporter entre 10 et 3 000 caractères.',
     },
+    honeypotLabel: 'Laisser ce champ vide',
     messages: {
       successTitle: 'Message envoyé',
       successDescription: 'Merci pour votre message. Une réponse sera apportée dès que possible.',

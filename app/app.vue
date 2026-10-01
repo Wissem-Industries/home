@@ -3,7 +3,6 @@ import { isExternalLink } from '#shared/utils/links'
 
 const colorMode = useColorMode()
 const { content, locale, siteUrl } = useSiteSeo()
-const themeCookie = useCookie<'light' | 'dark' | undefined>('site_theme')
 const themeColor = computed(() => (colorMode.value === 'dark' ? '#0a0a0a' : '#fafafa'))
 const sameAs = computed(() =>
   content.value.links
@@ -15,8 +14,6 @@ useHead(() => ({
   titleTemplate: content.value.meta.titleTemplate,
   htmlAttrs: {
     lang: locale.value,
-    class:
-      themeCookie.value === 'light' || themeCookie.value === 'dark' ? themeCookie.value : undefined,
   },
   meta: [
     { charset: 'utf-8' },
@@ -37,8 +34,9 @@ useSeoMeta({
   applicationName: () => content.value.meta.applicationName,
   description: () => content.value.meta.defaultDescription,
   ogSiteName: () => content.value.meta.applicationName,
-  ogLocale: () => (locale.value === 'fr' ? 'fr_FR' : 'en_GB'),
 })
+
+useLocaleSeo()
 
 useJsonLd(
   'site-entities',
