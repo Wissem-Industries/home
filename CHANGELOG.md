@@ -2,6 +2,12 @@
 
 All notable changes to Wissem Home are documented in this file.
 
+## [0.2.4] - 2026-10-01
+
+### Changed
+
+- Card hover is a faint veil over the card's own background in the dark theme, and the contact cards no longer react to hover.
+
 ## [0.2.3] - 2026-10-01
 
 ### Changed

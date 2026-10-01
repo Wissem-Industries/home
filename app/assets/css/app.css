@@ -106,14 +106,16 @@ html {
     filter var(--wi-duration-slower) var(--wi-ease-out) var(--wi-reveal-delay, 0ms),
     transform var(--wi-duration-slower) var(--wi-ease-out) var(--wi-reveal-delay, 0ms),
     translate var(--wi-duration-base) var(--wi-ease-out),
-    background-color var(--wi-duration-base) var(--wi-ease-standard),
     box-shadow var(--wi-duration-base) var(--wi-ease-standard);
 }
 
 @media (hover: hover) and (pointer: fine) {
+  /* A faint violet veil over the card's own background, and its ring kept. */
   .motion-card:hover {
-    background-color: color-mix(in oklab, var(--ui-primary) 3%, var(--ui-bg-elevated));
-    box-shadow: 0 10px 28px color-mix(in oklab, black 8%, transparent);
+    box-shadow:
+      0 0 0 1px var(--ui-border),
+      inset 0 0 0 100vmax color-mix(in oklab, var(--ui-primary) 3.5%, transparent),
+      0 8px 24px color-mix(in oklab, black 6%, transparent);
     translate: 0 -2px;
   }
 }
