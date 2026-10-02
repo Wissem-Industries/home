@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.2.3] - 2026-10-02
+
 ### Changed
 
 - Resume page: the download links are plain again (`/cv.pdf`, `/en/cv.pdf`); only the preview image carries the version.
