@@ -2,7 +2,7 @@
 
 Portfolio and contact site of Wissem Badraoui, at [wissem.pro](https://www.wissem.pro).
 
-[![CI](https://ci.wissem.pro/api/badges/3/status.svg)](https://ci.wissem.pro/repos/3)
+[![CI](https://ci.wissem.pro/api/badges/12/status.svg)](https://ci.wissem.pro/repos/12)
 [![Release](https://img.shields.io/github/v/release/Wissem-Industries/home?sort=semver)](https://github.com/Wissem-Industries/home/releases)
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
