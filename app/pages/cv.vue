@@ -8,9 +8,9 @@ const localePath = useLocalePath()
 const { data: release } = await useFetch('/api/cv', { key: 'cv-release' })
 
 const isFrench = computed(() => locale.value === 'fr')
-// The version in the query gives each release its own URL in the Cloudflare cache.
+// Images only: the version in the query gives each release its own URL in the Cloudflare cache.
 const versionQuery = computed(() => (release.value?.version ? `?v=${release.value.version}` : ''))
-const pdfPath = computed(() => `${isFrench.value ? '/cv.pdf' : '/en/cv.pdf'}${versionQuery.value}`)
+const pdfPath = computed(() => (isFrench.value ? '/cv.pdf' : '/en/cv.pdf'))
 const previewPath = computed(
   () => `${isFrench.value ? '/cv.png' : '/en/cv.png'}${versionQuery.value}`,
 )
