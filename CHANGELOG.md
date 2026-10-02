@@ -4,8 +4,14 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Changed
+
 - Project card: Wissem Move is now called Move (identifier, title and image).
 - Project covers: Move shows a real board, the portfolio cover keeps the navigation bar; sharing images regenerated.
+
+### Fixed
+
+- English sharing image: the title stays on one line, like on the resume card.
 
 ## [1.1.0] - 2026-10-02
 
