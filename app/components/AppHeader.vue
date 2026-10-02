@@ -7,7 +7,7 @@ const { setLocale } = useI18n()
 const localePath = useLocalePath()
 
 const items = computed(() =>
-  SITE_ROUTES.map((route) => ({
+  SITE_ROUTES.filter((route) => route.nav).map((route) => ({
     label: content.value.navigation[route.key],
     icon: route.icon,
     to: localePath(route.path),

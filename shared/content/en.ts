@@ -7,6 +7,7 @@ export const en = {
     home: 'Home',
     projects: 'Projects',
     contact: 'Contact',
+    cv: 'Resume',
   },
   localeSwitchLabel: 'Switch to French',
   theme: { toggle: 'Toggle color mode' },
@@ -49,6 +50,13 @@ export const en = {
       title: 'Contact',
       description:
         'Contact details, public profiles, and the contact form for reaching Wissem Badraoui.',
+    },
+    cv: {
+      eyebrow: 'Curriculum vitae',
+      heading: 'Resume',
+      title: 'Resume of Wissem Badraoui',
+      description:
+        'One-page resume of Wissem Badraoui, an engineering student at IMT Nord Europe, in French and English, available as a PDF download.',
     },
   },
   profile: {
@@ -222,9 +230,21 @@ export const en = {
   },
   resume: {
     label: 'Download resume',
-    href: '/files/CV_Wissem_BADRAOUI_EN.pdf',
-    filename: 'CV_Wissem_BADRAOUI_EN.pdf',
+    href: '/en/cv.pdf',
+    filename: 'CV_Wissem_Badraoui_EN.pdf',
     started: 'The resume download has started.',
+  },
+  resumePage: {
+    intro:
+      'One page, kept up to date, in French and English. The file is generated for every version from the sources published on GitHub.',
+    previewAlt: 'Preview of the first page of the resume of Wissem Badraoui',
+    downloadFr: 'Télécharger en français',
+    downloadEn: 'Download in English',
+    versionLabel: 'Version',
+    updatedLabel: 'Updated on',
+    contents: ['Education', 'Experience', 'Projects', 'Skills'],
+    note: 'This public version leaves out the phone number and personal details. For an application, I send the full version on request.',
+    contactCta: 'Get in touch',
   },
   links: [
     {

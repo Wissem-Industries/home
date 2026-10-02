@@ -1,8 +1,14 @@
 import type { SeoContent } from '#shared/content'
 
-export function usePageSeo(input: MaybeRefOrGetter<SeoContent & { type?: 'website' | 'profile' }>) {
+export function usePageSeo(
+  input: MaybeRefOrGetter<
+    SeoContent & { type?: 'website' | 'profile'; image?: { url: string; alt: string } }
+  >,
+) {
   const { canonicalUrl, content, socialImageUrl } = useSiteSeo()
   const page = computed(() => toValue(input))
+  const imageUrl = computed(() => page.value.image?.url ?? socialImageUrl.value)
+  const imageAlt = computed(() => page.value.image?.alt ?? content.value.meta.socialImageAlt)
 
   useSeoMeta({
     title: () => page.value.title,
@@ -13,13 +19,13 @@ export function usePageSeo(input: MaybeRefOrGetter<SeoContent & { type?: 'websit
     ogDescription: () => page.value.description,
     ogUrl: () => canonicalUrl.value,
     ogType: () => page.value.type || 'website',
-    ogImage: () => socialImageUrl.value,
-    ogImageAlt: () => content.value.meta.socialImageAlt,
+    ogImage: () => imageUrl.value,
+    ogImageAlt: () => imageAlt.value,
     twitterTitle: () => page.value.title,
     twitterDescription: () => page.value.description,
     twitterCard: 'summary_large_image',
-    twitterImage: () => socialImageUrl.value,
-    twitterImageAlt: () => content.value.meta.socialImageAlt,
+    twitterImage: () => imageUrl.value,
+    twitterImageAlt: () => imageAlt.value,
   })
 
   useHead({

@@ -7,6 +7,7 @@ export const fr = {
     home: 'Accueil',
     projects: 'Projets',
     contact: 'Contact',
+    cv: 'CV',
   },
   localeSwitchLabel: 'Basculer en anglais',
   theme: { toggle: 'Changer de thème' },
@@ -49,6 +50,13 @@ export const fr = {
       title: 'Contact',
       description:
         'Coordonnées, profils publics et formulaire de contact pour joindre Wissem Badraoui.',
+    },
+    cv: {
+      eyebrow: 'Curriculum vitae',
+      heading: 'CV',
+      title: 'CV de Wissem Badraoui',
+      description:
+        'CV d’une page de Wissem Badraoui, élève ingénieur à IMT Nord Europe, en français et en anglais, à télécharger au format PDF.',
     },
   },
   profile: {
@@ -219,9 +227,21 @@ export const fr = {
   },
   resume: {
     label: 'Télécharger le CV',
-    href: '/files/CV_Wissem_BADRAOUI.pdf',
-    filename: 'CV_Wissem_BADRAOUI.pdf',
+    href: '/cv.pdf',
+    filename: 'CV_Wissem_Badraoui_FR.pdf',
     started: 'Le téléchargement du CV a démarré.',
+  },
+  resumePage: {
+    intro:
+      'Une page, à jour, en français et en anglais. Le fichier est généré à chaque version à partir des sources publiées sur GitHub.',
+    previewAlt: 'Aperçu de la première page du CV de Wissem Badraoui',
+    downloadFr: 'Télécharger en français',
+    downloadEn: 'Télécharger en anglais',
+    versionLabel: 'Version',
+    updatedLabel: 'Mis à jour le',
+    contents: ['Formation', 'Expériences', 'Projets', 'Compétences'],
+    note: 'Cette version publique ne contient ni téléphone ni informations personnelles. Pour une candidature, je transmets la version complète sur demande.',
+    contactCta: 'Me contacter',
   },
   links: [
     {

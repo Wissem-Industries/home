@@ -6,13 +6,21 @@ export const SITE_LOCALES = [
 export const DEFAULT_SITE_LOCALE = 'fr'
 
 export const SITE_ROUTES = [
-  { key: 'home', path: '/', icon: 'i-ri-home-4-line', changefreq: 'weekly', priority: '1.0' },
+  {
+    key: 'home',
+    path: '/',
+    icon: 'i-ri-home-4-line',
+    changefreq: 'weekly',
+    priority: '1.0',
+    nav: true,
+  },
   {
     key: 'projects',
     path: '/projects',
     icon: 'i-ri-folder-line',
     changefreq: 'weekly',
     priority: '0.8',
+    nav: true,
   },
   {
     key: 'contact',
@@ -20,6 +28,16 @@ export const SITE_ROUTES = [
     icon: 'i-ri-chat-1-line',
     changefreq: 'monthly',
     priority: '0.7',
+    nav: true,
+  },
+  // Linked from the home page and from LinkedIn, not from the navigation.
+  {
+    key: 'cv',
+    path: '/cv',
+    icon: 'i-ri-file-text-line',
+    changefreq: 'monthly',
+    priority: '0.6',
+    nav: false,
   },
 ] as const
 

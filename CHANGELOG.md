@@ -2,6 +2,14 @@
 
 All notable changes to Wissem Home are documented in this file.
 
+## [0.3.0] - 2026-10-02
+
+### Changed
+
+- The resume is no longer bundled in the site: `/cv.pdf` and `/en/cv.pdf` (and `/cv.png`, `/en/cv.png`) relay the assets of the latest release of the CV repository, cached for 15 minutes, with the release tag in the `X-WSM-CV-Version` header. The 1200 x 630 share cards are served on `/cv-social.png` and `/en/cv-social.png`.
+- New resume page on `/cv` and `/en/cv` (preview, downloads in both languages, version and date of the current file), outside the main navigation. It declares the share card as its Open Graph image, for link previews on LinkedIn.
+- The public resume omits the phone number, nationality and driving licence.
+
 ## [0.2.6] - 2026-10-02
 
 ### Fixed

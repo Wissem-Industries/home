@@ -84,6 +84,7 @@ export interface PortfolioContent {
     home: string
     projects: string
     contact: string
+    cv: string
   }
   localeSwitchLabel: string
   theme: {
@@ -109,6 +110,7 @@ export interface PortfolioContent {
     home: PageContent
     projects: PageContent
     contact: PageContent
+    cv: PageContent
   }
   profile: {
     name: string
@@ -145,6 +147,17 @@ export interface PortfolioContent {
     href: string
     filename: string
     started: string
+  }
+  resumePage: {
+    intro: string
+    previewAlt: string
+    downloadFr: string
+    downloadEn: string
+    versionLabel: string
+    updatedLabel: string
+    contents: string[]
+    note: string
+    contactCta: string
   }
   links: ContactLink[]
   projectActions: {
