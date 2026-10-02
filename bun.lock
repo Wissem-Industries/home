@@ -8,7 +8,7 @@
         "@nuxt/image": "^2.1.0",
         "@nuxtjs/i18n": "^10.6.0",
         "@nuxtjs/plausible": "^4.0.0",
-        "@wissem-industries/ui": "0.8.1",
+        "@wissem-industries/ui": "0.9.0",
         "nuxt": "^4.5.2",
         "valibot": "^1.5.0",
       },
@@ -796,7 +796,7 @@
 
     "@vueuse/shared": ["@vueuse/shared@14.4.0", "", { "peerDependencies": { "vue": "^3.5.0" } }, "sha512-JRgY90Sz8DDtPMsaDflvPMp9xYk69JZAmbuDvAquUVXKr2gEjqtzGNTTthLfckH0BzBqvnu31gb4a8TGLRe79g=="],
 
-    "@wissem-industries/ui": ["@wissem-industries/ui@0.8.1", "https://npm.pkg.github.com/download/@wissem-industries/ui/0.8.1/0cbe98746e3a174fcf714f772ac450c4ace38058", { "dependencies": { "@fontsource-variable/geist": "^5.3.0", "@fontsource-variable/geist-mono": "^5.3.0", "@iconify-json/circle-flags": "^1.2.11", "@iconify-json/ri": "^1.2.10", "@nuxt/ui": "^4.11.1", "tailwindcss": "^4.3.3" } }, "sha512-xXf66UoMB5LifoRy/zEtyU15BQ1YGiQssHAgE1sCsDLAE0DQrP5EgGGJx+6nQgbevUkC4YcW5ECja2JlHob1lg=="],
+    "@wissem-industries/ui": ["@wissem-industries/ui@0.9.0", "https://npm.pkg.github.com/download/@wissem-industries/ui/0.9.0/b7a880287e4bd568d3b1d3b12a1be344e8790bd1", { "dependencies": { "@fontsource-variable/geist": "^5.3.0", "@fontsource-variable/geist-mono": "^5.3.0", "@iconify-json/circle-flags": "^1.2.11", "@iconify-json/ri": "^1.2.10", "@nuxt/ui": "^4.11.1", "tailwindcss": "^4.3.3" } }, "sha512-uwRpKjFWD0s7HuTxRsOBBYvwvZCVaMUDHqpv4nhfqZLHzSOYs00hngsRyoRqq7rBl8JJ8M+UekSro+il12gioA=="],
 
     "abbrev": ["abbrev@3.0.1", "", {}, "sha512-AO2ac6pjRB3SJmGJo+v5/aK6Omggp6fsLrs6wN9bd35ulu4cCwaAU9+7ZhXjeqHVkaHThLuzH0nZr0YpCDhygg=="],
 

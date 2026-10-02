@@ -14,6 +14,8 @@ FROM base AS build
 ARG IMAGE_VERSION=dev
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+# Theme and language cookies shared with the other wissem.pro sites (Wissem UI).
+ARG WSM_COOKIE_DOMAIN=.wissem.pro
 RUN bun run build
 
 FROM oven/bun:1.4.2-alpine AS runtime

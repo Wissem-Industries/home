@@ -11,10 +11,6 @@ export default defineNuxtConfig({
     quality: 80,
     screens: { sm: 640, md: 768, lg: 1024, xl: 1280 },
   },
-  colorMode: {
-    storage: 'cookie',
-    storageKey: 'site_theme',
-  },
   runtimeConfig: {
     telegramBotToken: '',
     telegramChatId: '',
@@ -32,8 +28,6 @@ export default defineNuxtConfig({
       { code: 'en', language: 'en-GB', name: 'English', file: 'en.json' },
     ],
     detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'site_locale',
       redirectOn: 'root',
       alwaysRedirect: false,
       fallbackLocale: 'fr',

@@ -2,6 +2,12 @@
 
 All notable changes to Wissem Home are documented in this file.
 
+## [0.2.5] - 2026-10-02
+
+### Changed
+
+- Wissem UI 0.9.0: the theme and the language are stored in cookies shared with the other wissem.pro sites, and the header stays inside the page on narrow screens. The previous theme and language cookies are no longer read, so the choice is made once more.
+
 ## [0.2.4] - 2026-10-01
 
 ### Changed

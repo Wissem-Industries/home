@@ -1,7 +1,7 @@
 {
   "name": "@wissem-industries/home",
   "description": "Personal portfolio and contact site for Wissem at wissem.pro.",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "private": true,
   "type": "module",
   "packageManager": "bun@1.4.2",
@@ -29,7 +29,7 @@
     "@nuxt/image": "^2.1.0",
     "@nuxtjs/i18n": "^10.6.0",
     "@nuxtjs/plausible": "^4.0.0",
-    "@wissem-industries/ui": "0.8.1",
+    "@wissem-industries/ui": "0.9.0",
     "nuxt": "^4.5.2",
     "valibot": "^1.5.0"
   },
