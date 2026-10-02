@@ -82,7 +82,7 @@ function template(locale: keyof typeof contentByLocale) {
   <div class="glow glow--a"></div>
   <div class="glow glow--b"></div>
   <div class="grid"></div>
-  <div class="shot shot--main"><img src="${shot('wissem-move')}" alt=""></div>
+  <div class="shot shot--main"><img src="${shot('move')}" alt=""></div>
   <div class="shot shot--side"><img src="${shot('portfolio')}" alt=""></div>
   <div class="text"><img class="logo" src="${logo}" alt=""></div>
   <div class="text">

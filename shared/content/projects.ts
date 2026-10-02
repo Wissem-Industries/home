@@ -73,13 +73,13 @@ export const projectRecords = [
     featured: true,
   },
   {
-    id: 'wissem-move',
+    id: 'move',
     category: 'product',
     status: 'live',
     period: { start: '2026-09' },
     stack: ['Nuxt', 'TypeScript', 'SwiftUI', 'PostgreSQL'],
     links: { site: 'https://move.wissem.pro' },
-    image: '/images/projects/wissem-move.webp',
+    image: '/images/projects/move.webp',
     featured: true,
   },
   {
