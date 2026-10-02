@@ -4,6 +4,9 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+- Sharing images: new layout with project screenshots, address `www.wissem.pro` in place of the focus line, versioned image URL so networks refresh their cache, image dimensions in the Open Graph tags.
+- Resume page: shorter introduction and note.
+
 ## [1.0.0] - 2026-10-02
 
 First release under the shared versioning of the wissem.pro projects. Third generation of the site.

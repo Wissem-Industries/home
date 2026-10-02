@@ -235,15 +235,14 @@ export const en = {
     started: 'The resume download has started.',
   },
   resumePage: {
-    intro:
-      'One page, kept up to date, in French and English. The file is generated for every version from the sources published on GitHub.',
+    intro: 'One-page resume, in French and English.',
     previewAlt: 'Preview of the first page of the resume of Wissem Badraoui',
     downloadFr: 'Télécharger en français',
     downloadEn: 'Download in English',
     versionLabel: 'Version',
     updatedLabel: 'Updated on',
     contents: ['Education', 'Experience', 'Projects', 'Skills'],
-    note: 'This public version leaves out the phone number and personal details. For an application, I send the full version on request.',
+    note: 'Public version, without phone number or personal details. I can send the full version on request.',
     contactCta: 'Get in touch',
   },
   links: [
