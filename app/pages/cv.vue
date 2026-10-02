@@ -8,8 +8,12 @@ const localePath = useLocalePath()
 const { data: release } = await useFetch('/api/cv', { key: 'cv-release' })
 
 const isFrench = computed(() => locale.value === 'fr')
-const pdfPath = computed(() => (isFrench.value ? '/cv.pdf' : '/en/cv.pdf'))
-const previewPath = computed(() => (isFrench.value ? '/cv.png' : '/en/cv.png'))
+// The version in the query gives each release its own URL in the Cloudflare cache.
+const versionQuery = computed(() => (release.value?.version ? `?v=${release.value.version}` : ''))
+const pdfPath = computed(() => `${isFrench.value ? '/cv.pdf' : '/en/cv.pdf'}${versionQuery.value}`)
+const previewPath = computed(
+  () => `${isFrench.value ? '/cv.png' : '/en/cv.png'}${versionQuery.value}`,
+)
 const updated = computed(() => {
   if (!release.value?.publishedAt) return null
   return new Intl.DateTimeFormat(locale.value === 'fr' ? 'fr-FR' : 'en-GB', {
@@ -25,7 +29,7 @@ usePageSeo(
       url: `${toAbsoluteSiteUrl(
         isFrench.value ? '/cv-social.png' : '/en/cv-social.png',
         siteUrl.value,
-      )}${release.value?.version ? `?v=${release.value.version}` : ''}`,
+      )}${versionQuery.value}`,
       alt: content.value.resumePage.previewAlt,
     },
   })),
