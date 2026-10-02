@@ -18,7 +18,7 @@ test.describe('resume page', () => {
     await page.goto('/en/cv')
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
       'content',
-      /\/en\/cv-social\.png$/,
+      /\/en\/cv-social\.png(\?v=.+)?$/,
     )
     await expect(page.getByRole('link', { name: 'Download in English' })).toHaveAttribute(
       'href',

@@ -232,15 +232,14 @@ export const fr = {
     started: 'Le téléchargement du CV a démarré.',
   },
   resumePage: {
-    intro:
-      'Une page, à jour, en français et en anglais. Le fichier est généré à chaque version à partir des sources publiées sur GitHub.',
+    intro: 'CV d’une page, en français et en anglais.',
     previewAlt: 'Aperçu de la première page du CV de Wissem Badraoui',
     downloadFr: 'Télécharger en français',
     downloadEn: 'Télécharger en anglais',
     versionLabel: 'Version',
     updatedLabel: 'Mis à jour le',
     contents: ['Formation', 'Expériences', 'Projets', 'Compétences'],
-    note: 'Cette version publique ne contient ni téléphone ni informations personnelles. Pour une candidature, je transmets la version complète sur demande.',
+    note: 'Version publique, sans téléphone ni coordonnées personnelles. Je transmets la version complète sur demande.',
     contactCta: 'Me contacter',
   },
   links: [

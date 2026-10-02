@@ -22,10 +22,10 @@ usePageSeo(
     title: content.value.pages.cv.title,
     description: content.value.pages.cv.description,
     image: {
-      url: toAbsoluteSiteUrl(
+      url: `${toAbsoluteSiteUrl(
         isFrench.value ? '/cv-social.png' : '/en/cv-social.png',
         siteUrl.value,
-      ),
+      )}${release.value?.version ? `?v=${release.value.version}` : ''}`,
       alt: content.value.resumePage.previewAlt,
     },
   })),

@@ -1,3 +1,5 @@
+import pkg from './package.json' with { type: 'json' }
+
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://www.wissem.pro'
 
 export default defineNuxtConfig({
@@ -16,6 +18,7 @@ export default defineNuxtConfig({
     telegramChatId: '',
     public: {
       siteUrl,
+      assetVersion: pkg.version,
     },
   },
   i18n: {

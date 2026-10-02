@@ -27,6 +27,8 @@ function template(locale: keyof typeof contentByLocale) {
   const sans = fontUrl('@fontsource-variable/geist/files/geist-latin-wght-normal.woff2')
   const mono = fontUrl('@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2')
   const logo = pathToFileURL(fileURLToPath(new URL('Logo_White.svg', OUTPUT_DIR))).href
+  const shot = (name: string) =>
+    pathToFileURL(fileURLToPath(new URL(`projects/${name}.webp`, OUTPUT_DIR))).href
   return `<!doctype html>
 <html lang="${locale}">
 <meta charset="utf-8">
@@ -59,23 +61,35 @@ function template(locale: keyof typeof contentByLocale) {
     background-size: 60px 60px;
     mask-image: linear-gradient(to bottom, black, transparent 85%);
   }
-  .top, .bottom { position: relative; display: flex; align-items: center; justify-content: space-between; }
+  .text { position: relative; width: 600px; }
   .logo { width: 72px; height: 72px; }
   .url { font: 500 26px "Geist Mono", monospace; color: rgba(250, 250, 250, 0.6); }
-  h1 { position: relative; font-size: 108px; font-weight: 600; letter-spacing: -0.05em; line-height: 1; }
-  .status { position: relative; margin-top: 24px; font-size: 40px; font-weight: 500; color: rgba(250, 250, 250, 0.86); }
-  .focus { font: 500 26px "Geist Mono", monospace; letter-spacing: 0.04em; color: #a684ff; }
+  h1 { font-size: 104px; font-weight: 600; letter-spacing: -0.05em; line-height: 0.98; }
+  .status { margin-top: 28px; font-size: 36px; font-weight: 500; color: rgba(250, 250, 250, 0.86); }
+  .shot {
+    position: absolute;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+    background: #0a0a0a;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  }
+  .shot img { display: block; width: 100%; }
+  .shot--main { top: 92px; left: 660px; width: 600px; transform: rotate(-4deg); }
+  .shot--side { top: 360px; left: 760px; width: 420px; transform: rotate(3deg); }
 </style>
 <body>
   <div class="glow glow--a"></div>
   <div class="glow glow--b"></div>
   <div class="grid"></div>
-  <div class="top"><img class="logo" src="${logo}" alt=""><span class="url">wissem.pro</span></div>
-  <div>
-    <h1>Wissem Badraoui</h1>
+  <div class="shot shot--main"><img src="${shot('wissem-move')}" alt=""></div>
+  <div class="shot shot--side"><img src="${shot('portfolio')}" alt=""></div>
+  <div class="text"><img class="logo" src="${logo}" alt=""></div>
+  <div class="text">
+    <h1>Wissem<br>Badraoui</h1>
     <p class="status">${profile.status}</p>
   </div>
-  <div class="bottom"><span class="focus">${profile.focus.title}</span></div>
+  <div class="text"><span class="url">www.wissem.pro</span></div>
   <title>${meta.defaultTitle}</title>
 </body>
 </html>`
