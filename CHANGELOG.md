@@ -2,6 +2,12 @@
 
 All notable changes to Wissem Home are documented in this file.
 
+## [0.2.6] - 2026-10-02
+
+### Fixed
+
+- The theme and language cookies are now written for `.wissem.pro` in the release build, so they are really shared with the other sites.
+
 ## [0.2.5] - 2026-10-02
 
 ### Changed

@@ -23,6 +23,7 @@ steps:
     environment:
       GITHUB_PACKAGES_TOKEN:
         from_secret: github_packages_token
+      WSM_COOKIE_DOMAIN: .wissem.pro
     commands:
       - printf '//npm.pkg.github.com/:_authToken=%s\n' "$${GITHUB_PACKAGES_TOKEN}" > /root/.npmrc
       - bun install --frozen-lockfile
