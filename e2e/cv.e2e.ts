@@ -6,11 +6,11 @@ test.describe('resume page', () => {
     await expect(page.getByRole('heading', { level: 1, name: 'CV' })).toBeVisible()
     await expect(page.getByRole('link', { name: 'Télécharger en français' })).toHaveAttribute(
       'href',
-      '/cv.pdf',
+      /^\/cv\.pdf(\?v=.+)?$/,
     )
     await expect(page.getByRole('link', { name: 'Télécharger en anglais' })).toHaveAttribute(
       'href',
-      '/en/cv.pdf',
+      /^\/en\/cv\.pdf(\?v=.+)?$/,
     )
   })
 
@@ -22,7 +22,7 @@ test.describe('resume page', () => {
     )
     await expect(page.getByRole('link', { name: 'Download in English' })).toHaveAttribute(
       'href',
-      '/en/cv.pdf',
+      /^\/en\/cv\.pdf(\?v=.+)?$/,
     )
   })
 
