@@ -4,6 +4,7 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+- Sharing image of the site: it now has the same layout as the resume card (kicker, title "Projects & experience", subtitle) with two screenshots, instead of repeating the name and status already shown on the profile where the link is shared.
 ## [1.2.0] - 2026-10-02
 
 ### Changed
