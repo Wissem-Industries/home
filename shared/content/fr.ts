@@ -292,7 +292,7 @@ export const fr = {
       description:
         'Stage à Paris : modernisation et restructuration d’une application Python d’assistance à l’audit, optimisation du traitement de gros volumes de données avec SQLite et DuckDB, et renforcement de la traçabilité.',
     },
-    'move': {
+    move: {
       title: 'Move',
       description:
         'Application web qui réunit les bus Évéole et les TER Hauts-de-France, avec favoris synchronisés grâce à Wissem SSO et widgets pour iPhone et Mac.',

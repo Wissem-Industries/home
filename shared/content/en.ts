@@ -295,7 +295,7 @@ export const en = {
       description:
         'Internship in Paris: modernization and restructuring of a Python audit support application, optimization of high-volume data processing with SQLite and DuckDB, and stronger traceability.',
     },
-    'move': {
+    move: {
       title: 'Move',
       description:
         'Web app that brings Évéole buses and TER Hauts-de-France journeys together, with favorites synced through Wissem SSO and widgets for iPhone and Mac.',
