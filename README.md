@@ -1,102 +1,47 @@
 # Wissem Home
 
-<p align="center">
-  <strong>Wissem Home V3 — Wissem’s personal portfolio.</strong><br />
-  Profile, projects and contact information at <a href="https://www.wissem.pro">wissem.pro</a>.
-</p>
+Portfolio and contact site of Wissem Badraoui, at [wissem.pro](https://www.wissem.pro).
 
-<p align="center">
-  <a href="https://ci.wissem.pro/repos/3"><img alt="Woodpecker CI" src="https://ci.wissem.pro/api/badges/3/status.svg" /></a>
-  <a href="https://github.com/Wissem-Industries/Wissem-Home/releases"><img alt="Latest version" src="https://img.shields.io/github/v/tag/Wissem-Industries/Wissem-Home?sort=semver&label=version" /></a>
-  <a href="https://ghcr.io/wissem-industries/home"><img alt="Production image on GHCR" src="https://img.shields.io/badge/GHCR-production-2496ED?logo=docker&logoColor=white" /></a>
-  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-green.svg" /></a>
-</p>
+[![CI](https://ci.wissem.pro/api/badges/3/status.svg)](https://ci.wissem.pro/repos/3)
+[![Release](https://img.shields.io/github/v/release/Wissem-Industries/home?sort=semver)](https://github.com/Wissem-Industries/home/releases)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-<p align="center">
-  <img alt="Nuxt 4" src="https://img.shields.io/badge/Nuxt-4-00DC82?logo=nuxt.js&logoColor=white" />
-  <img alt="Vue 3" src="https://img.shields.io/badge/Vue-3-4FC08D?logo=vuedotjs&logoColor=white" />
-  <img alt="Bun 1.4" src="https://img.shields.io/badge/Bun-1.4-FBF0DF?logo=bun&logoColor=000" />
-  <img alt="Biome 2" src="https://img.shields.io/badge/Biome-2-60A5FA?logo=biome&logoColor=white" />
-</p>
+French and English pages for projects, experience, education and interests, a resume page, and a contact form delivered through Telegram. Built with Nuxt 4 and [Wissem UI](https://github.com/Wissem-Industries/ui).
 
-Wissem Home is the portfolio and contact site of Wissem’s Industries, built
-with Nuxt 4 and the shared `@wissem-industries/ui` design system. `V3` identifies
-the third product generation; SemVer tags identify software releases.
-
-## Features
-
-- French and English portfolio content on shared canonical routes.
-- Project, experience and education sections.
-- A contact form delivered through Telegram when its server credentials are configured.
-- Plausible analytics with a configurable domain and API host.
-
-## Technology
-
-Nuxt 4 · Vue 3 · TypeScript · `@wissem-industries/ui` · Bun 1.4 · Biome 2
-
-## Requirements
-
-- Bun 1.4 or later.
-- A GitHub Packages token with `read:packages` access for the private UI dependency.
-
-Keep the token in your user-level `.npmrc`. The project `.npmrc` contains only
-registry configuration.
+The resume is not stored here: `/cv.pdf`, `/en/cv.pdf` and their images relay the assets of the latest release of [WissemBad/CV](https://github.com/WissemBad/CV).
 
 ## Development
 
-```sh
-git clone https://github.com/Wissem-Industries/Wissem-Home.git
-cd Wissem-Home
-bun install --frozen-lockfile
+Requires Bun 1.4 and a GitHub token with `read:packages` in your user `.npmrc` (for `@wissem-industries/ui`).
+
+```bash
+bun install
 cp .env.example .env
-bun run dev
+bun run dev       # http://localhost:3000
+bun run check     # lint, unit tests, typecheck, build
+bun run test:e2e  # end-to-end and accessibility tests, after a build
 ```
 
-The application is available at `http://localhost:3000`.
+End-to-end tests need Chromium; set `CHROMIUM_PATH` to use an installed browser.
 
 ## Configuration
 
-```dotenv
-NUXT_PUBLIC_SITE_URL=https://www.wissem.pro
-APP_PORT=3000
-NUXT_TELEGRAM_BOT_TOKEN=
-NUXT_TELEGRAM_CHAT_ID=
-NUXT_PUBLIC_PLAUSIBLE_DOMAIN=
-NUXT_PUBLIC_PLAUSIBLE_API_HOST=
+| Variable | Purpose |
+| --- | --- |
+| `NUXT_PUBLIC_SITE_URL` | Canonical URL, `https://www.wissem.pro` by default |
+| `NUXT_TELEGRAM_BOT_TOKEN`, `NUXT_TELEGRAM_CHAT_ID` | Contact form delivery. Without them the form answers that the service is unavailable; messages are never stored. |
+| `NUXT_PUBLIC_PLAUSIBLE_DOMAIN`, `NUXT_PUBLIC_PLAUSIBLE_API_HOST` | Analytics |
+
+## Release
+
+Versions follow Semantic Versioning and changes are listed in [CHANGELOG.md](CHANGELOG.md).
+
+```bash
+bun run release 1.1.0   # updates package.json and the changelog
 ```
 
-Telegram variables are required only to deliver contact messages. Without them,
-the form returns a service-unavailable response and submitted messages are not stored.
-
-## Quality checks
-
-```sh
-bun run lint
-bun run test
-bun run typecheck
-bun run build
-bun run check
-```
-
-End-to-end and accessibility tests run against the production build, so build
-first. They need Chromium: Woodpecker runs them in the Playwright image, and
-locally `CHROMIUM_PATH` can point at an existing browser.
-
-```sh
-bun run build
-bun run test:e2e
-```
-
-## Production
-
-Woodpecker checks pushes and pull requests. A `v*` tag matching
-`package.json.version` runs the release checks, publishes
-`ghcr.io/wissem-industries/home:<version>` and `:latest`, then calls the
-production Dokploy webhook and creates a GitHub Release. Verify the production
-service uses this image before publishing a release. The container listens on
-port `3000`; Docker builds need BuildKit and a `GITHUB_PACKAGES_TOKEN` secret to
-install the private UI dependency.
+Merge the release pull request, then push the `v1.1.0` tag. The pipeline checks the tag, publishes `ghcr.io/wissem-industries/home`, deploys it on Dokploy, checks the site and creates the GitHub release.
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+[MIT](LICENSE)

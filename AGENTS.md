@@ -11,7 +11,7 @@ Wissem Home est le portfolio public de Wissem’s Industries, actuellement en g�
 - Les images de partage 1200×630 (`public/images/og-fr.png`, `og-en.png`) sont générées par `bun run images:og` à partir du contenu du site ; les relancer quand le statut ou l'intitulé change.
 - L'en-tête, le bouton de thème, le sélecteur de langue, les apparitions (`v-reveal`) et les fonds viennent de Wissem UI : ne pas les recréer ici. Le français est à la racine, l'anglais sous `/en` ; l'affichage de la carte « stage recherché » dépend du seul booléen `SEEKING_INTERNSHIP` (`shared/content/index.ts`).
 - Plausible est optionnel et configurable. Ne pas ajouter de suivi tiers non demandé.
-- `V3` désigne la génération du produit; les tags `v0.x.y` restent les versions SemVer. Ne pas créer un tag `v3.0.0` uniquement pour numéroter la refonte.
+- `V3` désigne la génération du produit, pas une version : les versions SemVer repartent de `1.0.0` (octobre 2026). Versions : CHANGELOG tenu à chaque PR (section `Unreleased`), montée par `bun run release <x.y.z>`.
 - Les branches `archive/v1` et `archive/v2` préservent l’ancien historique. Ne pas réécrire, déplacer ou supprimer leurs refs.
 
 ## Stack et livraison
