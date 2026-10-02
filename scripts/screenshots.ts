@@ -8,7 +8,7 @@
  */
 import { mkdir } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
-import { chromium } from '@playwright/test'
+import { chromium, type Page } from '@playwright/test'
 import sharp from 'sharp'
 
 const WIDTH = 1600
@@ -22,23 +22,25 @@ interface Target {
   hide?: string[]
   /** Pause after load, for entrance animations. */
   settle?: number
+  /** Puts the page in a showable state before the capture. */
+  prepare?: (page: Page) => Promise<void>
 }
 
 const targets: Target[] = [
   {
-    id: 'wissem-move',
+    id: 'move',
     url: 'https://move.wissem.pro',
     // Sync notice shown to signed-out visitors.
     hide: ['main > div > p.text-warning'],
+    // The empty home only offers examples: open one to show a real board.
+    prepare: async (page) => {
+      await page.getByRole('button', { name: /Gare de Douai/ }).click()
+      await page.getByText(/Mis à jour à/).waitFor()
+    },
     settle: 1500,
   },
   { id: 'parcourtime', url: 'https://parcourtime.wissem.pro', settle: 1200 },
-  {
-    id: 'portfolio',
-    url: 'https://www.wissem.pro',
-    hide: ['header'],
-    settle: 1500,
-  },
+  { id: 'portfolio', url: 'https://www.wissem.pro', settle: 1500 },
 ]
 
 const requested = new Set(process.argv.slice(2))
@@ -58,6 +60,7 @@ try {
   for (const target of selection) {
     const page = await context.newPage()
     await page.goto(target.url, { waitUntil: 'networkidle' })
+    await target.prepare?.(page)
     if (target.hide?.length) {
       await page.addStyleTag({
         content: `${target.hide.join(',')} { display: none !important; }`,

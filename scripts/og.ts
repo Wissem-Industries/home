@@ -61,11 +61,11 @@ function template(locale: keyof typeof contentByLocale) {
     background-size: 60px 60px;
     mask-image: linear-gradient(to bottom, black, transparent 85%);
   }
-  .text { position: relative; width: 600px; }
+  .text { position: relative; width: 680px; }
   .logo { width: 72px; height: 72px; }
   .url { font: 500 26px "Geist Mono", monospace; color: rgba(250, 250, 250, 0.6); }
   h1 { font-size: 104px; font-weight: 600; letter-spacing: -0.05em; line-height: 0.98; }
-  .status { margin-top: 28px; font-size: 36px; font-weight: 500; color: rgba(250, 250, 250, 0.86); }
+  .status { margin-top: 28px; white-space: nowrap; font-size: 36px; font-weight: 500; color: rgba(250, 250, 250, 0.86); }
   .shot {
     position: absolute;
     overflow: hidden;
@@ -75,14 +75,14 @@ function template(locale: keyof typeof contentByLocale) {
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
   }
   .shot img { display: block; width: 100%; }
-  .shot--main { top: 92px; left: 660px; width: 600px; transform: rotate(-4deg); }
-  .shot--side { top: 360px; left: 760px; width: 420px; transform: rotate(3deg); }
+  .shot--main { top: 92px; left: 770px; width: 560px; transform: rotate(-4deg); }
+  .shot--side { top: 360px; left: 830px; width: 380px; transform: rotate(3deg); }
 </style>
 <body>
   <div class="glow glow--a"></div>
   <div class="glow glow--b"></div>
   <div class="grid"></div>
-  <div class="shot shot--main"><img src="${shot('wissem-move')}" alt=""></div>
+  <div class="shot shot--main"><img src="${shot('move')}" alt=""></div>
   <div class="shot shot--side"><img src="${shot('portfolio')}" alt=""></div>
   <div class="text"><img class="logo" src="${logo}" alt=""></div>
   <div class="text">
