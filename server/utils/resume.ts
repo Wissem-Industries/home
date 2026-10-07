@@ -7,7 +7,10 @@ import {
   type ResumeRelease,
 } from './resume-release'
 
-const CACHE_SECONDS = 15 * 60
+// Client and Cloudflare cache lifetime of the served files (the CV pipeline purges Cloudflare on publish).
+const CLIENT_CACHE_SECONDS = 15 * 60
+// Lifetime of the VERSION read: it bounds the delay before a new version is served.
+const VERSION_CACHE_SECONDS = 60
 
 const contentTypes: Record<ResumeKind, string> = {
   pdf: 'application/pdf',
@@ -29,7 +32,7 @@ export const fetchLatestRelease = defineCachedFunction(
   {
     name: 'wsm-resume-release',
     getKey: () => 'latest',
-    maxAge: CACHE_SECONDS,
+    maxAge: VERSION_CACHE_SECONDS,
     staleMaxAge: 7 * 24 * 3600,
   },
 )
@@ -58,7 +61,7 @@ export async function serveResume(
     setResponseHeaders(event, {
       'content-type': contentTypes[kind],
       'content-disposition': `inline; filename="${asset.name}"`,
-      'cache-control': `public, max-age=${CACHE_SECONDS}`,
+      'cache-control': `public, max-age=${CLIENT_CACHE_SECONDS}`,
       'x-wsm-cv-version': release.tag_name,
     })
     return body

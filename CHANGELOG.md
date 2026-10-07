@@ -4,6 +4,10 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Changed
+
+- Resume: a new version now shows up within about a minute instead of fifteen.
+
 ## [1.2.4] - 2026-10-07
 
 ### Changed
