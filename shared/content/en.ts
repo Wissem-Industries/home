@@ -400,7 +400,7 @@ export const en = {
       {
         title: 'Hosting',
         paragraphs: [
-          'The website is hosted by OVH SAS, 2 rue Kellermann, 59100 Roubaix, France (RCS Lille Métropole 424 761 419 00045), phone: 1007 (from France).',
+          'The website is hosted by OVH SAS, 2 rue Kellermann, 59100 Roubaix, France (RCS Lille Métropole 424 761 419 00045), phone: +33 9 72 10 10 07.',
           'Traffic goes through Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, United States, which provides caching and protection for the site.',
         ],
       },
@@ -408,7 +408,7 @@ export const en = {
         title: 'Intellectual property',
         paragraphs: [
           'The texts and images on this website belong to Wissem Badraoui. Reproduction without permission is prohibited.',
-          'The source code of the website is published under the MIT licence on GitHub (Wissem-Industries/home). Names and logos of the organisations mentioned belong to their owners.',
+          'The source code of the website is published under the MIT licence on GitHub (Wissem-Industries/home); this licence does not cover the texts, images and logos of the website. Names and logos of the organisations mentioned belong to their owners.',
         ],
       },
       {

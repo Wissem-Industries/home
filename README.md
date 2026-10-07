@@ -44,4 +44,4 @@ Merge the release pull request, then push the `v1.1.0` tag. The pipeline checks 
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE) for the source code. The texts, images and logos of the website are not covered by it.
