@@ -8,7 +8,7 @@ Portfolio and contact site of Wissem Badraoui, at [wissem.pro](https://www.wisse
 
 French and English pages for projects, experience, education and interests, a resume page, and a contact form delivered through Telegram. Built with Nuxt 4 and [Wissem UI](https://github.com/Wissem-Industries/ui).
 
-The resume is not stored here: `/cv.pdf`, `/en/cv.pdf` and their images relay the assets of the latest release of [WissemBad/CV](https://github.com/WissemBad/CV).
+The resume is not stored here: `/cv.pdf`, `/en/cv.pdf` and their images relay the files of the latest version published by the CV repository to the public bucket `https://cdn.wissem.pro/wissem-cv` (`VERSION` holds the latest tag, `<tag>/` the files of that version).
 
 ## Development
 

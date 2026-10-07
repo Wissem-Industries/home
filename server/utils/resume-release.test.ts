@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test'
-import { findResumeAsset, resumeAssetName } from './resume-release'
+import { buildResumeRelease, findResumeAsset, resumeAssetName } from './resume-release'
 
 const release = {
   tag_name: 'v1.0.0',
@@ -28,5 +28,18 @@ describe('resume release', () => {
 
   test('returns undefined when the release lacks the asset', () => {
     expect(findResumeAsset(release, 'en', 'pdf')).toBeUndefined()
+  })
+
+  test('builds the versioned release from the stored version', () => {
+    const built = buildResumeRelease('v1.2.0', '2026-10-02T10:00:00Z', 'https://cdn.test/cv')
+    expect(built.tag_name).toBe('v1.2.0')
+    expect(built.assets).toHaveLength(6)
+    expect(findResumeAsset(built, 'en', 'social')?.browser_download_url).toBe(
+      'https://cdn.test/cv/v1.2.0/CV_Wissem_Badraoui_EN_SOCIAL.png',
+    )
+  })
+
+  test('rejects an unexpected stored version', () => {
+    expect(() => buildResumeRelease('<html>', '')).toThrow()
   })
 })

@@ -1,6 +1,7 @@
 import {
+  buildResumeRelease,
   findResumeAsset,
-  RESUME_REPOSITORY,
+  RESUME_BASE_URL,
   type ResumeKind,
   type ResumeLocale,
   type ResumeRelease,
@@ -16,15 +17,14 @@ const contentTypes: Record<ResumeKind, string> = {
 
 export const fetchLatestRelease = defineCachedFunction(
   async (): Promise<ResumeRelease> => {
-    const response = await fetch(
-      `https://api.github.com/repos/${RESUME_REPOSITORY}/releases/latest`,
-      {
-        headers: { Accept: 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' },
-        signal: AbortSignal.timeout(10_000),
-      },
-    )
-    if (!response.ok) throw new Error(`GitHub returned ${response.status}`)
-    return (await response.json()) as ResumeRelease
+    const response = await fetch(`${RESUME_BASE_URL}/VERSION`, {
+      signal: AbortSignal.timeout(10_000),
+    })
+    if (!response.ok) throw new Error(`Resume storage returned ${response.status}`)
+    const lastModified = response.headers.get('last-modified')
+    const modified = lastModified ? new Date(lastModified) : undefined
+    const publishedAt = modified && !Number.isNaN(modified.getTime()) ? modified.toISOString() : ''
+    return buildResumeRelease((await response.text()).trim(), publishedAt)
   },
   {
     name: 'wsm-resume-release',
