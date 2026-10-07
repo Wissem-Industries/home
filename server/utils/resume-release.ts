@@ -12,7 +12,17 @@ export interface ResumeRelease {
   assets: ReleaseAsset[]
 }
 
-export const RESUME_REPOSITORY = 'WissemBad/CV'
+// Public bucket filled by the CV repository pipeline: `VERSION` holds the latest tag, `<tag>/` the files of that version.
+export const RESUME_BASE_URL = 'https://cdn.wissem.pro/wissem-cv'
+
+const RESUME_VARIANTS: [ResumeLocale, ResumeKind][] = [
+  ['fr', 'pdf'],
+  ['en', 'pdf'],
+  ['fr', 'png'],
+  ['en', 'png'],
+  ['fr', 'social'],
+  ['en', 'social'],
+]
 
 export function resumeAssetName(locale: ResumeLocale, kind: ResumeKind) {
   const base = `CV_Wissem_Badraoui_${locale.toUpperCase()}`
@@ -22,4 +32,20 @@ export function resumeAssetName(locale: ResumeLocale, kind: ResumeKind) {
 export function findResumeAsset(release: ResumeRelease, locale: ResumeLocale, kind: ResumeKind) {
   const name = resumeAssetName(locale, kind)
   return release.assets.find((asset) => asset.name === name)
+}
+
+export function buildResumeRelease(
+  tag: string,
+  publishedAt: string,
+  baseUrl = RESUME_BASE_URL,
+): ResumeRelease {
+  if (!/^v\d+\.\d+\.\d+$/.test(tag)) throw new Error(`Unexpected resume version: ${tag}`)
+  return {
+    tag_name: tag,
+    published_at: publishedAt,
+    assets: RESUME_VARIANTS.map(([locale, kind]) => {
+      const name = resumeAssetName(locale, kind)
+      return { name, browser_download_url: `${baseUrl}/${tag}/${name}` }
+    }),
+  }
 }
