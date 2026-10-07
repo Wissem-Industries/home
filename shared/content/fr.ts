@@ -398,7 +398,7 @@ export const fr = {
       {
         title: 'Hébergement',
         paragraphs: [
-          'Le site est hébergé par OVH SAS, 2 rue Kellermann, 59100 Roubaix, France (RCS Lille Métropole 424 761 419 00045), téléphone : 1007.',
+          'Le site est hébergé par OVH SAS, 2 rue Kellermann, 59100 Roubaix, France (RCS Lille Métropole 424 761 419 00045), téléphone : +33 9 72 10 10 07.',
           'Le trafic transite par Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, États-Unis, qui assure le cache et la protection du site.',
         ],
       },
@@ -406,7 +406,7 @@ export const fr = {
         title: 'Propriété intellectuelle',
         paragraphs: [
           'Les textes et images du site sont la propriété de Wissem Badraoui. Toute reproduction sans autorisation est interdite.',
-          'Le code source du site est publié sous licence MIT sur GitHub (Wissem-Industries/home). Les noms et logos d’organisations cités appartiennent à leurs titulaires.',
+          'Le code source du site est publié sous licence MIT sur GitHub (Wissem-Industries/home) ; cette licence ne couvre pas les textes, images et logos du site. Les noms et logos d’organisations cités appartiennent à leurs titulaires.',
         ],
       },
       {
