@@ -49,3 +49,21 @@ export function buildResumeRelease(
     }),
   }
 }
+
+// Reads the latest release on every call. The last valid release is only a fallback when a read fails.
+export function createLatestReleaseReader(
+  read: () => Promise<ResumeRelease>,
+  warn: (message: string, error: unknown) => void = console.warn,
+) {
+  let lastKnown: ResumeRelease | undefined
+  return async (): Promise<ResumeRelease> => {
+    try {
+      lastKnown = await read()
+      return lastKnown
+    } catch (error) {
+      if (!lastKnown) throw error
+      warn(`Resume version unreadable, serving ${lastKnown.tag_name}`, error)
+      return lastKnown
+    }
+  }
+}

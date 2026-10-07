@@ -1,5 +1,10 @@
 import { describe, expect, test } from 'bun:test'
-import { buildResumeRelease, findResumeAsset, resumeAssetName } from './resume-release'
+import {
+  buildResumeRelease,
+  createLatestReleaseReader,
+  findResumeAsset,
+  resumeAssetName,
+} from './resume-release'
 
 const release = {
   tag_name: 'v1.0.0',
@@ -41,5 +46,45 @@ describe('resume release', () => {
 
   test('rejects an unexpected stored version', () => {
     expect(() => buildResumeRelease('<html>', '')).toThrow()
+  })
+})
+
+describe('latest release reader', () => {
+  const v1 = buildResumeRelease('v1.0.0', '')
+  const v2 = buildResumeRelease('v1.1.0', '')
+
+  test('reads the version on every call', async () => {
+    const versions = [v1, v2]
+    let calls = 0
+    const read = createLatestReleaseReader(async () => versions[calls++] as ResumeRelease)
+    expect((await read()).tag_name).toBe('v1.0.0')
+    expect((await read()).tag_name).toBe('v1.1.0')
+    expect(calls).toBe(2)
+  })
+
+  test('falls back to the last known release when a read fails', async () => {
+    let fail = false
+    const warnings: string[] = []
+    const read = createLatestReleaseReader(
+      async () => {
+        if (fail) throw new Error('storage down')
+        return v1
+      },
+      (message) => warnings.push(message),
+    )
+    await read()
+    fail = true
+    expect((await read()).tag_name).toBe('v1.0.0')
+    expect(warnings).toHaveLength(1)
+  })
+
+  test('throws when a read fails and no release is known', async () => {
+    const read = createLatestReleaseReader(
+      async () => {
+        throw new Error('storage down')
+      },
+      () => {},
+    )
+    await expect(read()).rejects.toThrow('storage down')
   })
 })
