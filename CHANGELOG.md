@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.2.5] - 2026-10-07
+
 ### Changed
 
 - Resume: a new version shows up as soon as the CV pipeline purges the CDN cache; the version file is read on each request, and the last known version is only a fallback if the read fails.
