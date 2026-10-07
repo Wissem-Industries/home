@@ -1,5 +1,6 @@
 import {
   buildResumeRelease,
+  createLatestReleaseReader,
   findResumeAsset,
   RESUME_BASE_URL,
   type ResumeKind,
@@ -15,24 +16,18 @@ const contentTypes: Record<ResumeKind, string> = {
   social: 'image/png',
 }
 
-export const fetchLatestRelease = defineCachedFunction(
-  async (): Promise<ResumeRelease> => {
-    const response = await fetch(`${RESUME_BASE_URL}/VERSION`, {
-      signal: AbortSignal.timeout(10_000),
-    })
-    if (!response.ok) throw new Error(`Resume storage returned ${response.status}`)
-    const lastModified = response.headers.get('last-modified')
-    const modified = lastModified ? new Date(lastModified) : undefined
-    const publishedAt = modified && !Number.isNaN(modified.getTime()) ? modified.toISOString() : ''
-    return buildResumeRelease((await response.text()).trim(), publishedAt)
-  },
-  {
-    name: 'wsm-resume-release',
-    getKey: () => 'latest',
-    maxAge: CACHE_SECONDS,
-    staleMaxAge: 7 * 24 * 3600,
-  },
-)
+async function readLatestRelease(): Promise<ResumeRelease> {
+  const response = await fetch(`${RESUME_BASE_URL}/VERSION`, {
+    signal: AbortSignal.timeout(10_000),
+  })
+  if (!response.ok) throw new Error(`Resume storage returned ${response.status}`)
+  const lastModified = response.headers.get('last-modified')
+  const modified = lastModified ? new Date(lastModified) : undefined
+  const publishedAt = modified && !Number.isNaN(modified.getTime()) ? modified.toISOString() : ''
+  return buildResumeRelease((await response.text()).trim(), publishedAt)
+}
+
+export const fetchLatestRelease = createLatestReleaseReader(readLatestRelease)
 
 // The download URL contains the release tag: a new release never serves the previous file.
 const fetchAsset = defineCachedFunction(
