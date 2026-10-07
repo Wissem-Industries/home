@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-10-07
+
 ### Added
 
 - Legal notice (`/legal`, `/en/legal`) and privacy policy (`/privacy`, `/en/privacy`), linked from the footer and listed in the sitemap. The privacy page lets visitors stop the audience measurement in their browser.
