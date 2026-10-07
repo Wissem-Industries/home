@@ -39,6 +39,23 @@ export const SITE_ROUTES = [
     priority: '0.6',
     nav: false,
   },
+  // Linked from the footer and from the contact form.
+  {
+    key: 'legal',
+    path: '/legal',
+    icon: 'i-ri-scales-3-line',
+    changefreq: 'yearly',
+    priority: '0.2',
+    nav: false,
+  },
+  {
+    key: 'privacy',
+    path: '/privacy',
+    icon: 'i-ri-shield-user-line',
+    changefreq: 'yearly',
+    priority: '0.2',
+    nav: false,
+  },
 ] as const
 
 export function normalizePublicSiteUrl(value?: string | null) {

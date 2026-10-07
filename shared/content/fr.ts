@@ -12,6 +12,7 @@ export const fr = {
   localeSwitchLabel: 'Basculer en anglais',
   theme: { toggle: 'Changer de thème' },
   footer: 'Wissem. • Tous droits réservés.',
+  footerLinks: { legal: 'Mentions légales', privacy: 'Confidentialité' },
   error: {
     title: 'Page introuvable',
     description: 'La page demandée n’existe pas ou n’est plus disponible.',
@@ -57,6 +58,19 @@ export const fr = {
       title: 'CV de Wissem Badraoui',
       description:
         'CV d’une page de Wissem Badraoui, élève ingénieur à IMT Nord Europe, en français et en anglais, à télécharger au format PDF.',
+    },
+    legal: {
+      eyebrow: 'Informations légales',
+      heading: 'Mentions légales',
+      title: 'Mentions légales',
+      description: 'Éditeur, hébergeur et propriété intellectuelle du site wissem.pro.',
+    },
+    privacy: {
+      eyebrow: 'Données personnelles',
+      heading: 'Confidentialité',
+      title: 'Politique de confidentialité',
+      description:
+        'Données traitées par le site wissem.pro : finalités, destinataires, durées de conservation et droits.',
     },
   },
   profile: {
@@ -347,9 +361,9 @@ export const fr = {
     },
     submit: 'Envoyer le message',
     responseHint: 'Réponse dans les plus brefs délais.',
-    privacyHint:
-      'Les informations transmises servent uniquement à traiter votre demande de contact. Elles ne sont ni stockées, ni publiées ou partagées avec des tiers.',
-    privacyAriaLabel: 'Informations sur le traitement des données',
+    privacyNotice:
+      'Les informations saisies servent uniquement à répondre à votre demande. Elles sont transmises à Wissem par la messagerie Telegram et supprimées au plus tard 12 mois après le dernier échange.',
+    privacyLink: 'Politique de confidentialité',
     validation: {
       name: 'Le nom doit comporter entre 2 et 100 caractères.',
       email: 'L’adresse email n’est pas valide.',
@@ -366,6 +380,102 @@ export const fr = {
       rateLimited: 'Trop de tentatives, réessaie dans quelques minutes.',
       invalidPayload: 'Les données du formulaire sont invalides.',
       unavailable: 'Le service de contact est indisponible.',
+    },
+  },
+  legal: {
+    intro:
+      'Informations prévues par l’article 6 de la loi du 21 juin 2004 pour la confiance dans l’économie numérique.',
+    updatedLabel: 'Dernière mise à jour',
+    updated: '8 octobre 2026',
+    sections: [
+      {
+        title: 'Éditeur du site',
+        paragraphs: [
+          'Le site www.wissem.pro est édité à titre non professionnel par Wissem Badraoui, personne physique, qui en est aussi le directeur de la publication.',
+          'Contact : contact@wissem.pro.',
+        ],
+      },
+      {
+        title: 'Hébergement',
+        paragraphs: [
+          'Le site est hébergé par OVH SAS, 2 rue Kellermann, 59100 Roubaix, France (RCS Lille Métropole 424 761 419 00045), téléphone : 1007.',
+          'Le trafic transite par Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, États-Unis, qui assure le cache et la protection du site.',
+        ],
+      },
+      {
+        title: 'Propriété intellectuelle',
+        paragraphs: [
+          'Les textes et images du site sont la propriété de Wissem Badraoui. Toute reproduction sans autorisation est interdite.',
+          'Le code source du site est publié sous licence MIT sur GitHub (Wissem-Industries/home). Les noms et logos d’organisations cités appartiennent à leurs titulaires.',
+        ],
+      },
+      {
+        title: 'Liens externes',
+        paragraphs: [
+          'Le site renvoie vers des services tiers (GitHub, LinkedIn, projets hébergés ailleurs). Leur contenu et leurs pratiques ne relèvent pas de l’éditeur.',
+        ],
+      },
+      {
+        title: 'Données personnelles',
+        paragraphs: [
+          'Le traitement des données personnelles est décrit dans la politique de confidentialité du site.',
+        ],
+      },
+    ],
+  },
+  privacy: {
+    intro:
+      'Ce site collecte le moins de données possible. Cette page indique lesquelles, pourquoi, qui les reçoit et combien de temps elles sont conservées.',
+    updatedLabel: 'Dernière mise à jour',
+    updated: '8 octobre 2026',
+    sections: [
+      {
+        title: 'Responsable du traitement',
+        paragraphs: ['Wissem Badraoui, joignable à contact@wissem.pro.'],
+      },
+      {
+        title: 'Formulaire de contact',
+        paragraphs: [
+          'Données traitées : nom, adresse e-mail, sujet et message saisis dans le formulaire.',
+          'Finalité : répondre à votre demande. Base légale : l’intérêt légitime de l’éditeur à répondre aux messages reçus, ou des mesures précontractuelles lorsque vous les demandez.',
+          'Le site ne conserve pas votre message. Il est transmis à l’éditeur par la messagerie Telegram, dont les serveurs peuvent se trouver hors de l’Union européenne ; Telegram intervient comme prestataire de messagerie.',
+          'Durée : le message est supprimé au plus tard 12 mois après le dernier échange.',
+        ],
+      },
+      {
+        title: 'Adresse IP et sécurité',
+        paragraphs: [
+          'Pour limiter les envois abusifs, votre adresse IP est comptée en mémoire pendant 5 minutes lors d’un envoi du formulaire, puis oubliée. Le serveur et Cloudflare peuvent aussi consigner les adresses IP dans leurs journaux techniques, à des fins de sécurité.',
+        ],
+      },
+      {
+        title: 'Mesure d’audience',
+        paragraphs: [
+          'Le site utilise Plausible Analytics, installé par l’éditeur sur analytics.wissem.pro. Il compte les pages vues, la provenance des visites, les clics sur les liens sortants, les téléchargements du CV et les envois de formulaire (sans leur contenu).',
+          'Il ne dépose aucun cookie, ne construit aucun profil et ne recoupe pas les visites d’un site à l’autre. Les données restent sur l’infrastructure de l’éditeur. Base légale : l’intérêt légitime à connaître la fréquentation du site.',
+          'Vous pouvez désactiver ce comptage sur ce navigateur ci-dessous ; le réglage est gardé dans le stockage local du navigateur (clé plausible_ignore).',
+        ],
+      },
+      {
+        title: 'Cookies',
+        paragraphs: [
+          'Le site dépose deux cookies de préférence, valables 12 mois : wsm_locale (langue) et wsm_theme (thème clair ou sombre). Ils ne servent à rien d’autre et ne demandent pas de consentement.',
+        ],
+      },
+      {
+        title: 'Vos droits',
+        paragraphs: [
+          'Vous pouvez demander l’accès à vos données, leur rectification ou leur effacement, ou vous opposer à leur traitement, en écrivant à contact@wissem.pro. Une réponse est apportée dans un délai d’un mois.',
+          'En cas de désaccord, vous pouvez saisir la CNIL (www.cnil.fr).',
+        ],
+      },
+    ],
+    optOut: {
+      label: 'Mesure d’audience',
+      active: 'Vos visites sont comptées.',
+      inactive: 'Vos visites ne sont pas comptées sur ce navigateur.',
+      enable: 'Réactiver le comptage',
+      disable: 'Ne plus compter mes visites',
     },
   },
 } satisfies PortfolioContent

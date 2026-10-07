@@ -12,6 +12,7 @@ export const en = {
   localeSwitchLabel: 'Switch to French',
   theme: { toggle: 'Toggle color mode' },
   footer: 'Wissem. • All rights reserved.',
+  footerLinks: { legal: 'Legal notice', privacy: 'Privacy' },
   error: {
     title: 'Page not found',
     description: 'The requested page does not exist or is no longer available.',
@@ -57,6 +58,19 @@ export const en = {
       title: 'Resume of Wissem Badraoui',
       description:
         'One-page resume of Wissem Badraoui, an engineering student at IMT Nord Europe, in French and English, available as a PDF download.',
+    },
+    legal: {
+      eyebrow: 'Legal information',
+      heading: 'Legal notice',
+      title: 'Legal notice',
+      description: 'Publisher, host and intellectual property of the wissem.pro website.',
+    },
+    privacy: {
+      eyebrow: 'Personal data',
+      heading: 'Privacy',
+      title: 'Privacy policy',
+      description:
+        'Data processed by the wissem.pro website: purposes, recipients, retention periods and rights.',
     },
   },
   profile: {
@@ -349,9 +363,9 @@ export const en = {
     },
     submit: 'Send message',
     responseHint: 'Reply as soon as possible.',
-    privacyHint:
-      'The information provided is used only to process your contact request. It is neither stored, published, nor shared with third parties.',
-    privacyAriaLabel: 'Information about data processing',
+    privacyNotice:
+      'The information provided is used only to answer your request. It is sent to Wissem through Telegram and deleted at most 12 months after the last exchange.',
+    privacyLink: 'Privacy policy',
     validation: {
       name: 'The name must be between 2 and 100 characters.',
       email: 'The email address is invalid.',
@@ -368,6 +382,102 @@ export const en = {
       rateLimited: 'Too many attempts. Please try again in a few minutes.',
       invalidPayload: 'The form data is invalid.',
       unavailable: 'The contact service is unavailable.',
+    },
+  },
+  legal: {
+    intro:
+      'Information required by article 6 of the French law of 21 June 2004 on trust in the digital economy.',
+    updatedLabel: 'Last updated',
+    updated: '8 October 2026',
+    sections: [
+      {
+        title: 'Publisher',
+        paragraphs: [
+          'The website www.wissem.pro is published on a non-professional basis by Wissem Badraoui, a private individual, who is also the publication director.',
+          'Contact: contact@wissem.pro.',
+        ],
+      },
+      {
+        title: 'Hosting',
+        paragraphs: [
+          'The website is hosted by OVH SAS, 2 rue Kellermann, 59100 Roubaix, France (RCS Lille Métropole 424 761 419 00045), phone: 1007 (from France).',
+          'Traffic goes through Cloudflare, Inc., 101 Townsend Street, San Francisco, CA 94107, United States, which provides caching and protection for the site.',
+        ],
+      },
+      {
+        title: 'Intellectual property',
+        paragraphs: [
+          'The texts and images on this website belong to Wissem Badraoui. Reproduction without permission is prohibited.',
+          'The source code of the website is published under the MIT licence on GitHub (Wissem-Industries/home). Names and logos of the organisations mentioned belong to their owners.',
+        ],
+      },
+      {
+        title: 'External links',
+        paragraphs: [
+          'The website links to third-party services (GitHub, LinkedIn, projects hosted elsewhere). Their content and practices are not under the publisher’s control.',
+        ],
+      },
+      {
+        title: 'Personal data',
+        paragraphs: [
+          'The processing of personal data is described in the privacy policy of the website.',
+        ],
+      },
+    ],
+  },
+  privacy: {
+    intro:
+      'This website collects as little data as possible. This page states which data, why, who receives it and how long it is kept.',
+    updatedLabel: 'Last updated',
+    updated: '8 October 2026',
+    sections: [
+      {
+        title: 'Data controller',
+        paragraphs: ['Wissem Badraoui, reachable at contact@wissem.pro.'],
+      },
+      {
+        title: 'Contact form',
+        paragraphs: [
+          'Data processed: the name, email address, subject and message entered in the form.',
+          'Purpose: answering your request. Legal basis: the publisher’s legitimate interest in answering the messages received, or pre-contractual measures when you ask for them.',
+          'The website does not keep your message. It is sent to the publisher through Telegram, whose servers may be outside the European Union; Telegram acts as a messaging provider.',
+          'Retention: the message is deleted at most 12 months after the last exchange.',
+        ],
+      },
+      {
+        title: 'IP address and security',
+        paragraphs: [
+          'To limit abuse, your IP address is counted in memory for 5 minutes when the form is submitted, then forgotten. The server and Cloudflare may also record IP addresses in their technical logs for security purposes.',
+        ],
+      },
+      {
+        title: 'Audience measurement',
+        paragraphs: [
+          'The website uses Plausible Analytics, installed by the publisher at analytics.wissem.pro. It counts page views, where visits come from, clicks on outbound links, resume downloads and form submissions (without their content).',
+          'It sets no cookie, builds no profile and does not follow visits from one site to another. The data stays on the publisher’s infrastructure. Legal basis: the legitimate interest in knowing how the site is used.',
+          'You can switch this counting off for this browser below; the setting is kept in the browser’s local storage (key plausible_ignore).',
+        ],
+      },
+      {
+        title: 'Cookies',
+        paragraphs: [
+          'The website sets two preference cookies, valid for 12 months: wsm_locale (language) and wsm_theme (light or dark theme). They are used for nothing else and do not require consent.',
+        ],
+      },
+      {
+        title: 'Your rights',
+        paragraphs: [
+          'You can ask for access to your data, its correction or erasure, or object to its processing, by writing to contact@wissem.pro. You get an answer within one month.',
+          'If you disagree with the answer, you can lodge a complaint with the CNIL (www.cnil.fr).',
+        ],
+      },
+    ],
+    optOut: {
+      label: 'Audience measurement',
+      active: 'Your visits are counted.',
+      inactive: 'Your visits are not counted in this browser.',
+      enable: 'Count my visits again',
+      disable: 'Stop counting my visits',
     },
   },
 } satisfies PortfolioContent
