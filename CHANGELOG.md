@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.2.4] - 2026-10-07
+
 ### Changed
 
 - Resume: `/cv.pdf`, `/en/cv.pdf` and their images now read the files of the latest version from the public bucket `cdn.wissem.pro/wissem-cv` instead of the GitHub Release of the CV repository, which can then become private.
