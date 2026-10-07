@@ -10,6 +10,7 @@ import {
 
 const { content } = usePortfolioContent()
 const { canonicalUrl, siteUrl } = useSiteSeo()
+const localePath = useLocalePath()
 const toast = useToast()
 const loading = ref(false)
 const state = reactive(createEmptyContactPayload())
@@ -167,13 +168,19 @@ useBreadcrumbJsonLd(
           </div>
 
           <div class="flex flex-col gap-4 border-t border-default pt-6 sm:flex-row sm:items-center sm:justify-between">
-            <UTooltip :text="content.contact.privacyHint">
-              <div class="flex max-w-sm items-start gap-2 text-xs leading-5 text-muted">
-                <UIcon name="i-ri-information-line" class="mt-0.5 size-4 shrink-0" />
-                <span>{{ content.contact.responseHint }}</span>
-                <span class="sr-only">{{ content.contact.privacyAriaLabel }}</span>
-              </div>
-            </UTooltip>
+            <div class="flex max-w-md items-start gap-2 text-xs leading-5 text-muted">
+              <UIcon name="i-ri-information-line" class="mt-0.5 size-4 shrink-0" />
+              <p>
+                {{ content.contact.responseHint }}
+                {{ content.contact.privacyNotice }}
+                <NuxtLink
+                  :to="localePath('/privacy')"
+                  class="text-highlighted underline underline-offset-4"
+                >
+                  {{ content.contact.privacyLink }}
+                </NuxtLink>
+              </p>
+            </div>
             <UButton
               type="submit"
               :label="content.contact.submit"

@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Added
+
+- Legal notice (`/legal`, `/en/legal`) and privacy policy (`/privacy`, `/en/privacy`), linked from the footer and listed in the sitemap. The privacy page lets visitors stop the audience measurement in their browser.
+
+### Changed
+
+- Contact form: the data-processing notice is now visible under the form instead of a tooltip, links to the privacy policy and states that messages are forwarded through Telegram.
+
 ## [1.2.5] - 2026-10-07
 
 ### Changed

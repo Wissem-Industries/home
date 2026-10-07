@@ -62,8 +62,8 @@ export interface ContactFormCopy {
   fields: Record<'name' | 'email' | 'subject' | 'message', { label: string; placeholder: string }>
   submit: string
   responseHint: string
-  privacyHint: string
-  privacyAriaLabel: string
+  privacyNotice: string
+  privacyLink: string
   validation: Record<'name' | 'email' | 'subject' | 'message', string>
   honeypotLabel: string
   messages: {
@@ -75,6 +75,27 @@ export interface ContactFormCopy {
     invalidPayload: string
     unavailable: string
   }
+}
+
+export interface LegalSection {
+  title: string
+  paragraphs: string[]
+  items?: string[]
+}
+
+export interface LegalPageCopy {
+  intro: string
+  updatedLabel: string
+  updated: string
+  sections: LegalSection[]
+}
+
+export interface PrivacyOptOutCopy {
+  label: string
+  active: string
+  inactive: string
+  enable: string
+  disable: string
 }
 
 export interface PortfolioContent {
@@ -91,6 +112,7 @@ export interface PortfolioContent {
     toggle: string
   }
   footer: string
+  footerLinks: { legal: string; privacy: string }
   error: {
     title: string
     description: string
@@ -111,6 +133,8 @@ export interface PortfolioContent {
     projects: PageContent
     contact: PageContent
     cv: PageContent
+    legal: PageContent
+    privacy: PageContent
   }
   profile: {
     name: string
@@ -170,4 +194,6 @@ export interface PortfolioContent {
   projectFilters: { label: string; all: string }
   projectTexts: Record<ProjectId, ProjectTexts>
   contact: ContactFormCopy
+  legal: LegalPageCopy
+  privacy: LegalPageCopy & { optOut: PrivacyOptOutCopy }
 }
