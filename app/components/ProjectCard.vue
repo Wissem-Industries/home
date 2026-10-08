@@ -16,6 +16,8 @@ defineProps<{
   reverse?: boolean
   compact?: boolean
   eager?: boolean
+  /** Level of the project title in the page outline. */
+  headingLevel?: 'h2' | 'h3'
 }>()
 
 const { content } = usePortfolioContent()
@@ -61,9 +63,9 @@ const { content } = usePortfolioContent()
             <span class="size-1.5 rounded-full" :class="STATUS_DOTS[project.status]" />
             {{ content.projectStatuses[project.status] }}
           </p>
-          <h3 class="text-xl font-semibold tracking-tight text-highlighted">
+          <component :is="headingLevel ?? 'h3'" class="text-xl font-semibold tracking-tight text-highlighted">
             {{ project.title }}
-          </h3>
+          </component>
           <p class="text-sm leading-6 text-muted">
             {{ project.description }}
           </p>

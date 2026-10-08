@@ -75,6 +75,7 @@ const others = computed(() => visible.value.filter((project) => project !== lead
           :key="lead.id"
           :project="lead"
           :actions="content.projectActions"
+          heading-level="h2"
           eager
         />
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -83,6 +84,7 @@ const others = computed(() => visible.value.filter((project) => project !== lead
             :key="project.id"
             :project="project"
             :actions="content.projectActions"
+            heading-level="h2"
             compact
           />
         </div>

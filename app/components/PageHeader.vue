@@ -1,14 +1,19 @@
 <script setup lang="ts">
-defineProps<{
-  eyebrow: string
-  title: string
-  description: string
-}>()
+withDefaults(
+  defineProps<{
+    eyebrow: string
+    title: string
+    description: string
+    /** Glass shapes on the right; utility pages keep the light only. */
+    shapes?: boolean
+  }>(),
+  { shapes: true },
+)
 </script>
 
 <template>
   <WAmbient as="header" :intensity="0.3" class="wi-enter pb-14 pt-8 sm:pb-20 sm:pt-14">
-    <GlassShapes layout="page" />
+    <GlassShapes v-if="shapes" layout="page" />
     <div class="max-w-3xl space-y-5">
       <p class="font-mono text-xs uppercase tracking-[0.2em] text-primary">
         {{ eyebrow }}
@@ -19,6 +24,7 @@ defineProps<{
       <p class="max-w-2xl text-base leading-7 text-muted sm:text-lg">
         {{ description }}
       </p>
+      <slot />
     </div>
   </WAmbient>
 </template>

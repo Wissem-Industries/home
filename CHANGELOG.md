@@ -9,10 +9,13 @@ All notable changes to this project are documented here. The format follows [Kee
 - Liquid Glass across the site: violet shapes under glass lenses in the hero and the page headers, glass cards everywhere with a few violet accents behind them, a soft violet light on each section and a more visible grid at the top.
 - Cards share one hover: a short lift and a violet edge, without lightening the card.
 - Project filters sit in a glass selector; contact fields have a thin outline and a single violet focus ring.
+- Resume, legal notice and privacy pages follow the same design: violet light at the top, legal texts in a glass card.
 
 ### Fixed
 
 - Development server: Plausible is no longer loaded, so content blockers such as Brave Shields no longer stop the page from working locally.
+- Error pages declare their language.
+- Projects page: project titles are second-level headings, as nothing sits between them and the page title.
 
 ## [1.4.4] - 2026-10-08
 

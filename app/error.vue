@@ -2,7 +2,7 @@
 import type { NuxtError } from '#app'
 
 const props = defineProps<{ error: NuxtError }>()
-const { content } = usePortfolioContent()
+const { content, locale } = usePortfolioContent()
 const localePath = useLocalePath()
 const route = useRoute()
 
@@ -21,6 +21,9 @@ const copy = computed(() => {
   }
   return { title: undefined, description: undefined }
 })
+
+// The error page replaces app.vue, which declares the language for every other page.
+useHead({ htmlAttrs: { lang: locale } })
 
 useSeoMeta({
   title: () => copy.value.title ?? String(props.error.statusCode),
