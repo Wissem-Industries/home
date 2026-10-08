@@ -1,8 +1,8 @@
 /**
- * Shared template of the project covers: the site's dark violet light, sharp
- * violet shapes and one glass element in front of them. The element is a
- * window around a desktop capture, a phone around a mobile capture, or an
- * icon tile with keywords for the projects without a public interface.
+ * Shared template of the project covers: the site's dark violet light and one
+ * glass element over a soft violet glow, the same on every cover. The element
+ * is a window around a desktop capture, a phone around a mobile capture, or an
+ * icon tile with keywords for the projects without an interface.
  */
 import { createRequire } from 'node:module'
 import { pathToFileURL } from 'node:url'
@@ -20,17 +20,6 @@ export type CoverFrame =
   | { kind: 'window'; capture: URL; pixelated?: boolean }
   | { kind: 'phone'; capture: URL }
 
-/**
- * One shape per cover, behind the glass element, so the blur has something to work on.
- * It changes from one cover to the next: a row of covers should not look stamped.
- */
-const SHAPES = [
-  'disc" style="top: 60px; right: 180px; width: 420px; height: 420px;',
-  'bar" style="top: 470px; left: 60px; width: 620px; height: 96px; rotate: -18deg;',
-  'disc" style="bottom: 50px; left: 170px; width: 380px; height: 380px;',
-  'bar" style="top: 150px; right: 40px; width: 560px; height: 90px; rotate: 22deg;',
-]
-
 function fontUrl(path: string) {
   return pathToFileURL(require.resolve(path)).href
 }
@@ -43,17 +32,14 @@ function iconSvg(name: string) {
 
 function frameHtml(frame: CoverFrame) {
   if (frame.kind === 'icon') {
-    return `<div class="shape backlight"></div>
-  <div class="tile glass">${iconSvg(frame.icon)}</div>
+    return `<div class="tile glass">${iconSvg(frame.icon)}</div>
   <div class="keywords">${frame.keywords.map((word) => `<span class="glass">${word}</span>`).join('')}</div>`
   }
   const image = `<img src="${frame.capture.href}" alt=""${frame.kind === 'window' && frame.pixelated ? ' class="pixelated"' : ''}>`
   return `<div class="${frame.kind} glass">${image}</div>`
 }
 
-export function coverHtml(frame: CoverFrame, variant: number) {
-  const shape =
-    frame.kind === 'icon' ? '' : `<div class="shape ${SHAPES[variant % SHAPES.length]}"></div>`
+export function coverHtml(frame: CoverFrame) {
   const sans = fontUrl('@fontsource-variable/geist/files/geist-latin-wght-normal.woff2')
   const mono = fontUrl('@fontsource-variable/geist-mono/files/geist-mono-latin-wght-normal.woff2')
   return `<!doctype html>
@@ -87,17 +73,19 @@ export function coverHtml(frame: CoverFrame, variant: number) {
     background-size: 64px 64px;
     mask-image: radial-gradient(ellipse at 50% 40%, black 15%, transparent 72%);
   }
-  .shape { position: absolute; border-radius: 9999px; }
-  .disc { background: linear-gradient(135deg, #a78bfa, #6d28d9); }
-  .backlight {
-    top: 250px;
+  .glow {
+    position: absolute;
+    top: 130px;
     left: 50%;
-    width: 240px;
-    height: 240px;
-    background: linear-gradient(135deg, #c4b5fd, #7c3aed);
-    translate: 10px -40px;
+    width: 560px;
+    height: 460px;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, #8b5cf6, rgb(109 40 217 / 0.5), transparent);
+    filter: blur(40px);
+    translate: -50% 0;
   }
-  .bar { background: linear-gradient(90deg, #a855f7, #4f46e5); }
+  .glow--window,
+  .glow--phone { top: 170px; width: 1100px; height: 640px; opacity: 0.8; }
   .glass {
     position: absolute;
     background:
@@ -160,7 +148,7 @@ export function coverHtml(frame: CoverFrame, variant: number) {
 <body>
   <div class="light"></div>
   <div class="grid"></div>
-  ${shape}
+  <div class="glow glow--${frame.kind}"></div>
   ${frameHtml(frame)}
 </body>
 </html>`

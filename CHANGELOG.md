@@ -10,7 +10,7 @@ All notable changes to this project are documented here. The format follows [Kee
 - Cards share one hover: a short lift and a violet edge, without lightening the card.
 - Project filters sit in a glass selector; contact fields have a thin outline and a single violet focus ring.
 - Projects page: one project per row, image and text alternating sides.
-- New project covers in the site's style: product captures in a glass window (Move in a phone frame), an icon tile over violet shapes for the projects without a public interface.
+- New project covers in the site's style: a glass window around the product capture (Move in a phone frame), or an icon tile for the projects without a public interface, over the same violet glow.
 - Resume, legal notice and privacy pages follow the same design: violet light at the top, legal texts in a glass card.
 
 ### Fixed

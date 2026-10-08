@@ -56,10 +56,10 @@ const browser = await chromium.launch({
 })
 try {
   const page = await browser.newPage({ viewport: { width: WIDTH, height: HEIGHT } })
-  for (const [index, cover] of covers.entries()) {
+  for (const cover of covers) {
     if (requested.size > 0 && !requested.has(cover.id)) continue
     const html = join(workDir, `${cover.id}.html`)
-    await writeFile(html, coverHtml(cover.frame, index))
+    await writeFile(html, coverHtml(cover.frame))
     await page.goto(pathToFileURL(html).href, { waitUntil: 'load' })
     await page.evaluate(() => document.fonts.ready)
     const png = await page.screenshot({ type: 'png' })
