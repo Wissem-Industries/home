@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.4.4] - 2026-10-08
+
 ### Changed
 
 - Experience: the DGFiP entry shows the emblem alone, which stays legible at thumbnail size, instead of the full logo with its caption.
