@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.3.1] - 2026-10-08
+
 ### Changed
 
 - Privacy page: removed the audience-measurement section and its opt-out.
