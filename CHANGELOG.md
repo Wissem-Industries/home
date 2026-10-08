@@ -17,6 +17,14 @@ All notable changes to this project are documented here. The format follows [Kee
 - Error pages declare their language.
 - Projects page: project titles are second-level headings, as nothing sits between them and the page title.
 
+### Security
+
+- Security headers on every response (HSTS, `nosniff`, frame denial, referrer and permissions policies) and a Content Security Policy on pages; the `X-Powered-By` header is gone.
+- Contact form: the rate limit keys on the address given by Cloudflare instead of a client-supplied header, keeps a bounded number of addresses, and the API refuses bodies over 16 KB; Telegram calls time out after 10 seconds.
+- Analytics relay refuses events over 4 KB.
+- The language cookie is marked `Secure`.
+- Build tooling dependencies updated to their patched releases.
+
 ## [1.4.4] - 2026-10-08
 
 ### Changed

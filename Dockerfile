@@ -31,7 +31,7 @@ ENV NITRO_PORT=3000
 COPY --from=build --chown=bun:bun /app/.output ./.output
 LABEL org.opencontainers.image.title="Wissem Home" \
       org.opencontainers.image.description="Personal portfolio of Wissem Badraoui, built with Nuxt and Wissem UI" \
-      org.opencontainers.image.source="https://github.com/Wissem-Industries/Wissem-Home" \
+      org.opencontainers.image.source="https://github.com/Wissem-Industries/home" \
       org.opencontainers.image.url="https://www.wissem.pro" \
       org.opencontainers.image.version=$IMAGE_VERSION
 

@@ -5,3 +5,9 @@
 node_modules
 *.log
 .env
+.env.*
+!.env.example
+*.tgz
+e2e
+test-results
+playwright-report

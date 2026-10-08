@@ -34,6 +34,8 @@ export default defineNuxtConfig({
       { code: 'en', language: 'en-GB', name: 'English', file: 'en.json' },
     ],
     detectBrowserLanguage: {
+      // Served over HTTPS only; the dev server stays on plain HTTP.
+      cookieSecure: !isDev,
       redirectOn: 'root',
       alwaysRedirect: false,
       fallbackLocale: 'fr',
