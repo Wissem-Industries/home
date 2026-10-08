@@ -363,8 +363,7 @@ export const en = {
     },
     submit: 'Send message',
     responseHint: 'Reply as soon as possible.',
-    privacyNotice:
-      'The information provided is used only to answer your request. It is sent to Wissem through Telegram and deleted at most 12 months after the last exchange.',
+    privacyNotice: 'The information provided is used only to process your request.',
     privacyLink: 'Privacy policy',
     validation: {
       name: 'The name must be between 2 and 100 characters.',
@@ -451,14 +450,6 @@ export const en = {
         ],
       },
       {
-        title: 'Audience measurement',
-        paragraphs: [
-          'The website uses Plausible Analytics, installed by the publisher at analytics.wissem.pro. It counts page views, where visits come from, clicks on outbound links, resume downloads and form submissions (without their content).',
-          'It sets no cookie, builds no profile and does not follow visits from one site to another. The data stays on the publisher’s infrastructure. Legal basis: the legitimate interest in knowing how the site is used.',
-          'You can switch this counting off for this browser below; the setting is kept in the browser’s local storage (key plausible_ignore).',
-        ],
-      },
-      {
         title: 'Cookies',
         paragraphs: [
           'The website sets two preference cookies, valid for 12 months: wsm_locale (language) and wsm_theme (light or dark theme). They are used for nothing else and do not require consent.',
@@ -472,12 +463,5 @@ export const en = {
         ],
       },
     ],
-    optOut: {
-      label: 'Audience measurement',
-      active: 'Your visits are counted.',
-      inactive: 'Your visits are not counted in this browser.',
-      enable: 'Count my visits again',
-      disable: 'Stop counting my visits',
-    },
   },
 } satisfies PortfolioContent

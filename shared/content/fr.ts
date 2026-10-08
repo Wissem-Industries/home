@@ -361,8 +361,7 @@ export const fr = {
     },
     submit: 'Envoyer le message',
     responseHint: 'Réponse dans les plus brefs délais.',
-    privacyNotice:
-      'Les informations saisies servent uniquement à répondre à votre demande. Elles sont transmises à Wissem par la messagerie Telegram et supprimées au plus tard 12 mois après le dernier échange.',
+    privacyNotice: 'Les informations saisies servent uniquement au traitement de votre demande.',
     privacyLink: 'Politique de confidentialité',
     validation: {
       name: 'Le nom doit comporter entre 2 et 100 caractères.',
@@ -449,14 +448,6 @@ export const fr = {
         ],
       },
       {
-        title: 'Mesure d’audience',
-        paragraphs: [
-          'Le site utilise Plausible Analytics, installé par l’éditeur sur analytics.wissem.pro. Il compte les pages vues, la provenance des visites, les clics sur les liens sortants, les téléchargements du CV et les envois de formulaire (sans leur contenu).',
-          'Il ne dépose aucun cookie, ne construit aucun profil et ne recoupe pas les visites d’un site à l’autre. Les données restent sur l’infrastructure de l’éditeur. Base légale : l’intérêt légitime à connaître la fréquentation du site.',
-          'Vous pouvez désactiver ce comptage sur ce navigateur ci-dessous ; le réglage est gardé dans le stockage local du navigateur (clé plausible_ignore).',
-        ],
-      },
-      {
         title: 'Cookies',
         paragraphs: [
           'Le site dépose deux cookies de préférence, valables 12 mois : wsm_locale (langue) et wsm_theme (thème clair ou sombre). Ils ne servent à rien d’autre et ne demandent pas de consentement.',
@@ -470,12 +461,5 @@ export const fr = {
         ],
       },
     ],
-    optOut: {
-      label: 'Mesure d’audience',
-      active: 'Vos visites sont comptées.',
-      inactive: 'Vos visites ne sont pas comptées sur ce navigateur.',
-      enable: 'Réactiver le comptage',
-      disable: 'Ne plus compter mes visites',
-    },
   },
 } satisfies PortfolioContent
