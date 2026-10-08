@@ -4,6 +4,10 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Fixed
+
+- Project covers: the version is part of their URL, so a new cover replaces the previous one at the next release instead of waiting for the browser and CDN caches (up to a day).
+
 ## [1.5.0] - 2026-10-08
 
 ### Changed

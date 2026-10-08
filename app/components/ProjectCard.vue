@@ -21,6 +21,9 @@ defineProps<{
 }>()
 
 const { content } = usePortfolioContent()
+// A cover keeps its file name when it changes. IPX ignores the unknown `v` modifier, but it makes
+// the URL differ at each release, which stops the browser and the CDN from serving the previous one.
+const { assetVersion } = useRuntimeConfig().public
 </script>
 
 <template>
@@ -39,6 +42,7 @@ const { content } = usePortfolioContent()
       >
         <NuxtPicture
           :src="project.image"
+          :modifiers="{ v: assetVersion }"
           :alt="project.title"
           :sizes="compact ? 'sm:100vw lg:384px' : 'sm:100vw lg:560px'"
           :loading="eager ? 'eager' : 'lazy'"
