@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-10-08
+
 ### Added
 
 - Styled 404 and error pages from Wissem UI 1.1.0, with the existing texts for not found and server errors.
