@@ -363,8 +363,7 @@ export const en = {
     },
     submit: 'Send message',
     responseHint: 'Reply as soon as possible.',
-    privacyNotice:
-      'The information provided is used only to process your request.',
+    privacyNotice: 'The information provided is used only to process your request.',
     privacyLink: 'Privacy policy',
     validation: {
       name: 'The name must be between 2 and 100 characters.',

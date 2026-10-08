@@ -361,8 +361,7 @@ export const fr = {
     },
     submit: 'Envoyer le message',
     responseHint: 'Réponse dans les plus brefs délais.',
-    privacyNotice:
-      'Les informations saisies servent uniquement au traitement de votre demande.',
+    privacyNotice: 'Les informations saisies servent uniquement au traitement de votre demande.',
     privacyLink: 'Politique de confidentialité',
     validation: {
       name: 'Le nom doit comporter entre 2 et 100 caractères.',
