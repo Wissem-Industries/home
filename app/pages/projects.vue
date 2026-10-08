@@ -38,8 +38,6 @@ const visible = computed(() =>
     (project) => filter.value === 'all' || project.category === filter.value,
   ),
 )
-const lead = computed(() => visible.value.find((project) => project.featured))
-const others = computed(() => visible.value.filter((project) => project !== lead.value))
 </script>
 
 <template>
@@ -71,23 +69,14 @@ const others = computed(() => visible.value.filter((project) => project !== lead
 
       <div class="space-y-6">
         <ProjectCard
-          v-if="lead"
-          :key="lead.id"
-          :project="lead"
+          v-for="(project, index) in visible"
+          :key="project.id"
+          :project="project"
           :actions="content.projectActions"
+          :reverse="index % 2 === 1"
+          :eager="index === 0"
           heading-level="h2"
-          eager
         />
-        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <ProjectCard
-            v-for="project in others"
-            :key="project.id"
-            :project="project"
-            :actions="content.projectActions"
-            heading-level="h2"
-            compact
-          />
-        </div>
       </div>
     </WAmbient>
   </UContainer>

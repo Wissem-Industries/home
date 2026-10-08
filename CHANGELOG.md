@@ -9,6 +9,8 @@ All notable changes to this project are documented here. The format follows [Kee
 - Liquid Glass across the site: violet shapes under glass lenses in the hero and the page headers, glass cards everywhere with a few violet accents behind them, a soft violet light on each section and a more visible grid at the top.
 - Cards share one hover: a short lift and a violet edge, without lightening the card.
 - Project filters sit in a glass selector; contact fields have a thin outline and a single violet focus ring.
+- Projects page: one project per row, image and text alternating sides.
+- New project covers in the site's style: product captures in a glass window (Move in a phone frame), an icon tile over violet shapes for the projects without a public interface.
 - Resume, legal notice and privacy pages follow the same design: violet light at the top, legal texts in a glass card.
 
 ### Fixed
