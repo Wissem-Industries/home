@@ -44,35 +44,27 @@ const others = computed(() => visible.value.filter((project) => project !== lead
 
 <template>
   <UContainer>
-    <header
-      class="wi-enter max-w-3xl space-y-5 pb-10 pt-8 sm:pb-14 sm:pt-14"
-    >
-      <p class="font-mono text-xs uppercase tracking-[0.2em] text-primary">
-        {{ content.pages.projects.eyebrow }}
-      </p>
-      <h1 class="text-5xl font-semibold tracking-[-0.05em] text-highlighted sm:text-6xl">
-        {{ content.pages.projects.heading }}
-      </h1>
-      <p class="max-w-2xl text-base leading-7 text-muted sm:text-lg">
-        {{ content.pages.projects.description }}
-      </p>
-    </header>
+    <PageHeader
+      :eyebrow="content.pages.projects.eyebrow"
+      :title="content.pages.projects.heading"
+      :description="content.pages.projects.description"
+    />
 
-    <section class="space-y-8 border-t border-default py-10 sm:py-14">
+    <WAmbient as="section" :intensity="0.16" class="space-y-8 border-t border-default py-10 sm:py-14">
       <div
         role="group"
         :aria-label="content.projectFilters.label"
-        class="flex flex-wrap gap-2"
+        class="wi-glass wi-glass--pill inline-flex max-w-full gap-1 overflow-x-auto p-1 [scrollbar-width:none]"
       >
         <UButton
           v-for="item in filters"
           :key="item.value"
           :label="item.label"
           :aria-pressed="filter === item.value"
-          color="neutral"
-          :variant="filter === item.value ? 'solid' : 'outline'"
+          :color="filter === item.value ? 'primary' : 'neutral'"
+          :variant="filter === item.value ? 'soft' : 'ghost'"
           size="sm"
-          class="min-h-11 rounded-full px-4 sm:min-h-0"
+          class="min-h-11 shrink-0 rounded-full px-3.5 sm:min-h-0 sm:px-4"
           @click="filter = item.value"
         />
       </div>
@@ -95,6 +87,6 @@ const others = computed(() => visible.value.filter((project) => project !== lead
           />
         </div>
       </div>
-    </section>
+    </WAmbient>
   </UContainer>
 </template>

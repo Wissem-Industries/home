@@ -4,6 +4,16 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Changed
+
+- Liquid Glass across the site: violet shapes under glass lenses in the hero and the page headers, glass cards everywhere with a few violet accents behind them, a soft violet light on each section and a more visible grid at the top.
+- Cards share one hover: a short lift and a violet edge, without lightening the card.
+- Project filters sit in a glass selector; contact fields have a thin outline and a single violet focus ring.
+
+### Fixed
+
+- Development server: Plausible is no longer loaded, so content blockers such as Brave Shields no longer stop the page from working locally.
+
 ## [1.4.4] - 2026-10-08
 
 ### Changed

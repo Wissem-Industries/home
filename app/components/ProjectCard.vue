@@ -22,9 +22,10 @@ const { content } = usePortfolioContent()
 </script>
 
 <template>
-  <UCard
-    class="motion-card group h-full overflow-hidden"
-    :ui="{ body: 'p-0 sm:p-0' }"
+  <WGlassCard
+    :halo="false"
+    class="motion-card group h-full"
+    body-class="h-full overflow-hidden rounded-2xl p-0 sm:p-0"
   >
     <article
       class="grid h-full"
@@ -115,5 +116,5 @@ const { content } = usePortfolioContent()
         </div>
       </div>
     </article>
-  </UCard>
+  </WGlassCard>
 </template>
