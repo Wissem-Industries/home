@@ -796,7 +796,7 @@
 
     "@vueuse/shared": ["@vueuse/shared@14.4.0", "", { "peerDependencies": { "vue": "^3.5.0" } }, "sha512-JRgY90Sz8DDtPMsaDflvPMp9xYk69JZAmbuDvAquUVXKr2gEjqtzGNTTthLfckH0BzBqvnu31gb4a8TGLRe79g=="],
 
-    "@wissem-industries/ui": ["@wissem-industries/ui@1.1.0", "https://npm.pkg.github.com/download/@wissem-industries/ui/1.1.0/bac1fa7b6af66c4994f84a7ab7ffb0bab7576f5f", { "dependencies": { "@fontsource-variable/geist": "^5.3.0", "@fontsource-variable/geist-mono": "^5.3.0", "@iconify-json/circle-flags": "^1.2.11", "@iconify-json/ri": "^1.2.10", "@nuxt/ui": "^4.11.1", "tailwindcss": "^4.3.3" } }, "sha512-ILldFbKWiZs6qAc+XCFf88hLvOxHIVBHusxeA4docLN0TzE49KkhrNatRlL3hbIzl3Lo0RZ2p7KEEVJsK+Dr5w=="],
+    "@wissem-industries/ui": ["@wissem-industries/ui@1.1.0", "https://npm.pkg.github.com/download/@wissem-industries/ui/1.1.0/6e158ac4772d256ae272ce7b9111b6148180e38a", { "dependencies": { "@fontsource-variable/geist": "^5.3.0", "@fontsource-variable/geist-mono": "^5.3.0", "@iconify-json/circle-flags": "^1.2.11", "@iconify-json/ri": "^1.2.10", "@nuxt/ui": "^4.11.1", "tailwindcss": "^4.3.3" } }, "sha512-fh1yznIcq+GBlHtF3BezgDzyAwx49Tl2f9yL2qGkq2ijqf2+k4tiS3CTb6ic4Gpc9SlYprxTDDeClTujIM2VcQ=="],
 
     "abbrev": ["abbrev@3.0.1", "", {}, "sha512-AO2ac6pjRB3SJmGJo+v5/aK6Omggp6fsLrs6wN9bd35ulu4cCwaAU9+7ZhXjeqHVkaHThLuzH0nZr0YpCDhygg=="],
 
