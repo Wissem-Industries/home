@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.4.1] - 2026-10-08
+
 ### Fixed
 
 - Status pages: final visuals of Wissem UI 1.1.0 (large icon, neutral offline buttons).
