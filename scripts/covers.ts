@@ -16,21 +16,22 @@ import { type CoverFrame, coverHtml, HEIGHT, WIDTH } from './cover-template'
 const OUTPUT_DIR = new URL('../public/images/projects/', import.meta.url)
 const CAPTURES = new URL('./captures/', import.meta.url)
 
+// In the order of the projects page, so that neighbours never share a composition.
 const covers: Array<{ id: string; frame: CoverFrame }> = [
+  {
+    id: 'dgfip-audit-tool',
+    frame: { kind: 'icon', icon: 'database-2-line', keywords: ['Python', 'SQLite', 'DuckDB'] },
+  },
   { id: 'move', frame: { kind: 'phone', capture: new URL('move.png', CAPTURES) } },
+  {
+    id: 'infrastructure',
+    frame: { kind: 'icon', icon: 'server-line', keywords: ['CI/CD', 'Docker', 'Dokploy'] },
+  },
   { id: 'portfolio', frame: { kind: 'window', capture: new URL('portfolio.png', CAPTURES) } },
   { id: 'parcourtime', frame: { kind: 'window', capture: new URL('parcourtime.png', CAPTURES) } },
   {
     id: 'zeldanes',
     frame: { kind: 'window', capture: new URL('zeldanes.png', CAPTURES), pixelated: true },
-  },
-  {
-    id: 'dgfip-audit-tool',
-    frame: { kind: 'icon', icon: 'database-2-line', keywords: ['Python', 'SQLite', 'DuckDB'] },
-  },
-  {
-    id: 'infrastructure',
-    frame: { kind: 'icon', icon: 'server-line', keywords: ['CI/CD', 'Docker', 'Dokploy'] },
   },
   { id: 'satt-tool', frame: { kind: 'icon', icon: 'table-line', keywords: ['Excel', 'VBA'] } },
   {
@@ -56,10 +57,10 @@ const browser = await chromium.launch({
 })
 try {
   const page = await browser.newPage({ viewport: { width: WIDTH, height: HEIGHT } })
-  for (const cover of covers) {
+  for (const [index, cover] of covers.entries()) {
     if (requested.size > 0 && !requested.has(cover.id)) continue
     const html = join(workDir, `${cover.id}.html`)
-    await writeFile(html, coverHtml(cover.frame))
+    await writeFile(html, coverHtml(cover.frame, index))
     await page.goto(pathToFileURL(html).href, { waitUntil: 'load' })
     await page.evaluate(() => document.fonts.ready)
     const png = await page.screenshot({ type: 'png' })
