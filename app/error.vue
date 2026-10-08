@@ -4,38 +4,46 @@ import type { NuxtError } from '#app'
 const props = defineProps<{ error: NuxtError }>()
 const { content } = usePortfolioContent()
 const localePath = useLocalePath()
+const route = useRoute()
 
-const isNotFound = computed(() => props.error.statusCode === 404)
-const title = computed(() =>
-  isNotFound.value ? content.value.error.title : content.value.error.serverTitle,
-)
-const description = computed(() =>
-  isNotFound.value ? content.value.error.description : content.value.error.serverDescription,
-)
+const kind = computed(() => wiStatusKind(props.error.statusCode))
+const homeTo = computed(() => localePath('/'))
+
+const copy = computed(() => {
+  if (kind.value === 'not-found') {
+    return { title: content.value.error.title, description: content.value.error.description }
+  }
+  if (kind.value === 'server-error') {
+    return {
+      title: content.value.error.serverTitle,
+      description: content.value.error.serverDescription,
+    }
+  }
+  return { title: undefined, description: undefined }
+})
 
 useSeoMeta({
-  title,
-  description,
+  title: () => copy.value.title ?? String(props.error.statusCode),
+  description: () => copy.value.description,
   robots: 'noindex, nofollow',
 })
+
+function goHome(event: MouseEvent) {
+  event.preventDefault()
+  clearError({ redirect: homeTo.value })
+}
 </script>
 
 <template>
   <UApp>
-    <div class="flex min-h-screen items-center justify-center bg-default px-6">
-      <div class="max-w-lg space-y-6 text-center">
-        <p class="font-mono text-sm text-primary">{{ error.statusCode }}</p>
-        <h1 class="text-4xl font-semibold tracking-tight text-highlighted">
-          {{ title }}
-        </h1>
-        <p class="leading-7 text-muted">{{ description }}</p>
-        <UButton
-          :label="content.error.home"
-          :to="localePath('/')"
-          icon="i-ri-arrow-left-line"
-          size="lg"
-        />
-      </div>
-    </div>
+    <WStatusPage
+      :kind="kind"
+      :code="error.statusCode"
+      :title="copy.title"
+      :description="copy.description"
+      :detail="kind === 'not-found' ? route.path : undefined"
+      :home-to="homeTo"
+      @home="goHome"
+    />
   </UApp>
 </template>

@@ -30,7 +30,7 @@
     "@nuxt/image": "^2.1.0",
     "@nuxtjs/i18n": "^10.6.0",
     "@nuxtjs/plausible": "^4.0.0",
-    "@wissem-industries/ui": "1.0.0",
+    "@wissem-industries/ui": "1.1.0",
     "nuxt": "^4.5.2",
     "valibot": "^1.5.0"
   },
