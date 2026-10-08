@@ -18,7 +18,5 @@ useBreadcrumbJsonLd(
 </script>
 
 <template>
-  <LegalDocument :page="content.pages.privacy" :copy="content.privacy">
-    <AnalyticsOptOut :copy="content.privacy.optOut" />
-  </LegalDocument>
+  <LegalDocument :page="content.pages.privacy" :copy="content.privacy" />
 </template>

@@ -90,14 +90,6 @@ export interface LegalPageCopy {
   sections: LegalSection[]
 }
 
-export interface PrivacyOptOutCopy {
-  label: string
-  active: string
-  inactive: string
-  enable: string
-  disable: string
-}
-
 export interface PortfolioContent {
   locale: LocaleCode
   navigation: {
@@ -195,5 +187,5 @@ export interface PortfolioContent {
   projectTexts: Record<ProjectId, ProjectTexts>
   contact: ContactFormCopy
   legal: LegalPageCopy
-  privacy: LegalPageCopy & { optOut: PrivacyOptOutCopy }
+  privacy: LegalPageCopy
 }

@@ -4,6 +4,11 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Changed
+
+- Privacy page: removed the audience-measurement section and its opt-out.
+- Contact form: the data-processing notice is reduced to one short sentence and the link to the privacy policy.
+
 ## [1.3.0] - 2026-10-07
 
 ### Added

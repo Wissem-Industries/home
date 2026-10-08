@@ -27,19 +27,9 @@ test.describe('legal pages', () => {
   test('the contact form shows the notice and links to the policy', async ({ page }) => {
     await page.goto('/contact')
     await page.waitForLoadState('networkidle')
-    await expect(page.getByText(/Telegram/)).toBeVisible()
+    await expect(page.getByText(/servent uniquement au traitement/)).toBeVisible()
     await page.getByRole('link', { name: 'Politique de confidentialité' }).click()
     await expect(page).toHaveURL(/\/privacy$/)
-  })
-
-  test('the visitor can stop the audience measurement', async ({ page }) => {
-    await page.goto('/privacy')
-    await page.waitForLoadState('networkidle')
-    await page.getByRole('button', { name: 'Ne plus compter mes visites' }).click()
-    expect(await page.evaluate(() => localStorage.getItem('plausible_ignore'))).toBe('true')
-
-    await page.getByRole('button', { name: 'Réactiver le comptage' }).click()
-    expect(await page.evaluate(() => localStorage.getItem('plausible_ignore'))).toBeNull()
   })
 
   test('both pages are in the sitemap', async ({ request }) => {
