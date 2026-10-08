@@ -37,9 +37,12 @@ export default defineNuxtConfig({
     },
   },
   plausible: {
-    proxy: false,
+    // Events go through this origin under a neutral path, so content blockers do not drop them.
+    proxy: true,
+    proxyBaseEndpoint: '/_w',
     autoOutboundTracking: true,
-    fileDownloads: { fileExtensions: ['pdf'] },
+    // Resume downloads are counted by the server route itself (server/utils/resume.ts).
+    fileDownloads: false,
     formSubmissions: true,
   },
   nitro: {
