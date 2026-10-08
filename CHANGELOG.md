@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-10-08
+
 ### Changed
 
 - Liquid Glass across the site: violet shapes under glass lenses in the hero and the page headers, glass cards everywhere with a few violet accents behind them, a soft violet light on each section and a more visible grid at the top.
