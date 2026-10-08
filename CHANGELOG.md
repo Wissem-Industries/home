@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.4.2] - 2026-10-08
+
 ### Fixed
 
 - Analytics: events go through this origin (`/_w`), so content blockers no longer drop them.
