@@ -67,7 +67,8 @@ const visible = computed(() =>
         />
       </div>
 
-      <div class="space-y-6">
+      <div class="relative isolate space-y-6">
+        <GlassShapes layout="list" />
         <ProjectCard
           v-for="(project, index) in visible"
           :key="project.id"

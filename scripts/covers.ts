@@ -16,7 +16,6 @@ import { type CoverFrame, coverHtml, HEIGHT, WIDTH } from './cover-template'
 const OUTPUT_DIR = new URL('../public/images/projects/', import.meta.url)
 const CAPTURES = new URL('./captures/', import.meta.url)
 
-// In the order of the projects page, so that neighbours never share a composition.
 const covers: Array<{ id: string; frame: CoverFrame }> = [
   {
     id: 'dgfip-audit-tool',
@@ -57,10 +56,10 @@ const browser = await chromium.launch({
 })
 try {
   const page = await browser.newPage({ viewport: { width: WIDTH, height: HEIGHT } })
-  for (const [index, cover] of covers.entries()) {
+  for (const cover of covers) {
     if (requested.size > 0 && !requested.has(cover.id)) continue
     const html = join(workDir, `${cover.id}.html`)
-    await writeFile(html, coverHtml(cover.frame, index))
+    await writeFile(html, coverHtml(cover.frame))
     await page.goto(pathToFileURL(html).href, { waitUntil: 'load' })
     await page.evaluate(() => document.fonts.ready)
     const png = await page.screenshot({ type: 'png' })

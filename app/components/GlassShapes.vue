@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Sharp violet shapes for a glass surface to refract: a blur needs edges to show.
 // The hero gets the full composition; elsewhere a single accent is enough.
-type Layout = 'hero' | 'page' | 'feature' | 'about' | 'grid' | 'card'
+type Layout = 'hero' | 'page' | 'list' | 'feature' | 'about' | 'grid' | 'card'
 
 const props = withDefaults(defineProps<{ layout?: Layout }>(), { layout: 'card' })
 
@@ -25,6 +25,12 @@ const layouts: Record<Layout, string[]> = {
     `${bar} wsm-float--slow right-[26%] top-16 hidden h-9 w-40 -rotate-[20deg] lg:block`,
     `${lens} wsm-float--slow right-2 top-10 size-14 lg:right-[13%] lg:top-28 lg:size-32`,
     `${lens} wsm-float--late right-[30%] top-24 hidden h-12 w-32 rotate-[8deg] lg:block`,
+  ],
+  // Behind a long list of glass cards: three accents spread along its height.
+  list: [
+    `${disc} -right-14 top-[6%] size-56`,
+    `${dot} wsm-float--late -left-10 top-[42%] size-24`,
+    `${bar} wsm-float--slow -right-20 top-[78%] hidden h-12 w-72 -rotate-[18deg] md:block`,
   ],
   feature: [
     `${disc} -right-6 -top-10 size-64 sm:size-72`,
