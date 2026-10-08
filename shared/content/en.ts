@@ -128,7 +128,7 @@ export const en = {
         organization: 'French Public Finances Directorate (DGFiP)',
         period: '2026',
         location: 'Paris',
-        thumbnail: '/images/dgfip-logo.png',
+        thumbnail: '/images/dgfip-emblem.png',
         bullets: [
           'Modernization and restructuring of a Python/Tkinter business application supporting payment audits and anomaly analysis for authorized auditors.',
           'Optimization of high-volume data processing with SQLite and DuckDB, notably through the removal of expensive or repeated operations.',

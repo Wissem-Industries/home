@@ -128,7 +128,7 @@ export const fr = {
         organization: 'Direction générale des Finances publiques (DGFiP)',
         period: '2026',
         location: 'Paris',
-        thumbnail: '/images/dgfip-logo.png',
+        thumbnail: '/images/dgfip-emblem.png',
         bullets: [
           'Modernisation et restructuration d’une application métier Python/Tkinter d’assistance à l’audit de paiements et à l’analyse d’anomalies, utilisée par des auditeurs habilités.',
           'Optimisation du traitement de volumes de données importants avec SQLite et DuckDB, notamment par la suppression d’opérations coûteuses ou répétées.',
