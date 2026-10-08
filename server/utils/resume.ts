@@ -10,6 +10,40 @@ import {
 
 const CACHE_SECONDS = 15 * 60
 
+// Counted on the server: works without JavaScript, through content blockers and for direct links.
+function trackDownload(
+  event: Parameters<typeof setResponseHeader>[0],
+  locale: ResumeLocale,
+  version: string,
+) {
+  const { apiHost, domain } = useRuntimeConfig(event).public.plausible as {
+    apiHost?: string
+    domain?: string
+  }
+  if (!apiHost || !domain) return
+  const ip =
+    getRequestHeader(event, 'cf-connecting-ip') ?? getRequestIP(event, { xForwardedFor: true })
+  const headers: Record<string, string> = {
+    'content-type': 'application/json',
+    'user-agent': getRequestHeader(event, 'user-agent') ?? 'unknown',
+  }
+  if (ip) headers['x-forwarded-for'] = ip
+  const url = getRequestURL(event, { xForwardedHost: true, xForwardedProto: true })
+  const tracking = fetch(`${apiHost.replace(/\/$/, '')}/api/event`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({
+      name: 'CV download',
+      domain,
+      url: url.href,
+      referrer: getRequestHeader(event, 'referer') ?? null,
+      props: { langue: locale, version },
+    }),
+    signal: AbortSignal.timeout(5000),
+  }).catch((error) => console.warn('Resume download not tracked', error))
+  event.waitUntil?.(tracking)
+}
+
 const contentTypes: Record<ResumeKind, string> = {
   pdf: 'application/pdf',
   png: 'image/png',
@@ -50,10 +84,12 @@ export async function serveResume(
     if (!asset) throw new Error('Asset missing from the latest release')
     const body = Buffer.from(await fetchAsset(asset.browser_download_url), 'base64')
 
+    // The PDF must reach this server on every download to be counted, so no shared cache keeps it.
+    if (kind === 'pdf' && getMethod(event) === 'GET') trackDownload(event, locale, release.tag_name)
     setResponseHeaders(event, {
       'content-type': contentTypes[kind],
       'content-disposition': `inline; filename="${asset.name}"`,
-      'cache-control': `public, max-age=${CACHE_SECONDS}`,
+      'cache-control': kind === 'pdf' ? 'private, no-cache' : `public, max-age=${CACHE_SECONDS}`,
       'x-wsm-cv-version': release.tag_name,
     })
     return body

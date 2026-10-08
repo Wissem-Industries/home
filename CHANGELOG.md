@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.4.2] - 2026-10-08
+
+### Fixed
+
+- Analytics: events go through this origin (`/_w`), so content blockers no longer drop them.
+- Resume downloads are counted by the server (`CV download` event with language, version and referrer), including direct links, visitors without JavaScript and blocked trackers; the PDF is no longer kept by the CDN so every download reaches the server.
+
 ## [1.4.1] - 2026-10-08
 
 ### Fixed
