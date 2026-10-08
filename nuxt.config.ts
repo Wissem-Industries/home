@@ -1,13 +1,16 @@
 import pkg from './package.json' with { type: 'json' }
 
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://www.wissem.pro'
+const isDev = process.env.NODE_ENV === 'development'
 
 export default defineNuxtConfig({
   extends: ['@wissem-industries/ui'],
   compatibilityDate: '2026-09-19',
   devtools: { enabled: false },
   css: ['~/assets/css/app.css'],
-  modules: ['@nuxt/image', '@nuxtjs/i18n', '@nuxtjs/plausible'],
+  // No Plausible in development: its modules keep their package name in the URL there, content
+  // blockers (Brave Shields) drop them and the whole app stops hydrating.
+  modules: ['@nuxt/image', '@nuxtjs/i18n', ...(isDev ? [] : ['@nuxtjs/plausible'])],
   image: {
     format: ['avif', 'webp'],
     quality: 80,
@@ -31,6 +34,8 @@ export default defineNuxtConfig({
       { code: 'en', language: 'en-GB', name: 'English', file: 'en.json' },
     ],
     detectBrowserLanguage: {
+      // Served over HTTPS only; the dev server stays on plain HTTP.
+      cookieSecure: !isDev,
       redirectOn: 'root',
       alwaysRedirect: false,
       fallbackLocale: 'fr',

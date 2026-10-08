@@ -99,24 +99,41 @@ html {
   background: color-mix(in srgb, var(--ui-bg-elevated) 80%, transparent);
 }
 
+/*
+ * Cards in the page, against the floating bars: clearer with a lighter sheen
+ * in light mode, a near black tint without the corner sheen in dark mode.
+ */
+main {
+  --wi-glass-o-regular: 26%;
+  --wi-glass-sheen-a: rgb(255 255 255 / 0.3);
+  --wi-glass-sheen-b: rgb(255 255 255 / 0.04);
+}
+
+.dark main {
+  --wi-glass-tint: var(--ui-color-neutral-950);
+  --wi-glass-o-regular: 50%;
+  --wi-glass-sheen-a: rgb(255 255 255 / 0.015);
+  --wi-glass-sheen-b: transparent;
+}
+
+/* Card hover on a WGlassCard: it lifts and its edge turns violet. */
 .motion-card {
   /* Repeats the v-reveal transitions, which this rule would otherwise replace. */
   transition:
     opacity var(--wi-duration-slower) var(--wi-ease-out) var(--wi-reveal-delay, 0ms),
     filter var(--wi-duration-slower) var(--wi-ease-out) var(--wi-reveal-delay, 0ms),
     transform var(--wi-duration-slower) var(--wi-ease-out) var(--wi-reveal-delay, 0ms),
-    translate var(--wi-duration-base) var(--wi-ease-out),
-    box-shadow var(--wi-duration-base) var(--wi-ease-standard);
+    translate var(--wi-duration-base) var(--wi-ease-out);
+}
+
+.motion-card .wi-glass {
+  transition: box-shadow var(--wi-duration-base) var(--wi-ease-standard);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  /* A faint violet veil over the card's own background, and its ring kept. */
   .motion-card:hover {
-    box-shadow:
-      0 0 0 1px var(--ui-border),
-      inset 0 0 0 100vmax color-mix(in oklab, var(--ui-primary) 3.5%, transparent),
-      0 8px 24px color-mix(in oklab, black 6%, transparent);
-    translate: 0 -2px;
+    --wi-glass-edge: color-mix(in oklab, var(--ui-primary) 55%, transparent);
+    translate: 0 -3px;
   }
 }
 
@@ -222,5 +239,40 @@ html {
 
   .interest-orbit__item:nth-child(5) .interest-orbit__icon {
     animation-delay: -4s;
+  }
+}
+
+/*
+ * Glass does not blur while a v-reveal ancestor fades in, so the shapes would
+ * show through sharp: they wait until the block has settled, then fade in.
+ */
+.wi-reveal .wsm-shapes {
+  opacity: 0;
+}
+
+.wi-reveal--visible .wsm-shapes {
+  opacity: 1;
+  transition: opacity var(--wi-duration-slow) var(--wi-ease-out)
+    calc(var(--wi-reveal-delay, 0ms) + var(--wi-duration-slower));
+}
+
+/* GlassShapes: the shapes drift slowly under the glass. */
+@keyframes wsm-float {
+  50% {
+    translate: 0 -0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .wsm-float {
+    animation: wsm-float 9s ease-in-out infinite;
+  }
+
+  .wsm-float--late {
+    animation-delay: -3s;
+  }
+
+  .wsm-float--slow {
+    animation-duration: 13s;
   }
 }

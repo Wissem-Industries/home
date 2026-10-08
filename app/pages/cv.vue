@@ -45,7 +45,7 @@ useBreadcrumbJsonLd(
 
 <template>
   <UContainer>
-    <div class="grid items-center gap-12 pb-16 pt-8 sm:pb-24 sm:pt-14 lg:grid-cols-[1fr_minmax(0,26rem)] lg:gap-20">
+    <WAmbient :intensity="0.3" class="grid items-center gap-12 pb-16 pt-8 sm:pb-24 sm:pt-14 lg:grid-cols-[1fr_minmax(0,26rem)] lg:gap-20">
       <div class="space-y-8">
         <header class="wi-enter space-y-5">
           <p class="font-mono text-xs uppercase tracking-[0.2em] text-primary">
@@ -134,6 +134,6 @@ useBreadcrumbJsonLd(
           class="aspect-[1191/1684] w-full rounded-xl bg-white object-cover shadow-2xl ring-1 ring-black/10 transition duration-500 ease-out group-hover:-translate-y-1 group-hover:rotate-[-0.6deg] motion-reduce:transition-none motion-reduce:group-hover:transform-none dark:ring-white/15"
         />
       </a>
-    </div>
+    </WAmbient>
   </UContainer>
 </template>

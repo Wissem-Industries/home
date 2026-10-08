@@ -16,15 +16,18 @@ defineProps<{
   reverse?: boolean
   compact?: boolean
   eager?: boolean
+  /** Level of the project title in the page outline. */
+  headingLevel?: 'h2' | 'h3'
 }>()
 
 const { content } = usePortfolioContent()
 </script>
 
 <template>
-  <UCard
-    class="motion-card group h-full overflow-hidden"
-    :ui="{ body: 'p-0 sm:p-0' }"
+  <WGlassCard
+    :halo="false"
+    class="motion-card group h-full"
+    body-class="h-full overflow-hidden rounded-2xl p-0 sm:p-0"
   >
     <article
       class="grid h-full"
@@ -60,9 +63,9 @@ const { content } = usePortfolioContent()
             <span class="size-1.5 rounded-full" :class="STATUS_DOTS[project.status]" />
             {{ content.projectStatuses[project.status] }}
           </p>
-          <h3 class="text-xl font-semibold tracking-tight text-highlighted">
+          <component :is="headingLevel ?? 'h3'" class="text-xl font-semibold tracking-tight text-highlighted">
             {{ project.title }}
-          </h3>
+          </component>
           <p class="text-sm leading-6 text-muted">
             {{ project.description }}
           </p>
@@ -115,5 +118,5 @@ const { content } = usePortfolioContent()
         </div>
       </div>
     </article>
-  </UCard>
+  </WGlassCard>
 </template>

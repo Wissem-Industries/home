@@ -75,14 +75,15 @@ useJsonLd(
     <UContainer>
       <WAmbient
         as="section"
-        :intensity="0.14"
+        :intensity="0.3"
         class="grid min-h-[calc(100vh-7rem)] items-center gap-8 pb-16 lg:gap-16 lg:pb-24"
         :class="content.seekingInternship ? 'lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)]' : 'justify-items-center'"
       >
         <div
-          class="space-y-8"
+          class="relative isolate space-y-8"
           :class="content.seekingInternship ? '' : 'max-w-3xl text-center'"
         >
+          <GlassShapes v-if="!content.seekingInternship" layout="hero" class="wi-enter" />
           <div class="space-y-5">
             <div
               class="wi-enter flex items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] text-green-700 dark:text-green-400"
@@ -149,17 +150,18 @@ useJsonLd(
               :target="getLinkTarget(link.to)"
               color="neutral"
               variant="ghost"
-              class="size-11 justify-center p-0 sm:size-9"
+              class="size-11 justify-center rounded-full p-0 text-muted hover:bg-primary/10 hover:text-primary sm:size-9"
             />
           </div>
         </div>
 
-        <WGlassCard
+        <div
           v-if="content.seekingInternship"
           style="--wi-enter-step: 3"
-          class="wi-enter mx-auto w-full max-w-md lg:mx-0 lg:ml-auto"
-          body-class="p-7 sm:p-8"
+          class="wi-enter relative isolate mx-auto w-full max-w-md lg:mx-0 lg:ml-auto"
         >
+          <GlassShapes layout="feature" />
+          <WGlassCard body-class="p-7 sm:p-8">
             <div class="flex min-h-80 flex-col justify-between gap-9">
               <div class="flex items-start justify-between gap-6">
                 <div class="flex size-16 items-center justify-center rounded-lg border border-default bg-elevated p-3">
@@ -203,36 +205,42 @@ useJsonLd(
                 </div>
               </div>
             </div>
-        </WGlassCard>
+          </WGlassCard>
+        </div>
       </WAmbient>
 
-      <section class="grid gap-8 border-t border-default py-16 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16 lg:py-24">
+      <section class="grid gap-8 border-t border-default py-16 lg:grid-cols-[0.75fr_1.25fr] lg:items-center lg:gap-16 lg:py-24">
         <SectionHeading :title="content.profile.aboutTitle" eyebrow="01" />
-        <div v-reveal class="space-y-5 text-lg leading-8 text-muted">
-          <p v-for="(paragraph, paragraphIndex) in content.profile.about" :key="paragraphIndex">
-            {{ paragraph }}
-          </p>
+        <div v-reveal class="relative isolate">
+          <GlassShapes layout="about" />
+          <WGlassCard :halo="false" class="motion-card" body-class="space-y-5 p-7 text-lg leading-8 text-muted sm:p-9">
+            <p v-for="(paragraph, paragraphIndex) in content.profile.about" :key="paragraphIndex">
+              {{ paragraph }}
+            </p>
+          </WGlassCard>
         </div>
       </section>
 
-      <section class="space-y-10 border-t border-default py-16 lg:py-24">
+      <WAmbient as="section" :intensity="0.16" class="space-y-10 border-t border-default py-16 lg:py-24">
         <SectionHeading :title="content.profile.experienceTitle" eyebrow="02" />
         <TimelineList :items="experience" />
-      </section>
+      </WAmbient>
 
-      <section class="space-y-10 border-t border-default py-16 lg:py-24">
+      <WAmbient as="section" :intensity="0.16" class="space-y-10 border-t border-default py-16 lg:py-24">
         <SectionHeading :title="content.profile.educationTitle" eyebrow="03" />
         <TimelineList :items="education" />
-      </section>
+      </WAmbient>
 
       <section class="space-y-10 border-t border-default py-16 lg:py-24">
         <SectionHeading :title="content.profile.skillsTitle" eyebrow="04" />
-        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          <UCard
+        <!-- Revealed as one block: a card fading in alone would show the shapes unblurred. -->
+        <div v-reveal class="relative isolate grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          <GlassShapes layout="grid" />
+          <WGlassCard
             v-for="(group, index) in content.profile.skills"
             :key="index"
+            :halo="false"
             class="motion-card h-full"
-            v-reveal="index"
           >
             <div class="flex h-full flex-col gap-6">
               <div class="space-y-2">
@@ -250,11 +258,11 @@ useJsonLd(
                 />
               </div>
             </div>
-          </UCard>
+          </WGlassCard>
         </div>
       </section>
 
-      <section class="space-y-10 border-t border-default py-16 lg:py-24">
+      <WAmbient as="section" :intensity="0.16" class="space-y-10 border-t border-default py-16 lg:py-24">
         <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
           <SectionHeading
             :title="content.profile.projectsTitle"
@@ -284,10 +292,10 @@ useJsonLd(
             />
           </div>
         </div>
-      </section>
+      </WAmbient>
 
       <section class="grid gap-5 border-t border-default py-16 lg:grid-cols-3 lg:py-24">
-        <UCard class="motion-card h-full" v-reveal="0">
+        <WGlassCard v-reveal="0" :halo="false" class="motion-card h-full">
           <div class="space-y-6">
             <h2 class="text-lg font-medium text-highlighted">{{ content.profile.languagesTitle }}</h2>
             <div class="space-y-5">
@@ -304,9 +312,9 @@ useJsonLd(
               </div>
             </div>
           </div>
-        </UCard>
+        </WGlassCard>
 
-        <UCard class="motion-card h-full" v-reveal="1">
+        <WGlassCard v-reveal="1" :halo="false" class="motion-card h-full">
           <div class="space-y-6">
             <h2 class="text-lg font-medium text-highlighted">{{ content.profile.interestsTitle }}</h2>
             <div class="interest-orbit" aria-hidden="true">
@@ -329,27 +337,30 @@ useJsonLd(
               </li>
             </ul>
           </div>
-        </UCard>
+        </WGlassCard>
 
-        <UCard class="motion-card h-full" v-reveal="2">
-          <div class="space-y-5">
-            <div class="space-y-2">
-              <h2 class="text-lg font-medium text-highlighted">{{ content.profile.contactTitle }}</h2>
-              <p class="text-sm leading-6 text-muted">{{ content.profile.contactDescription }}</p>
+        <div v-reveal="2" class="relative isolate h-full">
+          <GlassShapes layout="card" />
+          <WGlassCard :halo="false" class="motion-card h-full">
+            <div class="space-y-5">
+              <div class="space-y-2">
+                <h2 class="text-lg font-medium text-highlighted">{{ content.profile.contactTitle }}</h2>
+                <p class="text-sm leading-6 text-muted">{{ content.profile.contactDescription }}</p>
+              </div>
+              <ContactDetails
+                :location-label="content.profile.locationLabel"
+                :location="content.profile.location"
+                :links="content.links.filter((link) => link.id === 'email')"
+              />
+              <UButton
+                :label="content.profile.contactCta"
+                :to="localePath('/contact')"
+                trailing-icon="i-ri-arrow-right-line"
+                class="min-h-11 w-full justify-center sm:min-h-0"
+              />
             </div>
-            <ContactDetails
-              :location-label="content.profile.locationLabel"
-              :location="content.profile.location"
-              :links="content.links.filter((link) => link.id === 'email')"
-            />
-            <UButton
-              :label="content.profile.contactCta"
-              :to="localePath('/contact')"
-              trailing-icon="i-ri-arrow-right-line"
-              class="min-h-11 w-full justify-center sm:min-h-0"
-            />
-          </div>
-        </UCard>
+          </WGlassCard>
+        </div>
       </section>
     </UContainer>
   </div>

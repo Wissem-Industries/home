@@ -4,6 +4,29 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Changed
+
+- Liquid Glass across the site: violet shapes under glass lenses in the hero and the page headers, glass cards everywhere with a few violet accents behind them, a soft violet light on each section and a more visible grid at the top.
+- Cards share one hover: a short lift and a violet edge, without lightening the card.
+- Project filters sit in a glass selector; contact fields have a thin outline and a single violet focus ring.
+- Projects page: one project per row, image and text alternating sides, with a few violet shapes behind the list.
+- New project covers in the site's style: a glass window around the product capture (Move in a phone frame), or an icon tile for the projects without a public interface, over the same violet glow.
+- Resume, legal notice and privacy pages follow the same design: violet light at the top, legal texts in a glass card.
+
+### Fixed
+
+- Development server: Plausible is no longer loaded, so content blockers such as Brave Shields no longer stop the page from working locally.
+- Error pages declare their language.
+- Projects page: project titles are second-level headings, as nothing sits between them and the page title.
+
+### Security
+
+- Security headers on every response (HSTS, `nosniff`, frame denial, referrer and permissions policies) and a Content Security Policy on pages; the `X-Powered-By` header is gone.
+- Contact form: the rate limit keys on the address given by Cloudflare instead of a client-supplied header, keeps a bounded number of addresses, and the API refuses bodies over 16 KB; Telegram calls time out after 10 seconds.
+- Analytics relay refuses events over 4 KB.
+- The language cookie is marked `Secure`.
+- Build tooling dependencies updated to their patched releases.
+
 ## [1.4.4] - 2026-10-08
 
 ### Changed

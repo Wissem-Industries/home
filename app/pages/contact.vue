@@ -15,6 +15,11 @@ const toast = useToast()
 const loading = ref(false)
 const state = reactive(createEmptyContactPayload())
 const schema = computed(() => createContactSchema(content.value.contact.validation))
+// Fields read as cut into the glass: a thin ring over a translucent fill. Their 1px violet ring
+// replaces the global focus outline, which would double it.
+const fieldUi = {
+  base: 'rounded-lg bg-default/40 py-2 ring-default focus-visible:outline-none! focus-visible:ring-1 focus-visible:ring-primary',
+}
 
 function getErrorMessage(code?: ContactErrorCode) {
   if (code === 'RATE_LIMITED') return content.value.contact.messages.rateLimited
@@ -65,36 +70,31 @@ useBreadcrumbJsonLd(
 
 <template>
   <UContainer>
-    <header
-      class="wi-enter max-w-3xl space-y-5 pb-14 pt-8 sm:pb-20 sm:pt-14"
-    >
-      <p class="font-mono text-xs uppercase tracking-[0.2em] text-primary">
-        {{ content.pages.contact.eyebrow }}
-      </p>
-      <h1 class="text-5xl font-semibold tracking-[-0.05em] text-highlighted sm:text-6xl">
-        {{ content.contact.title }}
-      </h1>
-      <p class="max-w-2xl text-base leading-7 text-muted sm:text-lg">
-        {{ content.contact.description }}
-      </p>
-    </header>
+    <PageHeader
+      :eyebrow="content.pages.contact.eyebrow"
+      :title="content.contact.title"
+      :description="content.contact.description"
+    />
 
-    <section class="grid items-stretch gap-5 border-t border-default py-12 lg:grid-cols-[22rem_minmax(0,1fr)] lg:py-16">
-      <UCard class="h-full" v-reveal="0">
-        <div class="space-y-6">
-          <div class="space-y-2">
-            <h2 class="text-lg font-medium text-highlighted">{{ content.contact.sidebarTitle }}</h2>
-            <p class="text-sm leading-6 text-muted">{{ content.contact.sidebarDescription }}</p>
+    <WAmbient as="section" :intensity="0.16" class="grid items-stretch gap-5 border-t border-default py-12 lg:grid-cols-[22rem_minmax(0,1fr)] lg:py-16">
+      <div v-reveal="0" class="relative isolate h-full">
+        <GlassShapes />
+        <WGlassCard :halo="false" class="h-full">
+          <div class="space-y-6">
+            <div class="space-y-2">
+              <h2 class="text-lg font-medium text-highlighted">{{ content.contact.sidebarTitle }}</h2>
+              <p class="text-sm leading-6 text-muted">{{ content.contact.sidebarDescription }}</p>
+            </div>
+            <ContactDetails
+              :location-label="content.profile.locationLabel"
+              :location="content.profile.location"
+              :links="content.links"
+            />
           </div>
-          <ContactDetails
-            :location-label="content.profile.locationLabel"
-            :location="content.profile.location"
-            :links="content.links"
-          />
-        </div>
-      </UCard>
+        </WGlassCard>
+      </div>
 
-      <UCard class="h-full" v-reveal="1">
+      <WGlassCard v-reveal="1" :halo="false" class="h-full">
         <UForm :schema="schema" :state="state" class="space-y-6" @submit="onSubmit">
           <div class="grid gap-5 sm:grid-cols-2">
             <UFormField
@@ -104,6 +104,8 @@ useBreadcrumbJsonLd(
             >
               <UInput
                 v-model="state.name"
+                variant="outline"
+                :ui="fieldUi"
                 :placeholder="content.contact.fields.name.placeholder"
                 autocomplete="name"
                 :maxlength="CONTACT_LIMITS.name.max"
@@ -117,6 +119,8 @@ useBreadcrumbJsonLd(
             >
               <UInput
                 v-model="state.email"
+                variant="outline"
+                :ui="fieldUi"
                 type="email"
                 :placeholder="content.contact.fields.email.placeholder"
                 autocomplete="email"
@@ -133,6 +137,8 @@ useBreadcrumbJsonLd(
           >
             <UInput
               v-model="state.subject"
+              variant="outline"
+              :ui="fieldUi"
               :maxlength="CONTACT_LIMITS.subject.max"
               :placeholder="content.contact.fields.subject.placeholder"
               class="w-full"
@@ -146,6 +152,8 @@ useBreadcrumbJsonLd(
           >
             <UTextarea
               v-model="state.message"
+              variant="outline"
+              :ui="fieldUi"
               :maxlength="CONTACT_LIMITS.message.max"
               :placeholder="content.contact.fields.message.placeholder"
               :rows="9"
@@ -191,7 +199,7 @@ useBreadcrumbJsonLd(
             />
           </div>
         </UForm>
-      </UCard>
-    </section>
+      </WGlassCard>
+    </WAmbient>
   </UContainer>
 </template>

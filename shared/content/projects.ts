@@ -125,7 +125,7 @@ export const projectRecords = [
     period: { start: '2026' },
     stack: ['C', 'SDL2'],
     links: { code: 'https://github.com/WissemBad/ZeldaNES' },
-    image: '/images/projects/zeldanes.png',
+    image: '/images/projects/zeldanes.webp',
     featured: false,
   },
   {
