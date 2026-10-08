@@ -11,27 +11,21 @@ import {
 const CACHE_SECONDS = 15 * 60
 
 // Counted on the server: works without JavaScript, through content blockers and for direct links.
+const AUTOMATED_CLIENT = /bot|crawl|spider|curl|wget|python|httpclient|preview|headless/i
+
 function trackDownload(
   event: Parameters<typeof setResponseHeader>[0],
   locale: ResumeLocale,
   version: string,
 ) {
-  const { apiHost, domain } = useRuntimeConfig(event).public.plausible as {
-    apiHost?: string
-    domain?: string
-  }
-  if (!apiHost || !domain) return
-  const ip =
-    getRequestHeader(event, 'cf-connecting-ip') ?? getRequestIP(event, { xForwardedFor: true })
-  const headers: Record<string, string> = {
-    'content-type': 'application/json',
-    'user-agent': getRequestHeader(event, 'user-agent') ?? 'unknown',
-  }
-  if (ip) headers['x-forwarded-for'] = ip
+  const { domain } = useRuntimeConfig(event).public.plausible as { domain?: string }
+  const apiHost = plausibleApiHost(event)
+  const userAgent = getRequestHeader(event, 'user-agent') ?? ''
+  if (!apiHost || !domain || !userAgent || AUTOMATED_CLIENT.test(userAgent)) return
   const url = getRequestURL(event, { xForwardedHost: true, xForwardedProto: true })
-  const tracking = fetch(`${apiHost.replace(/\/$/, '')}/api/event`, {
+  const tracking = fetch(`${apiHost}/api/event`, {
     method: 'POST',
-    headers,
+    headers: plausibleHeaders(event, 'application/json'),
     body: JSON.stringify({
       name: 'CV download',
       domain,

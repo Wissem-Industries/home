@@ -4,6 +4,11 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Fixed
+
+- Analytics: events relayed to Plausible carry the visitor address in `X-Plausible-IP`; Cloudflare was replacing it with the server address, so every visitor showed up in Roubaix.
+- Resume downloads from bots and command-line clients are no longer counted.
+
 ## [1.4.2] - 2026-10-08
 
 ### Fixed
