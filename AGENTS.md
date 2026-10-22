@@ -22,3 +22,5 @@ Wissem Home est le portfolio public de Wissem’s Industries, actuellement en g�
 - Woodpecker vérifie push/PR. Les tags `v*` alignés sur `package.json.version` publient l’image GHCR et déclenchent le webhook Dokploy.
 - Garder les images Alpine et les étapes CI Bun selon les consignes communes de Wissem's Industries.
 - Mettre à jour ce fichier automatiquement pour chaque nouvelle règle durable de Wissem Home; reporter les règles transverses au dépôt central.
+
+- TypeScript 7 : utiliser Golar (golar et @golar/vue) pour les composants Vue, via le CLI Nuxt exécuté avec Node. Les images de validation installent nodejs ; préserver ce choix dans les workflows push, PR et tag.

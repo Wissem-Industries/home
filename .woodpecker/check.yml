@@ -15,6 +15,7 @@ steps:
   - name: check
     image: oven/bun:alpine
     commands:
+      - apk add --no-cache nodejs
       - bun run check
     depends_on:
       - install

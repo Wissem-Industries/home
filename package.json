@@ -17,7 +17,7 @@
     "postinstall": "bun --bun nuxt prepare",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "typecheck": "bun --bun nuxt typecheck",
+    "typecheck": "node ./node_modules/nuxt/bin/nuxt.mjs typecheck --checker=golar",
     "test": "bun test shared server",
     "test:e2e": "playwright test",
     "images:covers": "bun scripts/covers.ts",
@@ -41,6 +41,7 @@
     "@types/bun": "^1.4.2",
     "@types/node": "^24.13.4",
     "typescript": "^7.0.2",
-    "vue-tsc": "^3.3.11"
+    "@golar/vue": "0.1.10",
+    "golar": "0.1.10"
   }
 }

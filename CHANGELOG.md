@@ -4,6 +4,10 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Changed
+
+- Use Golar for Vue type checking with TypeScript 7; keep Node available in the validation image.
+
 ## [1.5.1] - 2026-10-08
 
 ### Fixed

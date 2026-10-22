@@ -29,6 +29,7 @@ steps:
       - bun install --frozen-lockfile
       - rm -f /root/.npmrc
       - test "v$(bun -p 'require("./package.json").version')" = "$${CI_COMMIT_TAG}"
+      - apk add --no-cache nodejs
       - bun run check
       - bun run build
       - mkdir -p .ci-image-context
