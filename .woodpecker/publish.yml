@@ -13,7 +13,7 @@ steps:
       GITHUB_PACKAGES_TOKEN:
         from_secret: github_packages_token
       DEPLOYMENT_ENVIRONMENT: production
-      DEPLOYMENT_PRODUCTION: 'true'
+      DEPLOYMENT_PRODUCTION: "true"
       DEPLOYMENT_TASK: deploy:production
     commands:
       - bun .woodpecker/github-deployment.mjs start

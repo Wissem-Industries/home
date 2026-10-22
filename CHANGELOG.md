@@ -4,9 +4,11 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.5.2] - 2026-10-22
+
 ### Changed
 
-- Use Golar for Vue type checking with TypeScript 7; keep Node available in the validation image.
+- Refresh the application dependencies and Wissem UI 1.1.1, validate Vue with Golar and TypeScript 7, and keep the Playwright browser image aligned.
 
 ## [1.5.1] - 2026-10-08
 
@@ -130,7 +132,6 @@ All notable changes to this project are documented here. The format follows [Kee
 ## [1.0.0] - 2026-10-02
 
 First release under the shared versioning of the wissem.pro projects. Third generation of the site.
-
 - French and English pages: profile, projects, experience, education, interests.
 - Resume page, with the PDF and its images relayed from the latest release of the CV repository.
 - Contact form delivered through Telegram, rate limited, without storage.
