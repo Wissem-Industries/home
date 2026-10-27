@@ -27,20 +27,20 @@
     "release": "bun scripts/release.mjs"
   },
   "dependencies": {
-    "@nuxt/image": "^2.1.0",
+    "@nuxt/image": "^2.2.0",
     "@nuxtjs/i18n": "^10.6.0",
     "@nuxtjs/plausible": "^4.0.0",
-    "@wissem-industries/ui": "1.1.0",
-    "nuxt": "^4.5.2",
+    "@wissem-industries/ui": "1.1.1",
+    "nuxt": "^4.6.2",
     "valibot": "^1.5.0"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.13.0",
-    "@biomejs/biome": "^2.5.14",
-    "@playwright/test": "^1.63.0",
-    "@types/bun": "^1.4.2",
+    "@axe-core/playwright": "^4.14.0",
+    "@biomejs/biome": "^2.6.2",
+    "@playwright/test": "^1.64.1",
+    "@types/bun": "^1.4.4",
     "@types/node": "^24.13.4",
     "typescript": "^6.0.3",
-    "vue-tsc": "^3.3.11"
+    "vue-tsc": "^3.3.13"
   }
 }
