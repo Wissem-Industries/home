@@ -6,6 +6,7 @@ updates:
       interval: cron
       cronjob: 10 7 4 * *
       timezone: Europe/Paris
+    rebase-strategy: disabled
     open-pull-requests-limit: 1
     groups:
       bun-security:
@@ -32,6 +33,7 @@ updates:
       interval: cron
       cronjob: 20 7 4 * *
       timezone: Europe/Paris
+    rebase-strategy: disabled
     open-pull-requests-limit: 1
     groups:
       docker-security:
@@ -56,6 +58,7 @@ updates:
       interval: cron
       cronjob: 30 7 4 * *
       timezone: Europe/Paris
+    rebase-strategy: disabled
     open-pull-requests-limit: 1
     groups:
       docker-compose-security:
