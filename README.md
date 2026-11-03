@@ -26,11 +26,11 @@ End-to-end tests need Chromium; set `CHROMIUM_PATH` to use an installed browser.
 
 ## Configuration
 
-| Variable | Purpose |
-| --- | --- |
-| `NUXT_PUBLIC_SITE_URL` | Canonical URL, `https://www.wissem.pro` by default |
-| `NUXT_TELEGRAM_BOT_TOKEN`, `NUXT_TELEGRAM_CHAT_ID` | Contact form delivery. Without them the form answers that the service is unavailable; messages are never stored. |
-| `NUXT_PUBLIC_PLAUSIBLE_DOMAIN`, `NUXT_PUBLIC_PLAUSIBLE_API_HOST` | Analytics |
+| Variable                                                         | Purpose                                                                                                          |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `NUXT_PUBLIC_SITE_URL`                                           | Canonical URL, `https://www.wissem.pro` by default                                                               |
+| `NUXT_TELEGRAM_BOT_TOKEN`, `NUXT_TELEGRAM_CHAT_ID`               | Contact form delivery. Without them the form answers that the service is unavailable; messages are never stored. |
+| `NUXT_PUBLIC_PLAUSIBLE_DOMAIN`, `NUXT_PUBLIC_PLAUSIBLE_API_HOST` | Analytics                                                                                                        |
 
 ## Release
 

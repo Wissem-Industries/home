@@ -1,10 +1,10 @@
 {
   "name": "@wissem-industries/home",
   "description": "Personal portfolio and contact site for Wissem at wissem.pro.",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "private": true,
   "type": "module",
-  "packageManager": "bun@1.4.2",
+  "packageManager": "bun@1.4.3",
   "license": "MIT",
   "engines": {
     "node": ">=22"
@@ -17,7 +17,7 @@
     "postinstall": "bun --bun nuxt prepare",
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
-    "typecheck": "bun --bun nuxt typecheck",
+    "typecheck": "node ./node_modules/nuxt/bin/nuxt.mjs typecheck --checker=golar",
     "test": "bun test shared server",
     "test:e2e": "playwright test",
     "images:covers": "bun scripts/covers.ts",
@@ -27,20 +27,21 @@
     "release": "bun scripts/release.mjs"
   },
   "dependencies": {
-    "@nuxt/image": "^2.1.0",
+    "@nuxt/image": "^2.2.1",
     "@nuxtjs/i18n": "^10.6.0",
     "@nuxtjs/plausible": "^4.0.0",
-    "@wissem-industries/ui": "1.1.0",
-    "nuxt": "^4.5.2",
+    "@wissem-industries/ui": "1.1.1",
+    "nuxt": "^4.6.4",
     "valibot": "^1.5.0"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.13.0",
-    "@biomejs/biome": "^2.5.14",
-    "@playwright/test": "^1.63.0",
-    "@types/bun": "^1.4.2",
-    "@types/node": "^24.13.4",
-    "typescript": "^6.0.3",
-    "vue-tsc": "^3.3.11"
+    "@axe-core/playwright": "^4.14.0",
+    "@biomejs/biome": "^2.6.4",
+    "@golar/vue": "0.1.10",
+    "@playwright/test": "^1.64.1",
+    "@types/bun": "^1.4.4",
+    "@types/node": "^26.6.6",
+    "golar": "0.1.10",
+    "typescript": "^7.0.2"
   }
 }

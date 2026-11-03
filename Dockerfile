@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.7
-FROM oven/bun:1.4.2-alpine AS base
+FROM oven/bun:1.4.4-alpine AS base
 WORKDIR /app
 
 FROM base AS deps
@@ -18,7 +18,7 @@ COPY . .
 ARG WSM_COOKIE_DOMAIN=.wissem.pro
 RUN bun run build
 
-FROM oven/bun:1.4.2-alpine AS runtime
+FROM oven/bun:1.4.4-alpine AS runtime
 ARG IMAGE_VERSION=dev
 WORKDIR /app
 
