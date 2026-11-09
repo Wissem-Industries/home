@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.6.1] - 2026-11-09
+
 ### Changed
 
 - Omni cover and sharing images show its new navigation.
