@@ -309,10 +309,10 @@ export const en = {
       description:
         'Internship in Paris: modernization and restructuring of a Python audit support application, optimization of high-volume data processing with SQLite and DuckDB, and stronger traceability.',
     },
-    move: {
-      title: 'Move',
+    omni: {
+      title: 'Omni',
       description:
-        'Web app that brings Évéole buses and TER Hauts-de-France journeys together, with favorites synced through Wissem SSO and widgets for iPhone and Mac.',
+        'Windows app that converts, locally, the files of a game you own into Garry’s Mod content (props, player models, textures) and glTF models, with a viewer that checks each model. Rust core, Python orchestration, Nuxt interface.',
     },
     infrastructure: {
       title: 'Self-hosted infrastructure',

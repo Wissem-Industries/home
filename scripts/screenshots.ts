@@ -27,19 +27,6 @@ interface Target {
 }
 
 const targets: Target[] = [
-  {
-    id: 'move',
-    url: 'https://move.wissem.pro',
-    mobile: true,
-    // Sync notice shown to signed-out visitors.
-    hide: ['main > div > p.text-warning'],
-    // The empty home only offers examples: open one to show a real board.
-    prepare: async (page) => {
-      await page.getByRole('button', { name: /Gare de Douai/ }).click()
-      await page.getByText(/Mis à jour à/).waitFor()
-    },
-    settle: 1500,
-  },
   { id: 'parcourtime', url: 'https://parcourtime.wissem.pro', settle: 1200 },
   { id: 'portfolio', url: process.env.WSM_HOME_URL || 'https://www.wissem.pro', settle: 1500 },
 ]
