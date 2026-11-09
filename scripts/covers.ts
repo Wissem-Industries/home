@@ -1,7 +1,8 @@
 /**
  * Builds every project cover from the shared template (scripts/cover-template.ts).
  * Products with an interface use their capture from scripts/captures/ (refreshed by
- * `bun scripts/screenshots.ts`); the others get an icon tile, with no internal content.
+ * `bun scripts/screenshots.ts`, or taken from the product's README when it has no site);
+ * the others get an icon tile, with no internal content.
  *
  * Usage: bun scripts/covers.ts [id...]
  */
@@ -21,7 +22,7 @@ const covers: Array<{ id: string; frame: CoverFrame }> = [
     id: 'dgfip-audit-tool',
     frame: { kind: 'icon', icon: 'database-2-line', keywords: ['Python', 'SQLite', 'DuckDB'] },
   },
-  { id: 'move', frame: { kind: 'phone', capture: new URL('move.png', CAPTURES) } },
+  { id: 'omni', frame: { kind: 'window', capture: new URL('omni.png', CAPTURES) } },
   {
     id: 'infrastructure',
     frame: { kind: 'icon', icon: 'server-line', keywords: ['CI/CD', 'Docker', 'Dokploy'] },

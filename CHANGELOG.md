@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Added
+
+- Omni in the projects: the Windows app that converts the files of a game you own into Garry's Mod content and glTF models, with its viewer as cover.
+
+### Removed
+
+- Move is no longer listed in the projects; the sharing images show Omni in its place.
+
 ## [1.5.2] - 2026-10-22
 
 ### Changed

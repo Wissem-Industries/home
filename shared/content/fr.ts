@@ -306,10 +306,10 @@ export const fr = {
       description:
         'Stage à Paris : modernisation et restructuration d’une application Python d’assistance à l’audit, optimisation du traitement de gros volumes de données avec SQLite et DuckDB, et renforcement de la traçabilité.',
     },
-    move: {
-      title: 'Move',
+    omni: {
+      title: 'Omni',
       description:
-        'Application web qui réunit les bus Évéole et les TER Hauts-de-France, avec favoris synchronisés grâce à Wissem SSO et widgets pour iPhone et Mac.',
+        'Application Windows qui convertit localement les fichiers d’un jeu que l’on possède en contenu Garry’s Mod (props, modèles de joueur, textures) et en modèles glTF, avec une visionneuse qui vérifie chaque modèle. Cœur en Rust, orchestration en Python, interface Nuxt.',
     },
     infrastructure: {
       title: 'Infrastructure auto-hébergée',
