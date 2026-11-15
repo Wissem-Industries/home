@@ -166,7 +166,7 @@ useBreadcrumbJsonLd(
             <label>
               {{ content.contact.honeypotLabel }}
               <input
-                v-model="state[CONTACT_HONEYPOT_FIELD]"
+                v-model="state.website"
                 type="text"
                 :name="CONTACT_HONEYPOT_FIELD"
                 tabindex="-1"
