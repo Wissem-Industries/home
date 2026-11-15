@@ -37,7 +37,7 @@ steps:
       - cp .woodpecker/Dockerfile.runtime .ci-image-context/Dockerfile
 
   - name: publish-image
-    image: woodpeckerci/plugin-kaniko:2.3.2
+    image: woodpeckerci/plugin-kaniko:2.3.4
     settings:
       registry: ghcr.io
       repo: wissem-industries/home
