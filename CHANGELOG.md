@@ -4,6 +4,18 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Changed
+
+- Refresh the dependencies, use Wissem UI 1.2.0 and its new violet palette, and align Bun on 1.4.4 and the CI images (Playwright 1.65.1, Kaniko 2.3.4).
+
+### Fixed
+
+- Bind the contact form honeypot field directly so the Golar type check passes.
+
+### Security
+
+- Update transitive build dependencies flagged by `bun audit` where a patched version exists.
+
 ## [1.6.1] - 2026-11-09
 
 ### Changed
@@ -148,6 +160,7 @@ All notable changes to this project are documented here. The format follows [Kee
 ## [1.0.0] - 2026-10-02
 
 First release under the shared versioning of the wissem.pro projects. Third generation of the site.
+
 - French and English pages: profile, projects, experience, education, interests.
 - Resume page, with the PDF and its images relayed from the latest release of the CV repository.
 - Contact form delivered through Telegram, rate limited, without storage.
