@@ -31,7 +31,6 @@ function toTimeline(items: Experience[]) {
   }))
 }
 const experience = computed(() => toTimeline(content.value.profile.experience))
-const involvement = computed(() => toTimeline(content.value.profile.involvement))
 const education = computed(() =>
   content.value.profile.education.map((item) => ({
     eyebrow: item.institution,
@@ -235,13 +234,9 @@ useJsonLd(
         <TimelineList :items="education" />
       </WAmbient>
 
-      <WAmbient as="section" :intensity="0.16" class="space-y-10 border-t border-default py-16 lg:py-24">
-        <SectionHeading :title="content.profile.involvementTitle" eyebrow="04" />
-        <TimelineList :items="involvement" />
-      </WAmbient>
 
       <section class="space-y-10 border-t border-default py-16 lg:py-24">
-        <SectionHeading :title="content.profile.skillsTitle" eyebrow="05" />
+        <SectionHeading :title="content.profile.skillsTitle" eyebrow="04" />
         <!-- Revealed as one block: a card fading in alone would show the shapes unblurred. -->
         <div v-reveal class="relative isolate grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           <GlassShapes layout="grid" />
@@ -276,7 +271,7 @@ useJsonLd(
           <SectionHeading
             :title="content.profile.projectsTitle"
             :description="content.profile.projectsDescription"
-            eyebrow="06"
+            eyebrow="05"
           />
           <UButton
             :label="content.profile.allProjects"
