@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.7.0] - 2026-11-17
+
 ### Added
 
 - Internship card on the home page: data and cybersecurity internship, 12 to 16 weeks, from May 2027, in Lille or the Paris area.
