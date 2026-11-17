@@ -7,7 +7,7 @@ export * from './projects'
 export * from './types'
 
 // Shows the internship card on the home page. The texts stay in the locale files.
-export const SEEKING_INTERNSHIP = false
+export const SEEKING_INTERNSHIP = true
 
 export const contentByLocale = { fr, en } satisfies Record<LocaleCode, PortfolioContent>
 

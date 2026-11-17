@@ -64,27 +64,32 @@ html {
   transform: translateX(-50%);
 }
 
-.interest-orbit__item:nth-child(2) {
-  top: 29%;
+.interest-orbit__item:nth-child(2),
+.interest-orbit__item:nth-child(3) {
   right: 0;
   flex-direction: row-reverse;
   text-align: right;
 }
 
-.interest-orbit__item:nth-child(3) {
-  right: 7%;
-  bottom: 4%;
-  flex-direction: row-reverse;
-  text-align: right;
+.interest-orbit__item:nth-child(2),
+.interest-orbit__item:nth-child(6) {
+  top: 24%;
+}
+
+.interest-orbit__item:nth-child(3),
+.interest-orbit__item:nth-child(5) {
+  bottom: 22%;
 }
 
 .interest-orbit__item:nth-child(4) {
-  bottom: 4%;
-  left: 7%;
+  bottom: 0;
+  left: 50%;
+  flex-direction: column-reverse;
+  transform: translateX(-50%);
 }
 
-.interest-orbit__item:nth-child(5) {
-  top: 29%;
+.interest-orbit__item:nth-child(5),
+.interest-orbit__item:nth-child(6) {
   left: 0;
 }
 

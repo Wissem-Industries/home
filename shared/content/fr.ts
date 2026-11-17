@@ -25,10 +25,10 @@ export const fr = {
     applicationName: 'Wissem Badraoui',
     defaultTitle: 'Portfolio de Wissem Badraoui',
     defaultDescription:
-      'Portfolio professionnel de Wissem Badraoui, élève ingénieur à IMT Nord Europe : projets, expériences, CV et contact.',
-    socialImageAlt: 'Wissem Badraoui, élève ingénieur à IMT Nord Europe',
+      'Portfolio de Wissem Badraoui, élève-ingénieur à IMT Nord Europe intéressé par les données et la cybersécurité : expériences, projets, CV et contact.',
+    socialImageAlt: 'Wissem Badraoui, élève-ingénieur à IMT Nord Europe',
     personDescription:
-      'Élève ingénieur à IMT Nord Europe, intéressé par le développement logiciel, le traitement de données, la sécurité des systèmes et les outils utiles aux équipes techniques.',
+      'Élève-ingénieur à IMT Nord Europe, intéressé par l’analyse de données et la sécurité des systèmes d’information.',
   },
   pages: {
     home: {
@@ -36,7 +36,7 @@ export const fr = {
       heading: 'Portfolio',
       title: 'Wissem Badraoui, portfolio professionnel',
       description:
-        'Portfolio professionnel de Wissem Badraoui, élève ingénieur à IMT Nord Europe, avec projets techniques, expériences, CV et contact.',
+        'Portfolio de Wissem Badraoui, élève-ingénieur à IMT Nord Europe, à la recherche d’un stage en données et cybersécurité dès mai 2027 : expériences, projets, CV et contact.',
     },
     projects: {
       eyebrow: 'Projets sélectionnés',
@@ -57,7 +57,7 @@ export const fr = {
       heading: 'CV',
       title: 'CV de Wissem Badraoui',
       description:
-        'CV d’une page de Wissem Badraoui, élève ingénieur à IMT Nord Europe, en français et en anglais, à télécharger au format PDF.',
+        'CV d’une page de Wissem Badraoui, élève-ingénieur à IMT Nord Europe, en français et en anglais, à télécharger au format PDF.',
     },
     legal: {
       eyebrow: 'Informations légales',
@@ -76,27 +76,23 @@ export const fr = {
   profile: {
     name: 'Wissem.',
     avatarAlt: 'Logo monochrome de Wissem Badraoui.',
-    status: 'Élève ingénieur à IMT Nord Europe',
-    objective: 'Élève ingénieur, ouvert aux échanges techniques et aux collaborations.',
+    status: 'Élève-ingénieur à IMT Nord Europe',
+    objective: 'Élève-ingénieur à la recherche d’un stage en données et cybersécurité.',
     description:
-      'Intérêt marqué pour le développement logiciel, le traitement de données, la sécurité des systèmes et les outils utiles aux équipes techniques.',
-    availability: 'Ouvert aux échanges',
+      'Intéressé par les données et la cybersécurité. Deux stages consacrés à la modernisation d’outils internes, avec une exigence de fiabilité et de confidentialité.',
+    availability: 'Recherche un stage dès mai 2027',
     internship: {
-      eyebrow: 'Opportunité recherchée',
-      title: 'Stage d’initiation technique en ingénierie des données',
+      eyebrow: 'Stage recherché',
+      title: 'Stage en données et cybersécurité',
       details: [
         { icon: 'i-ri-time-line', label: 'Durée', value: '12 à 16 semaines' },
-        { icon: 'i-ri-calendar-line', label: 'Début', value: 'À partir de juin 2027' },
-        {
-          icon: 'i-ri-map-pin-line',
-          label: 'Mobilité',
-          value: 'Île-de-France · Métropole lilloise',
-        },
+        { icon: 'i-ri-calendar-line', label: 'Début', value: 'À partir de mai 2027' },
+        { icon: 'i-ri-map-pin-line', label: 'Lieu', value: 'Lille · Île-de-France' },
       ],
     },
     focus: {
       eyebrow: 'Profil technique',
-      title: 'Logiciel, données et sécurité',
+      title: 'Données et cybersécurité',
       details: [
         {
           icon: 'i-ri-graduation-cap-line',
@@ -104,80 +100,71 @@ export const fr = {
           value: 'IMT Nord Europe · Cycle ingénieur',
         },
         {
-          icon: 'i-ri-code-s-slash-line',
+          icon: 'i-ri-shield-check-line',
           label: 'Approche',
-          value: 'Concevoir · Automatiser · Fiabiliser',
+          value: 'Analyser · Automatiser · Sécuriser',
         },
-        {
-          icon: 'i-ri-map-pin-line',
-          label: 'Mobilité',
-          value: 'Île-de-France · Métropole lilloise',
-        },
+        { icon: 'i-ri-map-pin-line', label: 'Lieu', value: 'Lille · Île-de-France' },
       ],
     },
     contactCta: 'Prendre contact',
     aboutTitle: 'À propos',
     about: [
-      'Goût pour les projets concrets fondés sur un besoin réel : amélioration d’un outil existant, fiabilisation d’un traitement ou simplification de son usage par une équipe.',
-      'Intérêt particulier pour le développement logiciel, le traitement de données et les enjeux de sécurité, avec une attention constante portée à la fiabilité, à la clarté et à l’utilité des solutions.',
+      'Intéressé par les données et la cybersécurité, j’ai consacré deux stages à la modernisation d’outils internes utilisés au quotidien, avec une exigence de fiabilité et de confidentialité.',
+      'Je souhaite approfondir l’analyse de données et la sécurité des systèmes d’information, sur des projets concrets au sein d’une équipe expérimentée. En parallèle, j’administre le serveur qui héberge mes projets : déploiement continu, HTTPS, en-têtes de sécurité et supervision.',
     ],
     experienceTitle: 'Expériences',
     experience: [
       {
-        title: 'Stage technique · Modernisation d’un outil d’assistance à l’audit',
-        organization: 'Direction générale des Finances publiques (DGFiP)',
-        period: '2026',
+        title: 'Stage · Développement logiciel et données',
+        organization: 'DGFiP · Mission Risques et Audit',
+        period: 'Juin – août 2026',
         location: 'Paris',
         thumbnail: '/images/dgfip-emblem.png',
         bullets: [
-          'Modernisation et restructuration d’une application métier Python/Tkinter d’assistance à l’audit de paiements et à l’analyse d’anomalies, utilisée par des auditeurs habilités.',
-          'Optimisation du traitement de volumes de données importants avec SQLite et DuckDB, notamment par la suppression d’opérations coûteuses ou répétées.',
-          'Conception de parcours de recherche multicritère, de contrôle, de qualification et de restitution, avec maintien du jugement humain au centre du processus.',
-          'Renforcement de la traçabilité et de la reprise d’un travail interrompu, dans le respect des règles métier et des données existantes.',
-          'Consolidation de l’application et de sa documentation au fil d’itérations avec les encadrants et les utilisateurs métier.',
+          'Refonte d’une application Python/Tkinter d’aide à l’audit de paiements (architecture, interface).',
+          'Traitement de corpus de plusieurs millions de lignes avec DuckDB et SQLite, en supprimant les calculs redondants.',
+          'Développement de la recherche plein texte et multicritère, du contrôle des comptes et d’un assistant de rapport.',
+          'Démarche itérative par lots avec l’équipe et les auditeurs, tests de bout en bout et documentation.',
         ],
       },
       {
-        title: 'Stage technique · Découverte de l’entreprise',
-        organization: 'Nidec Leroy-Somer',
-        period: '2025',
+        title: 'Stage · Amélioration d’un outil interne de suivi des essais',
+        organization: 'Nidec Leroy-Somer · Bureau d’études',
+        period: 'Janv. – févr. 2025',
         location: 'Angoulême',
         thumbnail: '/images/leroy-somer-logo.png',
         bullets: [
-          'Analyse des besoins autour d’un outil interne utilisé par des techniciens et des ingénieurs.',
-          'Amélioration des traitements de données et des méthodes de calcul afin de renforcer la fiabilité de l’outil.',
-          'Refonte de l’interface Excel pour une meilleure lisibilité et un usage quotidien simplifié.',
-          'Développement de nouvelles fonctionnalités en VBA et validation des résultats à partir de données réelles.',
+          'Analyse des besoins des techniciens et ingénieurs utilisant un outil Excel/VBA de suivi des essais.',
+          'Fiabilisation des traitements de données et des méthodes de calcul, refonte de l’interface utilisateur.',
+          'Développement de nouvelles fonctionnalités en VBA et validation des résultats sur données réelles.',
         ],
       },
       {
-        title: 'Contribution technique bénévole',
+        title: 'Équipe technique bénévole',
         organization: 'Rubik’s Network',
-        period: '2020 – Présent',
+        period: 'Nov. 2022 – Présent',
         location: 'À distance',
         thumbnail: '/images/rubiks.png',
         bullets: [
-          'Préparation de mises à jour et coordination de sujets liés à la plateforme.',
-          'Rédaction de spécifications et collaboration avec développeurs, designers et contributeurs.',
-          'Contribution au développement de fonctionnalités et de systèmes liés à la plateforme.',
-          'Support utilisateur, traitement et priorisation des problèmes signalés.',
+          'Rédaction de spécifications et coordination des mises à jour avec développeurs et graphistes.',
+          'Développement de fonctionnalités, support utilisateur et priorisation des problèmes signalés.',
         ],
       },
     ],
     educationTitle: 'Formation',
     education: [
       {
-        institution: 'IMT Nord Europe',
-        title: 'Diplôme d’ingénieur · Cycle ingénieur',
-        period: '2024 – Présent',
+        institution: 'IMT Nord Europe · École Mines-Télécom',
+        title: 'Diplôme d’ingénieur généraliste · 1re année du cycle ingénieur (Bac+3)',
+        period: '2024 – 2029',
         location: 'Lille',
         thumbnail: '/images/imt-logo.png',
         details: [
-          'Élève ingénieur en première année du cycle ingénieur (BAC+3).',
+          'Cours : bases de données et SQL, réseaux, probabilités et statistiques, algorithmique.',
+          'Projet en équipe sur 7 mois pour une start-up, en tant que responsable informatique : dispositif de démonstration d’un capteur (octobre 2026 – avril 2027, en cours).',
+          'MOOC Gestion de projet (octobre 2026) : méthode Scrum.',
           'Cycle préparatoire intégré validé en 2026.',
-          'Formation générale en mathématiques, physique et informatique.',
-          'Travaux de groupe et projets collaboratifs.',
-          'Premières bases en gestion de projet.',
         ],
       },
       {
@@ -189,37 +176,78 @@ export const fr = {
         details: ['Mention Très Bien.', 'Spécialités Mathématiques et Physique-Chimie.'],
       },
     ],
+    involvementTitle: 'Engagements',
+    involvement: [
+      {
+        title: 'Secrétaire',
+        organization: 'Bureau des élèves d’IMT Nord Europe',
+        period: 'Depuis 2026',
+        location: 'Lille',
+        bullets: ['Membre du bureau de l’association des élèves de l’école.'],
+      },
+      {
+        title: 'Équipe de développement informatique',
+        organization: 'Cartel des Mines 2027',
+        period: 'Depuis oct. 2026',
+        location: 'Douai',
+        bullets: ['Développement du site web et de l’application mobile de l’événement.'],
+      },
+      {
+        title: 'Hackathon Orion Jeunesse · Participation',
+        organization: 'Ministère des Armées',
+        period: '27 – 28 mars 2026',
+        location: 'Lille',
+        bullets: ['Thème : mobiliser les jeunes pour la cyberdéfense.'],
+      },
+    ],
     skillsTitle: 'Compétences',
     skills: [
       {
-        title: 'Langages',
-        description: 'Langages utilisés pour le développement applicatif.',
-        items: ['C', 'Python', 'TypeScript', 'JavaScript', 'VBA', 'SQL'],
-      },
-      {
-        title: 'Web',
-        description: 'Développement d’applications web avec l’écosystème JavaScript.',
-        items: ['Nuxt', 'Vue.js', 'Node.js', 'Express'],
+        title: 'Programmation',
+        description: 'Langages utilisés pour l’analyse de données et le développement.',
+        items: ['Python', 'SQL', 'C', 'TypeScript', 'JavaScript', 'VBA'],
       },
       {
         title: 'Données',
-        description: 'Stockage, requêtes et traitement de données applicatives.',
-        items: ['PostgreSQL', 'SQLite', 'DuckDB', 'Traitement de données'],
+        description: 'Stockage, requêtes et analyse de données.',
+        items: [
+          'PostgreSQL',
+          'MySQL',
+          'SQLite',
+          'DuckDB',
+          'MongoDB',
+          'Prisma',
+          'pandas',
+          'NumPy',
+          'Jupyter',
+          'Excel avancé',
+          'CaseWare IDEA',
+        ],
       },
       {
-        title: 'Infrastructure',
-        description: 'Serveurs, conteneurisation et déploiement d’applications.',
-        items: ['Linux', 'Docker', 'VPS', 'Dokploy', 'CI/CD'],
+        title: 'Web',
+        description: 'Applications web et API.',
+        items: ['Node.js', 'Express', 'Nuxt', 'Vue.js', 'API REST'],
       },
       {
-        title: 'Automatisation',
-        description: 'Scripts pour automatiser des traitements et des tâches techniques.',
-        items: ['Python', 'Excel VBA', 'Parsing', 'CLI'],
+        title: 'Système et sécurité',
+        description: 'Administration d’un serveur, déploiement et supervision.',
+        items: ['Linux', 'Docker', 'CI/CD', 'HTTPS', 'En-têtes de sécurité', 'Grafana'],
       },
       {
         title: 'Outils',
-        description: 'Outils utilisés pour développer, tester et collaborer sur les projets.',
-        items: ['Git', 'Postman', 'JetBrains', 'Jira'],
+        description: 'Outils utilisés pour développer, tester et collaborer.',
+        items: ['Git', 'GitHub', 'IDE JetBrains', 'Agents IA', 'Postman', 'Jira'],
+      },
+      {
+        title: 'Méthodes',
+        description: 'Conduite d’un projet avec une équipe.',
+        items: [
+          'Analyse du besoin',
+          'Gestion de projet agile',
+          'Tests et recette',
+          'Documentation utilisateur',
+        ],
       },
     ],
     projectsTitle: 'Quelques projets',
@@ -228,16 +256,16 @@ export const fr = {
     allProjects: 'Voir tous les projets',
     languagesTitle: 'Langues',
     languages: [
-      { name: 'Français', level: 'Langue maternelle', value: 100 },
-      { name: 'Anglais', level: 'B2', value: 70 },
+      { name: 'Français', level: 'Natif · Certificat Voltaire 657', value: 100 },
+      { name: 'Anglais', level: 'B2 · TOEIC 925', value: 75 },
       { name: 'Espagnol', level: 'A2', value: 35 },
     ],
     interestsTitle: 'Centres d’intérêt',
-    interests: ['Cinéma', 'Jeux vidéo', 'Natation', 'Voyages', 'Technologie'],
+    interests: ['Veille technologique', 'Natation', 'Cinéma', 'Voyages', 'Billard', 'Jeux vidéo'],
     contactTitle: 'Contact',
-    contactDescription: 'Pour un échange technique, une collaboration ou toute autre demande.',
+    contactDescription: 'Pour un stage, un échange technique ou toute autre demande.',
     locationLabel: 'Localisation',
-    location: 'Île-de-France · Métropole lilloise',
+    location: 'Lille · Île-de-France',
   },
   resume: {
     label: 'Télécharger le CV',
@@ -304,17 +332,22 @@ export const fr = {
     'dgfip-audit-tool': {
       title: 'Modernisation d’un outil d’aide à l’audit (DGFiP)',
       description:
-        'Stage à Paris : modernisation et restructuration d’une application Python d’assistance à l’audit, optimisation du traitement de gros volumes de données avec SQLite et DuckDB, et renforcement de la traçabilité.',
+        'Stage à Paris : refonte d’une application Python d’aide à l’audit de paiements, traitement de corpus de plusieurs millions de lignes avec DuckDB et SQLite, recherche plein texte et multicritère.',
     },
     omni: {
       title: 'Omni',
       description:
         'Application Windows qui convertit localement les fichiers d’un jeu que l’on possède en contenu Garry’s Mod (props, modèles de joueur, textures) et en modèles glTF, avec une visionneuse qui vérifie chaque modèle. Cœur en Rust, orchestration en Python, interface Nuxt.',
     },
+    'ameli-extract': {
+      title: 'AmeliExtract',
+      description:
+        'Outil Python qui convertit en JSON, en local, les relevés de paiement de l’Assurance Maladie au format PDF texte, sans l’identité de l’assuré : nom, NIR et adresse sont écartés, les totaux sont contrôlés et les documents inconnus refusés plutôt que devinés.',
+    },
     infrastructure: {
       title: 'Infrastructure auto-hébergée',
       description:
-        'Intégration continue Woodpecker, images Docker publiées sur GHCR et déploiement automatisé sur Dokploy pour l’ensemble des produits.',
+        'Serveur Linux auto-administré qui héberge tous les produits : services Docker, intégration continue Woodpecker et déploiement sur Dokploy, HTTPS, en-têtes de sécurité et limitation de débit, supervision avec Grafana.',
     },
     'wissem-ui': {
       title: 'Wissem UI et portfolio',
@@ -331,10 +364,10 @@ export const fr = {
       description:
         'Développement en C avec la bibliothèque SDL2 d’un jeu inspiré de The Legend of Zelda dans le cadre des études.',
     },
-    'satt-tool': {
-      title: 'Outil interne de traitement de données (SATT)',
+    'nidec-test-tool': {
+      title: 'Outil interne de suivi des essais (Nidec Leroy-Somer)',
       description:
-        'Amélioration d’un outil interne du bureau d’études chez Nidec Leroy-Somer : optimisation du traitement de données et ajout de fonctionnalités pour améliorer la fiabilité et l’usage de l’outil.',
+        'Amélioration d’un outil Excel/VBA du bureau d’études pour le suivi des essais : traitements de données et calculs fiabilisés, interface refondue et nouvelles fonctionnalités.',
     },
     'internal-dashboard': {
       title: 'Panel d’administration interne',
@@ -426,7 +459,7 @@ export const fr = {
     intro:
       'Ce site collecte le moins de données possible. Cette page indique lesquelles, pourquoi, qui les reçoit et combien de temps elles sont conservées.',
     updatedLabel: 'Dernière mise à jour',
-    updated: '8 octobre 2026',
+    updated: '17 novembre 2026',
     sections: [
       {
         title: 'Responsable du traitement',
@@ -448,9 +481,18 @@ export const fr = {
         ],
       },
       {
+        title: 'Mesure d’audience',
+        paragraphs: [
+          'Le site mesure sa fréquentation avec Plausible Analytics, un outil sans cookie installé sur un serveur de l’éditeur (analytics.wissem.pro).',
+          'Données traitées : page consultée, site de provenance, navigateur, système, type d’appareil et pays, ainsi que les clics vers des sites externes et les envois du formulaire de contact. Les téléchargements du CV sont comptés par le serveur du site (événement « CV download », avec la langue et la version du CV), sans les robots ni les clients en ligne de commande.',
+          'Les événements passent par l’adresse du site (chemin /_w), qui les transmet à Plausible avec votre adresse IP. Plausible ne la conserve pas : avec le navigateur, elle sert à calculer un identifiant renouvelé chaque jour, qui ne permet pas de vous reconnaître d’un jour à l’autre. Seules des statistiques agrégées sont conservées.',
+          'Finalité : connaître la fréquentation du site et l’intérêt pour le CV. Base légale : l’intérêt légitime de l’éditeur. Ces statistiques ne sont ni recoupées avec d’autres sites ni transmises à des tiers.',
+        ],
+      },
+      {
         title: 'Cookies',
         paragraphs: [
-          'Le site dépose deux cookies de préférence, valables 12 mois : wsm_locale (langue) et wsm_theme (thème clair ou sombre). Ils ne servent à rien d’autre et ne demandent pas de consentement.',
+          'Le site dépose deux cookies de préférence, valables 12 mois : wsm_locale (langue) et wsm_theme (thème clair ou sombre). Ils ne servent à rien d’autre et ne demandent pas de consentement. La mesure d’audience ne dépose aucun cookie.',
         ],
       },
       {

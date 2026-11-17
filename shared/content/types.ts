@@ -144,6 +144,8 @@ export interface PortfolioContent {
     experience: Experience[]
     educationTitle: string
     education: Education[]
+    involvementTitle: string
+    involvement: Experience[]
     skillsTitle: string
     skills: SkillGroup[]
     projectsTitle: string
