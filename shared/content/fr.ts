@@ -176,30 +176,6 @@ export const fr = {
         details: ['Mention Très Bien.', 'Spécialités Mathématiques et Physique-Chimie.'],
       },
     ],
-    involvementTitle: 'Engagements',
-    involvement: [
-      {
-        title: 'Secrétaire',
-        organization: 'Bureau des élèves d’IMT Nord Europe',
-        period: 'Depuis 2026',
-        location: 'Lille',
-        bullets: ['Membre du bureau de l’association des élèves de l’école.'],
-      },
-      {
-        title: 'Équipe de développement informatique',
-        organization: 'Cartel des Mines 2027',
-        period: 'Depuis oct. 2026',
-        location: 'Douai',
-        bullets: ['Développement du site web et de l’application mobile de l’événement.'],
-      },
-      {
-        title: 'Hackathon Orion Jeunesse · Participation',
-        organization: 'Ministère des Armées',
-        period: '27 – 28 mars 2026',
-        location: 'Lille',
-        bullets: ['Thème : mobiliser les jeunes pour la cyberdéfense.'],
-      },
-    ],
     skillsTitle: 'Compétences',
     skills: [
       {

@@ -176,30 +176,6 @@ export const en = {
         details: ['Highest honours.', 'Mathematics and Physics-Chemistry.'],
       },
     ],
-    involvementTitle: 'Involvement',
-    involvement: [
-      {
-        title: 'Secretary',
-        organization: 'IMT Nord Europe Student Union',
-        period: 'Since 2026',
-        location: 'Lille',
-        bullets: ['Member of the board of the school’s student association.'],
-      },
-      {
-        title: 'IT development team',
-        organization: 'Cartel des Mines 2027',
-        period: 'Since Oct. 2026',
-        location: 'Douai',
-        bullets: ['Building the website and the mobile app of the event.'],
-      },
-      {
-        title: 'Orion Jeunesse hackathon · Participant',
-        organization: 'French Ministry of Armed Forces',
-        period: '27 – 28 March 2026',
-        location: 'Lille',
-        bullets: ['Theme: engaging young people in cyber defence.'],
-      },
-    ],
     skillsTitle: 'Skills',
     skills: [
       {
