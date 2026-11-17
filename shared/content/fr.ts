@@ -339,6 +339,11 @@ export const fr = {
       description:
         'Application Windows qui convertit localement les fichiers d’un jeu que l’on possède en contenu Garry’s Mod (props, modèles de joueur, textures) et en modèles glTF, avec une visionneuse qui vérifie chaque modèle. Cœur en Rust, orchestration en Python, interface Nuxt.',
     },
+    'ameli-extract': {
+      title: 'AmeliExtract',
+      description:
+        'Outil Python qui convertit en JSON, en local, les relevés de paiement de l’Assurance Maladie au format PDF texte, sans l’identité de l’assuré : nom, NIR et adresse sont écartés, les totaux sont contrôlés et les documents inconnus refusés plutôt que devinés.',
+    },
     infrastructure: {
       title: 'Infrastructure auto-hébergée',
       description:

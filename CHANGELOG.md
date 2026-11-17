@@ -9,6 +9,7 @@ All notable changes to this project are documented here. The format follows [Kee
 - Internship card on the home page: data and cybersecurity internship, 12 to 16 weeks, from May 2027, in Lille or the Paris area.
 - Involvement section on the home page: student union secretary, Cartel des Mines 2027 development team and the Orion Jeunesse hackathon.
 - The person described to search engines is affiliated with IMT Nord Europe.
+- AmeliExtract in the projects: the Python tool that converts health insurance statements to JSON, locally, without the insured person's identity.
 - Privacy policy: audience measurement with Plausible, its relay on the site's own address and the server-side count of resume downloads.
 
 ### Changed

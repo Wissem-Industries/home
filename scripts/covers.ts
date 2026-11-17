@@ -24,6 +24,10 @@ const covers: Array<{ id: string; frame: CoverFrame }> = [
   },
   { id: 'omni', frame: { kind: 'window', capture: new URL('omni.png', CAPTURES) } },
   {
+    id: 'ameli-extract',
+    frame: { kind: 'icon', icon: 'file-shield-2-line', keywords: ['Python', 'PDF', 'JSON'] },
+  },
+  {
     id: 'infrastructure',
     frame: { kind: 'icon', icon: 'server-line', keywords: ['Docker', 'HTTPS', 'Grafana'] },
   },

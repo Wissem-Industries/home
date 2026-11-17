@@ -339,6 +339,11 @@ export const en = {
       description:
         'Windows app that converts, locally, the files of a game you own into Garry’s Mod content (props, player models, textures) and glTF models, with a viewer that checks each model. Rust core, Python orchestration, Nuxt interface.',
     },
+    'ameli-extract': {
+      title: 'AmeliExtract',
+      description:
+        'Python tool that converts Ameli payment statements (text PDFs) to JSON, locally, without the insured person’s identity: name, NIR and address are dropped, totals are checked and unknown layouts are rejected rather than guessed.',
+    },
     infrastructure: {
       title: 'Self-hosted infrastructure',
       description:

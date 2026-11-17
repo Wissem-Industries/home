@@ -86,6 +86,16 @@ export const projectRecords = [
     featured: true,
   },
   {
+    id: 'ameli-extract',
+    category: 'personal',
+    status: 'finished',
+    period: { start: '2026-09' },
+    stack: ['Python'],
+    links: { code: 'https://github.com/WissemBad/ameli-extract' },
+    image: '/images/projects/ameli-extract.webp',
+    featured: false,
+  },
+  {
     id: 'infrastructure',
     category: 'personal',
     status: 'ongoing',
