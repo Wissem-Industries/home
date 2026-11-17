@@ -13,7 +13,7 @@ Wissem Home est le portfolio public de Wissem’s Industries, actuellement en g�
 - Plausible est optionnel et configurable. Ne pas ajouter de suivi tiers non demandé.
 - Les pages `/legal` et `/privacy` (contenus `legal` et `privacy` de `shared/content`) décrivent les traitements réels : les mettre à jour à chaque nouvel outil tiers, nouveau champ de formulaire, nouveau cookie ou changement d’hébergeur, et changer la date « Dernière mise à jour ».
 - `V3` désigne la génération du produit, pas une version : les versions SemVer repartent de `1.0.0` (octobre 2026). Versions : CHANGELOG tenu à chaque PR (section `Unreleased`), montée par `bun run release <x.y.z>`.
-- Les branches `archive/v1` et `archive/v2` préservent l’ancien historique. Ne pas réécrire, déplacer ou supprimer leurs refs.
+- Les branches `archive/v1` et `archive/v2` préservent l’ancien historique. Ne pas réécrire, déplacer ou supprimer leurs refs. Seule exception, validée par Wissem le 17 novembre 2026 : leurs auteurs et ceux des tags `archive/homepage-*` ont été réécrits vers « Wissem. » <contact@wissem.pro>, arbres de fichiers inchangés.
 
 ## Stack et livraison
 
