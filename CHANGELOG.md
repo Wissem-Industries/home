@@ -4,13 +4,26 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Added
+
+- Internship card on the home page: data and cybersecurity internship, 12 to 16 weeks, from May 2027, in Lille or the Paris area.
+- Involvement section on the home page: student union secretary, Cartel des Mines 2027 development team and the Orion Jeunesse hackathon.
+- The person described to search engines is affiliated with IMT Nord Europe.
+- Privacy policy: audience measurement with Plausible, its relay on the site's own address and the server-side count of resume downloads.
+
 ### Changed
 
+- Profile, about section and descriptions centred on data and cybersecurity; "élève-ingénieur" with its hyphen.
+- Experience and education aligned with the resume: DGFiP and Nidec Leroy-Somer roles and bullet points, Rubik's Network since 2022, IMT Nord Europe courses, team project and project management MOOC.
+- Skills regrouped (programming, data, web, systems and security, tools, methods), languages with the Voltaire and TOEIC scores, new list of interests.
+- Projects: the infrastructure card covers HTTPS, security headers, rate limiting and Grafana monitoring; the Nidec Leroy-Somer tool is described without its internal name.
+- Location shown as Lille · Île-de-France (Lille · Paris area in English); British English throughout the English pages.
 - Refresh the dependencies, use Wissem UI 1.2.0 and its new violet palette, and align Bun on 1.4.4 and the CI images (Playwright 1.65.1, Kaniko 2.3.4).
 
 ### Fixed
 
 - Bind the contact form honeypot field directly so the Golar type check passes.
+- The Wissem UI project links to its current repository (`Wissem-Industries/ui`).
 
 ### Security
 

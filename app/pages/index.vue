@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { Experience } from '#shared/content'
 import { getLinkTarget, isExternalLink } from '#shared/utils/links'
 
 const { content } = usePortfolioContent()
@@ -6,11 +7,12 @@ const localePath = useLocalePath()
 const { canonicalUrl, siteUrl } = useSiteSeo()
 const toast = useToast()
 const interestIcons = [
-  'i-ri-movie-2-line',
-  'i-ri-gamepad-line',
+  'i-ri-radar-line',
   'i-ri-lifebuoy-line',
+  'i-ri-movie-2-line',
   'i-ri-plane-line',
-  'i-ri-cpu-line',
+  'i-ri-billiards-line',
+  'i-ri-gamepad-line',
 ]
 const heroHighlight = computed(() =>
   content.value.seekingInternship ? content.value.profile.internship : content.value.profile.focus,
@@ -18,16 +20,18 @@ const heroHighlight = computed(() =>
 const featuredProjects = computed(() =>
   content.value.projects.filter((project) => project.featured),
 )
-const experience = computed(() =>
-  content.value.profile.experience.map((item) => ({
+function toTimeline(items: Experience[]) {
+  return items.map((item) => ({
     eyebrow: item.organization,
     title: item.title,
     period: item.period,
     location: item.location,
     thumbnail: item.thumbnail,
     bullets: item.bullets,
-  })),
-)
+  }))
+}
+const experience = computed(() => toTimeline(content.value.profile.experience))
+const involvement = computed(() => toTimeline(content.value.profile.involvement))
 const education = computed(() =>
   content.value.profile.education.map((item) => ({
     eyebrow: item.institution,
@@ -231,8 +235,13 @@ useJsonLd(
         <TimelineList :items="education" />
       </WAmbient>
 
+      <WAmbient as="section" :intensity="0.16" class="space-y-10 border-t border-default py-16 lg:py-24">
+        <SectionHeading :title="content.profile.involvementTitle" eyebrow="04" />
+        <TimelineList :items="involvement" />
+      </WAmbient>
+
       <section class="space-y-10 border-t border-default py-16 lg:py-24">
-        <SectionHeading :title="content.profile.skillsTitle" eyebrow="04" />
+        <SectionHeading :title="content.profile.skillsTitle" eyebrow="05" />
         <!-- Revealed as one block: a card fading in alone would show the shapes unblurred. -->
         <div v-reveal class="relative isolate grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           <GlassShapes layout="grid" />
@@ -267,7 +276,7 @@ useJsonLd(
           <SectionHeading
             :title="content.profile.projectsTitle"
             :description="content.profile.projectsDescription"
-            eyebrow="05"
+            eyebrow="06"
           />
           <UButton
             :label="content.profile.allProjects"

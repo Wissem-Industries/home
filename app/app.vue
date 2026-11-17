@@ -58,6 +58,12 @@ useJsonLd(
         alternateName: 'Wissem',
         url: siteUrl.value,
         description: content.value.meta.personDescription,
+        jobTitle: content.value.profile.status,
+        affiliation: {
+          '@type': 'CollegeOrUniversity',
+          name: 'IMT Nord Europe',
+          url: 'https://imt-nord-europe.fr',
+        },
         sameAs: sameAs.value,
       },
     ],

@@ -10,7 +10,7 @@ export const en = {
     cv: 'Resume',
   },
   localeSwitchLabel: 'Switch to French',
-  theme: { toggle: 'Toggle color mode' },
+  theme: { toggle: 'Toggle colour mode' },
   footer: 'Wissem. • All rights reserved.',
   footerLinks: { legal: 'Legal notice', privacy: 'Privacy' },
   error: {
@@ -25,10 +25,10 @@ export const en = {
     applicationName: 'Wissem Badraoui',
     defaultTitle: 'Wissem Badraoui | Portfolio',
     defaultDescription:
-      'Professional portfolio of Wissem Badraoui, an engineering student at IMT Nord Europe, with projects, experience, resume, and contact information.',
+      'Portfolio of Wissem Badraoui, an engineering student at IMT Nord Europe interested in data and cybersecurity: experience, projects, resume and contact.',
     socialImageAlt: 'Wissem Badraoui, engineering student at IMT Nord Europe',
     personDescription:
-      'Engineering student at IMT Nord Europe, interested in software development, data processing, systems security, and useful tools for technical teams.',
+      'Engineering student at IMT Nord Europe, interested in data analysis and information systems security.',
   },
   pages: {
     home: {
@@ -36,21 +36,21 @@ export const en = {
       heading: 'Portfolio',
       title: 'Wissem Badraoui, professional portfolio',
       description:
-        'Professional portfolio of Wissem Badraoui, an engineering student at IMT Nord Europe, featuring technical projects, experience, resume, and contact details.',
+        'Portfolio of Wissem Badraoui, an engineering student at IMT Nord Europe looking for a data and cybersecurity internship from May 2027: experience, projects, resume and contact.',
     },
     projects: {
       eyebrow: 'Selected work',
       heading: 'Projects',
       title: 'Projects',
       description:
-        'A selection of personal and technical projects developed alongside academic studies, focused on useful tools, web interfaces, and real-world contexts.',
+        'A selection of personal and technical projects developed alongside my studies, focused on useful tools, data and real-world contexts.',
     },
     contact: {
       eyebrow: 'Get in touch',
       heading: 'Contact',
       title: 'Contact',
       description:
-        'Contact details, public profiles, and the contact form for reaching Wissem Badraoui.',
+        'Contact details, public profiles and the contact form for reaching Wissem Badraoui.',
     },
     cv: {
       eyebrow: 'Curriculum vitae',
@@ -77,26 +77,22 @@ export const en = {
     name: 'Wissem.',
     avatarAlt: 'Monochrome logo of Wissem Badraoui.',
     status: 'Engineering student at IMT Nord Europe',
-    objective: 'Engineering student open to technical discussions and collaborations.',
+    objective: 'Engineering student looking for a data and cybersecurity internship.',
     description:
-      'Strong interest in software development, data processing, systems security, and useful tools for technical teams.',
-    availability: 'Open to conversations',
+      'Interested in data and cybersecurity. Two internships spent modernising internal tools, with high standards of reliability and confidentiality.',
+    availability: 'Seeking an internship from May 2027',
     internship: {
-      eyebrow: 'Opportunity sought',
-      title: 'Introductory technical internship in data engineering',
+      eyebrow: 'Internship sought',
+      title: 'Data and cybersecurity internship',
       details: [
         { icon: 'i-ri-time-line', label: 'Duration', value: '12 to 16 weeks' },
-        { icon: 'i-ri-calendar-line', label: 'Start date', value: 'From June 2027' },
-        {
-          icon: 'i-ri-map-pin-line',
-          label: 'Mobility',
-          value: 'Ile-de-France · Lille metropolitan area',
-        },
+        { icon: 'i-ri-calendar-line', label: 'Start', value: 'From May 2027' },
+        { icon: 'i-ri-map-pin-line', label: 'Location', value: 'Lille · Paris area' },
       ],
     },
     focus: {
       eyebrow: 'Technical profile',
-      title: 'Software, data and security',
+      title: 'Data and cybersecurity',
       details: [
         {
           icon: 'i-ri-graduation-cap-line',
@@ -104,143 +100,172 @@ export const en = {
           value: 'IMT Nord Europe · Engineering cycle',
         },
         {
-          icon: 'i-ri-code-s-slash-line',
+          icon: 'i-ri-shield-check-line',
           label: 'Approach',
-          value: 'Build · Automate · Make reliable',
+          value: 'Analyse · Automate · Secure',
         },
-        {
-          icon: 'i-ri-map-pin-line',
-          label: 'Mobility',
-          value: 'Ile-de-France · Lille metropolitan area',
-        },
+        { icon: 'i-ri-map-pin-line', label: 'Location', value: 'Lille · Paris area' },
       ],
     },
     contactCta: 'Get in touch',
     aboutTitle: 'About',
     about: [
-      'Preference for practical projects grounded in real needs: improving an existing tool, making a workflow more reliable, or simplifying its use within a team.',
-      'Particular interest in software development, data processing, and security, with consistent attention to reliability, clarity, and practical value.',
+      'With an interest in data and cybersecurity, I spent two internships modernising internal tools used daily, with high standards of reliability and confidentiality.',
+      'I want to deepen my skills in data analysis and information systems security, on concrete projects within an experienced team. Alongside my studies, I run the server that hosts my projects: continuous deployment, HTTPS, security headers and monitoring.',
     ],
     experienceTitle: 'Experience',
     experience: [
       {
-        title: 'Technical internship · Modernizing an internal audit support tool',
-        organization: 'French Public Finances Directorate (DGFiP)',
-        period: '2026',
+        title: 'Intern · Software development and data',
+        organization: 'DGFiP · Risk and Audit Unit',
+        period: 'June – Aug. 2026',
         location: 'Paris',
         thumbnail: '/images/dgfip-emblem.png',
         bullets: [
-          'Modernization and restructuring of a Python/Tkinter business application supporting payment audits and anomaly analysis for authorized auditors.',
-          'Optimization of high-volume data processing with SQLite and DuckDB, notably through the removal of expensive or repeated operations.',
-          'Design of multi-criteria search, review, qualification, and result presentation workflows, with human judgment remaining central to the process.',
-          'Strengthening of traceability and interrupted-session recovery while preserving existing business rules and data.',
-          'Consolidation of the application and its user documentation through iterative feedback with supervisors and business users.',
+          'Redesigned a Python/Tkinter application supporting payment audits (architecture, interface).',
+          'Processed datasets of several million rows with DuckDB and SQLite, removing redundant computations.',
+          'Built full-text and multi-criteria search, account review and a report-writing assistant.',
+          'Iterative, batch-based delivery with the team and auditors, end-to-end testing and documentation.',
         ],
       },
       {
-        title: 'Technical internship · Company discovery',
-        organization: 'Nidec Leroy-Somer',
-        period: '2025',
-        location: 'Angouleme',
+        title: 'Intern · Improvement of an internal test-tracking tool',
+        organization: 'Nidec Leroy-Somer · Engineering Department',
+        period: 'Jan. – Feb. 2025',
+        location: 'Angoulême',
         thumbnail: '/images/leroy-somer-logo.png',
         bullets: [
-          'Analysis of requirements for an internal tool used by technicians and engineers.',
-          'Improvement of data processing and calculation methods to strengthen the tool’s reliability.',
-          'Redesign of the Excel interface for greater readability and simpler day-to-day use.',
-          'Development of new VBA features and validation of results using real operational data.',
+          'Gathered requirements from technicians and engineers using an Excel/VBA test-tracking tool.',
+          'Made data processing and calculation methods more reliable and redesigned the user interface.',
+          'Developed new features in VBA and validated results against real data.',
         ],
       },
       {
-        title: 'Volunteer technical contribution',
+        title: 'Volunteer technical team',
         organization: "Rubik's Network",
-        period: '2020 – Present',
+        period: 'Nov. 2022 – Present',
         location: 'Remote',
         thumbnail: '/images/rubiks.png',
         bullets: [
-          'Preparation of updates and coordination of platform-related work.',
-          'Writing of specifications and collaboration with developers, designers, and contributors.',
-          'Contribution to platform features and technical systems.',
-          'User support, issue handling, and prioritization of reported problems.',
+          'Wrote specifications and coordinated updates with developers and designers.',
+          'Developed features, provided user support and prioritised reported issues.',
         ],
       },
     ],
     educationTitle: 'Education',
     education: [
       {
-        institution: 'IMT Nord Europe',
-        title: 'Engineering degree · Engineering cycle',
-        period: '2024 – Present',
+        institution: 'IMT Nord Europe · École Mines-Télécom',
+        title: 'General engineering degree (Master’s level) · Year 3 of 5',
+        period: '2024 – 2029',
         location: 'Lille',
         thumbnail: '/images/imt-logo.png',
         details: [
-          'First-year engineering-cycle student (undergraduate level +3).',
-          'Completion of the integrated preparatory cycle in 2026.',
-          'General academic background in mathematics, physics, and computer science.',
-          'Collaborative group work and project-based learning.',
-          'Foundations in project management.',
+          'Courses: databases and SQL, networks, probability and statistics, algorithms.',
+          '7-month team project for a start-up, as IT lead: a sensor demonstrator (October 2026 – April 2027, ongoing).',
+          'Project management MOOC (October 2026): Scrum.',
+          'Completed the integrated preparatory cycle in 2026.',
         ],
       },
       {
-        institution: 'Saint-Paul High School',
-        title: 'French general baccalaureate',
+        institution: 'Lycée Saint-Paul',
+        title: 'French Baccalauréat',
         period: '2021 – 2024',
-        location: 'Angouleme',
+        location: 'Angoulême',
         thumbnail: '/images/saintpaul-logo.png',
-        details: [
-          'Graduation with highest honors.',
-          'Majors in mathematics and physics-chemistry.',
-        ],
+        details: ['Highest honours.', 'Mathematics and Physics-Chemistry.'],
+      },
+    ],
+    involvementTitle: 'Involvement',
+    involvement: [
+      {
+        title: 'Secretary',
+        organization: 'IMT Nord Europe Student Union',
+        period: 'Since 2026',
+        location: 'Lille',
+        bullets: ['Member of the board of the school’s student association.'],
+      },
+      {
+        title: 'IT development team',
+        organization: 'Cartel des Mines 2027',
+        period: 'Since Oct. 2026',
+        location: 'Douai',
+        bullets: ['Building the website and the mobile app of the event.'],
+      },
+      {
+        title: 'Orion Jeunesse hackathon · Participant',
+        organization: 'French Ministry of Armed Forces',
+        period: '27 – 28 March 2026',
+        location: 'Lille',
+        bullets: ['Theme: engaging young people in cyber defence.'],
       },
     ],
     skillsTitle: 'Skills',
     skills: [
       {
-        title: 'Languages',
-        description: 'Programming languages used for application development.',
-        items: ['C', 'Python', 'TypeScript', 'JavaScript', 'VBA', 'SQL'],
-      },
-      {
-        title: 'Web',
-        description: 'Web application development with the JavaScript ecosystem.',
-        items: ['Nuxt', 'Vue.js', 'Node.js', 'Express'],
+        title: 'Programming',
+        description: 'Languages used for data analysis and development.',
+        items: ['Python', 'SQL', 'C', 'TypeScript', 'JavaScript', 'VBA'],
       },
       {
         title: 'Data',
-        description: 'Application data storage, querying, and processing.',
-        items: ['PostgreSQL', 'SQLite', 'DuckDB', 'Data processing'],
+        description: 'Data storage, querying and analysis.',
+        items: [
+          'PostgreSQL',
+          'MySQL',
+          'SQLite',
+          'DuckDB',
+          'MongoDB',
+          'Prisma',
+          'pandas',
+          'NumPy',
+          'Jupyter',
+          'Advanced Excel',
+          'CaseWare IDEA',
+        ],
       },
       {
-        title: 'Infrastructure',
-        description: 'Servers, containerization, and application deployment.',
-        items: ['Linux', 'Docker', 'VPS', 'Dokploy', 'CI/CD'],
+        title: 'Web',
+        description: 'Web applications and APIs.',
+        items: ['Node.js', 'Express', 'Nuxt', 'Vue.js', 'REST APIs'],
       },
       {
-        title: 'Automation',
-        description: 'Scripts used to automate processing and technical tasks.',
-        items: ['Python', 'Excel VBA', 'Parsing', 'CLI'],
+        title: 'Systems and security',
+        description: 'Running a server, deployment and monitoring.',
+        items: ['Linux', 'Docker', 'CI/CD', 'HTTPS', 'Security headers', 'Grafana'],
       },
       {
         title: 'Tools',
-        description: 'Tools used to build, test, and collaborate on projects.',
-        items: ['Git', 'Postman', 'JetBrains', 'Jira'],
+        description: 'Tools used to build, test and collaborate.',
+        items: ['Git', 'GitHub', 'JetBrains IDEs', 'AI agents', 'Postman', 'Jira'],
+      },
+      {
+        title: 'Methods',
+        description: 'How a project is run with a team.',
+        items: [
+          'Requirements analysis',
+          'Agile project management',
+          'Testing',
+          'User documentation',
+        ],
       },
     ],
     projectsTitle: 'Selected projects',
     projectsDescription:
-      'A selection of personal and technical projects built alongside academic studies.',
+      'A selection of personal and technical projects built alongside my studies.',
     allProjects: 'View all projects',
     languagesTitle: 'Languages',
     languages: [
-      { name: 'French', level: 'Native language', value: 100 },
-      { name: 'English', level: 'B2', value: 70 },
+      { name: 'French', level: 'Native · Certificat Voltaire 657', value: 100 },
+      { name: 'English', level: 'B2 · TOEIC 925', value: 75 },
       { name: 'Spanish', level: 'A2', value: 35 },
     ],
     interestsTitle: 'Interests',
-    interests: ['Cinema', 'Video games', 'Swimming', 'Travel', 'Technology'],
+    interests: ['Tech news', 'Swimming', 'Cinema', 'Travel', 'Billiards', 'Video games'],
     contactTitle: 'Contact',
-    contactDescription: 'For technical discussions, collaborations, or any other enquiry.',
+    contactDescription: 'For an internship, a technical discussion or any other enquiry.',
     locationLabel: 'Location',
-    location: 'Ile-de-France · Lille metropolitan area',
+    location: 'Lille · Paris area',
   },
   resume: {
     label: 'Download resume',
@@ -305,9 +330,9 @@ export const en = {
   projectFilters: { label: 'Filter projects', all: 'All' },
   projectTexts: {
     'dgfip-audit-tool': {
-      title: 'Modernization of an audit support tool (DGFiP)',
+      title: 'Modernisation of an audit support tool (DGFiP)',
       description:
-        'Internship in Paris: modernization and restructuring of a Python audit support application, optimization of high-volume data processing with SQLite and DuckDB, and stronger traceability.',
+        'Internship in Paris: redesign of a Python application supporting payment audits, processing of datasets of several million rows with DuckDB and SQLite, full-text and multi-criteria search.',
     },
     omni: {
       title: 'Omni',
@@ -317,7 +342,7 @@ export const en = {
     infrastructure: {
       title: 'Self-hosted infrastructure',
       description:
-        'Woodpecker continuous integration, Docker images published to GHCR and automated deployment on Dokploy for all the products.',
+        'Self-managed Linux server hosting every product: Docker services, continuous integration with Woodpecker and deployment on Dokploy, HTTPS, security headers and rate limiting, monitoring with Grafana.',
     },
     'wissem-ui': {
       title: 'Wissem UI and portfolio',
@@ -327,22 +352,22 @@ export const en = {
     parcourtime: {
       title: 'ParcourTime',
       description:
-        'A countdown web app for Parcoursup, displaying key dates through a simple and accessible interface based on the French State design system.',
+        'A countdown web app for Parcoursup, showing the key dates in a simple and accessible interface based on the French State design system.',
     },
     zeldanes: {
       title: 'ZeldaNES',
       description:
         'Development in C with SDL2 of a game inspired by The Legend of Zelda as part of academic studies.',
     },
-    'satt-tool': {
-      title: 'Internal data processing tool (SATT)',
+    'nidec-test-tool': {
+      title: 'Internal test-tracking tool (Nidec Leroy-Somer)',
       description:
-        'Improvements made to an internal engineering office tool at Nidec Leroy-Somer, including data processing optimizations and new features to improve reliability and daily usability.',
+        'Improvement of an Excel/VBA tool used by the engineering department to track tests: more reliable data processing and calculations, a redesigned interface and new features.',
     },
     'internal-dashboard': {
       title: 'Internal admin dashboard',
       description:
-        'An administration interface for internal platform operations, with authentication, roles, permissions, and user management.',
+        'An administration interface for internal platform operations, with authentication, roles, permissions and user management.',
     },
     'password-manager': {
       title: 'Password manager',
@@ -428,7 +453,7 @@ export const en = {
     intro:
       'This website collects as little data as possible. This page states which data, why, who receives it and how long it is kept.',
     updatedLabel: 'Last updated',
-    updated: '8 October 2026',
+    updated: '17 November 2026',
     sections: [
       {
         title: 'Data controller',
@@ -450,9 +475,18 @@ export const en = {
         ],
       },
       {
+        title: 'Audience measurement',
+        paragraphs: [
+          'The website measures its traffic with Plausible Analytics, a cookieless tool installed on a server run by the publisher (analytics.wissem.pro).',
+          'Data processed: the page viewed, the referring site, browser, operating system, device type and country, as well as clicks to external sites and contact form submissions. Resume downloads are counted by the website’s server (the “CV download” event, with the language and version of the resume), excluding bots and command-line clients.',
+          'Events go through the website’s own address (the /_w path), which forwards them to Plausible with your IP address. Plausible does not store it: together with the browser, it is used to compute an identifier renewed every day, which cannot recognise you from one day to the next. Only aggregated statistics are kept.',
+          'Purpose: knowing the website’s traffic and the interest in the resume. Legal basis: the publisher’s legitimate interest. These statistics are neither cross-referenced with other websites nor shared with third parties.',
+        ],
+      },
+      {
         title: 'Cookies',
         paragraphs: [
-          'The website sets two preference cookies, valid for 12 months: wsm_locale (language) and wsm_theme (light or dark theme). They are used for nothing else and do not require consent.',
+          'The website sets two preference cookies, valid for 12 months: wsm_locale (language) and wsm_theme (light or dark theme). They are used for nothing else and do not require consent. Audience measurement sets no cookie.',
         ],
       },
       {

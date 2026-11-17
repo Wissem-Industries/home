@@ -25,7 +25,7 @@ const covers: Array<{ id: string; frame: CoverFrame }> = [
   { id: 'omni', frame: { kind: 'window', capture: new URL('omni.png', CAPTURES) } },
   {
     id: 'infrastructure',
-    frame: { kind: 'icon', icon: 'server-line', keywords: ['CI/CD', 'Docker', 'Dokploy'] },
+    frame: { kind: 'icon', icon: 'server-line', keywords: ['Docker', 'HTTPS', 'Grafana'] },
   },
   { id: 'portfolio', frame: { kind: 'window', capture: new URL('portfolio.png', CAPTURES) } },
   { id: 'parcourtime', frame: { kind: 'window', capture: new URL('parcourtime.png', CAPTURES) } },
@@ -33,7 +33,10 @@ const covers: Array<{ id: string; frame: CoverFrame }> = [
     id: 'zeldanes',
     frame: { kind: 'window', capture: new URL('zeldanes.png', CAPTURES), pixelated: true },
   },
-  { id: 'satt-tool', frame: { kind: 'icon', icon: 'table-line', keywords: ['Excel', 'VBA'] } },
+  {
+    id: 'nidec-test-tool',
+    frame: { kind: 'icon', icon: 'table-line', keywords: ['Excel', 'VBA'] },
+  },
   {
     id: 'internal-dashboard',
     frame: {
