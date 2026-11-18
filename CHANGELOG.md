@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.8.1] - 2026-11-18
+
 ### Added
 
 - Structured data: the project list on the projects page, the skills, languages and city of the person, and the last update of the profile page.
