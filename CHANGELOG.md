@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.8.0] - 2026-11-18
+
 ### Added
 
 - Wissem UI page on ui.wissem.pro (English under `/en`), served by this same application: the design system rendered by the package itself, with colours, typography, buttons, static and interactive glass cards, application components, forms and installation. The Wissem UI project leads to it.
