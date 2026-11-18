@@ -48,6 +48,15 @@ export const SITE_ROUTES = [
     priority: '0.2',
     nav: false,
   },
+  // Linked from the Wissem UI project.
+  {
+    key: 'ui',
+    path: '/ui',
+    icon: 'i-ri-palette-line',
+    changefreq: 'monthly',
+    priority: '0.5',
+    nav: false,
+  },
   {
     key: 'privacy',
     path: '/privacy',

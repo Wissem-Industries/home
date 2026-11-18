@@ -4,6 +4,10 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Added
+
+- Wissem UI page (`/ui`, `/en/ui`): the design system rendered by the package itself, with colours, typography, buttons, static and interactive glass cards, application components, forms and installation. The Wissem UI project leads to it.
+
 ## [1.7.2] - 2026-11-18
 
 ### Changed

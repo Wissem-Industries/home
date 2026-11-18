@@ -72,6 +72,13 @@ export const en = {
       description:
         'Data processed by the wissem.pro website: purposes, recipients, retention periods and rights.',
     },
+    ui: {
+      eyebrow: 'Design system',
+      heading: 'Wissem UI',
+      title: 'Wissem UI, design system',
+      description:
+        'The design system shared by the Wissem’s Industries applications: theme, glass, components and motion, published as a Nuxt Layer. Everything below is rendered by the package itself.',
+    },
   },
   profile: {
     name: 'Wissem.',
@@ -355,6 +362,104 @@ export const en = {
       description:
         'A command-line password manager built in Python, with encrypted storage and a CLI interface.',
     },
+  },
+  uiShowcase: {
+    repo: 'View code',
+    facts: ['Nuxt Layer', 'Nuxt UI 4', 'Tailwind CSS 4', 'Public package'],
+    sections: {
+      colors: {
+        title: 'Colours',
+        description:
+          'An electric violet accent in its own range. Status colours stay the Tailwind ones.',
+      },
+      typography: {
+        title: 'Typography',
+        description: 'Geist for text, Geist Mono for labels and code, served by the package.',
+      },
+      buttons: {
+        title: 'Buttons',
+        description:
+          'Nuxt UI variants with the system theme. The secondary button always stays subtle.',
+      },
+      glass: {
+        title: 'Glass',
+        description:
+          'A static card answers the pointer with a violet halo. An interactive card lifts and takes a violet edge.',
+      },
+      components: {
+        title: 'Application components',
+        description:
+          'The building blocks shared by the private applications: key figures, pills, a view switch and an empty state.',
+      },
+      forms: {
+        title: 'Forms',
+        description: 'Nuxt UI fields, selects and switches, with a single violet focus ring.',
+      },
+      install: {
+        title: 'Installation',
+        description:
+          'The package is public on GitHub Packages. GitHub’s npm registry still asks for a token with read:packages.',
+      },
+    },
+    colors: { brand: 'Accent range', status: 'Statuses' },
+    typography: {
+      sans: 'Geist',
+      mono: 'Geist Mono',
+      heading: 'Clear, understated interfaces',
+      body: 'A shared system keeps the same habits from one application to the next: colours, spacing, states and motion.',
+    },
+    buttons: {
+      primary: 'Primary',
+      secondary: 'Secondary',
+      outline: 'Outline',
+      ghost: 'Ghost',
+      link: 'Link',
+      disabled: 'Disabled',
+    },
+    glass: {
+      staticTitle: 'Static card',
+      staticText: 'Hover it: the halo follows the pointer, under the glass.',
+      interactiveTitle: 'Interactive card',
+      interactiveText: 'It leads somewhere: it lifts and its edge turns violet.',
+      interactiveAction: 'View projects',
+    },
+    components: {
+      example: 'Sample data',
+      statsLabel: 'Key figures',
+      stats: [
+        { label: 'Tracked', value: '128', tone: 'primary' },
+        { label: 'New', value: '12', tone: 'info' },
+        { label: 'To follow up', value: '5', tone: 'warning' },
+        { label: 'Selected', value: '3', tone: 'success' },
+      ],
+      pills: [
+        { label: 'New', tone: 'info' },
+        { label: 'In progress', tone: 'primary' },
+        { label: 'Approved', tone: 'success' },
+        { label: 'To follow up', tone: 'warning' },
+        { label: 'Declined', tone: 'error' },
+        { label: 'Archived', tone: 'neutral' },
+      ],
+      segmentedLabel: 'View',
+      segments: [
+        { label: 'List', value: 'list', icon: 'i-ri-list-check' },
+        { label: 'Grid', value: 'grid', icon: 'i-ri-layout-grid-line' },
+      ],
+      emptyTitle: 'No results',
+      emptyDescription: 'Nothing matches these filters.',
+      emptyAction: 'Reset',
+    },
+    forms: {
+      name: 'Name',
+      namePlaceholder: 'Your name',
+      topic: 'Topic',
+      topics: ['Internship', 'Project', 'Other'],
+      notify: 'Receive a copy',
+      agree: 'I have read the privacy policy',
+      submit: 'Send',
+      submitted: 'Sample form: nothing was sent.',
+    },
+    install: { npmrc: 'User .npmrc file', config: 'nuxt.config.ts' },
   },
   contact: {
     title: 'Contact',
