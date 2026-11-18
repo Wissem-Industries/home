@@ -121,27 +121,6 @@ main {
   --wi-glass-sheen-b: transparent;
 }
 
-/* Card hover on a WGlassCard: it lifts and its edge turns violet. */
-.motion-card {
-  /* Repeats the v-reveal transitions, which this rule would otherwise replace. */
-  transition:
-    opacity var(--wi-duration-slower) var(--wi-ease-out) var(--wi-reveal-delay, 0ms),
-    filter var(--wi-duration-slower) var(--wi-ease-out) var(--wi-reveal-delay, 0ms),
-    transform var(--wi-duration-slower) var(--wi-ease-out) var(--wi-reveal-delay, 0ms),
-    translate var(--wi-duration-base) var(--wi-ease-out);
-}
-
-.motion-card .wi-glass {
-  transition: box-shadow var(--wi-duration-base) var(--wi-ease-standard);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .motion-card:hover {
-    --wi-glass-edge: color-mix(in oklab, var(--ui-primary) 55%, transparent);
-    translate: 0 -3px;
-  }
-}
-
 .project-media {
   transition: transform var(--wi-duration-slower) var(--wi-ease-out);
 }
@@ -156,10 +135,6 @@ main {
   .availability-pulse {
     animation: none;
     opacity: 0;
-  }
-
-  .motion-card:hover {
-    translate: none;
   }
 
   .group:hover .project-media {
@@ -248,17 +223,48 @@ main {
 }
 
 /*
- * Glass does not blur while a v-reveal ancestor fades in, so the shapes would
- * show through sharp: they wait until the block has settled, then fade in.
+ * Glass blurs nothing while an ancestor fades, so the shapes would show
+ * through sharp. A block holding shapes only slides in; its shapes and its
+ * glass cards fade together, each on its own layer.
  */
-.wi-reveal .wsm-shapes {
-  opacity: 0;
+@keyframes wsm-slide-in {
+  from {
+    transform: translateY(0.75rem);
+  }
 }
 
-.wi-reveal--visible .wsm-shapes {
-  opacity: 1;
-  transition: opacity var(--wi-duration-slow) var(--wi-ease-out)
-    calc(var(--wi-reveal-delay, 0ms) + var(--wi-duration-slower));
+@keyframes wsm-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .wi-reveal:has(> .wsm-shapes) {
+    opacity: 1;
+    filter: none;
+  }
+
+  .wi-reveal:has(> .wsm-shapes) > .wsm-shapes,
+  .wi-reveal:has(> .wsm-shapes) > .wi-glass-card > .wi-glass {
+    opacity: 0;
+    transition: opacity var(--wi-duration-slower) var(--wi-ease-out) var(--wi-reveal-delay, 0ms);
+  }
+
+  .wi-reveal--visible:has(> .wsm-shapes) > .wsm-shapes,
+  .wi-reveal--visible:has(> .wsm-shapes) > .wi-glass-card > .wi-glass {
+    opacity: 1;
+  }
+
+  .wi-enter:has(> .wsm-shapes) {
+    animation-name: wsm-slide-in;
+  }
+
+  .wi-enter:has(> .wsm-shapes) > .wsm-shapes,
+  .wi-enter:has(> .wsm-shapes) > .wi-glass-card > .wi-glass {
+    animation: wsm-fade-in var(--wi-duration-slower) var(--wi-ease-out) both;
+    animation-delay: calc(60ms + var(--wi-enter-step, 0) * 60ms);
+  }
 }
 
 /* GlassShapes: the shapes drift slowly under the glass. */

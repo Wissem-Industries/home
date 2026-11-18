@@ -216,7 +216,7 @@ useJsonLd(
         <SectionHeading :title="content.profile.aboutTitle" eyebrow="01" />
         <div v-reveal class="relative isolate">
           <GlassShapes layout="about" />
-          <WGlassCard :halo="false" class="motion-card" body-class="space-y-5 p-7 text-lg leading-8 text-muted sm:p-9">
+          <WGlassCard body-class="space-y-5 p-7 text-lg leading-8 text-muted sm:p-9">
             <p v-for="(paragraph, paragraphIndex) in content.profile.about" :key="paragraphIndex">
               {{ paragraph }}
             </p>
@@ -237,14 +237,13 @@ useJsonLd(
 
       <section class="space-y-10 border-t border-default py-16 lg:py-24">
         <SectionHeading :title="content.profile.skillsTitle" eyebrow="04" />
-        <!-- Revealed as one block: a card fading in alone would show the shapes unblurred. -->
+        <!-- Revealed as one block, with the shapes behind it (see app.css). -->
         <div v-reveal class="relative isolate grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           <GlassShapes layout="grid" />
           <WGlassCard
             v-for="(group, index) in content.profile.skills"
             :key="index"
-            :halo="false"
-            class="motion-card h-full"
+            class="h-full"
           >
             <div class="flex h-full flex-col gap-6">
               <div class="space-y-2">
@@ -299,7 +298,7 @@ useJsonLd(
       </WAmbient>
 
       <section class="grid gap-5 border-t border-default py-16 lg:grid-cols-3 lg:py-24">
-        <WGlassCard v-reveal="0" :halo="false" class="motion-card h-full">
+        <WGlassCard v-reveal="0" class="h-full">
           <div class="space-y-6">
             <h2 class="text-lg font-medium text-highlighted">{{ content.profile.languagesTitle }}</h2>
             <div class="space-y-5">
@@ -318,7 +317,7 @@ useJsonLd(
           </div>
         </WGlassCard>
 
-        <WGlassCard v-reveal="1" :halo="false" class="motion-card h-full">
+        <WGlassCard v-reveal="1" class="h-full">
           <div class="space-y-6">
             <h2 class="text-lg font-medium text-highlighted">{{ content.profile.interestsTitle }}</h2>
             <div class="interest-orbit" aria-hidden="true">
@@ -345,7 +344,7 @@ useJsonLd(
 
         <div v-reveal="2" class="relative isolate h-full">
           <GlassShapes layout="card" />
-          <WGlassCard :halo="false" class="motion-card h-full">
+          <WGlassCard class="h-full">
             <div class="space-y-5">
               <div class="space-y-2">
                 <h2 class="text-lg font-medium text-highlighted">{{ content.profile.contactTitle }}</h2>

@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Changed
+
+- One hover for the cards, from Wissem UI 1.3.0: static cards (about, skills, languages, interests, contact, legal texts) answer the pointer with a violet halo, like the internship card, instead of lifting; project cards keep the lift and the violet edge, as they lead to the project.
+
+### Fixed
+
+- The violet shapes behind the glass cards appear with the cards instead of just after them, and stay blurred during the entrance.
+
 ## [1.7.1] - 2026-11-17
 
 ### Removed

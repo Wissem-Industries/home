@@ -16,7 +16,7 @@ defineProps<{ page: PageContent; copy: LegalPageCopy }>()
     </PageHeader>
 
     <WAmbient :intensity="0.16" class="border-t border-default pb-16 pt-10 sm:pb-24">
-      <WGlassCard :halo="false" class="max-w-3xl" body-class="divide-y divide-default px-6 py-2 sm:px-9">
+      <WGlassCard class="max-w-3xl" body-class="divide-y divide-default px-6 py-2 sm:px-9">
         <section
           v-for="section in copy.sections"
           :key="section.title"
