@@ -67,7 +67,8 @@ export default defineNuxtConfig({
     '/images/**': { headers: { 'cache-control': 'public, max-age=604800' } },
     '/favicon.ico': { headers: { 'cache-control': 'public, max-age=604800' } },
     '/apple-touch-icon.png': { headers: { 'cache-control': 'public, max-age=604800' } },
-    '/icon-*.png': { headers: { 'cache-control': 'public, max-age=604800' } },
+    '/icon-192.png': { headers: { 'cache-control': 'public, max-age=604800' } },
+    '/icon-512.png': { headers: { 'cache-control': 'public, max-age=604800' } },
     '/site.webmanifest': { headers: { 'cache-control': 'public, max-age=86400' } },
   },
   nitro: {
