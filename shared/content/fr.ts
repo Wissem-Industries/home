@@ -370,17 +370,17 @@ export const fr = {
       colors: {
         title: 'Couleurs',
         description:
-          'Un violet électrique comme accent, dans une gamme dédiée. Les couleurs de statut restent celles de Tailwind.',
+          'Quatre palettes d’accent, à changer ici pour voir toute la page suivre. Prune est celle par défaut ; les couleurs de statut restent celles de Tailwind.',
       },
       typography: {
         title: 'Typographie',
         description:
-          'Geist pour le texte, Geist Mono pour les libellés et le code, servies par le paquet.',
+          'Funnel Display pour les titres, Funnel Sans pour le texte, Geist Mono pour les libellés et le code, servies par le paquet.',
       },
       buttons: {
         title: 'Boutons',
         description:
-          'Les variantes de Nuxt UI avec le thème du système. Le bouton secondaire reste toujours discret.',
+          'Aucun aplat : le bouton principal est en verre violet, le secondaire en contour violet.',
       },
       glass: {
         title: 'Verre',
@@ -403,9 +403,19 @@ export const fr = {
           'Le paquet est public sur GitHub Packages. Le registre npm de GitHub demande tout de même un jeton avec read:packages.',
       },
     },
-    colors: { brand: 'Gamme de l’accent', status: 'Statuts' },
+    colors: {
+      brand: 'Gamme de l’accent',
+      status: 'Statuts',
+      paletteLabel: 'Palette de l’accent',
+      palettes: {
+        plum: 'Prune',
+        amethyst: 'Améthyste',
+        dusk: 'Crépuscule',
+        electric: 'Électrique',
+      },
+    },
     typography: {
-      sans: 'Geist',
+      sans: 'Funnel Display · Funnel Sans',
       mono: 'Geist Mono',
       heading: 'Des interfaces sobres et lisibles',
       body: 'Un système partagé garde les mêmes réflexes d’une application à l’autre : couleurs, espacements, états et animations.',

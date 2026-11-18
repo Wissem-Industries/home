@@ -104,7 +104,12 @@ export interface UiShowcaseCopy {
     'colors' | 'typography' | 'buttons' | 'glass' | 'components' | 'forms' | 'install',
     ShowcaseSection
   >
-  colors: { brand: string; status: string }
+  colors: {
+    brand: string
+    status: string
+    paletteLabel: string
+    palettes: Record<'plum' | 'amethyst' | 'dusk' | 'electric', string>
+  }
   typography: { sans: string; mono: string; heading: string; body: string }
   buttons: Record<'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'disabled', string>
   glass: {

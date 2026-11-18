@@ -15,6 +15,21 @@ const CONFIG = `export default defineNuxtConfig({
   extends: ['@wissem-industries/ui'],
 })`
 
+const PALETTES = ['plum', 'amethyst', 'dusk', 'electric'] as const
+const appConfig = useAppConfig()
+const defaultPalette = appConfig.ui.colors.primary
+const palette = ref(String(defaultPalette).replace(/^wsm-/, ''))
+const palettes = computed(() =>
+  PALETTES.map((value) => ({ value, label: copy.value.colors.palettes[value] })),
+)
+// The accent changes for the whole page while it is open, then goes back to the default.
+watch(palette, (value) => {
+  appConfig.ui.colors.primary = `wsm-${value}`
+})
+onBeforeUnmount(() => {
+  appConfig.ui.colors.primary = defaultPalette
+})
+
 const view = ref('list')
 const form = reactive({
   name: '',
@@ -78,12 +93,13 @@ useBreadcrumbJsonLd(
       />
       <div v-reveal class="space-y-6">
         <div class="space-y-3">
+          <WSegmented v-model="palette" :items="palettes" :label="copy.colors.paletteLabel" />
           <p class="font-mono text-xs uppercase tracking-[0.18em] text-muted">{{ copy.colors.brand }}</p>
           <ul class="grid grid-cols-4 gap-2 sm:grid-cols-6 lg:grid-cols-11">
             <li v-for="shade in SHADES" :key="shade" class="space-y-1.5">
               <span
                 class="block h-14 rounded-lg ring-1 ring-inset ring-black/5 dark:ring-white/10"
-                :style="{ background: `var(--color-wsm-violet-${shade})` }"
+                :style="{ background: `var(--ui-color-primary-${shade})` }"
               />
               <span class="block font-mono text-xs text-muted">{{ shade }}</span>
             </li>
