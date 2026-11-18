@@ -4,6 +4,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+## [1.9.0] - 2026-11-18
+
 ### Changed
 
 - Wissem UI 1.5.0: Funnel Display and Funnel Sans, the Plum accent, glass buttons and controls without solid fills, key figures and sections in glass, visible text selection.
