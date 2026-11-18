@@ -79,7 +79,7 @@ useBreadcrumbJsonLd(
     <WAmbient as="section" :intensity="0.16" class="grid items-stretch gap-5 border-t border-default py-12 lg:grid-cols-[22rem_minmax(0,1fr)] lg:py-16">
       <div v-reveal="0" class="relative isolate h-full">
         <GlassShapes />
-        <WGlassCard :halo="false" class="h-full">
+        <WGlassCard class="h-full">
           <div class="space-y-6">
             <div class="space-y-2">
               <h2 class="text-lg font-medium text-highlighted">{{ content.contact.sidebarTitle }}</h2>
@@ -94,7 +94,7 @@ useBreadcrumbJsonLd(
         </WGlassCard>
       </div>
 
-      <WGlassCard v-reveal="1" :halo="false" class="h-full">
+      <WGlassCard v-reveal="1" class="h-full">
         <UForm :schema="schema" :state="state" class="space-y-6" @submit="onSubmit">
           <div class="grid gap-5 sm:grid-cols-2">
             <UFormField

@@ -28,8 +28,8 @@ const { assetVersion } = useRuntimeConfig().public
 
 <template>
   <WGlassCard
-    :halo="false"
-    class="motion-card group h-full"
+    interactive
+    class="group h-full"
     body-class="h-full overflow-hidden rounded-2xl p-0 sm:p-0"
   >
     <article
