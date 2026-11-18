@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { content } = usePortfolioContent()
-const { canonicalUrl, siteUrl } = useSiteSeo()
+const { canonicalUrl, homeUrl } = useSiteSeo()
 
 usePageSeo(
   computed(() => ({
@@ -11,7 +11,7 @@ usePageSeo(
 
 useBreadcrumbJsonLd(
   computed(() => [
-    { name: content.value.navigation.home, item: siteUrl.value },
+    { name: content.value.navigation.home, item: homeUrl.value },
     { name: content.value.pages.privacy.heading, item: canonicalUrl.value },
   ]),
 )

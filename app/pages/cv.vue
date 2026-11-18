@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { RESUME_BASE_URL, resumeAssetName } from '#shared/utils/resume'
 import { toAbsoluteSiteUrl } from '#shared/utils/site'
 
 const { content, locale } = usePortfolioContent()
-const { canonicalUrl, siteUrl } = useSiteSeo()
+const { canonicalUrl, homeUrl, siteUrl } = useSiteSeo()
 const localePath = useLocalePath()
 
 const { data: release } = await useFetch('/api/cv', { key: 'cv-release' })
@@ -13,6 +14,12 @@ const versionQuery = computed(() => (release.value?.version ? `?v=${release.valu
 const pdfPath = computed(() => (isFrench.value ? '/cv.pdf' : '/en/cv.pdf'))
 const previewPath = computed(
   () => `${isFrench.value ? '/cv.png' : '/en/cv.png'}${versionQuery.value}`,
+)
+// Resized by IPX from the resume storage; the PNG route stays for the version-less fallback.
+const previewSource = computed(() =>
+  release.value?.version
+    ? `${RESUME_BASE_URL}/${release.value.version}/${resumeAssetName(isFrench.value ? 'fr' : 'en', 'png')}`
+    : undefined,
 )
 const updated = computed(() => {
   if (!release.value?.publishedAt) return null
@@ -37,7 +44,7 @@ usePageSeo(
 
 useBreadcrumbJsonLd(
   computed(() => [
-    { name: content.value.navigation.home, item: siteUrl.value },
+    { name: content.value.navigation.home, item: homeUrl.value },
     { name: content.value.pages.cv.heading, item: canonicalUrl.value },
   ]),
 )
@@ -125,7 +132,20 @@ useBreadcrumbJsonLd(
           aria-hidden="true"
           class="absolute inset-x-6 -bottom-6 top-10 -z-10 rounded-[2rem] bg-primary/20 blur-3xl transition-opacity duration-500 group-hover:opacity-80 dark:bg-primary/25"
         />
+        <NuxtImg
+          v-if="previewSource"
+          :src="previewSource"
+          :alt="content.resumePage.previewAlt"
+          width="1191"
+          height="1684"
+          sizes="384px lg:420px"
+          densities="x1 x2"
+          format="webp"
+          fetchpriority="high"
+          class="aspect-[1191/1684] w-full rounded-xl bg-white object-cover shadow-2xl ring-1 ring-black/10 transition duration-500 ease-out group-hover:-translate-y-1 group-hover:rotate-[-0.6deg] motion-reduce:transition-none motion-reduce:group-hover:transform-none dark:ring-white/15"
+        />
         <img
+          v-else
           :src="previewPath"
           :alt="content.resumePage.previewAlt"
           width="1191"

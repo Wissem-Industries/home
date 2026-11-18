@@ -13,6 +13,11 @@ export default defineNuxtConfig({
   // blockers (Brave Shields) drop them and the whole app stops hydrating.
   modules: ['@nuxt/image', '@nuxtjs/i18n', ...(isDev ? [] : ['@nuxtjs/plausible'])],
   image: {
+    // Resume preview, resized from the bucket filled by the CV pipeline.
+    domains: ['cdn.wissem.pro'],
+    // IPX sends this as max-age and s-maxage; its default of 60 s made Cloudflare re-ask the
+    // server for each image every minute.
+    ipx: { maxAge: 604800 },
     format: ['avif', 'webp'],
     quality: 80,
     screens: { sm: 640, md: 768, lg: 1024, xl: 1280 },
@@ -24,6 +29,8 @@ export default defineNuxtConfig({
       siteUrl,
       uiSiteUrl,
       assetVersion: pkg.version,
+      // Day of the build, given as the last modification of the pages (sitemap, ProfilePage).
+      builtAt: new Date().toISOString().slice(0, 10),
     },
   },
   i18n: {
@@ -53,6 +60,16 @@ export default defineNuxtConfig({
     // Resume downloads are counted by the server route itself (server/utils/resume.ts).
     fileDownloads: false,
     formSubmissions: true,
+  },
+  // Files of public/ have no version in their name: a week in browsers and at Cloudflare, which
+  // otherwise applies its own four hours.
+  routeRules: {
+    '/images/**': { headers: { 'cache-control': 'public, max-age=604800' } },
+    '/favicon.ico': { headers: { 'cache-control': 'public, max-age=604800' } },
+    '/apple-touch-icon.png': { headers: { 'cache-control': 'public, max-age=604800' } },
+    '/icon-192.png': { headers: { 'cache-control': 'public, max-age=604800' } },
+    '/icon-512.png': { headers: { 'cache-control': 'public, max-age=604800' } },
+    '/site.webmanifest': { headers: { 'cache-control': 'public, max-age=86400' } },
   },
   nitro: {
     preset: 'bun',

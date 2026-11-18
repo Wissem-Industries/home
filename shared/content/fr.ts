@@ -41,14 +41,14 @@ export const fr = {
     projects: {
       eyebrow: 'Projets sélectionnés',
       heading: 'Projets',
-      title: 'Projets',
+      title: 'Projets de Wissem Badraoui',
       description:
         'Sélection de projets personnels et techniques réalisés en parallèle du parcours académique, autour d’outils utiles, d’interfaces web et de contextes concrets.',
     },
     contact: {
       eyebrow: 'Prise de contact',
       heading: 'Contact',
-      title: 'Contact',
+      title: 'Contacter Wissem Badraoui',
       description:
         'Coordonnées, profils publics et formulaire de contact pour joindre Wissem Badraoui.',
     },
@@ -279,7 +279,7 @@ export const fr = {
       id: 'linkedin',
       label: 'LinkedIn',
       value: '@WissemBadraoui',
-      to: 'https://linkedin.com/in/WissemBadraoui',
+      to: 'https://www.linkedin.com/in/wissembadraoui/',
       icon: 'i-ri-linkedin-box-line',
     },
     {
