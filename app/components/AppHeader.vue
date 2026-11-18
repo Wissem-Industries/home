@@ -4,13 +4,13 @@ import { SITE_ROUTES } from '#shared/utils/site'
 
 const { content, locale } = usePortfolioContent()
 const { setLocale } = useI18n()
-const localePath = useLocalePath()
+const { sitePath } = useSiteHost()
 
 const items = computed(() =>
   SITE_ROUTES.filter((route) => route.nav).map((route) => ({
     label: content.value.navigation[route.key],
     icon: route.icon,
-    to: localePath(route.path),
+    to: sitePath(route.path),
     // The English home is `/en`, a prefix of every other English page.
     exact: route.path === '/',
   })),

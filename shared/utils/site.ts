@@ -58,6 +58,25 @@ export const SITE_ROUTES = [
   },
 ] as const
 
+/**
+ * The Wissem UI page is served by this application on its own host (ui.wissem.pro), at its root.
+ * Its source route stays `/ui`: the router and server/middleware/hosts.ts map it to the host.
+ */
+export const UI_PAGE_PATH = '/ui'
+
+export function isUiHost(hostname: string) {
+  return hostname.startsWith('ui.')
+}
+
+export function isUiPagePath(path: string) {
+  return path === UI_PAGE_PATH || path === `/en${UI_PAGE_PATH}`
+}
+
+/** `/ui` becomes `/`, `/en/ui` becomes `/en`. */
+export function toUiHostPath(path: string) {
+  return path.slice(0, -UI_PAGE_PATH.length) || '/'
+}
+
 export function normalizePublicSiteUrl(value?: string | null) {
   const candidate = (value || 'https://www.wissem.pro').trim()
   const withProtocol = /^[a-z][a-z0-9+.-]*:\/\//i.test(candidate)

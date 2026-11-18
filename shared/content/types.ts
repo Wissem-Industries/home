@@ -90,6 +90,54 @@ export interface LegalPageCopy {
   sections: LegalSection[]
 }
 
+export type ShowcaseTone = 'primary' | 'success' | 'warning' | 'error' | 'info' | 'neutral'
+
+export interface ShowcaseSection {
+  title: string
+  description: string
+}
+
+export interface UiShowcaseCopy {
+  repo: string
+  facts: string[]
+  sections: Record<
+    'colors' | 'typography' | 'buttons' | 'glass' | 'components' | 'forms' | 'install',
+    ShowcaseSection
+  >
+  colors: { brand: string; status: string }
+  typography: { sans: string; mono: string; heading: string; body: string }
+  buttons: Record<'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'disabled', string>
+  glass: {
+    staticTitle: string
+    staticText: string
+    interactiveTitle: string
+    interactiveText: string
+    interactiveAction: string
+  }
+  components: {
+    example: string
+    statsLabel: string
+    stats: Array<{ label: string; value: string; tone: ShowcaseTone }>
+    pills: Array<{ label: string; tone: ShowcaseTone }>
+    segmentedLabel: string
+    segments: Array<{ label: string; value: string; icon: string }>
+    emptyTitle: string
+    emptyDescription: string
+    emptyAction: string
+  }
+  forms: {
+    name: string
+    namePlaceholder: string
+    topic: string
+    topics: string[]
+    notify: string
+    agree: string
+    submit: string
+    submitted: string
+  }
+  install: { npmrc: string; config: string }
+}
+
 export interface PortfolioContent {
   locale: LocaleCode
   navigation: {
@@ -127,6 +175,7 @@ export interface PortfolioContent {
     cv: PageContent
     legal: PageContent
     privacy: PageContent
+    ui: PageContent
   }
   profile: {
     name: string
@@ -186,6 +235,7 @@ export interface PortfolioContent {
   projectFilters: { label: string; all: string }
   projectTexts: Record<ProjectId, ProjectTexts>
   contact: ContactFormCopy
+  uiShowcase: UiShowcaseCopy
   legal: LegalPageCopy
   privacy: LegalPageCopy
 }

@@ -72,6 +72,13 @@ export const fr = {
       description:
         'Données traitées par le site wissem.pro : finalités, destinataires, durées de conservation et droits.',
     },
+    ui: {
+      eyebrow: 'Système de design',
+      heading: 'Wissem UI',
+      title: 'Wissem UI, système de design',
+      description:
+        'Le système de design partagé des applications de Wissem’s Industries : thème, verre, composants et animations, publié en Nuxt Layer. Tout ce qui suit est rendu par le paquet lui-même.',
+    },
   },
   profile: {
     name: 'Wissem.',
@@ -355,6 +362,106 @@ export const fr = {
       description:
         'Gestionnaire de mots de passe en ligne de commande développé en Python, avec stockage chiffré et interface CLI.',
     },
+  },
+  uiShowcase: {
+    repo: 'Voir le code',
+    facts: ['Nuxt Layer', 'Nuxt UI 4', 'Tailwind CSS 4', 'Paquet public'],
+    sections: {
+      colors: {
+        title: 'Couleurs',
+        description:
+          'Un violet électrique comme accent, dans une gamme dédiée. Les couleurs de statut restent celles de Tailwind.',
+      },
+      typography: {
+        title: 'Typographie',
+        description:
+          'Geist pour le texte, Geist Mono pour les libellés et le code, servies par le paquet.',
+      },
+      buttons: {
+        title: 'Boutons',
+        description:
+          'Les variantes de Nuxt UI avec le thème du système. Le bouton secondaire reste toujours discret.',
+      },
+      glass: {
+        title: 'Verre',
+        description:
+          'Une carte statique répond au pointeur par un halo violet. Une carte interactive se soulève et prend un bord violet.',
+      },
+      components: {
+        title: 'Composants d’application',
+        description:
+          'Les briques communes des applications privées : chiffres clés, pastilles, sélecteur de vue et état vide.',
+      },
+      forms: {
+        title: 'Formulaires',
+        description:
+          'Champs, listes et interrupteurs de Nuxt UI, avec un seul anneau violet au focus.',
+      },
+      install: {
+        title: 'Installation',
+        description:
+          'Le paquet est public sur GitHub Packages. Le registre npm de GitHub demande tout de même un jeton avec read:packages.',
+      },
+    },
+    colors: { brand: 'Gamme de l’accent', status: 'Statuts' },
+    typography: {
+      sans: 'Geist',
+      mono: 'Geist Mono',
+      heading: 'Des interfaces sobres et lisibles',
+      body: 'Un système partagé garde les mêmes réflexes d’une application à l’autre : couleurs, espacements, états et animations.',
+    },
+    buttons: {
+      primary: 'Principal',
+      secondary: 'Secondaire',
+      outline: 'Contour',
+      ghost: 'Discret',
+      link: 'Lien',
+      disabled: 'Désactivé',
+    },
+    glass: {
+      staticTitle: 'Carte statique',
+      staticText: 'Survolez-la : le halo suit le pointeur, sous le verre.',
+      interactiveTitle: 'Carte interactive',
+      interactiveText: 'Elle mène quelque part : elle se soulève et son bord devient violet.',
+      interactiveAction: 'Voir les projets',
+    },
+    components: {
+      example: 'Données d’exemple',
+      statsLabel: 'Chiffres clés',
+      stats: [
+        { label: 'Suivies', value: '128', tone: 'primary' },
+        { label: 'Nouvelles', value: '12', tone: 'info' },
+        { label: 'À relancer', value: '5', tone: 'warning' },
+        { label: 'Retenues', value: '3', tone: 'success' },
+      ],
+      pills: [
+        { label: 'Nouveau', tone: 'info' },
+        { label: 'En cours', tone: 'primary' },
+        { label: 'Validé', tone: 'success' },
+        { label: 'À relancer', tone: 'warning' },
+        { label: 'Refusé', tone: 'error' },
+        { label: 'Archivé', tone: 'neutral' },
+      ],
+      segmentedLabel: 'Affichage',
+      segments: [
+        { label: 'Liste', value: 'list', icon: 'i-ri-list-check' },
+        { label: 'Grille', value: 'grid', icon: 'i-ri-layout-grid-line' },
+      ],
+      emptyTitle: 'Aucun résultat',
+      emptyDescription: 'Aucun élément ne correspond à ces filtres.',
+      emptyAction: 'Réinitialiser',
+    },
+    forms: {
+      name: 'Nom',
+      namePlaceholder: 'Votre nom',
+      topic: 'Sujet',
+      topics: ['Stage', 'Projet', 'Autre'],
+      notify: 'Recevoir une copie',
+      agree: 'J’ai lu la politique de confidentialité',
+      submit: 'Envoyer',
+      submitted: 'Formulaire d’exemple : rien n’a été envoyé.',
+    },
+    install: { npmrc: 'Fichier .npmrc de l’utilisateur', config: 'nuxt.config.ts' },
   },
   contact: {
     title: 'Contact',

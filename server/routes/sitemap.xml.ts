@@ -1,5 +1,6 @@
 import {
   DEFAULT_SITE_LOCALE,
+  isUiHost,
   normalizePublicSiteUrl,
   SITE_LOCALES,
   SITE_ROUTES,
@@ -7,26 +8,34 @@ import {
   toLocalizedPath,
 } from '#shared/utils/site'
 
-export default defineEventHandler((event) => {
-  const siteUrl = normalizePublicSiteUrl(useRuntimeConfig(event).public.siteUrl)
-  const urls = SITE_ROUTES.flatMap((route) => {
-    const alternates = [
-      ...SITE_LOCALES.map(
-        (locale) =>
-          `    <xhtml:link rel="alternate" hreflang="${locale.hreflang}" href="${toAbsoluteSiteUrl(toLocalizedPath(route.path, locale.code), siteUrl)}" />`,
-      ),
-      `    <xhtml:link rel="alternate" hreflang="x-default" href="${toAbsoluteSiteUrl(toLocalizedPath(route.path, DEFAULT_SITE_LOCALE), siteUrl)}" />`,
-    ].join('\n')
+// The UI host lists its own page; the main site lists the others.
+const UI_HOST_ROUTES = [{ path: '/', changefreq: 'monthly', priority: '0.5' }]
 
-    return SITE_LOCALES.map(
-      (locale) => `  <url>
+export default defineEventHandler((event) => {
+  const { public: config } = useRuntimeConfig(event)
+  const onUiHost = isUiHost(getRequestURL(event).hostname)
+  const siteUrl = normalizePublicSiteUrl(onUiHost ? config.uiSiteUrl : config.siteUrl)
+  const routes = onUiHost ? UI_HOST_ROUTES : SITE_ROUTES
+  const urls = routes
+    .flatMap((route) => {
+      const alternates = [
+        ...SITE_LOCALES.map(
+          (locale) =>
+            `    <xhtml:link rel="alternate" hreflang="${locale.hreflang}" href="${toAbsoluteSiteUrl(toLocalizedPath(route.path, locale.code), siteUrl)}" />`,
+        ),
+        `    <xhtml:link rel="alternate" hreflang="x-default" href="${toAbsoluteSiteUrl(toLocalizedPath(route.path, DEFAULT_SITE_LOCALE), siteUrl)}" />`,
+      ].join('\n')
+
+      return SITE_LOCALES.map(
+        (locale) => `  <url>
     <loc>${toAbsoluteSiteUrl(toLocalizedPath(route.path, locale.code), siteUrl)}</loc>
 ${alternates}
     <changefreq>${route.changefreq}</changefreq>
     <priority>${route.priority}</priority>
   </url>`,
-    )
-  }).join('\n')
+      )
+    })
+    .join('\n')
 
   setResponseHeader(event, 'content-type', 'application/xml; charset=utf-8')
   return `<?xml version="1.0" encoding="UTF-8"?>

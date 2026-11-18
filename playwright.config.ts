@@ -21,6 +21,12 @@ export default defineConfig({
     url: baseURL,
     reuseExistingServer: !process.env.CI,
     // No Telegram credentials: the contact API must never reach the network.
-    env: { PORT: String(port), NITRO_PORT: String(port), NUXT_TELEGRAM_BOT_TOKEN: '' },
+    env: {
+      PORT: String(port),
+      NITRO_PORT: String(port),
+      NUXT_TELEGRAM_BOT_TOKEN: '',
+      // The UI host on loopback: Chromium resolves every *.localhost name to it.
+      NUXT_PUBLIC_UI_SITE_URL: `http://ui.localhost:${port}`,
+    },
   },
 })
