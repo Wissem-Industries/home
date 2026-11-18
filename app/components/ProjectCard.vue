@@ -21,7 +21,6 @@ defineProps<{
 }>()
 
 const { content } = usePortfolioContent()
-const localePath = useLocalePath()
 // A cover keeps its file name when it changes. IPX ignores the unknown `v` modifier, but it makes
 // the URL differ at each release, which stops the browser and the CDN from serving the previous one.
 const { assetVersion } = useRuntimeConfig().public
@@ -91,10 +90,10 @@ const { assetVersion } = useRuntimeConfig().public
           <UButton
             v-if="project.links.site"
             :label="actions.view"
-            :to="isExternalLink(project.links.site) ? project.links.site : localePath(project.links.site)"
+            :to="project.links.site"
             :external="isExternalLink(project.links.site)"
             :target="getLinkTarget(project.links.site)"
-            :trailing-icon="isExternalLink(project.links.site) ? 'i-ri-external-link-line' : 'i-ri-arrow-right-line'"
+            trailing-icon="i-ri-external-link-line"
             size="sm"
             class="min-h-11 sm:min-h-0"
           />

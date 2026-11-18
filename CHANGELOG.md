@@ -6,7 +6,8 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ### Added
 
-- Wissem UI page (`/ui`, `/en/ui`): the design system rendered by the package itself, with colours, typography, buttons, static and interactive glass cards, application components, forms and installation. The Wissem UI project leads to it.
+- Wissem UI page on ui.wissem.pro (English under `/en`), served by this same application: the design system rendered by the package itself, with colours, typography, buttons, static and interactive glass cards, application components, forms and installation. The Wissem UI project leads to it.
+- Host routing: the UI host serves only that page, with its own canonical links, sitemap and robots.txt; the main site pages asked on it, and `/ui` asked on the main site, are redirected (301) to their host.
 
 ## [1.7.2] - 2026-11-18
 

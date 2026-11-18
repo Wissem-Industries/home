@@ -2,10 +2,10 @@
 import { getLinkTarget, isExternalLink } from '#shared/utils/links'
 
 const { content } = usePortfolioContent()
-const localePath = useLocalePath()
+const { sitePath } = useSiteHost()
 const legalLinks = computed(() => [
-  { to: localePath('/legal'), label: content.value.footerLinks.legal },
-  { to: localePath('/privacy'), label: content.value.footerLinks.privacy },
+  { to: sitePath('/legal'), label: content.value.footerLinks.legal },
+  { to: sitePath('/privacy'), label: content.value.footerLinks.privacy },
 ])
 const credits = computed(() => `© ${new Date().getFullYear()} ${content.value.footer}`)
 </script>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { content } = usePortfolioContent()
-const localePath = useLocalePath()
+const { sitePath } = useSiteHost()
 const { canonicalUrl, siteUrl } = useSiteSeo()
 const toast = useToast()
 
@@ -167,7 +167,7 @@ useBreadcrumbJsonLd(
             <p class="text-sm leading-6 text-muted">{{ copy.glass.interactiveText }}</p>
             <UButton
               :label="copy.glass.interactiveAction"
-              :to="localePath('/projects')"
+              :to="sitePath('/projects')"
               trailing-icon="i-ri-arrow-right-line"
               color="neutral"
               variant="outline"

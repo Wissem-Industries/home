@@ -7,13 +7,11 @@ const pages = [
   '/contact',
   '/legal',
   '/privacy',
-  '/ui',
   '/en',
   '/en/projects',
   '/en/contact',
   '/en/legal',
   '/en/privacy',
-  '/en/ui',
 ]
 
 for (const scheme of ['light', 'dark'] as const) {

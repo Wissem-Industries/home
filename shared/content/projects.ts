@@ -112,7 +112,7 @@ export const projectRecords = [
     period: { start: '2025' },
     stack: ['Nuxt', 'Nuxt UI', 'Tailwind CSS', 'TypeScript'],
     links: {
-      site: '/ui',
+      site: 'https://ui.wissem.pro',
       code: 'https://github.com/Wissem-Industries/ui',
     },
     image: '/images/projects/portfolio.webp',

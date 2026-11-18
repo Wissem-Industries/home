@@ -1,6 +1,7 @@
 import pkg from './package.json' with { type: 'json' }
 
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'https://www.wissem.pro'
+const uiSiteUrl = process.env.NUXT_PUBLIC_UI_SITE_URL || 'https://ui.wissem.pro'
 const isDev = process.env.NODE_ENV === 'development'
 
 export default defineNuxtConfig({
@@ -21,6 +22,7 @@ export default defineNuxtConfig({
     telegramChatId: '',
     public: {
       siteUrl,
+      uiSiteUrl,
       assetVersion: pkg.version,
     },
   },
@@ -42,6 +44,8 @@ export default defineNuxtConfig({
     },
   },
   plausible: {
+    // One Plausible site for both hosts: events from ui.wissem.pro count under the main domain.
+    domain: process.env.NUXT_PUBLIC_PLAUSIBLE_DOMAIN || new URL(siteUrl).hostname,
     // Events go through this origin under a neutral path, so content blockers do not drop them.
     proxy: true,
     proxyBaseEndpoint: '/_w',
