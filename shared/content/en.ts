@@ -370,16 +370,17 @@ export const en = {
       colors: {
         title: 'Colours',
         description:
-          'An electric violet accent in its own range. Status colours stay the Tailwind ones.',
+          'Four accent palettes: switch here and the whole page follows. Plum is the default; status colours stay the Tailwind ones.',
       },
       typography: {
         title: 'Typography',
-        description: 'Geist for text, Geist Mono for labels and code, served by the package.',
+        description:
+          'Funnel Display for headings, Funnel Sans for text, Geist Mono for labels and code, served by the package.',
       },
       buttons: {
         title: 'Buttons',
         description:
-          'Nuxt UI variants with the system theme. The secondary button always stays subtle.',
+          'No solid fill: the primary button is violet glass, the secondary one a violet outline.',
       },
       glass: {
         title: 'Glass',
@@ -401,9 +402,14 @@ export const en = {
           'The package is public on GitHub Packages. GitHub’s npm registry still asks for a token with read:packages.',
       },
     },
-    colors: { brand: 'Accent range', status: 'Statuses' },
+    colors: {
+      brand: 'Accent range',
+      status: 'Statuses',
+      paletteLabel: 'Accent palette',
+      palettes: { plum: 'Plum', amethyst: 'Amethyst', dusk: 'Dusk', electric: 'Electric' },
+    },
     typography: {
-      sans: 'Geist',
+      sans: 'Funnel Display · Funnel Sans',
       mono: 'Geist Mono',
       heading: 'Clear, understated interfaces',
       body: 'A shared system keeps the same habits from one application to the next: colours, spacing, states and motion.',

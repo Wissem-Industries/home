@@ -4,6 +4,11 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Changed
+
+- Wissem UI 1.5.0: Funnel Display and Funnel Sans, the Plum accent, glass buttons and controls without solid fills, key figures and sections in glass, visible text selection.
+- Wissem UI page: a palette switcher shows the four accent palettes (Plum, Amethyst, Dusk, Electric) on the whole page; the colour, typography and button texts describe the new system.
+
 ## [1.8.1] - 2026-11-18
 
 ### Added
