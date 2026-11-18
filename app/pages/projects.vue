@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import type { ProjectCategory } from '#shared/content'
 import { PROJECT_CATEGORIES } from '#shared/content'
+import { toAbsoluteSiteUrl } from '#shared/utils/site'
 
 const { content } = usePortfolioContent()
-const { canonicalUrl, siteUrl } = useSiteSeo()
+const { canonicalUrl, homeUrl, siteUrl } = useSiteSeo()
 
 usePageSeo(
   computed(() => ({
@@ -14,9 +15,32 @@ usePageSeo(
 
 useBreadcrumbJsonLd(
   computed(() => [
-    { name: content.value.navigation.home, item: siteUrl.value },
+    { name: content.value.navigation.home, item: homeUrl.value },
     { name: content.value.pages.projects.heading, item: canonicalUrl.value },
   ]),
+)
+
+useJsonLd(
+  'projects',
+  computed(() => ({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: content.value.pages.projects.title,
+    itemListElement: content.value.projects.map((project, index) => {
+      const link = project.links.site ?? project.links.code
+      return {
+        '@type': 'ListItem',
+        position: index + 1,
+        item: {
+          '@type': 'CreativeWork',
+          name: project.title,
+          description: project.description,
+          ...(link ? { url: toAbsoluteSiteUrl(link, siteUrl.value) } : {}),
+          author: { '@id': `${siteUrl.value}/#person` },
+        },
+      }
+    }),
+  })),
 )
 
 type Filter = ProjectCategory | 'all'

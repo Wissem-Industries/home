@@ -7,7 +7,12 @@ export function useLocaleSeo() {
 
   useHead(() => ({
     link: head.value.link
-      ?.filter((link) => link.rel === 'alternate')
+      // @nuxtjs/i18n adds a regional variant (fr-FR, en-GB) beside each language: one is enough.
+      ?.filter(
+        (link) =>
+          link.rel === 'alternate' &&
+          (link.hreflang === 'x-default' || !String(link.hreflang).includes('-')),
+      )
       .map((link) =>
         onUiHost && typeof link.href === 'string'
           ? { ...link, href: link.href.replace(siteUrl, uiSiteUrl) }

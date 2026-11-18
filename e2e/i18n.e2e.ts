@@ -24,8 +24,8 @@ test.describe('language', () => {
       .evaluateAll((links) =>
         links.map((link) => [link.getAttribute('hreflang'), link.getAttribute('href')]),
       )
-    expect(alternates).toContainEqual(['fr-FR', expect.stringMatching(/\/projects$/)])
-    expect(alternates).toContainEqual(['en-GB', expect.stringMatching(/\/en\/projects$/)])
+    expect(alternates).toContainEqual(['fr', expect.stringMatching(/\/projects$/)])
+    expect(alternates).toContainEqual(['en', expect.stringMatching(/\/en\/projects$/)])
     expect(alternates.map(([hreflang]) => hreflang)).toContain('x-default')
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /\/en\/projects$/)
   })
@@ -52,7 +52,20 @@ test.describe('language', () => {
 
   test('the sitemap lists both languages', async ({ request }) => {
     const sitemap = await (await request.get('/sitemap.xml')).text()
-    expect(sitemap).toContain('hreflang="en-GB"')
+    expect(sitemap).toContain('hreflang="en"')
+    expect(sitemap).toMatch(/<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/)
     expect(sitemap).toMatch(/<loc>[^<]*\/en\/contact<\/loc>/)
+  })
+
+  test('a page has a single address', async ({ request }) => {
+    for (const [asked, canonical] of [
+      ['/projects/', '/projects'],
+      ['/Projects', '/projects'],
+      ['/en/', '/en'],
+    ]) {
+      const response = await request.get(asked, { maxRedirects: 0 })
+      expect(response.status()).toBe(301)
+      expect(response.headers().location).toBe(canonical)
+    }
   })
 })

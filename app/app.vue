@@ -64,6 +64,10 @@ useJsonLd(
           name: 'IMT Nord Europe',
           url: 'https://imt-nord-europe.fr',
         },
+        address: { '@type': 'PostalAddress', addressLocality: 'Lille', addressCountry: 'FR' },
+        knowsLanguage: ['fr', 'en'],
+        // Languages and data tools of the skills section.
+        knowsAbout: content.value.profile.skills.slice(0, 2).flatMap((group) => group.items),
         sameAs: sameAs.value,
       },
     ],

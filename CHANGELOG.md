@@ -4,6 +4,23 @@ All notable changes to this project are documented here. The format follows [Kee
 
 ## [Unreleased]
 
+### Added
+
+- Structured data: the project list on the projects page, the skills, languages and city of the person, and the last update of the profile page.
+- The sitemap gives the last update of each page (the resume page follows the resume releases).
+
+### Changed
+
+- Each page has a single address: a trailing slash or capitals redirect (301) to it.
+- Alternate languages declared as `fr` and `en`, the same in the pages and in the sitemap.
+- The projects and contact pages carry the name in their title.
+- The resume preview is a resized WebP instead of the 500 kB PNG.
+- Optimised images are cached for a week instead of a minute, the files of `public/` for a week.
+
+### Fixed
+
+- The English breadcrumbs led back to the French home page.
+
 ## [1.8.0] - 2026-11-18
 
 ### Added

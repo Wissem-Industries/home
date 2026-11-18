@@ -1,6 +1,6 @@
 export const SITE_LOCALES = [
-  { code: 'fr', hreflang: 'fr-FR' },
-  { code: 'en', hreflang: 'en-GB' },
+  { code: 'fr', hreflang: 'fr' },
+  { code: 'en', hreflang: 'en' },
 ] as const
 
 export const DEFAULT_SITE_LOCALE = 'fr'
@@ -101,4 +101,20 @@ export function toAbsoluteSiteUrl(path: string, siteUrl: string) {
 export function toLocalizedPath(path: string, locale: string) {
   if (locale === DEFAULT_SITE_LOCALE) return path
   return path === '/' ? `/${locale}` : `/${locale}${path}`
+}
+
+// Every page of both hosts, in each language.
+const PAGE_PATHS = new Set(
+  [...SITE_ROUTES.map((route) => route.path), UI_PAGE_PATH, '/'].flatMap((path) =>
+    SITE_LOCALES.map((locale) => toLocalizedPath(path, locale.code)),
+  ),
+)
+
+/**
+ * The single address of a page asked with a trailing slash or capitals (`/Projects/` gives
+ * `/projects`), or `undefined` when the path is already that address or is not a page.
+ */
+export function canonicalPagePath(pathname: string) {
+  const path = pathname.toLowerCase().replace(/\/+$/, '') || '/'
+  return path !== pathname && PAGE_PATHS.has(path) ? path : undefined
 }

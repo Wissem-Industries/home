@@ -58,6 +58,8 @@ usePageSeo(
   })),
 )
 
+const { builtAt } = useRuntimeConfig().public
+
 useJsonLd(
   'profile-page',
   computed(() => ({
@@ -69,6 +71,7 @@ useJsonLd(
     description: content.value.pages.home.description,
     isPartOf: { '@id': `${siteUrl.value}/#website` },
     mainEntity: { '@id': `${siteUrl.value}/#person` },
+    dateModified: builtAt,
   })),
 )
 </script>

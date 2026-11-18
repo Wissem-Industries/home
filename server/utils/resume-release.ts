@@ -1,5 +1,11 @@
-export type ResumeLocale = 'fr' | 'en'
-export type ResumeKind = 'pdf' | 'png' | 'social'
+import {
+  RESUME_BASE_URL,
+  type ResumeKind,
+  type ResumeLocale,
+  resumeAssetName,
+} from '../../shared/utils/resume'
+
+export { RESUME_BASE_URL, type ResumeKind, type ResumeLocale, resumeAssetName }
 
 export interface ReleaseAsset {
   name: string
@@ -12,9 +18,6 @@ export interface ResumeRelease {
   assets: ReleaseAsset[]
 }
 
-// Public bucket filled by the CV repository pipeline: `VERSION` holds the latest tag, `<tag>/` the files of that version.
-export const RESUME_BASE_URL = 'https://cdn.wissem.pro/wissem-cv'
-
 const RESUME_VARIANTS: [ResumeLocale, ResumeKind][] = [
   ['fr', 'pdf'],
   ['en', 'pdf'],
@@ -23,11 +26,6 @@ const RESUME_VARIANTS: [ResumeLocale, ResumeKind][] = [
   ['fr', 'social'],
   ['en', 'social'],
 ]
-
-export function resumeAssetName(locale: ResumeLocale, kind: ResumeKind) {
-  const base = `CV_Wissem_Badraoui_${locale.toUpperCase()}`
-  return kind === 'social' ? `${base}_SOCIAL.png` : `${base}.${kind}`
-}
 
 export function findResumeAsset(release: ResumeRelease, locale: ResumeLocale, kind: ResumeKind) {
   const name = resumeAssetName(locale, kind)

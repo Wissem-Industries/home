@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { content } = usePortfolioContent()
 const { sitePath } = useSiteHost()
-const { canonicalUrl, siteUrl } = useSiteSeo()
+const { canonicalUrl, homeUrl } = useSiteSeo()
 const toast = useToast()
 
 const copy = computed(() => content.value.uiShowcase)
@@ -36,7 +36,7 @@ usePageSeo(
 
 useBreadcrumbJsonLd(
   computed(() => [
-    { name: content.value.navigation.home, item: siteUrl.value },
+    { name: content.value.navigation.home, item: homeUrl.value },
     { name: content.value.pages.ui.heading, item: canonicalUrl.value },
   ]),
 )

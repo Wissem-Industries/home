@@ -9,7 +9,7 @@ import {
 } from '#shared/utils/contact'
 
 const { content } = usePortfolioContent()
-const { canonicalUrl, siteUrl } = useSiteSeo()
+const { canonicalUrl, homeUrl } = useSiteSeo()
 const localePath = useLocalePath()
 const toast = useToast()
 const loading = ref(false)
@@ -62,7 +62,7 @@ usePageSeo(
 
 useBreadcrumbJsonLd(
   computed(() => [
-    { name: content.value.navigation.home, item: siteUrl.value },
+    { name: content.value.navigation.home, item: homeUrl.value },
     { name: content.value.pages.contact.heading, item: canonicalUrl.value },
   ]),
 )
